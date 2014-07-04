@@ -7,6 +7,15 @@ You may fork it and get your book started, or clone it and remove the .git folde
 
 This file serves as the README file for the repository, as well as the introduction to your gitbook!
 
+##How?
+*  Let's start with some assumptions:
+  * You keep all your code / things you work on in ~/Code (which is the same as /Users/Your-User-Name/Code)
+  * You want to call your book "BookName"
+* Open up Terminal
+* `git clone git@github.com:MrMaksimize/gitbook-boot.git ~/Code/bookName`
+* `cd ~/Code/bookName`
+* `rm -rf .git`
+
 ##Why?
 Gitbook has a great way of [documenting](http://help.gitbook.io) the specifics of how to work with it, but I wanted to create an opinionated guide for workflow that people can use use without headeaches.  This is my workflow and I'm outlining what works for me, and this will not necessarily fit everyone that is using a tool as flexible as gitbook.
 

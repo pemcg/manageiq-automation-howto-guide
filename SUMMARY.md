@@ -1,20 +1,5 @@
 # Summary
 
-* [About Us](about_us/README.md)
-* [Research](research/README.md)
-   * [Field Research](research/field_research.md)
-   * [Meeting our User](research/meeting_our_user.md)
-   * [Stories from the Field](research/stories_from_the_field.md)
-* [Prototyping](prototyping/README.md)
-   * [Negocio 123](prototyping/negocio_123.md)
-   * [BizWallet](prototyping/bizwallet.md)
-* [Initial Results](initial_results/README.md)
-* [Collaboration](collaboration/README.md)
-   * [Government Partners](collaboration/government_partners.md)
-   * [Community Partners](collaboration/community_partners.md)
-* [Next Steps](next_steps/README.md)
-* [Bonus Tracks](bonus_tracks/README.md)
-   * [In the News](bonus_tracks/in_the_news.md)
-   * [Fun Extras](bonus_tracks/fun_extras.md)
-* [Appendix: Incentives](appendix/README.md)
+* [Chapter 1](chapter1/README.md)
+   * [Field Research](chapter1/section1.md)
 
