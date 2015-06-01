@@ -1,7 +1,5 @@
 ## The MiqAeService* Model
 
-(This section is for background information only, feel free to skip)
-
 The objects that we work with in the Automation Engine are all _Service Models_ - instances of an MiqAeService* class that abstract and make available to us their corresponding Rails Active Record. For example we access the Rails _User_ Active Record indirectly using the _MiqAeServiceUser_ Automation Engine class.
 
 Fortunately the Automation Engine hides this from us pretty well, and generally presents the appropriate object to us via $evm.root (for example if we're working with a ```$evm.root['vm']``` object from a RHEV provider, it's actually an instance of an _MiqAeServiceVmRedhat_ object).
@@ -126,3 +124,19 @@ MiqAeServiceVmVmware < MiqAeServiceVmInfra < MiqAeServiceVm < MiqAeServiceVmOrTe
 MiqAeServiceVmXen < MiqAeServiceVmInfra < MiqAeServiceVm < MiqAeServiceVmOrTemplate < MiqAeServiceModelBase
 MiqAeServiceWindowsImage < MiqAeServiceModelBase
 ```
+
+###Distributed Ruby (druby)
+
+The CloudForms Automation Engine uses druby extensively at the back-end:
+
+```
+$evm.current_object = /Bit63/General/Methods/ObjectWalker   (type: DRb::DRbObject, URI: druby://127.0.0.1:52182)
+$evm.root = /ManageIQ/SYSTEM/PROCESS/Request   (type: DRb::DRbObject, URI: druby://127.0.0.1:52182)
+$evm.root['miq_server'] => #<MiqAeMethodService::MiqAeServiceMiqServer:0x00000006fd4d90>   (type: DRb::DRbObject, URI: druby://127.0.0.1:52182)
+$evm.root['user'] => #<MiqAeMethodService::MiqAeServiceUser:0x000000084e8240>   (type: DRb::DRbObject, URI: druby://127.0.0.1:52182)
+$evm.root['vm'] => gateway   (type: DRb::DRbObject, URI: druby://127.0.0.1:52182)
+$evm.object = /Bit63/General/Methods/ObjectWalker   (type: DRb::DRbObject, URI: druby://127.0.0.1:52182)
+$evm.parent = /ManageIQ/System/Request/Call_Instance   (type: DRb::DRbObject, URI: druby://127.0.0.1:52182)
+```
+
+Although this is mostly transparent to us, it means that if we look at things like $evm.root['vm'].instance_methods (hoping to find some useful VM-related method that we can call), we actually get a list of the instance methods for the local _DRb::DRbObject_ object, rather than the remote MiqAeServiceUser service model (not what we want). We also occasionally get a _DRb::DRbUnknown_ object returned to us, indicating that our receiver doesn't know about the class definition for a distributed object. 

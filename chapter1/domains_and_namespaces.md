@@ -1,4 +1,6 @@
 ## Domains and Namespaces
+
+![Screenshot 1](images/domains_and_namespaces2.png)
 ### Domains
 A **domain** is a collection of namespaces, classes, instances and methods. The ManageIQ upstream project provides a single _ManageIQ_ domain for all supplied automation code, while Red Hat adds the supplemental _RedHat_ domain containing added-value code for the CloudForms product.
 
@@ -22,5 +24,5 @@ See the following kbase articles for details and examples of importing and expor
 [Cloudforms 3.1 Importing Automate Domains](https://access.redhat.com/solutions/1225383)
 
 ###Namespaces
-A **namespace** is a folder-like container for classes, instances and methods, and is purely used for organisational purposes. We create namespaces to arrange our code logically; namespaces can be nested if required.
+A **namespace** is a folder-like container for classes, instances and methods, and is purely used for organisational purposes. We create namespaces to arrange our code logically, and as shown in the screenshot, namespaces can be nested if required.
 
