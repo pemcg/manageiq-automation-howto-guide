@@ -91,7 +91,7 @@ owner = $evm.vmdb('user').find_by_id( ownerid.to_i )
 vm = $evm.vmdb('vm').find_by_name(vm_name)  
 vm = $evm.vmdb('vm').find_by_guid(guid)
 ```
-We can ```.find_by_``` any table heading on a database table, so if we look at the _services_ column:
+We can ```.find_by_``` any table heading on a database table, so if we look at the _services_ column...
 
 ```
 vmdb_production=# \d services
@@ -109,6 +109,8 @@ vmdb_production=# \d services
  ...
 ```
  
-We could say ```$evm.vmdb(‘service’).find_by_service_template_id(template_id)``` if we wanted. Don't search the CloudForms sources for ```def find_by_id``` though, these are not statically defined methods.
+...we see that we could call ```$evm.vmdb(‘service’).find_by_service_template_id(template_id)``` if we wanted. 
+
+Tip - don't try searching the CloudForms sources for ```def find_by_id``` though, these are not statically defined methods and so don't exist in the CloudForms code.
  
  
