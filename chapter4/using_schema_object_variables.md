@@ -22,7 +22,7 @@ Now we'll create a new instance as before, this time called _GetCredentials_, an
 
 ![Screenshot](images/screenshot20.png)
 
-We'll create a method _get\_credentials_ conatining the following code:
+We'll create a method _get\_credentials_ containing the following code:
 
 ```ruby
 $evm.log(:info, "get_credentials started")

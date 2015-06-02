@@ -10,7 +10,7 @@
 	* [Creating the Class](chapter4/creating_the_class.md)
 	* [Hello, World!](chapter4/hello_world.md)
 	* [Using Schema Object Variables](chapter4/using_schema_object_variables.md)
-	* [A More Advanced Example](chapyer4/a_more_advanced_example.md)
+	* [A More Advanced Example](chapter4/a_more_advanced_example.md)
 * [The Most Commonly Used $evm Objects](chapter5/the_most_commonly_used_evm_objects.md)
 * [Using Tags from Automate](chapter6/using_tags_from_automate.md)
 * [Associations in Practice](chapter7/associations_in_practice.md)
