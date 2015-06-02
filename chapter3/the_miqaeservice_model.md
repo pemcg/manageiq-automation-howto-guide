@@ -1,5 +1,7 @@
 ## The MiqAeService* Model
 
+(This section contains background (albeit useful) information - feel free to skip over on a first pass of the book).
+
 The objects that we work with in the Automation Engine are all _Service Models_ - instances of an MiqAeService* class that abstract and make available to us their corresponding Rails Active Record. For example we access the Rails _User_ Active Record indirectly using the _MiqAeServiceUser_ Automation Engine class.
 
 Fortunately the Automation Engine hides this from us pretty well, and generally presents the appropriate object to us via $evm.root (for example if we're working with a ```$evm.root['vm']``` object from a RHEV provider, it's actually an instance of an _MiqAeServiceVmRedhat_ object).

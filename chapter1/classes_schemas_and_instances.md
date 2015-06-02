@@ -19,3 +19,9 @@ We can define default values for fields in a class schema, which will be inherit
 ### Instances
 
 An **instance** is a specific "clone" of the generic class, and is the entity run in the context of _$evm.root_ by the Automation Engine. An instance contains a copy of the class schema but with actual values of the fields filled in.
+
+### Relationships
+
+One of the schema field types is **Relationship**, and these are links to other instances elsewhere in the Automation Datastore. We often use relationships as a way of chaining instances together, and relationship values can accept variable substitutions for flexibility as shown below:
+
+![Screenshot 1](images/relationships.png)
