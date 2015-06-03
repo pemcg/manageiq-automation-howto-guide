@@ -28,9 +28,11 @@ $evm.log is a simple method that we've used already. It writes a message to auto
 
 ### $evm.root
 
-$evm.root is a method that returns the root object in the workspace (environment, variables, linked objects etc.). This is the Instance whose invocation took us into the Automation Engine. Depending on the context that we are running in the Automation Engine, there may be several other objects that we need to access via $evm.root such as $evm.root['vm'], $evm.root['user'], or $evm.root['miq_request'].
+$evm.root is a method that returns the root object in the workspace (environment, variables, linked objects etc.). This is the Instance whose invocation took us into the Automation Engine. From $evm.root hang several other Service Model objects that we can access programmatically such as $evm.root['vm'], $evm.root['user'], or $evm.root['miq_request'], (the actual objects available depend on the context of the Automation taks that we are performing).
+
 
 ![Object Model](images/object_model.png)
+
 
 $evm.root contains a lot of useful information that we use programatically to establish our running context (for example to see if we've been called by an API call or from a button, e.g.
 
@@ -112,6 +114,6 @@ We can use $evm.instantiate to launch another Automation Instance programmatical
 ```ruby
 $evm.instantiate('/Discovery/Methods/ObjectWalker')
 ```
-
+Instances called in this way execute synchronously, and so our calling method waits for completion before continuing.
 
 

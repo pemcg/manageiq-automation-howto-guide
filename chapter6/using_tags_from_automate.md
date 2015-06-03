@@ -60,3 +60,15 @@ hosts.each do |host|
   $evm.log("info", "Host: #{host.name} is tagged with #{tag}")
 end
 ```
+
+Getting the list of tags in a particular category is more challenging. Both tags and categories are listed in the same _classification_ table, but tags also have a valid _parent\_id_ column that ties them to their category.
+
+```ruby
+tag_category = 'cost_centre'  
+tag_classification = $evm.vmdb('classification').find_by_name(tag_category)  
+  
+cost_centre_tags = {}  
+$evm.vmdb('classification').find_all_by_parent_id(tag_classification.id).each do |tag|
+  cost_centre_tags[tag.name] = tag.description
+end 
+```

@@ -3,7 +3,7 @@
 ## What?
 This book is an introduction to working with the CloudForms Automation Engine.
 
-The book is a work-in progress, so the format and content is liable to change as the work progresses. Please feel free however to peruse the developing pages, find errors, and suggest changes or additional topics.
+The book is a very early work-in progress, so the format, layout, text content, images etc. _will_ change as the work progresses. Please feel free however to peruse the developing pages, and suggest changes or additional topics.
 
 ## Why Write This?
 The Automation functionality of CloudForms / ManageIQ seems to be one of the challenging aspects of the product to master. It is (mostly) documented in the official manuals, but wading through these documents can be challenging in itself.
