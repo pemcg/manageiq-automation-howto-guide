@@ -1,9 +1,9 @@
 ## Domains and Namespaces
 
 ### Domains
-A **domain** is a collection of namespaces, classes, instances and methods. The ManageIQ upstream project provides a single _ManageIQ_ domain for all supplied automation code, while Red Hat adds the supplemental _RedHat_ domain containing added-value code for the CloudForms product.
+A **domain** is a collection of **namespaces**, **classes**, **instances** and **methods**. The ManageIQ upstream project provides a single _ManageIQ_ domain for all supplied automation code, while Red Hat adds the supplemental _RedHat_ domain containing added-value code for the CloudForms product.
 
-![Screenshot](images/screenshot10.png)
+![Screenshot](images/screenshot1.png)
 
 Domains are a new feature of the Automation engine for the ManageIQ _Anand_ release (CloudForms 3.1). Prior to this release all factory-supplied and user-created automation code was contained in a common structure, which made updates difficult when any user-added code was introduced (the user-supplied modifications needed exporting and re-importing/merging whenever an automation update was released).
 
@@ -24,10 +24,15 @@ See the following kbase articles for details and examples of importing and expor
 [Cloudforms 3.1 Exporting Automate Domains](https://access.redhat.com/solutions/1225313)  
 [Cloudforms 3.1 Importing Automate Domains](https://access.redhat.com/solutions/1225383)
 
+#### Copying Objects Between Domains
+
+We frequently need to customise code in the locked RedHat or ManageIQ Domains, for example when implementing our own VM placement method. Fortunately we can easily copy any object from the locked Domains into our own using Configuration -> Copy this ...
+
+![Screenshot](images/screenshot3.png)
+
 ###Namespaces
-A **namespace** is a folder-like container for classes, instances and methods, and is purely used for organisational purposes. 
+A **namespace** is a folder-like container for **classes**, **instances** and **methods**, and is purely used for organisational purposes. 
 
-![Screenshot](images/screenshot11.png)
+![Screenshot](images/screenshot2.png)
 
-We create namespaces to arrange our code logically, and as shown in the screenshot, namespaces can be nested if required.
-
+We create namespaces (nested if required) to arrange our code logically.

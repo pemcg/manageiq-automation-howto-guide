@@ -1,6 +1,6 @@
 ## Associations in Practice
 
-We saw from [Active Record Associations](### Active Record Associations) that there are associations been many of the Active Records (and hence Service Models). We use this extensively when scripting, so for example to find the name of the cluster that our VM is running on, we follow the assocation between MiqAeServiceVmRedhat and MiqAeServiceEmsCluster...
+We saw from [Active Record Associations](### Active Record Associations) that there are associations been many of the Active Records (and hence Service Models). We use these extensively when scripting, so for example to find the name of the cluster that our VM is running on, we follow the assocation between MiqAeServiceVmRedhat and MiqAeServiceEmsCluster...
 
 ```ruby
 cluster = $evm.root['vm'].ems_cluster.name
