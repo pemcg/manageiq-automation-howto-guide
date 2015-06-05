@@ -26,7 +26,7 @@ See the following kbase articles for details and examples of importing and expor
 
 #### Copying Objects Between Domains
 
-We frequently need to customise code in the locked RedHat or ManageIQ Domains, for example when implementing our own VM placement method. Fortunately we can easily copy any object from the locked Domains into our own using Configuration -> Copy this ...
+We frequently need to customise code in the locked RedHat or ManageIQ Domains, for example when implementing our own VM Placement method. Fortunately we can easily copy any object from the locked Domains into our own using Configuration -> Copy this ...
 
 ![Screenshot](images/screenshot3.png)
 
