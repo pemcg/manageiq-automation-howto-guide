@@ -11,16 +11,13 @@ $evm.log
 $evm.vmdb
 $evm.execute
 $evm.instantiate
-```
 
-In addition, when we work with State Machines (see section xxx) we often use the following methods to save variables between retries of a stage in a State Machine.
-
-```
 $evm.set_state_var
 $evm.get_state_var
 $evm.state_var_exist?
 ```
-We can look at some of these methods in more detail.
+
+We use the last three methods to save variables between retries of a stage in a State Machine, but we can look at the first seven methods in more detail here.
 
 ### $evm.log
 

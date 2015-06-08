@@ -8,7 +8,7 @@ Write an Automation Method that enforces anti-affinity rules for VMs, based on a
 
 The Automation Method should be run from a Button visible on the VM details page. If another VM with the same _server\_role_ tag is found running on the same host (hypervisor) as the displayed VM, then we live migrate the current VM to another host with no other such tagged VMs (VM migration is only supported when we're working with a VMware vCenter Provider). We also email all users in the EvmGroup-administrator group that the migration occurred.
 
-After using _object\_walker_ to determine the association names, attributes and virtual columns names that we need to work with, we can achieve the task using the following script:
+We can achieve the task using the following script:
 
 ```ruby
 #----------------------------------------------------------------------------
@@ -27,15 +27,15 @@ begin
     #
     # Get our host name
     #
-    our_host = vm.host_name
+    our_host = vm.host_name		                 # <-- Virtual Column
     #
     # Loop through the other hosts in our cluster
     #
     target_host = nil
-    vm.ems_cluster.hosts.each do |this_host|
-      next if this_host.name == our_host   # Skip if this Host == our Host
+    vm.ems_cluster.hosts.each do |this_host|      # <-- Two levels of Association
+      next if this_host.name == our_host
       host_invalid = false
-      this_host.vms.each do |this_vm|
+      this_host.vms.each do |this_vm|             # <-- Association
         if this_vm.tags(:server_role).first == our_server_role
           host_invalid = true
           break
@@ -55,7 +55,7 @@ begin
       #
       # Migrate the VM to this host
       #
-      vm.migrate(target_host)
+      vm.migrate(target_host)	                  # <-- Method
     end
     return target_host.name
   end
@@ -68,8 +68,8 @@ begin
     #
     recipients = []
     group = $evm.vmdb('miq_group').find_by_description(group_name)
-    group.users.each do |group_member|
-      recipients << group_member.email
+    group.users.each do |group_member|             # <-- Association
+      recipients << group_member.email             # <-- Attribute
     end
     #
     # 'from' is the current logged-user who clicked the button
@@ -104,8 +104,8 @@ begin
   #
   # Loop through the other VMs on the same host
   #
-  vm.host.vms.each do |this_vm|
-    next if this_vm.name == vm.name  # Skip if this VM == our VM
+  vm.host.vms.each do |this_vm|             # <-- Two levels of Association
+    next if this_vm.name == vm.name
     if this_vm.tags(:server_role).first == our_server_role
       $evm.log(:info, "VM #{this_vm.name} also has a server_role tag of: #{our_server_role}, taking remedial action")
       new_host = relocate_vm(vm)

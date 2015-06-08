@@ -18,23 +18,28 @@ Some examples are:
 if this_object.respond_to?(:attributes)
   if this_object.attributes.respond_to? :each
     this_object.attributes.each do |key, value|
-       attributes << key
-    end
-  end
-end
+      ...
 ```
+
 
 ```ruby
 user = $evm.root['user'] rescue nil
 unless user.nil?
+  ...
+```
+
+```ruby
+prov = $evm.root['miq_provision']
+if prov.options.has_key?(:ws_values)
+  ws_values = prov.options[:ws_values]
+  ...
 ```
 
 
-
 ### Use an External IDE
-The in-built code editor is fairly basic. It is often easier to develop in an external editor or IDE, and copy and paste code into the in-built editor when complete.
+The in-built WebUI code editor is fairly basic. It is often easier to develop in an external editor or IDE, and copy and paste code into the in-built editor when complete.
 
 
 ### Version Control
 
-There isn't any (yet). Git integration for the Automation Datastore is planned for a future release of ManameIQ / CloudForms.
+There isn't any (yet). Git integration for the Automation Datastore is planned for a future release of ManageIQ / CloudForms. In the meantime, use a separate Git repository, but this is a manual process unfortunately.
