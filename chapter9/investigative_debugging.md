@@ -4,11 +4,7 @@ As seen in [Associations in Practice](## Associations in Practice), there is a l
 
 ### InspectMe
 
-**InspectMe** is an Instance/Method combination supplied out-of-the-box that we can call to dump some attributes of $evm.root and its associated objects. As an example we can call InspectMe from a button on a _VM and Instance_ object as we did when running our AddCustomAttribute instance in [A More Advanced Example](## A More Advanced Example). As both the Instance and Method are in the _ManageIQ/System/Request_ namespace, we can call InspectMe directly from the button...
-
-![screenshot](images/screenshot1.png)
-
-...rather than calling _Call\_Instance_ as an intermediary (see [Ways of Entering Automation](## Ways of Entering Automation)).
+**InspectMe** is an Instance/Method combination supplied out-of-the-box that we can call to dump some attributes of $evm.root and its associated objects. As an example we can call InspectMe from a button on a _VM and Instance_ object as we did when running our AddCustomAttribute instance in [A More Advanced Example](## A More Advanced Example). As both the Instance and Method are in the _ManageIQ/System/Request_ namespace, we can call InspectMe directly rather than calling _Call\_Instance_ as an intermediary.
 
 We can view the results of the InspectMe dump in automation.log...
 
@@ -41,6 +37,19 @@ Kevin Morey has written a greatly enhanced version of InspectMe, available from 
 **object\_walker** is a slightly more dynamic tool that walks and dumps the objects, attributes and virtual columns of $evm.root and its immediate objects, but also recursively traverses associations to walk and dump any objects that it finds. It prints the output in a Ruby-like syntax that can be copied and pasted directly into an Automation script to access or walk the same path.
 
 The script is available from [here](https://github.com/pemcg/object_walker), along with instructions for use.
+
+#### {black,white}listing
+
+One of the features of object_walker is the ability to be able to selectively choose which associations to "walk" to limit the output. This is selected by setting a _@walk\_association\_policy_ to _:whitelist_ or _:blacklist_, and then defining a _@walk\_association\_whitelist_ or _@walk\_association\_blacklist_ to list the associations to be walked (whitelist), or not walked (blacklist).
+
+In practice a _@walk\_association\_policy_ of _:blacklist_ produces so much output that it's rarely used, and so a _:whitelist_ is more often defined, e.g.
+
+```ruby
+@walk_association_whitelist = { "MiqAeServiceVmRedhat" => ["hardware", "host", "storage"],
+                                "MiqAeServiceVmVmware" => ["hardware", "host", "storage"],
+                                "MiqAeServiceHardware" => ["nics", "guest_devices", "ports", "storage_adapters" ],
+                                "MiqAeServiceGuestDevice" => ["hardware", "lan", "network"] }
+```
 
 There is a companion _object\_walker\_reader_ script that can be copied to the CloudForms appliance to extract the object_walker dumps from automation.log, list the dumps, and even _diff_ two dumps - useful when running object_walker before and after a built-in method (for example in a State Machine) to see what the method has changed.
 

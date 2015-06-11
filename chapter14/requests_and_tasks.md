@@ -2,8 +2,6 @@
 
 Many Automation operations have two distinct stages - the **Request** and the **Task**. There are corresponding request and task objects representing these stages, each holding information relevant to the operation.
 
-An **approval** is often(?) needed to progress from a request to a task.
-
 |   Operation          |   Request Object   |   Task Object   |
 |:--------------------:|:------------------:|:---------------:|
 |  Generic Operation   | miq_request        | miq\_request\_task  |
@@ -15,6 +13,7 @@ An **approval** is often(?) needed to progress from a request to a task.
 | Requesting a Service | service\_template\_provision\_request | service\_template\_provision\_task |
 | Migrating a VM       | vm\_migrate\_request | vm\_migrate\_task |
 
+If the _Request_ is approved, one or more _Task_ objects will be created from information contained in the _Request_ object.
 
 If we look at the class ancestry for the _Request_ objects...
 
@@ -50,16 +49,21 @@ MiqAeServiceVmMigrateTask < MiqAeServiceMiqRequestTask < MiqAeServiceModelBase
 MiqAeServiceVmReconfigureTask < MiqAeServiceMiqRequestTask < MiqAeServiceModelBase
 ```
 
-... we see that there are twice as many types of _Task_ object. This is because a request to perform an action (e.g. provision a VM) can be converted into one of several ways of performing the task (e.g. provision a VMware VM via PXE)
+... we see that there are twice as many types of _Task_ object. This is because a request to perform an action (e.g. provision a VM) can be converted into one of several ways of performing the task (e.g. provision a VMware VM via PXE).
 
-validate_quotas
+When we develop our own scripts to work with Automation, depending on the workflow stage of the operation that we're interacting with (for example provisioning a VM), we may be working with either a Request _or_ a Task object, so we sometimes have to search for one and if that fails, fallback to the other, e.g.
 
 ```ruby
-miq_request = $evm.root['miq_request']
-miq_provision_request = miq_request.resource
+prov = $evm.root['miq_provision_request'] || $evm.root['miq_provision'] || $evm.root['miq_provision_request_template']
 ```
 
-We can use object_walker to illustrate the difference between an Automation Request and Task.
+If we have a Request object, there may not necessarily be a Task object (yet), but if we have a Task object we can always follow an association to find the Request object that preceeded it. 
+
+### Object Contents
+
+The _Request_ object contains details about the requester (person), approval status, approver (person) and reason, and the parameters to be used for the resulting Task in the form of an _options hash_.
+
+We can use object_walker to show the difference between an Automation Request and Task object.
 
 Using the following walk\_association\_whitelist...
 
@@ -70,9 +74,9 @@ Using the following walk\_association\_whitelist...
 ...we can call ObjectWalker from the RESTful API, using the /api/automation_requests URI.
 
 
-When the Automation Instance (in this case ObjectWalker) runs, the Request has already been approved and the Task object is created.
+When the Automation Instance (in this case ObjectWalker) runs, the Request has already been approved and so the Task object exists.
 
-The Request object is still available as an Association from the Task object...
+The Request object is reachable via an Association from the Task object...
 
 ```
 object_walker:   automation_request = $evm.root['automation_task'].automation_request
@@ -142,7 +146,7 @@ object_walker:   automation_request = $evm.root['automation_task'].automation_re
 |    object_walker:   --- end of methods ---
 ```
 
-This shows us that the Task object is available from $evm.root...
+...but the Task object is available from $evm.root...
 
 
 ```

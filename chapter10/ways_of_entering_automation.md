@@ -13,21 +13,27 @@ There are a further two ways that an Automation script can be launched.
 ### Control Policy Actions
 
 A **Control Policy Action** can be created that launches a Custom Automation Instance.
+<br> <br>
 
 ![screenshot](images/screenshot1.png?)
 
+<br>
 This can launch any Instance in _/System/Request_, but as before we can use _Call\_Instance_ to redirect the call via the in-built _rel2_ relationship to an Instance in our own Domain and Namespace.
 
 ### Alerts
 
 An **Alert** can be created that sends a Management Event, which calls an Instance under _/System/Event_ in the Automation Datastore that corresponds to the Management Event name.
+<br> <br>
 
 ![screenshot](images/screenshot2.png)
 
+<br>
 We can clone the _/System/Event_ namespace to our own domain, and add the corresponding Instance
+<br> <br>
 
 ![screenshot](images/screenshot3.png)
 
+<br>
 This Instance will now be run when the Alert is triggered.
 
 
