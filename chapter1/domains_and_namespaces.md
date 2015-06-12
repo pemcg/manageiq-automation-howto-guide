@@ -1,16 +1,16 @@
 ## Domains and Namespaces
 
 ### Domains
-A **domain** is a collection of **namespaces**, **classes**, **instances** and **methods**. The ManageIQ upstream project provides a single _ManageIQ_ domain for all supplied automation code, while Red Hat adds the supplemental _RedHat_ domain containing added-value code for the CloudForms product.
+A **Domain** is a collection of **Namespaces**, **Classes**, **Instances** and **Methods**. The ManageIQ upstream project provides a single _ManageIQ_ Domain for all supplied automation code, while Red Hat adds the supplemental _RedHat_ Domain containing added-value code for the CloudForms product.
 <br> <br>
 
 ![Screenshot](images/screenshot1.png)
 
 <br>
-Both the ManageIQ and RedHat domains are locked, indicating their read-only nature, however we are free to create our own domains for our custom automation code. Organising our own code into custom domains greatly simplifies the task of exporting and importing code (simplifying code portability and re-use), and leaves ManageIQ/Red Hat free to update the locked domains through minor releases without fear of overwriting our customisations.
+Both the ManageIQ and RedHat Domains are locked, indicating their read-only nature, however we are free to create our own Domains for our custom automation code. Organising our own code into custom Domains greatly simplifies the task of exporting and importing code (simplifying code portability and re-use), and leaves ManageIQ/Red Hat free to update the locked Domains through minor releases without fear of overwriting our customisations.
 
 #### Domain Priority
-User-added domains can be individually enabled or disabled, and all domains can be layered in a priority order such that if code exists in the same path in multiple domains (for example /Infrastructure/VM/Provisioning/StateMachines/Methods), the code in the highest priority enabled domain will be executed.
+User-added Domains can be individually enabled or disabled, and all Domains can be layered in a priority order such that if code exists in the same path in multiple Domains (for example /Infrastructure/VM/Provisioning/StateMachines/Methods), the code in the highest priority enabled Domain will be executed.
 <br> <br>
 
 ![Screenshot](images/screenshot9.png)
@@ -23,7 +23,7 @@ Domains can be exported using _rake_ from the command line, and imported either 
 script/rails runner script/rake evm:automate:import YAML_FILE=Buttons.yaml IMPORT_AS=Bit63 SYSTEM=false ENABLED=true DOMAIN=Export PREVIEW=false
 ```
 
-See the following kbase articles for details and examples of importing and exporting domains using rake:
+See the following kbase articles for details and examples of importing and exporting Domains using rake:
 
 [Cloudforms 3.1 Exporting Automate Domains](https://access.redhat.com/solutions/1225313)  
 [Cloudforms 3.1 Importing Automate Domains](https://access.redhat.com/solutions/1225383)
@@ -39,8 +39,8 @@ We frequently need to customise code in the locked RedHat or ManageIQ Domains, f
 Domains are a new feature of the Automation engine for the ManageIQ _Anand_ release (CloudForms 3.1). Prior to this release all factory-supplied and user-created automation code was contained in a common structure, which made updates difficult when any user-added code was introduced (the user-supplied modifications needed exporting and re-importing/merging whenever an automation update was released).
 
 ###Namespaces
-A **namespace** is a folder-like container for **classes**, **instances** and **methods**, and is purely used for organisational purposes. 
+A **Namespace** is a folder-like container for **Classes**, **Instances** and **Methods**, and is purely used for organisational purposes. 
 
 ![Screenshot](images/screenshot2.png)
 
-We create namespaces (nested if required) to arrange our code logically.
+We create Namespaces (nested if required) to arrange our code logically.

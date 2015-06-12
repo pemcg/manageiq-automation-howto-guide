@@ -11,7 +11,7 @@
 * [Using Schema Object Variables](chapter4/using_schema_object_variables.md)
 * [A Little Rails Knowledge](chapter2/a_little_rails_knowledge.md)
 * [Working with Automation Objects](chapter4a/working_with_automation_objects.md)
-* [Running a Script From a Button](chapter4b/a_more_advanced_example.md)
+* [Running a Script From a Button](chapter4b/real_world_example.md)
 * [The MiqAeService* Model](chapter3/the_miqaeservice_model.md)
 * [$evm and the Workspace](chapter5/the_most_commonly_used_evm_objects.md)
 * [Using Tags from Automate](chapter6/using_tags_from_automate.md)

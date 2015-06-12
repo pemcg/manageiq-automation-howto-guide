@@ -6,7 +6,7 @@ The objects that we work with in the Automation Engine are all _Service Models_ 
 
 Fortunately the Automation Engine hides this from us pretty well, and generally presents the appropriate object to us via $evm.root (for example if we're working with a ```$evm.root['vm']``` object from a RHEV provider, it's actually an instance of an _MiqAeServiceVmRedhat_ object).
 
-All of the MiqAeService* objects extend a common _MiqAeServiceModelBase_ class that contains some common methods available to all objects (such as ```.tagged_with?(category, name)```, ```.tags(category = nil)```, and ```.tag_assign(tag)``` (see section xxx on working with tags in Automate). Many of the Service Model objects have several level of superclass; the following list shows the class inheritance genealogy for each of the MiqAeService* objects:
+All of the MiqAeService\* objects extend a common _MiqAeServiceModelBase_ class that contains some common methods available to all objects (such as ```.tagged_with?(category, name)```, ```.tags(category = nil)```, and ```.tag_assign(tag)``` (see section xxx on working with tags in Automate). Many of the Service Model objects have several level of superclass; the following list shows the class inheritance genealogy for each of the MiqAeService* objects:
 
 ```
 MiqAeServiceAuthKeyPairAmazon < MiqAeServiceAuthKeyPairCloud < MiqAeServiceAuthPrivateKey < MiqAeServiceAuthentication < MiqAeServiceModelBase
