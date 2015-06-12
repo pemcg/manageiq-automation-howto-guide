@@ -21,7 +21,7 @@
 * [Event-Driven Automation](chapter11/event_driven_automation.md)
 * [State Machines](chapter12/state_machines.md)
 * [Real-World Example 2](chapter12b/real_world_example_2.md)
-* [More Advanced Schema Concepts](chapter13/more_advanced_schema_concepts)
+* [More Advanced Schema Concepts](chapter13/more_advanced_schema_concepts.md)
 * [Requests and Tasks](chapter14/requests_and_tasks.md)
 * [Provisioning a VM](chapter15/vm_provisioning.md)
    * [Quota and Approval](chapter15/quota_and_approval.md)

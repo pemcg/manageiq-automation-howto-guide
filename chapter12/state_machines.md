@@ -29,6 +29,12 @@ We can optionally define a maximum number of retries that a State's "main" metho
 #### Max Time
 We can optionally define a maximum time (in seconds) that the State will be permitted to run for, before being terminated.
 
+#### Example
+We can look at the out-of-the-box _/Infrastructure/VM/Provisoning/StateMachines/ProvisionRequestApproval/Default_ State Machine Instance as an example, and see that it defines an attribute _max\_vms_, and has just two steps; _ValidateRequest_ and _ApproveRequest_. The greyed-out values for on\_entry and on\_error are defined as Default Values in the Class schema rather than the Instance.
+<br> <br>
+
+![screenshot](images/screenshot1.png)
+
 ### State Variables
 
 #### $evm.root['ae\_result']
@@ -52,7 +58,7 @@ $evm.root['ae_result'] = 'ok'
 
 #### $evm.root['ae\_state\_retries']
 
-We can find out whether we're in a step that's being retried by querying the ```ae_state_retries``` key
+We can find out whether we're in a step that's being retried by querying the ```ae_state_retries``` key...
 
 ```ruby
 state_retries = $evm.root['ae_state_retries'] || 0

@@ -1,6 +1,8 @@
 ##$evm and the Workspace
 
-When we program in the CloudForms Automation Engine, we access everything through a single _$evm_ variable. This variable is actually an instance of an _MiqAeService_ object (defined in _/var/www/miq/vmdb/lib/miq\_automation\_engine/engine/miq\_ae\_service.rb_ on the appliance), which contains over forty methods. In practice we generally only use a few of these methods, most commonly:
+When we program in the CloudForms Automation Engine, we access everything through a single _$evm_ variable, and for this reason it is sometimes referred to as the _Workspace_.
+
+This variable is actually an instance of an _MiqAeService_ object (defined in _/var/www/miq/vmdb/lib/miq\_automation\_engine/engine/miq\_ae\_service.rb_ on the appliance), which contains over forty methods. In practice we generally only use a few of these methods, most commonly:
 
 ```
 $evm.root
@@ -10,13 +12,9 @@ $evm.log
 $evm.vmdb
 $evm.execute
 $evm.instantiate
-
-$evm.set_state_var
-$evm.get_state_var
-$evm.state_var_exist?
 ```
 
-We use the last three methods to save variables between retries of a stage in a State Machine, but we can look at the first seven methods in more detail here.
+We can look at these methods in more detail.
 
 ### $evm.log
 

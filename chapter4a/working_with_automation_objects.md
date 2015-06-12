@@ -147,12 +147,6 @@ We can find out a user's role by following the association between MiqAeServiceU
 role = $evm.root['user'].current_group.miq_user_role_name
 ```
 
-We can find out the email address of the person who requested a VM by following the associations between MiqAeServiceVmRedhat, MiqAeServiceMiqProvisionRedhat and MiqAeServiceMiqProvisionRequest...
-
-```ruby
-owner_email = $evm.root['vm'].miq_provision.miq_provision_request.options[:owner_email]
-```
-
 The beauty is that we don't (as Automation scripters) need to know anything about the Active Records or Service Models behind the scenes, we just follow the links. See [Investigative Debugging](## Investigative Debugging) to find out what associations there are to follow.
 
 Continuing our exploration of an MiqAeServiceHostRedhat RHEV Host object, the Associations available to this object are:

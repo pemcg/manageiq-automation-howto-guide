@@ -38,9 +38,9 @@ Kevin Morey has written a greatly enhanced version of InspectMe, available from 
 
 The script is available from [here](https://github.com/pemcg/object_walker), along with instructions for use.
 
-#### {black,white}listing
+#### Black or Whitelisting Associations
 
-One of the features of object_walker is the ability to be able to selectively choose which associations to "walk" to limit the output. This is selected by setting a _@walk\_association\_policy_ to _:whitelist_ or _:blacklist_, and then defining a _@walk\_association\_whitelist_ or _@walk\_association\_blacklist_ to list the associations to be walked (whitelist), or not walked (blacklist).
+One of the features of object\_walker is the ability to be able to selectively choose which associations to "walk" to limit the output. This is selected by setting a _@walk\_association\_policy_ to _:whitelist_ or _:blacklist_, and then defining a _@walk\_association\_whitelist_ or _@walk\_association\_blacklist_ to list the associations to be walked (whitelist), or not walked (blacklist).
 
 In practice a _@walk\_association\_policy_ of _:blacklist_ produces so much output that it's rarely used, and so a _:whitelist_ is more often defined, e.g.
 
@@ -51,7 +51,8 @@ In practice a _@walk\_association\_policy_ of _:blacklist_ produces so much outp
                                 "MiqAeServiceGuestDevice" => ["hardware", "lan", "network"] }
 ```
 
-There is a companion _object\_walker\_reader_ script that can be copied to the CloudForms appliance to extract the object_walker dumps from automation.log, list the dumps, and even _diff_ two dumps - useful when running object_walker before and after a built-in method (for example in a State Machine) to see what the method has changed.
+#### object\_walker\_reader
+There is a companion _object\_walker\_reader_ script that can be copied to the CloudForms appliance to extract the object\_walker dumps from automation.log, list the dumps, and even _diff_ two dumps - useful when running object\_walker before and after a built-in method (for example in a State Machine) to see what the method has changed.
 
 ```
 [root@cloudforms ~]# ~/object_walker_reader.rb
