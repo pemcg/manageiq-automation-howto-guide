@@ -84,7 +84,7 @@ The .missing Instance does nothing, so we end that Event-initiated chain.
 
 ### Event: request_approved
 
-The next event that we see is "request_approved", which follows a very similar chain of references (actually _request\_approved_ executes almost concurrently with _request\_created_ because we specified ```:auto_approve => true``` in the Automation Request API call)...
+The next event that we see is "request\_approved", which follows a very similar chain of references (actually _request\_approved_ executes almost concurrently with _request\_created_ because we specified ```:auto_approve => true``` in the Automation Request API call)...
 
 ```
 MiqAeEvent.build_evm_event >> event=<"request_approved"> inputs=<{}>
