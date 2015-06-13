@@ -6,8 +6,8 @@ State Machines are a really useful way of performing a sequence of operations; t
 
 If we look at all of the attributes that we can add for a schema field, in addition to the familar _Name_, _Description_, and _Value_ headings, we see a number of column headings that we haven't used so far...
 
-| Name | Description | Value | ... | On Entry | On Exit | On Error | Max Retries | Max Time |
-|:----:|:-----------:|:-----:|:---:|:--------:|:-------:|:--------:|:-----------:|:--------:|
+
+![screenshot](images/screenshot2.png)
 
 The last five columns in the schema field are specifically used when we define State Machines.
 
