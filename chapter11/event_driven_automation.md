@@ -51,7 +51,7 @@ Q-task_id([automation_request_2000000000004]) Method exited with rc=MIQ_OK
 
  
 
-_get\_request\_type_ returns "Request Type:<_AutomationRequest_>"
+_get\_request\_type_ returns _Request Type:\<AutomationRequest\>_
 
 Next we follow the _rel4_ relationship to _/System/Process/parse\_provider\_category_
 
