@@ -4,7 +4,7 @@ Much of the logic flow through the Automation Engine is event-driven, using _/Sy
 
 ### Event: request_created
 
-The first messages that we see in the log notify us of the _request\_created_event happening...
+The first messages that we see in the log notify us of the _request\_created_ event happening...
 
 ```
 MiqAeEvent.build_evm_event >> event=<"request_created"> inputs=<{}>
@@ -27,7 +27,7 @@ Following Relationship [miqaedb:/System/Event/request_created#create]
 ![screenshot](images/screenshot2.png)
 
 <br>
-This is a relationship that takes us to _/System/Policy/Request\_created_, so we follow the chain...
+This is a relationship that takes us to _/System/Policy/request\_created_, so we follow the chain...
 
 ```
 Following Relationship [miqaedb:/System/Policy/request_created#create]
@@ -38,7 +38,7 @@ Following Relationship [miqaedb:/System/Policy/request_created#create]
 
 <br>
 
-This Instance runs _get\_request\_type_ to find out what sort of automation request has been initiated (notice that at this stage we're running withing the context of an _Automation Request_ (ID: 2000000000004))...
+This Instance runs _get\_request\_type_ to find out what type of automation request has been initiated (notice that at this stage we're running withing the context of an _Automation Request_ (ID: 2000000000004))...
 
 ```
 Q-task_id([automation_request_2000000000004]) <AEMethod [/ManageIQ/System/Policy/get_request_type]> Starting
@@ -51,7 +51,7 @@ Q-task_id([automation_request_2000000000004]) Method exited with rc=MIQ_OK
 
  
 
-_get\_request\_type_ returns "Request Type:\<_AutomationRequest_\>"
+_get\_request\_type_ returns "Request Type:<_AutomationRequest_>"
 
 Next we follow the _rel4_ relationship to _/System/Process/parse\_provider\_category_
 
@@ -80,7 +80,7 @@ Finally we follow the _rel5_ relationship to _/System/Policy/AutomationRequest\_
 Instance [/ManageIQ/System/Policy/AutomationRequest_created] not found in MiqAeDatastore - trying [.missing]
 ```
 
-The .missing Instance does nothing, so we end that Event-driven chain.
+The .missing Instance does nothing, so we end that Event-initiated chain.
 
 ### Event: request_approved
 
@@ -100,7 +100,7 @@ Followed  Relationship [miqaedb:/System/Policy/request_approved#create]
 Followed  Relationship [miqaedb:/System/Event/request_approved#create]
 ```
 
-Once again we have no _AutomationRequest\_Approved_ method, so we terminate this Event-driven chain at this point.
+Once again we have no _AutomationRequest\_Approved_ method, so we terminate this Event-initiated chain at this point.
 
 ### Event: request_starting
 
