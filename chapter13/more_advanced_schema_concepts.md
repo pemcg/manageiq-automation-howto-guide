@@ -1,4 +1,4 @@
-## More Advanced Schema Concepts
+## More Advanced Class and Schema Concepts
 
 ### Messages
 

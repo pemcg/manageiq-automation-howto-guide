@@ -13,6 +13,12 @@ Many Automation operations have two distinct stages - the **Request** and the **
 | Requesting a Service | service\_template\_provision\_request | service\_template\_provision\_task |
 | Migrating a VM       | vm\_migrate\_request | vm\_migrate\_task |
 
+### Approval
+_Requests_ generally need to be approved before the Task is created. Admin-level users can auto-approve their own requests, while non-admin users sometimes need the request explicitly approved, depending on the Automation Request type. 
+
+The most common Automation operation that non-admin users frequently perform is to provision a VM, and for this there are approval thresholds in place (_max\_vms, max\_cpus, max\_memory, max\_retirement\_days_). VM Provision Requests below these thresholds are auto-approved, whereas requests exceeding these thresholds are blocked, pending approval by an admin-level user.
+
+### Objects
 If the _Request_ is approved, one or more _Task_ objects will be created from information contained in the _Request_ object.
 
 If we look at the class ancestry for the _Request_ objects...
@@ -61,8 +67,21 @@ If we have a Request object, there may not necessarily be a Task object (yet), b
 
 ### Object Contents
 
-The _Request_ object contains details about the requester (person), approval status, approver (person) and reason, and the parameters to be used for the resulting Task in the form of an _options hash_.
+The _Request_ object contains details about the requester (person), approval status, approver (person) and reason, and the parameters to be used for the resulting Task in the form of an _options hash_. The options hash contains  whatever optional information is required for the task to complete, and the size of the options hash depends on the Automation Request type. In the case of an _miq\_provision\_request_ the options hash has over 70 key/value pairs, specifying the characteristics of the VM to be provisioned, e.g.
 
+```
+...
+miq_provision_request.options[:vlan] = ["rhevm", "rhevm"]   (type: Array)
+miq_provision_request.options[:vm_auto_start] = [true, 1]   (type: Array)
+miq_provision_request.options[:vm_description] = nil
+miq_provision_request.options[:vm_memory] = ["2048", "2048"]   (type: Array)
+miq_provision_request.options[:vm_name] = rhel7srv003   (type: String)
+...
+```
+
+Much of the information in the Request object is propagated to the Task object, including the options hash.
+
+#### Dumping the Object Contents
 We can use object_walker to show the difference between an Automation Request and Task object.
 
 Using the following walk\_association\_whitelist...
@@ -71,7 +90,7 @@ Using the following walk\_association\_whitelist...
 @walk_association_whitelist = { "MiqAeServiceAutomationTask" => ["automation_request", "miq_request"]}
 ```
 
-...we can call ObjectWalker from the RESTful API, using the /api/automation_requests URI.
+...we can call the ObjectWalker from the RESTful API, using the /api/automation_requests URI.
 
 
 When the Automation Instance (in this case ObjectWalker) runs, the Request has already been approved and so the Task object exists.
@@ -204,7 +223,21 @@ object_walker:   $evm.root['automation_task'] => #<MiqAeMethodService::MiqAeServ
 object_walker:   $evm.root['automation_task_id'] = 2000000000003   (type: String)
 ```
 
-We can look at these two objects to infer some interesting things:
+We can see some interesting things...
+
+* From the Task object, the Request object is available from either of two associations, its specific object type ```$evm.root['automation_task'].automation_request``` and the more generic ```$evm.root['automation_task'].miq_request```. These both link to the same Request object, and this is the case with all Task objects - we can always follow a ```.miq_request``` association to get back to the request, regardless of Request object type.
+
+* We see that the Request object has several approval-specific methods that the Task object doesn't have (or need), i.e.
+* 
+```
+automation_request.approve
+automation_request.authorized?
+automation_request.deny
+automation_request.pending
+automation_request.message=
+```
+
+We can use these methods to implement our own approval workflow mechanism if we wish.
 
 
 
