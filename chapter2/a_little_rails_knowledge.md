@@ -4,9 +4,9 @@ CloudForms / ManageIQ is a Ruby on Rails application, and so the Automation Engi
 ### Model-View-Controller
 Rails is a Model-View-Controller (MVC) application (see also [Ruby on Rails/Getting Started/Model-View-Controller](http://en.wikibooks.org/wiki/Ruby_on_Rails/Getting_Started/Model-View-Controller))
 
-![Screenshot 1](images/general_mvc.png)
+![Screenshot 1](images/mvc.png?)
 
-The _Model_ represents the information and the data from the database (which in the case of CloudForms/ManageIQ is PostgreSQL), and it's the models that most interest us as Automation scripters. 
+The _Model_ represents the information and the data from the database (which in the case of CloudForms/ManageIQ is PostgreSQL), and it's these Models that most interest us as Automation scripters. 
 
 Rails Models are called _Active Records_. They always have a singular _CamelCase_ name (e.g. GuestApplication), and their corresponding database tables have a plural _snake\_case_ name (e.g. guest_applications).
 
