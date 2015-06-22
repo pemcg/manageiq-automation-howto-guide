@@ -48,7 +48,7 @@ $evm.root also contains any variables that were defined on our entry into the Au
 
 The $evm.object (more accurately _$evm.object(nil)_) method returns the currently instantiated instance (which can be also accessed via $evm.current). When we wanted to access our schema variable _username_, we accessed it from $evm.object['username'].
 
-Instances can invoke or execute other instances (often via relationships), which then appear in a parent/child object relationship. In the example of calling an Automation Instance via a button on a VM object as we did when running GetCredentials: 
+Instances can invoke or execute other instances (often via relationships), which then appear in a parent/child object relationship. In the example of calling an Automation Instance via a button on a VM object as we did when running GetCredentials:
 
 ```
 $evm.object = /Tutorial/General/Methods/GetCredentials (the currently running instance)
@@ -58,7 +58,7 @@ $evm.root = /ManageIQ/SYSTEM/PROCESS/Request
 
 ### $evm.vmdb
 
-$evm.vmdb is a useful method that can be used to retrieve any _Service Model_ object (see section xxx The MiqAeService* Model). The method can be called with two arguments, in which case the second argument should be the Service Model ID to search for, i.e. 
+$evm.vmdb is a useful method that can be used to retrieve any _Service Model_ object (see section xxx The MiqAeService* Model). The method can be called with two arguments, in which case the second argument should be the Service Model ID to search for, i.e.
 
 ```
 owner = $evm.vmdb('user', evm_owner_id)

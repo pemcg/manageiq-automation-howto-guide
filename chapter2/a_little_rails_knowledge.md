@@ -6,7 +6,7 @@ Rails is a Model-View-Controller (MVC) application (see also [Ruby on Rails/Gett
 
 ![Screenshot 1](images/mvc.png?)
 
-The _Model_ represents the information and the data from the database (which in the case of CloudForms/ManageIQ is PostgreSQL), and it's these Models that most interest us as Automation scripters. 
+The _Model_ represents the information and the data from the database (which in the case of CloudForms/ManageIQ is PostgreSQL), and it's these Models that most interest us as Automation scripters.
 
 Rails Models are called _Active Records_. They always have a singular _CamelCase_ name (e.g. GuestApplication), and their corresponding database tables have a plural _snake\_case_ name (e.g. guest_applications).
 
@@ -27,7 +27,7 @@ class Host < ActiveRecord::Base
   has_many                  :vms
   ...
 ```
-We see that there are several associations from a host object, including to the cluster that it's a member of, and to the VMs that run on that host. 
+We see that there are several associations from a host object, including to the cluster that it's a member of, and to the VMs that run on that host.
 
 Using this knowledge makes is easy for us to traverse these relationships - something we often need to do when writing our own Automation scripts.
 
@@ -35,8 +35,8 @@ Using this knowledge makes is easy for us to traverse these relationships - some
 Rails does a lot of things to make our lives easier, including dynamically creating _helper methods_. The most useful ones are the find\_by\_\* methods.
 
 ```ruby
-owner = $evm.vmdb('user').find_by_id( ownerid.to_i )  
-vm = $evm.vmdb('vm').find_by_name(vm_name)  
+owner = $evm.vmdb('user').find_by_id( ownerid.to_i )
+vm = $evm.vmdb('vm').find_by_name(vm_name)
 vm = $evm.vmdb('vm').find_by_guid(guid)
 ```
 We can ```.find_by_``` any table heading on a database table, so if we look at the _services_ column...
@@ -56,9 +56,9 @@ vmdb_production=# \d services
  display              | boolean
  ...
 ```
- 
-...we see that we could call ```$evm.vmdb(‘service’).find_by_service_template_id(template_id)``` if we wanted. 
+
+...we see that we could call ```$evm.vmdb(‘service’).find_by_service_template_id(template_id)``` if we wanted.
 
 Tip - don't try searching the CloudForms sources for ```def find_by_id``` though, these are not statically defined methods and so don't exist in the CloudForms code.
- 
- 
+
+

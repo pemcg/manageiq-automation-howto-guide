@@ -1,7 +1,7 @@
 ## Classes, Schemas and Instances
 
 ### Classes
-A **Class** is similar to a template, it contains a generic definition for a set of automation operations. Each Class has a **Schema**, that defines the variables, states, relationships or methods that **Instances** of the class will use. 
+A **Class** is similar to a template, it contains a generic definition for a set of automation operations. Each Class has a **Schema**, that defines the variables, states, relationships or methods that **Instances** of the class will use.
 
 ### Schemas
 A **Schema** is made up of a number of elements, or _fields_. A schema often has just one entry - to run a single **Method** - but in many cases it has several components, for example...

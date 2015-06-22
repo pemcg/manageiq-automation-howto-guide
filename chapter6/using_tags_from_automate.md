@@ -1,5 +1,5 @@
 ## Using Tags from Automate
-Tags are a very powerful feature of CloudForms, and fortunately Automate has extensive support for tag-related operations. 
+Tags are a very powerful feature of CloudForms, and fortunately Automate has extensive support for tag-related operations.
 Tags are defined and used within the context of tag _categories_. We can check whether a category exists, and if not create it...
 
 ```ruby
@@ -64,11 +64,11 @@ end
 Getting the list of tags in a particular category is more challenging. Both tags and categories are listed in the same _classification_ table, but tags also have a valid _parent\_id_ column that ties them to their category.
 
 ```ruby
-tag_category = 'cost_centre'  
-tag_classification = $evm.vmdb('classification').find_by_name(tag_category)  
-  
-cost_centre_tags = {}  
+tag_category = 'cost_centre'
+tag_classification = $evm.vmdb('classification').find_by_name(tag_category)
+
+cost_centre_tags = {}
 $evm.vmdb('classification').find_all_by_parent_id(tag_classification.id).each do |tag|
   cost_centre_tags[tag.name] = tag.description
-end 
+end
 ```

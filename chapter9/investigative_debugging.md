@@ -30,7 +30,7 @@ We can view the results of the InspectMe dump in automation.log...
  ...
 ```
 
-Kevin Morey has written a greatly enhanced version of InspectMe, available from [here](https://github.com/ramrexx/CloudFormsPOC/blob/master/Automate/CloudFormsPOC/System/Request.class/__methods__/inspectme.rb). 
+Kevin Morey has written a greatly enhanced version of InspectMe, available from [here](https://github.com/ramrexx/CloudFormsPOC/blob/master/Automate/CloudFormsPOC/System/Request.class/__methods__/inspectme.rb).
 
 ### object_walker
 
@@ -127,7 +127,7 @@ irb(main):001:0> $evm = MiqAeMethodService::MiqAeService.new(MiqAeEngine::MiqAeW
 It is occasionaly useful to be able to examine some of the database tables (such as to look for column headers that we can find\_by\_* on). We can connect to Rails db, which puts us directly into a psql session...
 
 ```
-[root@cloudforms ~]# vmdb 
+[root@cloudforms ~]# vmdb
 [root@cloudforms vmdb]# source /etc/default/evm
 [root@cloudforms vmdb]# bin/rails db
 psql (9.2.8)

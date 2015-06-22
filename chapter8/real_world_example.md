@@ -4,7 +4,7 @@ We can use the automation techniques that we've learnt so far to write a method 
 
 ### Task
 
-Write an Automation Method that enforces anti-affinity rules for VMs, based on a _server\_role_ tag applied to each VM. There should be only one VM of any _server\_role_ type running on any host in the cluster. 
+Write an Automation Method that enforces anti-affinity rules for VMs, based on a _server\_role_ tag applied to each VM. There should be only one VM of any _server\_role_ type running on any host in the cluster.
 
 The Automation Method should be run from a Button visible on the VM details page. If another VM with the same _server\_role_ tag is found running on the same host (hypervisor) as the displayed VM, then we live migrate the current VM to another host with no other such tagged VMs (VM migration is only supported when we're working with a VMware vCenter Provider). We also email all users in the EvmGroup-administrator group that the migration occurred.
 
@@ -60,7 +60,7 @@ begin
     return target_host.name
   end
   #----------------------------------------------------------------------------
-  
+
   #----------------------------------------------------------------------------
   def send_email(group_name, vm_name, new_host)
     #
@@ -86,8 +86,8 @@ begin
     end
   end
   #----------------------------------------------------------------------------
-  
-  
+
+
   #----------------------------------------------------------------------------
   # Main code
   #----------------------------------------------------------------------------

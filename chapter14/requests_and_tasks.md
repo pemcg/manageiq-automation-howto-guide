@@ -14,7 +14,7 @@ Many Automation operations have two distinct stages - the **Request** and the **
 | Migrating a VM       | vm\_migrate\_request | vm\_migrate\_task |
 
 ### Approval
-_Requests_ generally need to be approved before the Task is created. Admin-level users can auto-approve their own requests, while non-admin users sometimes need the request explicitly approved, depending on the Automation Request type. 
+_Requests_ generally need to be approved before the Task is created. Admin-level users can auto-approve their own requests, while non-admin users sometimes need the request explicitly approved, depending on the Automation Request type.
 
 The most common Automation operation that non-admin users frequently perform is to provision a VM, and for this there are approval thresholds in place (_max\_vms, max\_cpus, max\_memory, max\_retirement\_days_). VM Provision Requests below these thresholds are auto-approved, whereas requests exceeding these thresholds are blocked, pending approval by an admin-level user.
 
@@ -63,7 +63,7 @@ When we develop our own scripts to work with Automation, depending on the workfl
 prov = $evm.root['miq_provision_request'] || $evm.root['miq_provision'] || $evm.root['miq_provision_request_template']
 ```
 
-If we have a Request object, there may not necessarily be a Task object (yet), but if we have a Task object we can always follow an association to find the Request object that preceeded it. 
+If we have a Request object, there may not necessarily be a Task object (yet), but if we have a Task object we can always follow an association to find the Request object that preceeded it.
 
 ### Object Contents
 
@@ -228,7 +228,7 @@ We can see some interesting things...
 * From the Task object, the Request object is available from either of two associations, its specific object type ```$evm.root['automation_task'].automation_request``` and the more generic ```$evm.root['automation_task'].miq_request```. These both link to the same Request object, and this is the case with all Task objects - we can always follow a ```.miq_request``` association to get back to the request, regardless of Request object type.
 
 * We see that the Request object has several approval-specific methods that the Task object doesn't have (or need), i.e.
-* 
+*
 ```
 automation_request.approve
 automation_request.authorized?

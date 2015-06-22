@@ -55,7 +55,7 @@ Finally we'll run the new instance through Automate -> Simulation again, invokin
 ![Screenshot](images/screenshot23.png)
 
 <br>
-We check automation.log, and see that the attributes have been retrieved from the instance schema, and the password has been decrypted. 
+We check automation.log, and see that the attributes have been retrieved from the instance schema, and the password has been decrypted.
 
 ```
 ...  INFO -- : Invoking [inline] method [/ACME/General/Methods/get_credentials] with inputs [{}]

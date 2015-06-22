@@ -25,7 +25,7 @@ script/rails runner script/rake evm:automate:import YAML_FILE=Buttons.yaml IMPOR
 
 See the following kbase articles for details and examples of importing and exporting Domains using rake:
 
-[Cloudforms 3.1 Exporting Automate Domains](https://access.redhat.com/solutions/1225313)  
+[Cloudforms 3.1 Exporting Automate Domains](https://access.redhat.com/solutions/1225313)
 [Cloudforms 3.1 Importing Automate Domains](https://access.redhat.com/solutions/1225383)
 
 #### Copying Objects Between Domains
@@ -39,7 +39,7 @@ We frequently need to customise code in the locked RedHat or ManageIQ Domains, f
 Domains are a new feature of the Automation engine for the ManageIQ _Anand_ release (CloudForms 3.1). Prior to this release all factory-supplied and user-created automation code was contained in a common structure, which made updates difficult when any user-added code was introduced (the user-supplied modifications needed exporting and re-importing/merging whenever an automation update was released).
 
 ###Namespaces
-A **Namespace** is a folder-like container for **Classes**, **Instances** and **Methods**, and is purely used for organisational purposes. 
+A **Namespace** is a folder-like container for **Classes**, **Instances** and **Methods**, and is purely used for organisational purposes.
 
 ![Screenshot](images/screenshot2.png)
 

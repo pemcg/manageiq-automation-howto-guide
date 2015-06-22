@@ -8,7 +8,7 @@ There are four exit codes that we can use:
 This is logged to automation.log as:
 
 ```Method exited with rc=MIQ_OK
-```**MIQ\_WARN** (4) - Warning message, continues processing 
+```**MIQ\_WARN** (4) - Warning message, continues processing
 
 This is logged to automation.log as:
 

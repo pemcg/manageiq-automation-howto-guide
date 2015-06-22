@@ -93,9 +93,9 @@ host.max_cpu_usage_rate_average_high_over_time_period_without_overhead = 16.0757
 host.max_cpu_usage_rate_average_low_over_time_period = 0   (type: Fixnum)
 host.max_cpu_usage_rate_average_low_over_time_period_without_overhead = 0.0   (type: Float)
 host.max_mem_usage_absolute_average_avg_over_time_period = 7.702597402597405   (type: Float)
-host.max_mem_usage_absolute_average_avg_over_time_period_without_overhead = 5.692597402597405   
+host.max_mem_usage_absolute_average_avg_over_time_period_without_overhead = 5.692597402597405
 host.max_mem_usage_absolute_average_high_over_time_period = 22.000640547741483   (type: Float)
-host.max_mem_usage_absolute_average_high_over_time_period_without_overhead = 
+host.max_mem_usage_absolute_average_high_over_time_period_without_overhead =
 host.max_mem_usage_absolute_average_low_over_time_period = 0   (type: Fixnum)
 host.max_mem_usage_absolute_average_low_over_time_period_without_overhead = 0.0   (type: Float)
 host.os_image_name = linux_generic   (type: String)
@@ -153,13 +153,13 @@ Continuing our exploration of an MiqAeServiceHostRedhat RHEV Host object, the As
 
 ```
 host.datacenter
-host.directories 
-host.ems_cluster 
+host.directories
+host.ems_cluster
 host.ems_events
-host.ems_folder 
-host.ext_management_system 
-host.files 
-host.guest_applications 
+host.ems_folder
+host.ext_management_system
+host.files
+host.guest_applications
 host.hardware
 host.lans
 host.operating_system
