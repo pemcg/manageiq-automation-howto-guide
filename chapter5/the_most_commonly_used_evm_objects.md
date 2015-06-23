@@ -1,6 +1,6 @@
 ##$evm and the Workspace
 
-When we program in the CloudForms Automation Engine, we access everything through a single _$evm_ variable, and for this reason it is sometimes referred to as the _Workspace_.
+When we program in the CloudForms Automation Engine, we access all of the CloudForms objects through a single _$evm_ variable, and for this reason it is sometimes referred to as the _Workspace_.
 
 This variable is actually an instance of an _MiqAeService_ object (defined in _/var/www/miq/vmdb/lib/miq\_automation\_engine/engine/miq\_ae\_service.rb_ on the appliance), which contains over forty methods. In practice we generally only use a few of these methods, most commonly:
 
@@ -51,18 +51,14 @@ The $evm.object (more accurately _$evm.object(nil)_) method returns the currentl
 Instances can invoke or execute other instances (often via relationships), which then appear in a parent/child object relationship. In the example of calling an Automation Instance via a button on a VM object as we did when running GetCredentials:
 
 ```
-$evm.object = /Tutorial/General/Methods/GetCredentials (the currently running instance)
+$evm.object = /ACME/General/Methods/GetCredentials (the currently running instance)
 $evm.parent = /ManageIQ/System/Request/Call_Instance
 $evm.root = /ManageIQ/SYSTEM/PROCESS/Request
 ```
 
 ### $evm.vmdb
 
-$evm.vmdb is a useful method that can be used to retrieve any _Service Model_ object (see section xxx The MiqAeService* Model). The method can be called with two arguments, in which case the second argument should be the Service Model ID to search for, i.e.
-
-```
-owner = $evm.vmdb('user', evm_owner_id)
-```
+$evm.vmdb is a useful method that can be used to retrieve any _Service Model_ object (see section xxx The MiqAeService* Model). The method can be called with one or two arguments, 
 
 When called with a single argument, the method returns the generic Service Model object type, and we can use any of the Rails helper methods (see section xxx A Little Rails Knowledge) to search by database column name, i.e.
 
@@ -72,6 +68,13 @@ vm = $evm.vmdb('vm').find_by_guid(guid)
 hosts = $evm.vmdb('host').find_tagged_with(:all => '/department/legal', :ns => '/managed')
 all_vms = $evm.vmdb('vm_or_template').find(:all)
 ```
+
+When called with two arguments, the second argument should be the Service Model ID to search for, i.e.
+
+```
+owner = $evm.vmdb('user', evm_owner_id)
+```
+
 
 ### $evm.execute
 
