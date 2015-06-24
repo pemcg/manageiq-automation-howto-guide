@@ -8,7 +8,7 @@ Many Automation operations have two distinct stages - the **Request** and the **
 | Automation Request   | automation\_request | automation\_task |
 | Provisioning a Host  | miq\_host\_provision\_request | miq\_host\_provision |
 | Provisioning a VM    | miq\_provision\_request | miq\_provision |
-| Provisioning a VM from Template | miq\_provision\_request\_template | miq\_provision |
+| Clone a VM to Template | miq\_provision\_request\_template | miq\_provision |
 | Reconfiguring a VM   | vm\_reconfigure\_request | vm\_reconfigure\_task |
 | Requesting a Service | service\_template\_provision\_request | service\_template\_provision\_task |
 | Migrating a VM       | vm\_migrate\_request | vm\_migrate\_task |

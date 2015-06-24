@@ -2,7 +2,8 @@
 
 ### miq\_provision\_request
 
-The options and inputs selected from the Provisioning Dialog are added to the _miq\_provision\_request_ object as key/value pairs in a hash known as the _Options Hash_.
+The inputs and options selected from the Provisioning Dialog are added to the _miq\_provision\_request_ object as key/value pairs in a hash known as the _Options Hash_. The contents of the Options Hash varies slightly between provisioning targets (VMware, OpenStack, RHEV etc) and target VM Operating System (Linux, Windows etc.), but a typical hash for a Linux VM provision to a RHEV provider is...
+
 
 ```ruby
 miq_provision_request.options[:addr_mode] = ["static", "Static"]   (type: Array)
@@ -108,6 +109,8 @@ miq_provision.options[:dest_storage] = [1000000000001, "Data"]   (type: Array)
 miq_provision.options[:vm_target_hostname] = rhel7srv002   (type: String)
 miq_provision.options[:vm_target_name] = rhel7srv002   (type: String)
 ```
+
+Some Options Hash keys such as ```.options[:number_of_vms]``` have no effect if changed in the _Task_ object - they are only relevant for the _Request_.
 
 ### Correlation with the Provisioning Dialog
 
