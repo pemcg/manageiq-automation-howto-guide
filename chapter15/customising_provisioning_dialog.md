@@ -1,2 +1,0 @@
-## Customising the Provisioning Dialog
-

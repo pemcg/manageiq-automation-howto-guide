@@ -20,12 +20,15 @@ User-added Domains can be individually enabled or disabled, and all Domains can 
 Domains can be exported using _rake_ from the command line, and imported either using _rake_ or from the WebUI. (Using rake enables us to specify more import and export options). A typical rake import line is...
 
 ```
-script/rails runner script/rake evm:automate:import YAML_FILE=Buttons.yaml IMPORT_AS=Bit63 SYSTEM=false ENABLED=true DOMAIN=Export PREVIEW=false
+bin/rake evm:automate:import YAML_FILE=Buttons.yaml \
+IMPORT_AS=Bit63 SYSTEM=false ENABLED=true DOMAIN=Export \
+PREVIEW=false
 ```
 
 See the following kbase articles for details and examples of importing and exporting Domains using rake:
 
 [Cloudforms 3.1 Exporting Automate Domains](https://access.redhat.com/solutions/1225313)
+
 [Cloudforms 3.1 Importing Automate Domains](https://access.redhat.com/solutions/1225383)
 
 #### Copying Objects Between Domains
@@ -35,8 +38,21 @@ We frequently need to customise code in the locked RedHat or ManageIQ Domains, f
 
 ![Screenshot](images/screenshot3.png)
 
-<br>
+#### Importing Old Format Exports
+
 Domains are a new feature of the Automation engine for the ManageIQ _Anand_ release (CloudForms 3.1). Prior to this release all factory-supplied and user-created automation code was contained in a common structure, which made updates difficult when any user-added code was introduced (the user-supplied modifications needed exporting and re-importing/merging whenever an automation update was released).
+
+To import a Datastore backup from a 3.0 and prior format Datastore, it must be converted to the new Datastore format first...
+
+```
+cd /var/www/miq/vmdb
+bin/rake evm:automate:convert FILE=database.xml DOMAIN=SAMPLE \
+ZIP_FILE=/tmp/sample_converted.zip
+```
+
+See also...
+
+[Cloudforms 3.1 Automate Model Conversion](https://access.redhat.com/solutions/1225413)
 
 ###Namespaces
 A **Namespace** is a folder-like container for **Classes**, **Instances** and **Methods**, and is purely used for organisational purposes.
