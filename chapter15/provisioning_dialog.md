@@ -3,7 +3,7 @@
 The VM Provisioning Dialog is presented to the user in the WebUI as part of the VM provisioning process. The dialog contains a number of tabs (Request, Purpose, Catalog, Environment, etc.), and a number of dialogs and input fields per tab...
 <br> <br>
 
-![screenshot](images/screenshot28.png?)
+![screenshot](images/screenshot28.png)
 
 <br>
 The Provisioning Dialog is context-sensitive, so a different set of dialog options will be displayed when provisioning into VMware or OpenStack, for example.
@@ -53,7 +53,7 @@ Each Provisioning Dialog is a large YAML file, specifying the main tabs, dialogs
 - :purpose
 ```
 <br>
-Dialog tabs and fields can be hidden (**:display: :hide:**), made visible (**:display: :show:**) or editable (**:display: :edit:**). They can also be made mandatory (**:required: true**).
+Dialog tabs and fields can be hidden (**:display: :hide**), made visible (**:display: :show**) or editable (**:display: :edit**). They can also be made mandatory (**:required: true**).
 
 ### Selection of VM Provisioning Dialog
 
@@ -122,10 +122,67 @@ This presents a reduced set of tabs, dialogs and input fields to anyone from the
         :default: true
         :data_type: :boolean
 ```
-
+<br>
 We are free to create per-group Dialogs as we wish, customising the values that are hidden or set as default.
 
-### Customising the Dialog
+### Expanding the Dialog
+
+In some cases it's useful to be able to expand the range of options presented by the Dialog. For example the standard Dialogs only allows us to specify VM memory as 1GB, 2GB or 4GB...
+<br> <br>
+
+![screenshot](images/screenshot29.png)
+
+<br>
+These options come from the **:vm\_memory** Dialog section...
 
 
+```
+      :vm_memory:
+        :values:
+          '2048': '2048'
+          '4096': '4096'
+          '1024': '1024'
+        :description: Memory (MB)
+        :required: false
+        :display: :edit
+        :default: '1024'
+        :data_type: :string
+```
+<br>
+We sometimes need to be able to provision larger VMs, but fortunately we can customise the Dialog to our own needs. If we identify the Dialog that is being used (in this example case it is _miq\_provision\_redhat\_dialogs\_template_ as I'm provisioning into RHEV using Native Clone), we can copy the Dialog to make it editable (I'll call the new version _bit63\_miq\_provision\_redhat\_dialogs\_template_).
+
+We then expand the **:vm\_memory** section as to match our requirements...
+
+```
+      :vm_memory:
+        :values:
+          '1024': '1024'
+          '2048': '2048'
+          '4096': '4096'
+          '8192': '8192'
+          '16384': '16384'
+        :description: Memory (MB)
+        :required: false
+        :display: :edit
+        :default: '1024'
+        :data_type: :string
+```
+<br>
+...and save the newly edited Profile.
+
+Now we copy the _/Infrastructure/VM/Provisioning/Profile_ Class into our own namespace (if it's not already there), and create a Profile Instance for the User Group that we wish to assign the new Dialog to...
+<br> <br>
+
+![screenshot](images/screenshot30.png)
+
+<br>
+The _dialog\_name_ field in the new Profile should contain the name of our new Dialog...
+<br> <br>
+
+![screenshot](images/screenshot31.png)
+
+<br>
+Now if we login as a user who is a member of the _Bit63\_Group\_user\_self\_service_ Group and provision a VM, we see the expanded range of memory options...
+<br> <br>
+![screenshot](images/screenshot32.png)
 
