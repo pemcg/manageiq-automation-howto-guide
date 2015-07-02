@@ -6,125 +6,190 @@ The objects that we work with in the Automation Engine are all _Service Models_ 
 
 Fortunately the Automation Engine hides this from us pretty well, and generally presents the appropriate object to us via $evm.root (for example if we're working with a ```$evm.root['vm']``` object from a RHEV provider, it's actually an instance of an _MiqAeServiceVmRedhat_ object).
 
-All of the MiqAeService\* objects extend a common _MiqAeServiceModelBase_ class that contains some common methods available to all objects (such as ```.tagged_with?(category, name)```, ```.tags(category = nil)```, and ```.tag_assign(tag)``` (see section xxx on working with tags in Automate). Many of the Service Model objects have several level of superclass; the following list shows the class inheritance genealogy for each of the MiqAeService* objects:
+All of the MiqAeService\* objects extend a common _MiqAeServiceModelBase_ class that contains some common methods available to all objects, such as...
+
+```.tagged_with?(category, name)```
+```.tags(category = nil)```
+```.tag_assign(tag)```
+
+(see section xxx on working with tags in Automate). Many of the Service Model objects have several level of superclass, e.g.
 
 ```
-MiqAeServiceAuthKeyPairAmazon < MiqAeServiceAuthKeyPairCloud < MiqAeServiceAuthPrivateKey < MiqAeServiceAuthentication < MiqAeServiceModelBase
-MiqAeServiceAuthKeyPairCloud < MiqAeServiceAuthPrivateKey < MiqAeServiceAuthentication < MiqAeServiceModelBase
-MiqAeServiceAuthKeyPairOpenstack < MiqAeServiceAuthKeyPairCloud < MiqAeServiceAuthPrivateKey < MiqAeServiceAuthentication < MiqAeServiceModelBase
-MiqAeServiceAuthPrivateKey < MiqAeServiceAuthentication < MiqAeServiceModelBase
-MiqAeServiceAuthentication < MiqAeServiceModelBase
-MiqAeServiceAutomationRequest < MiqAeServiceMiqRequest < MiqAeServiceModelBase
-MiqAeServiceAutomationTask < MiqAeServiceMiqRequestTask < MiqAeServiceModelBase
-MiqAeServiceAvailabilityZone < MiqAeServiceModelBase
-MiqAeServiceAvailabilityZoneAmazon < MiqAeServiceAvailabilityZone < MiqAeServiceModelBase
-MiqAeServiceAvailabilityZoneOpenstack < MiqAeServiceAvailabilityZone < MiqAeServiceModelBase
-MiqAeServiceAvailabilityZoneOpenstackNull < MiqAeServiceAvailabilityZoneOpenstack < MiqAeServiceAvailabilityZone < MiqAeServiceModelBase
-MiqAeServiceClassification < MiqAeServiceModelBase
-MiqAeServiceCloudNetwork < MiqAeServiceModelBase
-MiqAeServiceCloudSubnet < MiqAeServiceModelBase
-MiqAeServiceCustomizationTemplate < MiqAeServiceModelBase
-MiqAeServiceCustomizationTemplateCloudInit < MiqAeServiceCustomizationTemplate < MiqAeServiceModelBase
-MiqAeServiceCustomizationTemplateKickstart < MiqAeServiceCustomizationTemplate < MiqAeServiceModelBase
-MiqAeServiceCustomizationTemplateSysprep < MiqAeServiceCustomizationTemplate < MiqAeServiceModelBase
-MiqAeServiceEmsCloud < MiqAeServiceExtManagementSystem < MiqAeServiceModelBase
-MiqAeServiceEmsCluster < MiqAeServiceModelBase
-MiqAeServiceEmsEvent < MiqAeServiceModelBase
-MiqAeServiceEmsFolder < MiqAeServiceModelBase
-MiqAeServiceEmsInfra < MiqAeServiceExtManagementSystem < MiqAeServiceModelBase
-MiqAeServiceEmsKvm < MiqAeServiceEmsInfra < MiqAeServiceExtManagementSystem < MiqAeServiceModelBase
-MiqAeServiceEmsMicrosoft < MiqAeServiceEmsInfra < MiqAeServiceExtManagementSystem < MiqAeServiceModelBase
-MiqAeServiceEmsRedhat < MiqAeServiceEmsInfra < MiqAeServiceExtManagementSystem < MiqAeServiceModelBase
-MiqAeServiceEmsVmware < MiqAeServiceEmsInfra < MiqAeServiceExtManagementSystem < MiqAeServiceModelBase
-MiqAeServiceExtManagementSystem < MiqAeServiceModelBase
-MiqAeServiceFilesystem < MiqAeServiceModelBase
-MiqAeServiceFlavor < MiqAeServiceModelBase
-MiqAeServiceFlavorAmazon < MiqAeServiceFlavor < MiqAeServiceModelBase
-MiqAeServiceFlavorOpenstack < MiqAeServiceFlavor < MiqAeServiceModelBase
-MiqAeServiceFloatingIp < MiqAeServiceModelBase
-MiqAeServiceFloatingIpAmazon < MiqAeServiceFloatingIp < MiqAeServiceModelBase
-MiqAeServiceFloatingIpOpenstack < MiqAeServiceFloatingIp < MiqAeServiceModelBase
-MiqAeServiceGuestApplication < MiqAeServiceModelBase
-MiqAeServiceGuestDevice < MiqAeServiceModelBase
-MiqAeServiceHardware < MiqAeServiceModelBase
-MiqAeServiceHost < MiqAeServiceModelBase
-MiqAeServiceHostKvm < MiqAeServiceHost < MiqAeServiceModelBase
-MiqAeServiceHostMicrosoft < MiqAeServiceHost < MiqAeServiceModelBase
-MiqAeServiceHostRedhat < MiqAeServiceHost < MiqAeServiceModelBase
-MiqAeServiceHostVmware < MiqAeServiceHost < MiqAeServiceModelBase
-MiqAeServiceHostVmwareEsx < MiqAeServiceHostVmware < MiqAeServiceHost < MiqAeServiceModelBase
-MiqAeServiceIsoImage < MiqAeServiceModelBase
-MiqAeServiceJob < MiqAeServiceModelBase
-MiqAeServiceLan < MiqAeServiceModelBase
-MiqAeServiceMiqGroup < MiqAeServiceModelBase
-MiqAeServiceMiqHostProvision < MiqAeServiceMiqRequestTask < MiqAeServiceModelBase
-MiqAeServiceMiqHostProvisionRequest < MiqAeServiceMiqRequest < MiqAeServiceModelBase
-MiqAeServiceMiqPolicy < MiqAeServiceModelBase
-MiqAeServiceMiqProvision < MiqAeServiceMiqRequestTask < MiqAeServiceModelBase
-MiqAeServiceMiqProvisionAmazon < MiqAeServiceMiqProvisionCloud < MiqAeServiceMiqProvision < MiqAeServiceMiqRequestTask < MiqAeServiceModelBase
-MiqAeServiceMiqProvisionCloud < MiqAeServiceMiqProvision < MiqAeServiceMiqRequestTask < MiqAeServiceModelBase
-MiqAeServiceMiqProvisionOpenstack < MiqAeServiceMiqProvisionCloud < MiqAeServiceMiqProvision < MiqAeServiceMiqRequestTask < MiqAeServiceModelBase
-MiqAeServiceMiqProvisionRedhat < MiqAeServiceMiqProvision < MiqAeServiceMiqRequestTask < MiqAeServiceModelBase
-MiqAeServiceMiqProvisionRedhatViaIso < MiqAeServiceMiqProvisionRedhat < MiqAeServiceMiqProvision < MiqAeServiceMiqRequestTask < MiqAeServiceModelBase
-MiqAeServiceMiqProvisionRedhatViaPxe < MiqAeServiceMiqProvisionRedhat < MiqAeServiceMiqProvision < MiqAeServiceMiqRequestTask < MiqAeServiceModelBase
-MiqAeServiceMiqProvisionRequest < MiqAeServiceMiqRequest < MiqAeServiceModelBase
-MiqAeServiceMiqProvisionRequestTemplate < MiqAeServiceMiqProvisionRequest < MiqAeServiceMiqRequest < MiqAeServiceModelBase
-MiqAeServiceMiqProvisionVmware < MiqAeServiceMiqProvision < MiqAeServiceMiqRequestTask < MiqAeServiceModelBase
-MiqAeServiceMiqProvisionVmwareViaNetAppRcu < MiqAeServiceMiqProvisionVmware < MiqAeServiceMiqProvision < MiqAeServiceMiqRequestTask < MiqAeServiceModelBase
-MiqAeServiceMiqProvisionVmwareViaPxe < MiqAeServiceMiqProvisionVmware < MiqAeServiceMiqProvision < MiqAeServiceMiqRequestTask < MiqAeServiceModelBase
-MiqAeServiceMiqProxy < MiqAeServiceModelBase
-MiqAeServiceMiqRequest < MiqAeServiceModelBase
-MiqAeServiceMiqRequestTask < MiqAeServiceModelBase
-MiqAeServiceMiqServer < MiqAeServiceModelBase
-MiqAeServiceMiqTemplate < MiqAeServiceVmOrTemplate < MiqAeServiceModelBase
-MiqAeServiceNetwork < MiqAeServiceModelBase
-MiqAeServiceOperatingSystem < MiqAeServiceModelBase
-MiqAeServicePxeImage < MiqAeServiceModelBase
-MiqAeServicePxeImageIpxe < MiqAeServicePxeImage < MiqAeServiceModelBase
-MiqAeServicePxeImagePxelinux < MiqAeServicePxeImage < MiqAeServiceModelBase
-MiqAeServicePxeServer < MiqAeServiceModelBase
-MiqAeServiceResourcePool < MiqAeServiceModelBase
-MiqAeServiceSecurityGroup < MiqAeServiceModelBase
-MiqAeServiceSecurityGroupAmazon < MiqAeServiceSecurityGroup < MiqAeServiceModelBase
-MiqAeServiceSecurityGroupOpenstack < MiqAeServiceSecurityGroup < MiqAeServiceModelBase
-MiqAeServiceService < MiqAeServiceModelBase
-MiqAeServiceServiceResource < MiqAeServiceModelBase
-MiqAeServiceServiceTemplate < MiqAeServiceModelBase
-MiqAeServiceServiceTemplateProvisionRequest < MiqAeServiceMiqRequest < MiqAeServiceModelBase
-MiqAeServiceServiceTemplateProvisionTask < MiqAeServiceMiqRequestTask < MiqAeServiceModelBase
-MiqAeServiceSnapshot < MiqAeServiceModelBase
-MiqAeServiceStorage < MiqAeServiceModelBase
-MiqAeServiceSwitch < MiqAeServiceModelBase
-MiqAeServiceTemplateAmazon < MiqAeServiceTemplateCloud < MiqAeServiceMiqTemplate < MiqAeServiceVmOrTemplate < MiqAeServiceModelBase
-MiqAeServiceTemplateCloud < MiqAeServiceMiqTemplate < MiqAeServiceVmOrTemplate < MiqAeServiceModelBase
-MiqAeServiceTemplateInfra < MiqAeServiceMiqTemplate < MiqAeServiceVmOrTemplate < MiqAeServiceModelBase
-MiqAeServiceTemplateKvm < MiqAeServiceTemplateInfra < MiqAeServiceMiqTemplate < MiqAeServiceVmOrTemplate < MiqAeServiceModelBase
-MiqAeServiceTemplateMicrosoft < MiqAeServiceTemplateInfra < MiqAeServiceMiqTemplate < MiqAeServiceVmOrTemplate < MiqAeServiceModelBase
-MiqAeServiceTemplateOpenstack < MiqAeServiceTemplateCloud < MiqAeServiceMiqTemplate < MiqAeServiceVmOrTemplate < MiqAeServiceModelBase
-MiqAeServiceTemplateRedhat < MiqAeServiceTemplateInfra < MiqAeServiceMiqTemplate < MiqAeServiceVmOrTemplate < MiqAeServiceModelBase
-MiqAeServiceTemplateVmware < MiqAeServiceTemplateInfra < MiqAeServiceMiqTemplate < MiqAeServiceVmOrTemplate < MiqAeServiceModelBase
-MiqAeServiceTemplateXen < MiqAeServiceTemplateInfra < MiqAeServiceMiqTemplate < MiqAeServiceVmOrTemplate < MiqAeServiceModelBase
-MiqAeServiceUser < MiqAeServiceModelBase
-MiqAeServiceVdiFarm < MiqAeServiceModelBase
-MiqAeServiceVdiFarmCitrix < MiqAeServiceVdiFarm < MiqAeServiceModelBase
-MiqAeServiceVdiFarmRdp < MiqAeServiceVdiFarm < MiqAeServiceModelBase
-MiqAeServiceVdiFarmVmware < MiqAeServiceVdiFarm < MiqAeServiceModelBase
-MiqAeServiceVm < MiqAeServiceVmOrTemplate < MiqAeServiceModelBase
-MiqAeServiceVmAmazon < MiqAeServiceVmCloud < MiqAeServiceVm < MiqAeServiceVmOrTemplate < MiqAeServiceModelBase
-MiqAeServiceVmCloud < MiqAeServiceVm < MiqAeServiceVmOrTemplate < MiqAeServiceModelBase
-MiqAeServiceVmInfra < MiqAeServiceVm < MiqAeServiceVmOrTemplate < MiqAeServiceModelBase
-MiqAeServiceVmKvm < MiqAeServiceVmInfra < MiqAeServiceVm < MiqAeServiceVmOrTemplate < MiqAeServiceModelBase
-MiqAeServiceVmMicrosoft < MiqAeServiceVmInfra < MiqAeServiceVm < MiqAeServiceVmOrTemplate < MiqAeServiceModelBase
-MiqAeServiceVmMigrateRequest < MiqAeServiceMiqRequest < MiqAeServiceModelBase
-MiqAeServiceVmMigrateTask < MiqAeServiceMiqRequestTask < MiqAeServiceModelBase
-MiqAeServiceVmOpenstack < MiqAeServiceVmCloud < MiqAeServiceVm < MiqAeServiceVmOrTemplate < MiqAeServiceModelBase
-MiqAeServiceVmOrTemplate < MiqAeServiceModelBase
-MiqAeServiceVmReconfigureRequest < MiqAeServiceMiqRequest < MiqAeServiceModelBase
-MiqAeServiceVmReconfigureTask < MiqAeServiceMiqRequestTask < MiqAeServiceModelBase
-MiqAeServiceVmRedhat < MiqAeServiceVmInfra < MiqAeServiceVm < MiqAeServiceVmOrTemplate < MiqAeServiceModelBase
-MiqAeServiceVmVmware < MiqAeServiceVmInfra < MiqAeServiceVm < MiqAeServiceVmOrTemplate < MiqAeServiceModelBase
-MiqAeServiceVmXen < MiqAeServiceVmInfra < MiqAeServiceVm < MiqAeServiceVmOrTemplate < MiqAeServiceModelBase
-MiqAeServiceWindowsImage < MiqAeServiceModelBase
+MiqAeServiceMiqProvisionRedhatViaPxe < 
+	MiqAeServiceMiqProvisionRedhat < 
+		MiqAeServiceMiqProvision < 
+			MiqAeServiceMiqRequestTask < 
+				MiqAeServiceModelBase
+```
+
+The following list shows the class definition for all of the CloudForms 3.2 MiqAeService Model classes, and their immediate superclass...
+
+```
+ class MiqAeServiceAuthKeyPairCloud < MiqAeServiceAuthPrivateKey
+ class MiqAeServiceAuthKeyPairOpenstack < MiqAeServiceAuthKeyPairCloud
+ class MiqAeServiceAuthPrivateKey < MiqAeServiceAuthentication
+ class MiqAeServiceAuthentication < MiqAeServiceModelBase
+ class MiqAeServiceAutomationRequest < MiqAeServiceMiqRequest
+ class MiqAeServiceAutomationTask < MiqAeServiceMiqRequestTask
+ class MiqAeServiceAvailabilityZone < MiqAeServiceModelBase
+ class MiqAeServiceAvailabilityZoneAmazon < MiqAeServiceAvailabilityZone
+ class MiqAeServiceAvailabilityZoneOpenstack < MiqAeServiceAvailabilityZone
+ class MiqAeServiceAvailabilityZoneOpenstackNull < MiqAeServiceAvailabilityZoneOpenstack
+ class MiqAeServiceClassification < MiqAeServiceModelBase
+ class MiqAeServiceCloudNetwork < MiqAeServiceModelBase
+ class MiqAeServiceCloudObjectStoreContainer < MiqAeServiceModelBase
+ class MiqAeServiceCloudObjectStoreObject < MiqAeServiceModelBase
+ class MiqAeServiceCloudResourceQuota < MiqAeServiceModelBase
+ class MiqAeServiceCloudResourceQuotaOpenstack < MiqAeServiceCloudResourceQuota
+ class MiqAeServiceCloudSubnet < MiqAeServiceModelBase
+ class MiqAeServiceCloudTenant < MiqAeServiceModelBase
+ class MiqAeServiceCloudVolume < MiqAeServiceModelBase
+ class MiqAeServiceCloudVolumeAmazon < MiqAeServiceCloudVolume
+ class MiqAeServiceCloudVolumeOpenstack < MiqAeServiceCloudVolume
+ class MiqAeServiceCloudVolumeSnapshot < MiqAeServiceModelBase
+ class MiqAeServiceCloudVolumeSnapshotAmazon < MiqAeServiceCloudVolumeSnapshot
+ class MiqAeServiceCloudVolumeSnapshotOpenstack < MiqAeServiceCloudVolumeSnapshot
+ class MiqAeServiceConfigurationArchitecture < MiqAeServiceConfigurationTag
+ class MiqAeServiceConfigurationComputeProfile < MiqAeServiceConfigurationTag
+ class MiqAeServiceConfigurationDomain < MiqAeServiceConfigurationTag
+ class MiqAeServiceConfigurationEnvironment < MiqAeServiceConfigurationTag
+ class MiqAeServiceConfigurationLocation < MiqAeServiceModelBase
+ class MiqAeServiceConfigurationManager < MiqAeServiceModelBase
+ class MiqAeServiceConfigurationManagerForeman < MiqAeServiceConfigurationManager
+ class MiqAeServiceConfigurationOrganization < MiqAeServiceModelBase
+ class MiqAeServiceConfigurationProfile < MiqAeServiceModelBase
+ class MiqAeServiceConfigurationProfileForeman < MiqAeServiceConfigurationProfile
+ class MiqAeServiceConfigurationRealm < MiqAeServiceConfigurationTag
+ class MiqAeServiceConfigurationTag < MiqAeServiceModelBase
+ class MiqAeServiceConfiguredSystem < MiqAeServiceModelBase
+ class MiqAeServiceConfiguredSystemForeman < MiqAeServiceConfiguredSystem
+ class MiqAeServiceCustomizationScript < MiqAeServiceModelBase
+ class MiqAeServiceCustomizationScriptMedium < MiqAeServiceCustomizationScript
+ class MiqAeServiceCustomizationScriptPtable < MiqAeServiceCustomizationScript
+ class MiqAeServiceCustomizationTemplate < MiqAeServiceModelBase
+ class MiqAeServiceCustomizationTemplateCloudInit < MiqAeServiceCustomizationTemplate
+ class MiqAeServiceCustomizationTemplateKickstart < MiqAeServiceCustomizationTemplate
+ class MiqAeServiceCustomizationTemplateSysprep < MiqAeServiceCustomizationTemplate
+ class MiqAeServiceDisk < MiqAeServiceModelBase
+ class MiqAeServiceEmsAmazon <  MiqAeServiceEmsCloud
+ class MiqAeServiceEmsCloud < MiqAeServiceExtManagementSystem
+ class MiqAeServiceEmsCluster < MiqAeServiceModelBase
+ class MiqAeServiceEmsClusterOpenstackInfra < MiqAeServiceEmsCluster
+ class MiqAeServiceEmsEvent < MiqAeServiceModelBase
+ class MiqAeServiceEmsFolder < MiqAeServiceModelBase
+ class MiqAeServiceEmsInfra < MiqAeServiceExtManagementSystem
+ class MiqAeServiceEmsMicrosoft < MiqAeServiceEmsInfra
+ class MiqAeServiceEmsOpenstack <  MiqAeServiceEmsCloud
+ class MiqAeServiceEmsOpenstackInfra <  MiqAeServiceEmsInfra
+ class MiqAeServiceEmsRedhat < MiqAeServiceEmsInfra
+ class MiqAeServiceEmsVmware < MiqAeServiceEmsInfra
+ class MiqAeServiceExtManagementSystem < MiqAeServiceModelBase
+ class MiqAeServiceFilesystem < MiqAeServiceModelBase
+ class MiqAeServiceFirewallRule < MiqAeServiceModelBase
+ class MiqAeServiceFlavor < MiqAeServiceModelBase
+ class MiqAeServiceFlavorAmazon < MiqAeServiceFlavor
+ class MiqAeServiceFlavorOpenstack < MiqAeServiceFlavor
+ class MiqAeServiceFloatingIp < MiqAeServiceModelBase
+ class MiqAeServiceFloatingIpAmazon < MiqAeServiceFloatingIp
+ class MiqAeServiceFloatingIpOpenstack < MiqAeServiceFloatingIp
+ class MiqAeServiceGuestApplication < MiqAeServiceModelBase
+ class MiqAeServiceGuestDevice < MiqAeServiceModelBase
+ class MiqAeServiceHardware < MiqAeServiceModelBase
+ class MiqAeServiceHost < MiqAeServiceModelBase
+ class MiqAeServiceHostMicrosoft < MiqAeServiceHost
+ class MiqAeServiceHostOpenstackInfra < MiqAeServiceHost
+ class MiqAeServiceHostRedhat < MiqAeServiceHost
+ class MiqAeServiceHostVmware < MiqAeServiceHost
+ class MiqAeServiceHostVmwareEsx < MiqAeServiceHostVmware
+ class MiqAeServiceIsoImage < MiqAeServiceModelBase
+ class MiqAeServiceJob < MiqAeServiceModelBase
+ class MiqAeServiceLan < MiqAeServiceModelBase
+ class MiqAeServiceMiqGroup < MiqAeServiceModelBase
+ class MiqAeServiceMiqHostProvision < MiqAeServiceMiqRequestTask
+ class MiqAeServiceMiqHostProvisionRequest < MiqAeServiceMiqRequest
+ class MiqAeServiceMiqPolicy < MiqAeServiceModelBase
+ class MiqAeServiceMiqProvision < MiqAeServiceMiqProvisionTask
+ class MiqAeServiceMiqProvisionAmazon < MiqAeServiceMiqProvisionCloud
+ class MiqAeServiceMiqProvisionCloud < MiqAeServiceMiqProvision
+ class MiqAeServiceMiqProvisionConfiguredSystemRequest < MiqAeServiceMiqRequest
+ class MiqAeServiceMiqProvisionMicrosoft < MiqAeServiceMiqProvision
+ class MiqAeServiceMiqProvisionOpenstack < MiqAeServiceMiqProvisionCloud
+ class MiqAeServiceMiqProvisionRedhat < MiqAeServiceMiqProvision
+ class MiqAeServiceMiqProvisionRedhatViaIso < MiqAeServiceMiqProvisionRedhat
+ class MiqAeServiceMiqProvisionRedhatViaPxe < MiqAeServiceMiqProvisionRedhat
+ class MiqAeServiceMiqProvisionRequest < MiqAeServiceMiqRequest
+ class MiqAeServiceMiqProvisionRequestTemplate < MiqAeServiceMiqProvisionRequest
+ class MiqAeServiceMiqProvisionTask < MiqAeServiceMiqRequestTask
+ class MiqAeServiceMiqProvisionTaskConfiguredSystemForeman < MiqAeServiceMiqProvisionTask
+ class MiqAeServiceMiqProvisionVmware < MiqAeServiceMiqProvision
+ class MiqAeServiceMiqProvisionVmwareViaPxe < MiqAeServiceMiqProvisionVmware
+ class MiqAeServiceMiqRequest < MiqAeServiceModelBase
+ class MiqAeServiceMiqRequestTask < MiqAeServiceModelBase
+ class MiqAeServiceMiqServer < MiqAeServiceModelBase
+ class MiqAeServiceMiqTemplate < MiqAeServiceVmOrTemplate
+ class MiqAeServiceNetwork < MiqAeServiceModelBase
+ class MiqAeServiceOperatingSystem < MiqAeServiceModelBase
+ class MiqAeServiceOperatingSystemFlavor < MiqAeServiceModelBase
+ class MiqAeServiceOrchestrationStack < MiqAeServiceModelBase
+ class MiqAeServiceOrchestrationStackAmazon < MiqAeServiceOrchestrationStack
+ class MiqAeServiceOrchestrationStackOpenstack < MiqAeServiceOrchestrationStack
+ class MiqAeServiceOrchestrationStackOpenstackInfra < MiqAeServiceOrchestrationStack
+ class MiqAeServiceOrchestrationStackOutput < MiqAeServiceModelBase
+ class MiqAeServiceOrchestrationStackParameter < MiqAeServiceModelBase
+ class MiqAeServiceOrchestrationStackResource < MiqAeServiceModelBase
+ class MiqAeServiceOrchestrationTemplate < MiqAeServiceModelBase
+ class MiqAeServiceOrchestrationTemplateCfn < MiqAeServiceOrchestrationTemplate
+ class MiqAeServiceOrchestrationTemplateHot < MiqAeServiceOrchestrationTemplate
+ class MiqAeServiceProvider < MiqAeServiceModelBase
+ class MiqAeServiceProviderForeman < MiqAeServiceProvider
+ class MiqAeServiceProvisioningManager < MiqAeServiceModelBase
+ class MiqAeServiceProvisioningManagerForeman < MiqAeServiceProvisioningManager
+ class MiqAeServicePxeImage < MiqAeServiceModelBase
+ class MiqAeServicePxeImageIpxe < MiqAeServicePxeImage
+ class MiqAeServicePxeImagePxelinux < MiqAeServicePxeImage
+ class MiqAeServicePxeImageType < MiqAeServiceModelBase
+ class MiqAeServicePxeServer < MiqAeServiceModelBase
+ class MiqAeServiceResourcePool < MiqAeServiceModelBase
+ class MiqAeServiceSecurityGroup < MiqAeServiceModelBase
+ class MiqAeServiceSecurityGroupAmazon < MiqAeServiceSecurityGroup
+ class MiqAeServiceSecurityGroupOpenstack < MiqAeServiceSecurityGroup
+ class MiqAeServiceService < MiqAeServiceModelBase
+ class MiqAeServiceServiceOrchestration < MiqAeServiceService
+ class MiqAeServiceServiceReconfigureRequest < MiqAeServiceMiqRequest
+ class MiqAeServiceServiceReconfigureTask < MiqAeServiceMiqRequestTask
+ class MiqAeServiceServiceResource < MiqAeServiceModelBase
+ class MiqAeServiceServiceTemplate < MiqAeServiceModelBase
+ class MiqAeServiceServiceTemplateOrchestration < MiqAeServiceServiceTemplate
+ class MiqAeServiceServiceTemplateProvisionRequest < MiqAeServiceMiqRequest
+ class MiqAeServiceServiceTemplateProvisionTask < MiqAeServiceMiqRequestTask
+ class MiqAeServiceSnapshot < MiqAeServiceModelBase
+ class MiqAeServiceStorage < MiqAeServiceModelBase
+ class MiqAeServiceSwitch < MiqAeServiceModelBase
+ class MiqAeServiceTemplateAmazon < MiqAeServiceTemplateCloud
+ class MiqAeServiceTemplateCloud < MiqAeServiceMiqTemplate
+ class MiqAeServiceTemplateInfra < MiqAeServiceMiqTemplate
+ class MiqAeServiceTemplateMicrosoft < MiqAeServiceTemplateInfra
+ class MiqAeServiceTemplateOpenstack < MiqAeServiceTemplateCloud
+ class MiqAeServiceTemplateRedhat < MiqAeServiceTemplateInfra
+ class MiqAeServiceTemplateVmware < MiqAeServiceTemplateInfra
+ class MiqAeServiceTemplateXen < MiqAeServiceTemplateInfra
+ class MiqAeServiceUser < MiqAeServiceModelBase
+ class MiqAeServiceVm < MiqAeServiceVmOrTemplate
+ class MiqAeServiceVmAmazon < MiqAeServiceVmCloud
+ class MiqAeServiceVmCloud < MiqAeServiceVm
+ class MiqAeServiceVmInfra < MiqAeServiceVm
+ class MiqAeServiceVmMicrosoft < MiqAeServiceVmInfra
+ class MiqAeServiceVmMigrateRequest < MiqAeServiceMiqRequest
+ class MiqAeServiceVmMigrateTask < MiqAeServiceMiqRequestTask
+ class MiqAeServiceVmOpenstack < MiqAeServiceVmCloud
+ class MiqAeServiceVmOrTemplate < MiqAeServiceModelBase
+ class MiqAeServiceVmReconfigureRequest < MiqAeServiceMiqRequest
+ class MiqAeServiceVmReconfigureTask < MiqAeServiceMiqRequestTask
+ class MiqAeServiceVmRedhat < MiqAeServiceVmInfra
+ class MiqAeServiceVmScan < MiqAeServiceJob
+ class MiqAeServiceVmVmware < MiqAeServiceVmInfra
+ class MiqAeServiceVmXen < MiqAeServiceVmInfra
+ class MiqAeServiceWindowsImage < MiqAeServiceModelBase
 ```
 
 ###Distributed Ruby (druby)

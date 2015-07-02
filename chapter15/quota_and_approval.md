@@ -2,7 +2,7 @@
 
 ### Approval
 
-The approval process for a VM Provision Request is entered as a result of the _MiqProvisionRequest\_created_ event being triggered. This results in a Provisioning Profile lookup to read the value of the _auto\_approval\_state\_machine_ Attribute, which by default is _ProvisionRequestApproval_ for an Infrastructure VM Provision Request. The second relationship from the event runs the _Default_ Instance of this State Machine.
+The approval process for a VM Provision Request is entered as a result of the _MiqProvisionRequest\_created_ event being triggered. This results in a Provisioning Profile lookup to read the value of the _auto\_approval\_state\_machine_ attribute, which by default is _ProvisionRequestApproval_ for an Infrastructure VM Provision Request. The second relationship from the event runs the _Default_ Instance of this State Machine.
 <br> <br>
 
 ![screenshot](images/screenshot33.png)
@@ -14,7 +14,7 @@ The Schema for the _ProvisionRequestApproval_ State Machine is...
 ![screenshot](images/screenshot34.png)
 
 <br>
-...and the _Default_ Instance has the following Attribute values...
+...and the _Default_ Instance has the following Field values...
 <br> <br>
 
 ![screenshot](images/screenshot35.png)
@@ -24,10 +24,10 @@ This Instance will auto-approve any VM Provisioning Request containing a single 
 
 We are free to copy the _ProvisionRequestApproval_ State Machine to our own Domain and change or set any of the auto-approval schema Attributes, i.e. _max\_cpus, max\_vms, max\_memory_ or _max\_retirement\_days_.
 
-### Overriding the Default - Template Tagging
+### Overriding the Schema Default - Template Tagging
 
 We can override the auto-approval _max\_*_ values stored in the _ProvisionRequestApproval_ State Machine on a per-Template basis, by applying tags from one or more of the following tag categories to the Template...
-
+<br>
 
 |  Tag Category Name  | Tag Category Display Name  |
 |:----------:|:----------------:|
@@ -35,6 +35,7 @@ We can override the auto-approval _max\_*_ values stored in the _ProvisionReques
 | prov\_max\_memory | Auto Approve - Max Memory |
 | prov\_max\_retirement\_days | Auto Approve - Max Retirement Days |
 | prov\_max\_vm | Auto Approve - Max VM |
+<br>
 
 If a Template is tagged in such a way, then any VM Provisioning Request _from_ that Template will result in the Template's tag value being used for auto-approval considerations, rather than the Attribute value from the schema. 
 
@@ -53,3 +54,36 @@ Services -> Requests -> Operate -> Approve and Deny
 
 
 ### Quota
+
+The quota checking process for a VM Provision Request is entered as a result of the _MiqProvisionRequest\_starting_ event being triggered. This results in a Provisioning Profile lookup to read the value of the _get\_quota\_state\_machine_ attribute, which by default is _ProvisionRequestQuotaVerification_ for an Infrastructure VM Provision Request. The second relationship from the event runs the _Default_ Instance of this State Machine.
+
+The Schema for the _ProvisionRequestQuotaVerification_ State Machine is...
+<br> <br>
+![screenshot](images/screenshot37.png?)
+
+<br>
+...and the _Default_ Instance has the following Field values...
+<br> <br>
+![screenshot](images/screenshot38.png)
+<br>
+
+This Instance will validate any VM Provisioning Request, and so will not enforce any quotas.
+
+We are free to copy the _ProvisionRequestQuotaVerification_ State Machine to our own Domain and change or set any of the quota limit schema Attributes, i.e. _max\_owner\_cpu, max\_owner\_memory, max\_owner\_storage_, or _max\_group\_cpu, max\_group\_memory, max\_group\_storage_. These quota settings will then apply to all Users and Groups.
+
+### Overriding the Schema Default - User and Group Tagging
+
+We can override the quota _max\_*_ values stored in the _ProvisionRequestQuotaVerification_ State Machine on a per-User or per-Group basis, by applying tags from one or more of the following tag categories to the User or Group...
+<br>
+
+|  Tag Category Name  | Tag Category Display Name  |
+|:----------:|:----------------:|
+| quota\_max\_cpu | Quota - Max CPUs |
+| quota\_max\_memory | Quota - Max  Memory |
+| quota\_max\_storage | Quota - Max  Storage |
+
+for example...
+<br> <br>
+![screenshot](images/screenshot39.png)
+<br> <br>
+If a User or Group is tagged in such a way, then any VM Provisioning Request from the User or any Group member is matched against the currently allocated CPUs, memory or storage for the User or Group. If the Provisioning Request would result in the quota being exceeded, then the Request is rejected, and the requesting User is emailed using the _MiqProvisionRequest\_Denied_ email class.

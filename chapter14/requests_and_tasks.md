@@ -24,35 +24,34 @@ If the _Request_ is approved, one or more _Task_ objects will be created from in
 If we look at the class ancestry for the _Request_ objects...
 
 ```
-MiqAeServiceAutomationRequest < MiqAeServiceMiqRequest < MiqAeServiceModelBase
-MiqAeServiceMiqHostProvisionRequest < MiqAeServiceMiqRequest < MiqAeServiceModelBase
-MiqAeServiceMiqProvisionRequest < MiqAeServiceMiqRequest < MiqAeServiceModelBase
-MiqAeServiceMiqProvisionRequestTemplate < MiqAeServiceMiqProvisionRequest < MiqAeServiceMiqRequest < MiqAeServiceModelBase
+MiqAeServiceAutomationRequest < MiqAeServiceMiqRequest
+MiqAeServiceMiqHostProvisionRequest < MiqAeServiceMiqRequest
+MiqAeServiceMiqProvisionRequest < MiqAeServiceMiqRequest
+MiqAeServiceMiqProvisionRequestTemplate < MiqAeServiceMiqProvisionRequest
 MiqAeServiceMiqRequest < MiqAeServiceModelBase
-MiqAeServiceServiceTemplateProvisionRequest < MiqAeServiceMiqRequest < MiqAeServiceModelBase
-MiqAeServiceVmMigrateRequest < MiqAeServiceMiqRequest < MiqAeServiceModelBase
-MiqAeServiceVmReconfigureRequest < MiqAeServiceMiqRequest < MiqAeServiceModelBase
+MiqAeServiceServiceTemplateProvisionRequest < MiqAeServiceMiqRequest
+MiqAeServiceVmMigrateRequest < MiqAeServiceMiqRequest
+MiqAeServiceVmReconfigureRequest < MiqAeServiceMiqRequest
 ```
 
 ...and for the _Task_ objects...
 
 ```
-MiqAeServiceAutomationTask < MiqAeServiceMiqRequestTask < MiqAeServiceModelBase
-MiqAeServiceMiqHostProvision < MiqAeServiceMiqRequestTask < MiqAeServiceModelBase
-MiqAeServiceMiqProvision < MiqAeServiceMiqRequestTask < MiqAeServiceModelBase
-MiqAeServiceMiqProvisionAmazon < MiqAeServiceMiqProvisionCloud < MiqAeServiceMiqProvision < MiqAeServiceMiqRequestTask < MiqAeServiceModelBase
-MiqAeServiceMiqProvisionCloud < MiqAeServiceMiqProvision < MiqAeServiceMiqRequestTask < MiqAeServiceModelBase
-MiqAeServiceMiqProvisionOpenstack < MiqAeServiceMiqProvisionCloud < MiqAeServiceMiqProvision < MiqAeServiceMiqRequestTask < MiqAeServiceModelBase
-MiqAeServiceMiqProvisionRedhat < MiqAeServiceMiqProvision < MiqAeServiceMiqRequestTask < MiqAeServiceModelBase
-MiqAeServiceMiqProvisionRedhatViaIso < MiqAeServiceMiqProvisionRedhat < MiqAeServiceMiqProvision < MiqAeServiceMiqRequestTask < MiqAeServiceModelBase
-MiqAeServiceMiqProvisionRedhatViaPxe < MiqAeServiceMiqProvisionRedhat < MiqAeServiceMiqProvision < MiqAeServiceMiqRequestTask < MiqAeServiceModelBase
-MiqAeServiceMiqProvisionVmware < MiqAeServiceMiqProvision < MiqAeServiceMiqRequestTask < MiqAeServiceModelBase
-MiqAeServiceMiqProvisionVmwareViaNetAppRcu < MiqAeServiceMiqProvisionVmware < MiqAeServiceMiqProvision < MiqAeServiceMiqRequestTask < MiqAeServiceModelBase
-MiqAeServiceMiqProvisionVmwareViaPxe < MiqAeServiceMiqProvisionVmware < MiqAeServiceMiqProvision < MiqAeServiceMiqRequestTask < MiqAeServiceModelBase
+MiqAeServiceAutomationTask < MiqAeServiceMiqRequestTask
+MiqAeServiceMiqHostProvision < MiqAeServiceMiqRequestTask
+MiqAeServiceMiqProvision < MiqAeServiceMiqRequestTask
+MiqAeServiceMiqProvisionAmazon < MiqAeServiceMiqProvisionCloud
+MiqAeServiceMiqProvisionCloud < MiqAeServiceMiqProvision
+MiqAeServiceMiqProvisionOpenstack < MiqAeServiceMiqProvisionCloud
+MiqAeServiceMiqProvisionRedhat < MiqAeServiceMiqProvision 
+MiqAeServiceMiqProvisionRedhatViaIso < MiqAeServiceMiqProvisionRedhat
+MiqAeServiceMiqProvisionRedhatViaPxe < MiqAeServiceMiqProvisionRedhat
+MiqAeServiceMiqProvisionVmware < MiqAeServiceMiqProvision
+MiqAeServiceMiqProvisionVmwareViaNetAppRcu < MiqAeServiceMiqProvisionVmware
+MiqAeServiceMiqProvisionVmwareViaPxe < MiqAeServiceMiqProvisionVmware
 MiqAeServiceMiqRequestTask < MiqAeServiceModelBase
-MiqAeServiceServiceTemplateProvisionTask < MiqAeServiceMiqRequestTask < MiqAeServiceModelBase
-MiqAeServiceVmMigrateTask < MiqAeServiceMiqRequestTask < MiqAeServiceModelBase
-MiqAeServiceVmReconfigureTask < MiqAeServiceMiqRequestTask < MiqAeServiceModelBase
+MiqAeServiceServiceTemplateProvisionTask < MiqAeServiceMiqRequestTask
+MiqAeServiceVmReconfigureTask < MiqAeServiceMiqRequestTask
 ```
 
 ... we see that there are twice as many types of _Task_ object. This is because a request to perform an action (e.g. provision a VM) can be converted into one of several ways of performing the task (e.g. provision a VMware VM via PXE).
