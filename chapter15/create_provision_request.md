@@ -81,7 +81,7 @@ Tags to apply to newly created VM, e.g.
 
 #### additionalValues (aka ws_values)
 
-Additional values, also known as ws_values, are name-value pairs stored with a provision request, but not used by the core provisioning code. These values are usually referenced from automate methods for custom processing. They are added into the _Request_ Options Hash, and can be retrieved as a hash from...
+Additional values, also known as ws\_values, are name-value pairs stored with a provision request, but not used by the core provisioning code. These values are usually referenced from automate methods for custom processing. They are added into the _Request_ Options Hash, and can be retrieved as a hash from...
 
 ```
 $evm.root['miq_provision'].options[:ws_values]
