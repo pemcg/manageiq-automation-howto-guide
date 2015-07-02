@@ -8,11 +8,13 @@ Fortunately the Automation Engine hides this from us pretty well, and generally 
 
 All of the MiqAeService\* objects extend a common _MiqAeServiceModelBase_ class that contains some common methods available to all objects, such as...
 
-```.tagged_with?(category, name)```
-```.tags(category = nil)```
-```.tag_assign(tag)```
+```
+.tagged_with?(category, name)
+.tags(category = nil)
+.tag_assign(tag)
+```
 
-(see section xxx on working with tags in Automate). Many of the Service Model objects have several level of superclass, e.g.
+(see section xxx on working with tags in Automate). Many of the Service Model objects have several levels of superclass, e.g.
 
 ```
 MiqAeServiceMiqProvisionRedhatViaPxe < 
@@ -22,7 +24,7 @@ MiqAeServiceMiqProvisionRedhatViaPxe <
 				MiqAeServiceModelBase
 ```
 
-The following list shows the class definition for all of the CloudForms 3.2 MiqAeService Model classes, and their immediate superclass...
+The following list is the class definition for all of the CloudForms 3.2 MiqAeService Model classes, showing their immediate superclass...
 
 ```
  class MiqAeServiceAuthKeyPairCloud < MiqAeServiceAuthPrivateKey
@@ -194,7 +196,10 @@ The following list shows the class definition for all of the CloudForms 3.2 MiqA
 
 ###Distributed Ruby (druby)
 
-Many of the $evm methods such as _.root_ and _.object_ are actually Distribted Ruby (druby) stub objects (_DRb::DRbObject_ objects). The actual methods are DRb server methods that run in a different namespace, accessed using a URI such as: ```druby://127.0.0.1:52182```
+Many of the $evm methods such as _.root_ and _.object_ are actually Distribted Ruby (druby) stub objects (_DRb::DRbObject_ objects). The actual methods are DRb server methods that run in a different namespace, accessed using a URI such as...
 
+ ```
+ druby://127.0.0.1:52182
+ ```
 
 Although this is mostly transparent to us, it means that if we look at things like $evm.root['vm'].instance\_methods (hoping to find some useful VM-related method that we can call), we actually get a list of the instance methods for the local _DRb::DRbObject_ object, rather than the remote MiqAeServiceUser service model (not what we want). We also occasionally get a _DRb::DRbUnknown_ object returned to us, indicating that our receiver doesn't know about the class definition for a distributed object.
