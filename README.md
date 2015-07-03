@@ -1,4 +1,4 @@
-# Introduction to CloudForms Automation
+# CloudForms Automation How-To Guide
 
 ## What?
 This book is an introduction to working with the CloudForms Automation Engine.
