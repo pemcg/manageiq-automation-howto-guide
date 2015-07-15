@@ -1,6 +1,6 @@
 ## Requests and Tasks
 
-Many Automation operations have two distinct stages - the **Request** and the **Task**. There are corresponding request and task objects representing these stages, each holding information relevant to the operation.
+User-initiated Automation operations have two distinct stages - the **Request** and the **Task**. There are corresponding request and task objects representing these stages, each holding information relevant to the operation.
 
 |   Operation          |   Request Object   |   Task Object   |
 |:--------------------:|:------------------:|:---------------:|
@@ -14,7 +14,7 @@ Many Automation operations have two distinct stages - the **Request** and the **
 | Migrating a VM       | vm\_migrate\_request | vm\_migrate\_task |
 
 ### Approval
-_Requests_ generally need to be approved before the Task is created. Admin-level users can auto-approve their own requests, while non-admin users sometimes need the request explicitly approved, depending on the Automation Request type.
+_Requests_ need to be approved before the Task is created. Admin-level users can auto-approve their own requests, while non-admin users sometimes need the request explicitly approved, depending on the Automation Request type.
 
 The most common Automation operation that non-admin users frequently perform is to provision a VM, and for this there are approval thresholds in place (_max\_vms, max\_cpus, max\_memory, max\_retirement\_days_). VM Provision Requests below these thresholds are auto-approved, whereas requests exceeding these thresholds are blocked, pending approval by an admin-level user.
 
@@ -43,7 +43,7 @@ MiqAeServiceMiqProvision < MiqAeServiceMiqRequestTask
 MiqAeServiceMiqProvisionAmazon < MiqAeServiceMiqProvisionCloud
 MiqAeServiceMiqProvisionCloud < MiqAeServiceMiqProvision
 MiqAeServiceMiqProvisionOpenstack < MiqAeServiceMiqProvisionCloud
-MiqAeServiceMiqProvisionRedhat < MiqAeServiceMiqProvision 
+MiqAeServiceMiqProvisionRedhat < MiqAeServiceMiqProvision
 MiqAeServiceMiqProvisionRedhatViaIso < MiqAeServiceMiqProvisionRedhat
 MiqAeServiceMiqProvisionRedhatViaPxe < MiqAeServiceMiqProvisionRedhat
 MiqAeServiceMiqProvisionVmware < MiqAeServiceMiqProvision
@@ -56,13 +56,18 @@ MiqAeServiceVmReconfigureTask < MiqAeServiceMiqRequestTask
 
 ... we see that there are twice as many types of _Task_ object. This is because a request to perform an action (e.g. provision a VM) can be converted into one of several ways of performing the task (e.g. provision a VMware VM via PXE).
 
+### Context
+
 When we develop our own scripts to work with Automation, depending on the workflow stage of the operation that we're interacting with (for example provisioning a VM), we may be working with either a Request _or_ a Task object, so we sometimes have to search for one and if that fails, fallback to the other, e.g.
 
 ```ruby
-prov = $evm.root['miq_provision_request'] || $evm.root['miq_provision'] || $evm.root['miq_provision_request_template']
+prov = $evm.root['miq_provision_request'] || $evm.root['miq_provision'] \
+    || $evm.root['miq_provision_request_template']
 ```
 
 If we have a Request object, there may not necessarily be a Task object (yet), but if we have a Task object we can always follow an association to find the Request object that preceeded it.
+
+Tip - when we're developing automation methods, having an understanding of whether we're running in a Request or Task context can be really useful. Think about what stage in the Automation flow the method will be running - before or after approval.
 
 ### Object Contents
 
@@ -86,7 +91,8 @@ We can use object_walker to show the difference between an Automation Request an
 Using the following walk\_association\_whitelist...
 
 ```ruby
-@walk_association_whitelist = { "MiqAeServiceAutomationTask" => ["automation_request", "miq_request"]}
+@walk_association_whitelist = \
+    { "MiqAeServiceAutomationTask" => ["automation_request", "miq_request"]}
 ```
 
 ...we can call the ObjectWalker from the RESTful API, using the /api/automation_requests URI.
@@ -237,6 +243,8 @@ automation_request.message=
 ```
 
 We can use these methods to implement our own approval workflow mechanism if we wish.
+
+
 
 
 

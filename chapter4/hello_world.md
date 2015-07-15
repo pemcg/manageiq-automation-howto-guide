@@ -61,10 +61,10 @@ If all went well, we should see our "Hello, World!" message appear in the automa
 
 
 ```
-...  INFO -- : Invoking [inline] method [/ACME/General/Methods/hello_world] with inputs [{}]
-...  INFO -- : <AEMethod [/ACME/General/Methods/hello_world]> Starting
-...  INFO -- : <AEMethod hello_world> Hello, World!
-...  INFO -- : <AEMethod [/ACME/General/Methods/hello_world]> Ending
-...  INFO -- : Method exited with rc=MIQ_OK
+...INFO -- : Invoking [inline] method [/ACME/General/Methods/hello_world] with inputs [{}]
+...INFO -- : <AEMethod [/ACME/General/Methods/hello_world]> Starting
+...INFO -- : <AEMethod hello_world> Hello, World!
+...INFO -- : <AEMethod [/ACME/General/Methods/hello_world]> Ending
+...INFO -- : Method exited with rc=MIQ_OK
 ```
 Success!

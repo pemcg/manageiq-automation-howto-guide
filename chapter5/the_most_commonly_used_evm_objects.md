@@ -58,7 +58,7 @@ $evm.root = /ManageIQ/SYSTEM/PROCESS/Request
 
 ### $evm.vmdb
 
-$evm.vmdb is a useful method that can be used to retrieve any _Service Model_ object (see section xxx The MiqAeService* Model). The method can be called with one or two arguments, 
+$evm.vmdb is a useful method that can be used to retrieve any _Service Model_ object (see section xxx The MiqAeService* Model). The method can be called with one or two arguments,
 
 When called with a single argument, the method returns the generic Service Model object type, and we can use any of the Rails helper methods (see section xxx A Little Rails Knowledge) to search by database column name, i.e.
 

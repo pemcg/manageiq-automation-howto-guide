@@ -32,14 +32,14 @@ If a service dialog has been used in the creation of an Automation request (eith
 
 ```ruby
 $evm.root['service_template_provision_task'].options[:dialog] = \
-	 {"dialog_option_0_service_name"=>"New Server",
-	 "dialog_option_0_service_description"=>"My New Server",
-	 "dialog_option_0_vm_name"=>"rhel7srv023",
-	 "dialog_tag_0_department"=>"engineering", 
+	 {"dialog_option_0_service_name"=>"New Server", \
+	 "dialog_option_0_service_description"=>"My New Server", \
+	 "dialog_option_0_vm_name"=>"rhel7srv023", \
+	 "dialog_tag_0_department"=>"engineering", \
 	 "request"=>"clone_to_service"}
 ```
 
-or 
+or
 
 ```ruby
 $evm.root['dialog_option_0_service_description'] = My New Server

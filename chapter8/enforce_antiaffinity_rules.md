@@ -44,7 +44,8 @@ begin
       end
       next if host_invalid
       #
-      # If we get to here then no duplicate server_role VMs have been found on this host
+      # If we get to here then no duplicate server_role VMs have been found
+      # on this host
       #
       target_host = this_host
       break
@@ -77,7 +78,8 @@ begin
     #
     from = $evm.root['user'].email
     subject = "VM migration"
-    body = "VM Name: #{vm_name} was live-migrated to Host: #{new_host} in accordance with anti-affinity rules"
+    body = "VM Name: #{vm_name} was live-migrated to Host: #{new_host}"
+    body += " in accordance with anti-affinity rules"
     #
     # Send emails
     #

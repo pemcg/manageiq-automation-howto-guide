@@ -7,7 +7,7 @@ There are several objects involved in the VM provisioning process, however we ge
 
 ### The Request Object
 
-We've discussed the **Request Object** in detail already - this is the object that contains all of the information relating to the VM Provisioning _Request_. 
+We've discussed the **Request Object** in detail already - this is the object that contains all of the information relating to the VM Provisioning _Request_.
 
 #### Request Context
 

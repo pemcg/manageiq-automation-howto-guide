@@ -4,7 +4,7 @@ Provisioning Profiles handle the User Group-specific operations and decisions th
 
 ### Location
 
-The Provisioning Profiles are stored under _/Infrastructure/VM/Provisioning/Profile_. There are two out-of-the-box group-specific profiles for the _EvmGroup-super\_administrator_ and _EvmGroup-user\_self\_service_ groups, but we are free to create new profiles for any user groups that we wish to provision from. If a user who is not a member of a listed Group Profile provisions a VM, the _.missing_ Profile will be used. 
+The Provisioning Profiles are stored under _/Infrastructure/VM/Provisioning/Profile_. There are two out-of-the-box group-specific profiles for the _EvmGroup-super\_administrator_ and _EvmGroup-user\_self\_service_ groups, but we are free to create new profiles for any user groups that we wish to provision from. If a user who is not a member of a listed Group Profile provisions a VM, the _.missing_ Profile will be used.
 
 ![screenshot](images/screenshot4.png)
 

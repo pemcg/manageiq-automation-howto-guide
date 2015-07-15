@@ -26,7 +26,7 @@ We are free to copy the _Default_ Instance (including path) to our own Domain an
 
 ### Overriding the Schema Default - Template Tagging
 
-We can override the auto-approval _max\_*_ values stored in the _ProvisionRequestApproval_ State Machine on a per-Template basis, by applying tags from one or more of the following tag categories to the Template...
+We can override the auto-approval _max_\_* values stored in the _ProvisionRequestApproval_ State Machine on a per-Template basis, by applying tags from one or more of the following tag categories to the Template...
 <br>
 
 |  Tag Category Name  | Tag Category Display Name  |
@@ -37,7 +37,7 @@ We can override the auto-approval _max\_*_ values stored in the _ProvisionReques
 | prov\_max\_vm | Auto Approve - Max VM |
 <br>
 
-If a Template is tagged in such a way, then any VM Provisioning Request _from_ that Template will result in the Template's tag value being used for auto-approval considerations, rather than the Attribute value from the schema. 
+If a Template is tagged in such a way, then any VM Provisioning Request _from_ that Template will result in the Template's tag value being used for auto-approval considerations, rather than the Attribute value from the schema.
 
 ### VM Provisioning-Related Email
 
@@ -48,10 +48,6 @@ Three of the Instances are approval-related. The _to\_email\_address_ value for 
 
 ![screenshot](images/screenshot36.png?)
 <br>
-
-##### Can't remember why I wrote the following...
-Services -> Requests -> Operate -> Approve and Deny 
-
 
 ### Quota
 
@@ -73,7 +69,7 @@ We are free to copy the _Default_ Instance (including path) to our own Domain an
 
 ### Overriding the Schema Default - User and Group Tagging
 
-We can override the quota _max\_*_ values stored in the _ProvisionRequestQuotaVerification_ State Machine on a per-User or per-Group basis, by applying tags from one or more of the following tag categories to the User or Group...
+We can override the quota _max_\_* values stored in the _ProvisionRequestQuotaVerification_ State Machine on a per-User or per-Group basis, by applying tags from one or more of the following tag categories to the User or Group...
 <br>
 
 |  Tag Category Name  | Tag Category Display Name  |

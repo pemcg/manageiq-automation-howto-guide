@@ -10,36 +10,36 @@ Although the most common way to provision a VM is via the CloudForms WebUI, i.e.
 <br> <br>
 
 ```
-# arg1 = version  
-args = ['1.1']  
-  
-# arg2 = templateFields  
-args << "name=rhel7-generic|request_type=template"  
-  
-# arg3 = vmFields  
-args << "vm_name=rhel7srv010|vlan=public|vm_memory=1024"  
-  
-# arg4 = requester  
-args << "owner_email=pemcg@bit63.com|owner_first_name=Peter|owner_last_name=McGowan"  
-  
-# arg5 = tags  
-args << nil  
-  
-# arg6 = Web Service Values (ws_values)  
-args << nil  
-  
-# arg7 = emsCustomAttributes  
-args << nil  
-  
-# arg8 = miqCustomAttributes  
-args << nil  
-  
-request_id = $evm.execute('create_provision_request', *args)  
+# arg1 = version
+args = ['1.1']
+
+# arg2 = templateFields
+args << "name=rhel7-generic|request_type=template"
+
+# arg3 = vmFields
+args << "vm_name=rhel7srv010|vlan=public|vm_memory=1024"
+
+# arg4 = requester
+args << "owner_email=pemcg@bit63.com|owner_first_name=Peter|owner_last_name=McGowan"
+
+# arg5 = tags
+args << nil
+
+# arg6 = Web Service Values (ws_values)
+args << nil
+
+# arg7 = emsCustomAttributes
+args << nil
+
+# arg8 = miqCustomAttributes
+args << nil
+
+request_id = $evm.execute('create_provision_request', *args)
 ```
 ### Argument List
 The arguments to the **create\_provision\_request** call are described below. The arguments match the fields in the Provisioning Dialog (and the values from the corresponding YAML template), and any arguments that are set to **required: true** in the Dialog YAML, but don't have a **:default:** value, should be specified. The exception for this is for sub-dependencies of other options, for example if **:provision\_type:** is _pxe_ then the sub-option **:pxe\_image\_id:** is mandatory. If the **:provision\_type:** value is anything else then **:pxe\_image\_id:** is not relevant.
 
-Multiple options within an argument type should be separated with the '|' symbol. 
+Multiple options within an argument type should be separated with the '|' symbol.
 
 #### version
 
@@ -61,13 +61,13 @@ Allows for the setting of properties from the _Catalog, Hardware, Network, Custo
 # arg2 = vmFields
 arg2 = "number_of_vms=3"
 # 1000000000007 is the ID of the m1.small flavor on my system
-arg2 += "|instance_type=1000000000007"  
+arg2 += "|instance_type=1000000000007"
 arg2 += "|vm_name=#{$instance_name}"
 arg2 += "|retirement_warn=2.weeks"
 args << arg2
 ```
 
-#### requester 
+#### requester
 
 Allows for the setting of properties from the _Request_ tab in the Provisioning Dialog. **owner_email**, **owner\_first\_name** and **owner\_last\_name** fields are required fields.
 
@@ -97,8 +97,8 @@ Custom Attributes applied to the virtual machine and stored in the CloudForms Ma
 
 ### Calling create\_provision\_request From a Service Item Definition
 
-One of the most common uses for calling $evm.execute('create\_provision\_request') is from a Service Catalog Item definition. 
+One of the most common uses for calling $evm.execute('create\_provision\_request') is from a Service Catalog Item definition.
 
-When we create a new a Service Catalog Item, we select from a drop-down list of available Catalog Item Types. This lists the defined Provider Types, but also an additional type of _Generic_. If we define a Catalog Item using a Provider Type, we pre-configure the Provisioning Dialog options, just ad we would if we were provisioning the request intercativelt. This also includes the _Number of VMs (:number\_of\_vms)_ option, and this cannot be changed once the Service Catalog Item is ordered. 
+When we create a new a Service Catalog Item, we select from a drop-down list of available Catalog Item Types. This lists the defined Provider Types, but also an additional type of _Generic_. If we define a Catalog Item using a Provider Type, we pre-configure the Provisioning Dialog options, just as we would if we were provisioning the request interactively. This also includes the _Number of VMs_ (:number\_of\_vms) option, and this cannot be changed once the Service Catalog Item is ordered.
 
 If we wish to be able to dynamically select the number of VMs when we order a service, we must use the _Generic_ Catalog Item Type, and call our own Automate Method that creates the provision request on-the-fly using $evm.execute('create\_provision\_request'). This can include an updated _number\_of\_vms_ as an arg2 value.

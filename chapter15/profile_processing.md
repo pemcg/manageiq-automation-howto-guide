@@ -22,7 +22,7 @@ The Profile is queried using the messages _get\_pre\_dialog\_name_ and _get\_dia
 
 ### VM Name (Pass 1)
 
-The Profile is queried using the message _get\_vmname_ to retrieve the method to be used to formulate the name of the VM to be provisioned. This VM name is then inserted into the text string that will form the Request Object's _description_ attribute (_miq\_provision\_request.description_), e,g, "Provision from [rhel7-generic] to [rhel7srv004]". 
+The Profile is queried using the message _get\_vmname_ to retrieve the method to be used to formulate the name of the VM to be provisioned. This VM name is then inserted into the text string that will form the Request Object's _description_ attribute (_miq\_provision\_request.description_), e,g, "Provision from [rhel7-generic] to [rhel7srv004]".
 
 If we are provisioning two or more VMs in a single request and letting Automate handle the VM auto number incrementing (e.g. rhel7srv005, rhel7srv006... etc) then the Request Object description is more generic, e.g. "Provision from [rhel7-generic] to [rhel7srvxxx]".
 

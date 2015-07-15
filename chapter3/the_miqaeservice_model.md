@@ -17,10 +17,10 @@ All of the MiqAeService\* objects extend a common _MiqAeServiceModelBase_ class 
 (see section xxx on working with tags in Automate). Many of the Service Model objects have several levels of superclass, e.g.
 
 ```
-MiqAeServiceMiqProvisionRedhatViaPxe < 
-	MiqAeServiceMiqProvisionRedhat < 
-		MiqAeServiceMiqProvision < 
-			MiqAeServiceMiqRequestTask < 
+MiqAeServiceMiqProvisionRedhatViaPxe <
+	MiqAeServiceMiqProvisionRedhat <
+		MiqAeServiceMiqProvision <
+			MiqAeServiceMiqRequestTask <
 				MiqAeServiceModelBase
 ```
 
@@ -196,7 +196,7 @@ The following list is the class definition for all of the CloudForms 3.2 MiqAeSe
 
 ###Distributed Ruby (druby)
 
-Many of the $evm methods such as _.root_ and _.object_ are actually Distribted Ruby (druby) stub objects (_DRb::DRbObject_ objects). The actual methods are DRb server methods that run in a different namespace, accessed using a URI such as...
+Many of the $evm methods such as _.root_ and _.object_ are  Distributed Ruby (druby) stub objects (_DRb::DRbObject_ objects). The actual methods are DRb server methods that run in a different namespace, accessed using a URI such as...
 
  ```
  druby://127.0.0.1:52182

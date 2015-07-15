@@ -1,12 +1,12 @@
 ## VM Placement During Provisioning
 
-One of the stages in the VMProvision_VM State Machine is _Placement_, and it's here that the decision is made where to create the new VM, i.e. which Cluster, Host and Datastore.
+One of the stages in the VMProvision\_VM State Machine is _Placement_, and it's here that the decision is made where to create the new VM, i.e. which Cluster, Host and Datastore.
 
 The value for the _Placement_ stage in the _template_ Instance of this State Machine is...
 <br>
 
 ```ruby
-/Infrastructure/VM/Provisioning/Placement/default#${/#miq_provision.source.vendor}	
+/Infrastructure/VM/Provisioning/Placement/default#${/#miq_provision.source.vendor}
 ```
 <br>
 ![screenshot](images/screenshot24.png)

@@ -8,7 +8,7 @@ The VM Provisioning Dialog is presented to the user in the WebUI as part of the 
 <br>
 The Provisioning Dialog is context-sensitive, so a different set of dialog options will be displayed when provisioning into VMware or OpenStack, for example.
 
-Each Provisioning Dialog is a large YAML file, specifying the main tabs, dialogs and fields to be displayed., e.g....
+Each Provisioning Dialog is formatted from a large (900 line+) YAML file, specifying the main tabs, dialogs and fields to be displayed., e.g....
 <br> <br>
 
 ```
@@ -89,7 +89,7 @@ The two variables are substituted at run-time, and provide the context-sensitity
 
 ```ruby
 dialog_name_prefix = "miq_provision_#{platform}_dialogs"
-dialog_name_prefix = "miq_provision_dialogs" if platform == "vmware" 
+dialog_name_prefix = "miq_provision_dialogs" if platform == "vmware"
 ```
 
 The _dialog\_input\_request\_type_ value is translated by a Rails back-end method (_miq\_request\_workflow.rb_) to be the Instance name of the VM Provisioning State Machine that we are using, i.e _template_, _clone\_to\_vm_ or _clone\_to\_template_.
@@ -102,7 +102,7 @@ miq_provision_redhat_dialogs_template
 
 ### User Group-Specific Dialogs
 
-We can set separate Provisioning Dialogs for individual User Groups is we wish. As an example the default _dialog\_name_ value in the _EvmGroup-user\_self\_service_ Profile is... 
+We can set separate Provisioning Dialogs for individual User Groups if we wish. As an example the default _dialog\_name_ value in the _EvmGroup-user\_self\_service_ Profile is...
 <br> <br>
 
 ```

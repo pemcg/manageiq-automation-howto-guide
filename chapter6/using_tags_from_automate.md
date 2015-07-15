@@ -4,14 +4,16 @@ Tags are defined and used within the context of tag _categories_. We can check w
 
 ```ruby
 unless $evm.execute('category_exists?', "data_centre")
-  $evm.execute('category_create', :name => "data_centre", :single_value => false, :description => "Data Centre")
+  $evm.execute('category_create', :name => "data_centre", \
+               :single_value => false, :description => "Data Centre")
 end
 ```
 We can also check whether a tag exists within a category, and if not create it...
 
 ```ruby
 unless $evm.execute('tag_exists?', 'data_centre', 'london')
-  $evm.execute('tag_create', "data_centre", :name => 'london', :description => 'London East End')
+  $evm.execute('tag_create', "data_centre", :name => 'london', \
+                :description => 'London East End')
 end
 ```
 Note that tag and category names must be lower-case (optionally) with underscores, with a maximum length of 30 characters. The tag and category descriptions can be free text.

@@ -14,7 +14,7 @@ The _inputs_ to the naming process are a number of variables and symbols that ar
 #### Inputs to the Naming Process...
 
 The following variables and symbols are used as inputs to the VM naming logic...
- 
+
 **:vm\_name** - This is given the value from the _VM Name_ box in Provision Virtual Machines -> Catalog, i.e.
 <br> <br>
 ![screenshot](images/screenshot21.png)
@@ -75,8 +75,8 @@ miq_provision.options[:miq_force_unique_name]
 #### Outputs from the Naming Process...
 
 The following symbols are derived by the VM Naming Method and added to the _Task_ Options Hash...
- 
-**:vm\_target\_name** - The VM Name 
+
+**:vm\_target\_name** - The VM Name
 
 This is added to the _Task_ Options Hash as...
 
@@ -94,7 +94,7 @@ miq_provision.options[:vm_target_hostname]
 ### Name Processing
 
 Much of the VM naming logic happens in the Rails code that is not exposed to the Automation Engine, but the code does call an Automation Engine Naming Method that we can use apply our own customisations. The Automation Engine Naming Method writes its suggested name into ```$evm.object['vmname']```, which is propagated back to the internal Rails method via a Collect. If the Automation Engine Naming Method suggests a name that should be numerically suffixed (e.g. "#{vm_name}$n{3}"), then the back-end Rails code will allocate the next free number in the sequence and form the VM name accordingly.
- 
+
 
 The default Automation Engine Naming Method (_/Infrastructure/VM/Provisioning/Naming/vmname_) is as follows...
 
@@ -161,49 +161,49 @@ $evm.log("info", "VM Name: <#{derived_name}>")
 ```
 
 We can start to assemble the rules that the VM Naming methods use to determine names...
- 
+
 #### Provisioning a Single Server
 
 Provisioning a single server from either Infrastructure -> Virtual Machines -> Lifecycle -> Provision VMs or from a Service Catalog will result in the VM being given the value of **:vm\_name**, unless **:vm\_name** is blank or has the value "changeme".
 If **:vm\_name** is blank or "changeme" then we loop through the logic in the Automation Engine Naming Method, which assembles a VM name by combining the value of **:vm\_prefix** with the first 3 characters of the **:environment** tag (if it exists), and appending three zero-padded digits.
- 
+
 #### Provisioning Multiple Servers in a Single Request
 
 Provisioning multiple servers from a Service Catalog will result in the symbol **:miq\_force\_unique\_name** being set to true for each _Task_. If **:vm\_name** is not blank or "changeme", then the servers will be named as **:vm\_name** with "_n{4}" appended, e.g. server\_0001, server\_0002, etc. according to the logic in the internal Rails class MiqProvision::Naming. In this scenario the Automation Engine Naming Method is not used.
- 
+
 Provisioning multiple servers from Infrastructure -> Virtual Machines -> Lifecycle -> Provision VMs will not result in **:miq\_force\_unique\_name** being set to true, and the VM naming logic in the Automation Engine Naming Method will apply; the servers will be given the value of **:vm\_name**, appended by three zero-padded digits, e.g. server001, server002, etc.
 
 ### Customising the Naming Process
 
-We often wish to customise the naming process to our own requirements. 
+We often wish to customise the naming process to our own requirements.
 
 For example we might wish to have all servers named using a fixed prefix (**:vm_prefix**), followed by the value of the _server\_role_ tag, followed by a zero-padded digit extension. This can be done using a slight modification of the Automation Naming Method, in conjunction with tagging the servers that we wish to special-case...
 
 ```ruby
-...  
-prefix = prov.get_option(:vm_prefix).to_s.strip  
-#  
-# Special case the any servers tagged with "server_role" - pemcg  
-#  
-# Get Provisioning Tags for VM Name  
-tags = prov.get_tags   
-#  
-# Check :server_role tag  
-#  
-server_role = tags[:server_role]  
-unless server_role.nil?  
-  derived_name = "#{prefix}#{server_role}$n{2}"  
-  $evm.object['vmname'] = derived_name  
-  $evm.log("info", "#{@method} - VM Name: <#{derived_name}>") if @debug  
-  #  
-  # Exit method  
-  #  
-  $evm.log("info", "#{@method} - EVM Automate Method Ended")  
-  exit MIQ_OK  
-end  
-#  
+...
+prefix = prov.get_option(:vm_prefix).to_s.strip
+#
+# Special case the any servers tagged with "server_role" - pemcg
+#
+# Get Provisioning Tags for VM Name
+tags = prov.get_tags
+#
+# Check :server_role tag
+#
+server_role = tags[:server_role]
+unless server_role.nil?
+  derived_name = "#{prefix}#{server_role}$n{2}"
+  $evm.object['vmname'] = derived_name
+  $evm.log("info", "#{@method} - VM Name: <#{derived_name}>") if @debug
+  #
+  # Exit method
+  #
+  $evm.log("info", "#{@method} - EVM Automate Method Ended")
+  exit MIQ_OK
+end
+#
 # End of special case for servers tagged with "server_role"
-#  
+#
 ...
 ```
 

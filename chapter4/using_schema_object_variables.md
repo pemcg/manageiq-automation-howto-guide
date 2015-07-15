@@ -58,12 +58,12 @@ Finally we'll run the new instance through Automate -> Simulation again, invokin
 We check automation.log, and see that the attributes have been retrieved from the instance schema, and the password has been decrypted.
 
 ```
-...  INFO -- : Invoking [inline] method [/ACME/General/Methods/get_credentials] with inputs [{}]
-...  INFO -- : <AEMethod [/ACME/General/Methods/get_credentials]> Starting
-...  INFO -- : <AEMethod get_credentials> get_credentials started
-...  INFO -- : <AEMethod get_credentials> Server: myserver, Username: admin, Password: p@ssword
-...  INFO -- : <AEMethod [/ACME/General/Methods/get_credentials]> Ending
-...  INFO -- : Method exited with rc=MIQ_OK
+...Invoking [inline] method [/ACME/General/Methods/get_credentials] with inputs [{}]
+...<AEMethod [/ACME/General/Methods/get_credentials]> Starting
+...<AEMethod get_credentials> get_credentials started
+...<AEMethod get_credentials> Server: myserver, Username: admin, Password: p@ssword
+...<AEMethod [/ACME/General/Methods/get_credentials]> Ending
+...Method exited with rc=MIQ_OK
 ```
 
 We can use this technique to securely store and retrieve credentials to connect to anything else in our Enterprise.

@@ -51,7 +51,7 @@ We edit _redhat\_CustomizeRequest_ to set the Options Hash key ```:vm_auto_start
 
 ```ruby
 #
-# Description: This method is used to Customize the RHEV, RHEV PXE, 
+# Description: This method is used to Customize the RHEV, RHEV PXE,
 # and RHEV ISO Provisioning Request
 #
 
@@ -59,7 +59,7 @@ We edit _redhat\_CustomizeRequest_ to set the Options Hash key ```:vm_auto_start
 prov = $evm.root["miq_provision"]
 
 # Set the autostart parameter to false so that RHEV won't start the VM directly
-prov.set_option(:vm_auto_start, [false, 0])                                                   
+prov.set_option(:vm_auto_start, [false, 0])
 
 $evm.log("info", "Provisioning ID:<#{prov.id}> Provision Request \
 ID:<#{prov.miq_provision_request.id}> Provision Type: <#{prov.provision_type}>")
@@ -95,7 +95,7 @@ NEW_DISK_SIZE = 30
 @debug = false
 
 begin
-  
+
   #------------------------------------------------------------------------------
   def call_rhev(servername, username, password, action, ref=nil, body_type=:xml, body=nil)
     #
@@ -105,7 +105,7 @@ begin
       url = ref if ref.include?('http')
     end
     url ||= "https://#{servername}#{ref}"
-    
+
     params = {
       :method => action,
       :url => url,
@@ -148,7 +148,7 @@ begin
     if @debug
       $evm.log(:info, "Found Storage: #{storage.name}")
       $evm.log(:info, "ID: #{storage.id}")
-      $evm.log(:info, "ems_ref: #{storage.ems_ref}") 
+      $evm.log(:info, "ems_ref: #{storage.ems_ref}")
       $evm.log(:info, "storage_domain_id: #{storage_domain_id}")
     end
   end
@@ -270,7 +270,7 @@ begin
   else
     $evm.root['ae_result'] = 'ok'
   end
-  
+
 rescue => err
   $evm.log(:error, "[#{err}]\n#{err.backtrace.join("\n")}")
   $evm.root['ae_result'] = 'error'
@@ -286,7 +286,7 @@ Now we edit our copied _Provision VM from Template_ State Machine Instance to ad
 
 #### Step 5
 
-Provision a VM. We should see the the VM is not immediately started after provisioning, and 
+Provision a VM. We should see the the VM is not immediately started after provisioning, and
 suitable messages in automation.log showing that our additonal Methods are working...
 <br> <br>
 

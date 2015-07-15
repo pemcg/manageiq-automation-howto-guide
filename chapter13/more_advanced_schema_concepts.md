@@ -9,8 +9,8 @@ The default message is _create_, and if we look at the schema that we created fo
 
 ![screenshot](images/screenshot3.png)
 
-<br> 
-We specify the Message when we create a Relationship to an Instance, by appending _#message_ after the URI to the Instance. If we don't explicitly specify a Message then _#create_ is implicitly used. 
+<br>
+We specify the Message when we create a Relationship to an Instance, by appending _#message_ after the URI to the Instance. If we don't explicitly specify a Message then _#create_ is implicitly used.
 
 For example we could create a Relationship to run our first _HelloWorld_ Instance, using a URI of either
 
@@ -18,7 +18,7 @@ For example we could create a Relationship to run our first _HelloWorld_ Instanc
 /ACME/General/Methods/HelloWorld
 ```
 
-or 
+or
 
 ```
 /ACME/General/Methods/HelloWorld#create
@@ -57,7 +57,7 @@ An example of an Assertion is found at the start of the Schema for the _Placemen
 
 
 ### Collect
-As we have seen, there is a parent - child relationship between the $evm.root object (the one whose instantiation took us into the Automation Engine), and subsequent objects created as a result of following schema relationships or by calling $evm.instantiate. 
+As we have seen, there is a parent - child relationship between the $evm.root object (the one whose instantiation took us into the Automation Engine), and subsequent objects created as a result of following schema relationships or by calling $evm.instantiate.
 
 If a child object has schema Attribute values, it can read or write to them by using its own $evm.object hash (e.g. we saw the use of ```$evm.object['username']``` in an earlier example). Sometimes we need to propagate these values back up the parent $evm.root object, and we do this using **Collections**.
 
@@ -68,7 +68,7 @@ We define a value to collect in the _Collect_ schema column, using the syntax ``
 
 <br>
 
-In this example schema, the child object has three schema attributes defined, _pre\_dialog\_name_, _dialog\_name_, and _state\_machine_. 
+In this example schema, the child object has three schema attributes defined, _pre\_dialog\_name_, _dialog\_name_, and _state\_machine_.
 
 If a local Method were to reference these it would use the syntax ```$evm.object['pre_dialog_name']```, ```$evm.object['dialog_name']``` or ```$evm.object['state_machine']```, however the **collect** value also makes these same Attribute values available to the root object as ```$evm.root['dialog_name']``` and ```$evm.root['state_machine']```.
 
