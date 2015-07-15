@@ -146,3 +146,6 @@ The key/value pairs that make up the Options Hash initially come from the Provis
 miq_provision_request.options[:cores_per_socket]
 miq_provision_request.options[:number_of_sockets]
 ```
+
+### Finding out Which Options are Available
+

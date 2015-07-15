@@ -1,7 +1,7 @@
 # CloudForms Automation How-To Guide
 
 ## What?
-This book is an introduction to working with the CloudForms Automation Engine.
+This book is an introduction and how-to guide to working with the CloudForms Automation Engine.
 
 The book is a very early work-in progress, so the format, layout, text content, images etc. will almost certainly change as the work progresses. Please feel free however to peruse the developing pages, and suggest changes or additional topics (to pemcg at bit63 dot com).
 
