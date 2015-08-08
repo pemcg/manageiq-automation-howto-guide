@@ -10,6 +10,7 @@ A **Schema** is made up of a number of elements, or _fields_. A schema often has
 ![Screenshot](images/screenshot4.png)
 
 <br>
+#### Adding or Editing a Schema
 Each field is added or edited in the schema editor by specifying the field _Type_ from a drop-down list...
 <br> <br>
 
@@ -22,15 +23,15 @@ Each field is added or edited in the schema editor by specifying the field _Type
 ![Screenshot](images/screenshot6.png)
 
 <br>
-We can define default values for fields in a class schema, which will be inherited by all instances created from the class, but can be optionally over-ridden in the schemas of any particular instance.
+We can define default values for fields in a class schema, which will be inherited by all instances created from the class, but can be optionally over-ridden in the schema of any particular instance.
 
 ### Instances
 
-An **Instance** is a specific "clone" of the generic class, and is the entity run in the context of _$evm.root_ by the Automation Engine. An Instance contains a copy of the Class schema but with actual values of the fields filled in.
+An **Instance** is a specific "clone" of the generic class, and is the entity run by the Automation Engine. An Instance contains a copy of the Class schema but with actual values of the fields filled in.
 
 ### Relationships
 
-One of the schema field types is **Relationship**, and these are links to other Instances elsewhere in the Automation Datastore. We often use relationships as a way of chaining Instances together, and relationship values can accept variable substitutions for flexibility as shown...
+One of the schema field types is **Relationship**, and these are links to other Instances elsewhere in the Automation Datastore. We often use relationships as a way of chaining Instances together, and relationship values can accept variable substitutions for flexibility, for example...
 <br> <br>
 
 ![Screenshot](images/screenshot7.png)
