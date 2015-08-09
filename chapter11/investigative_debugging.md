@@ -1,10 +1,10 @@
 ## Investigative Debugging
 
-As seen in [Working with Automation Objects](../chapter7/working_with_automation_objects.md), there is a lot of useful information in the various Service Models such as attributes, virtual columns, and associations, that we can use in our own Automation scripts. The challenge is sometimes knowing how and where to find it. Fortunately there are several ways of dumping or searching for the objects that we work with in the Automation Engine.
+As seen in [Working with Automation Objects](../chapter6/working_with_automation_objects.md), there is a lot of useful information in the various Service Models such as attributes, virtual columns, and associations, that we can use in our own Automation scripts. The challenge is sometimes knowing how and where to find it. Fortunately there are several ways of dumping or searching for the objects that we work with in the Automation Engine.
 
 ### InspectMe
 
-**InspectMe** is an Instance/Method combination supplied out-of-the-box that we can call to dump some attributes of $evm.root and its associated objects. As an example we can call InspectMe from a button on a _VM and Instance_ object as we did when running our AddCustomAttribute instance in [A More Advanced Example](../chapter5/a_more_advanced_example.md). As both the Instance and Method are in the _ManageIQ/System/Request_ namespace, we can call InspectMe directly rather than calling _Call\_Instance_ as an intermediary.
+**InspectMe** is an Instance/Method combination supplied out-of-the-box that we can call to dump some attributes of $evm.root and its associated objects. As an example we can call InspectMe from a button on a _VM and Instance_ object as we did when running our AddCustomAttribute instance in [A More Advanced Example](../chapter7/a_more_advanced_example.md). As both the Instance and Method are in the _ManageIQ/System/Request_ namespace, we can call InspectMe directly rather than calling _Call\_Instance_ as an intermediary.
 
 We can view the results of the InspectMe dump in automation.log...
 
