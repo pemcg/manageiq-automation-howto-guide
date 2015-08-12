@@ -14,7 +14,7 @@ All of the MiqAeService\* objects extend a common _MiqAeServiceModelBase_ class 
 .tag_assign(tag)
 ```
 
-(see section xxx on working with tags in Automate). Many of the Service Model objects have several levels of superclass, e.g.
+(also see [Using Tags from Automate](../chapter9/using_tags_from_automate.md)). Many of the Service Model objects have several levels of superclass, e.g.
 
 ```
 MiqAeServiceMiqProvisionRedhatViaPxe <

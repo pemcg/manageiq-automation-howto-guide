@@ -1,6 +1,6 @@
 ## Service Dialogs
 
-Service dialogs are used in several situations when working with CloudForms Automation, and we saw an example of creating a simple service dialog to use with a button in [A More Advanced Example](../chapter5/a_more_advanced_example.md). This example used two text boxes to prompt for simple text string values to pass to the Automation Method, but we can use several different element types when we create dialogs...
+Service dialogs are used in several situations when working with CloudForms Automation, and we saw an example of creating a simple service dialog to use with a button in [A More Advanced Example](../chapter7/a_more_advanced_example.md). This example used two text boxes to prompt for simple text string values to pass to the Automation Method, but we can use several different element types when we create dialogs...
 
 ![screenshot](images/screenshot3.png)
 

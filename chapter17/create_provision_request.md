@@ -93,7 +93,7 @@ Custom Attributes applied to the virtual machine through the Provider as part of
 
 #### miqCustomAttributes
 
-Custom Attributes applied to the virtual machine and stored in the CloudForms Management Engine database as part of provisioning. These VMDB-specific Custom Attributes are displayed on the VM details page (see also section xxx where we programmatically set a VM Custom Attribute).
+Custom Attributes applied to the virtual machine and stored in the CloudForms Management Engine database as part of provisioning. These VMDB-specific Custom Attributes are displayed on the VM details page (see also [A More Advanced Example](../chapter7/a_more_advanced_example.md)).
 
 ### Calling create\_provision\_request From a Service Item Definition
 
