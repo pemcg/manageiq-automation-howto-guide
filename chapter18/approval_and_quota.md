@@ -33,7 +33,7 @@ The Schema for the _ServiceProvisionRequestQuotaVerification_ State Machine is..
 ![screenshot](images/screenshot16.png)
 
 <br>
-We can see two immediate differences between this and the VM Provisioning quota checking mechanism. The first difference is that we can only set quota limits on groups rather than individual users, and the second is that we can now set soft and hard quotas (_warn\_group\_*_ and _max\_group\_*_ values).
+We can see two immediate differences between this and the VM Provisioning quota checking mechanism. The first difference is that we can only set quota limits on groups rather than individual users, and the second is that we can now set soft and hard quotas (_warn\_group\*_ and _max\_group\*_ values).
 
 
 The _Default_ Instance of the State Machine has the following schema field values...
@@ -41,14 +41,12 @@ The _Default_ Instance of the State Machine has the following schema field value
 ![screenshot](images/screenshot15.png)
 <br>
 
-We can see that the default _Manage Quotas_ Attribute value is _false_, and no _warn\_group\_*_ or _max\_group\_*_  Attributes have been defined.
+We can see that the default _Manage Quotas_ Attribute value is _false_, and no _warn\_group\*_ or _max\_group\*_  Attributes have been defined.
 
 To enable service provision quota enforcement we need to copy the _Default_ Instance (including path) to our own Domain and set the _Manage Quotas_ Attribute to be _true_ in the schema.
 
-*** also check whether we need to copy the methods ***
+We need to also set any of the _warn\*_ or _max\*_ quota limit Attributes in the schema. These quota settings will then apply to all Groups provisioning VMs from a Service Catalog.
 
-We need to also set any of the _warn\_*_ or _max\_*_ quota limit Attributes in the schema. These quota settings will then apply to all Groups provisioning VMs from a Service Catalog.
+If the service provisioning request would result in any of the _warn\*_ quotas being exceeded, then the requesting user is emailed using the _/Service/Provisioning/Email/ServiceTemplateProvisionRequest\_Warning_ email class.
 
-If the service provisioning request would result in any of the _warn\_*_ quotas being exceeded, then the requesting user is emailed using the _/Service/Provisioning/Email/ServiceTemplateProvisionRequest\_Warning_ email class.
-
-If the service provisioning request would result in any of the _max\_*_ quotas being exceeded, then the request is rejected, and the requesting user is emailed using the _/Service/Provisioning/Email/ServiceTemplateProvisionRequest\_Denied_ email class.
+If the service provisioning request would result in any of the _max\*_ quotas being exceeded, then the request is rejected, and the requesting user is emailed using the _/Service/Provisioning/Email/ServiceTemplateProvisionRequest\_Denied_ email class.

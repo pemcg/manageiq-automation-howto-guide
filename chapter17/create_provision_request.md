@@ -26,7 +26,7 @@ args << "owner_email=pemcg@bit63.com|owner_first_name=Peter|owner_last_name=McGo
 args << nil
 
 # arg6 = additionalValues (ws_values)
-args << nil
+args << "disk_size_gb=50|mountpoint=/opt"
 
 # arg7 = emsCustomAttributes
 args << nil

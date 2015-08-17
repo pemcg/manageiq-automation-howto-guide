@@ -11,7 +11,7 @@ Navigate to _Automate -> Customization_, select _Service Dialogs_ in the accordi
 ![Screenshot](images/screenshot1.png)
 
 <br> <br>
-Give the button a Label and Description of _Button_, check the Submit and Cancel options, and click _+ -> Add a new Tab to this Dialog_ (don't click the _Add_ button yet...)
+Give the Dialog a Label and Description of _Button_, check the Submit and Cancel options, and click _+ -> Add a new Tab to this Dialog_ (don't click the _Add_ button yet...)
 <br> <br>
 
 ![Screenshot](images/screenshot2.png)
