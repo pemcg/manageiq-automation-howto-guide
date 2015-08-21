@@ -66,7 +66,7 @@ The following table lists some commonly used element names for typical VM charac
 
 #### Creating the Service Dialog
 
-We know from the investigation above that we must name our service dialog elements: _vm\_name_, _service\_name_, _cores\_per\_socket_ and _vm\_memory_.
+We know from the investigation above that we must name our service dialog elements: _vm\_name_, _service\_name_, _option\_0\_cores\_per\_socket_ and _option\_0\_vm\_memory_.
 
 We'll create our service dialog in the same way that we did in [A More Advanced Example](../chapter7/a_more_advanced_example.md), but this time we'll create two boxes _Service and VM Names_, and _VM Characteristics_, each containing two elements...
 <br><br>
@@ -78,7 +78,7 @@ The _Service Name_ and _VM Name_ elements in the first box are both of type _Tex
 The _Number of CPUs_ element in the second box is of type _Drop Down List_...
 <br><br>
 
-![screenshot](images/screenshot18.png)
+![screenshot](images/screenshot18.png?)
 
 with a list populated as follows...
 
@@ -86,7 +86,7 @@ with a list populated as follows...
 
 The _VM Memory_ element in the second box is of type _Drop Down List_...
 
-![screenshot](images/screenshot20.png)
+![screenshot](images/screenshot20.png?)
 
 with a list populated as follows...
 
