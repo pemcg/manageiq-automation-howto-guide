@@ -1,5 +1,5 @@
 ## Using Tags from Automate
-Tags are a very powerful feature of CloudForms, and fortunately Automate has extensive support for tag-related operations.
+Tags are a very powerful feature of CloudForms/ManageIQ, and fortunately Automate has extensive support for tag-related operations.
 Tags are defined and used within the context of tag _categories_. We can check whether a category exists, and if not create it...
 
 ```ruby

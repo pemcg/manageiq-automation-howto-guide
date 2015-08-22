@@ -1,7 +1,7 @@
 ## Domains and Namespaces
 
 ### Domains
-A **Domain** is a collection of **Namespaces**, **Classes**, **Instances** and **Methods**. The ManageIQ upstream project provides a single _ManageIQ_ Domain for all supplied automation code, while Red Hat adds the supplemental _RedHat_ Domain containing added-value code for the CloudForms product.
+A **Domain** is a collection of **Namespaces**, **Classes**, **Instances** and **Methods**. The ManageIQ project provides a single _ManageIQ_ Domain for all supplied automation code, while Red Hat adds the supplemental _RedHat_ Domain containing added-value code for the CloudForms product.
 <br> <br>
 
 ![Screenshot](images/screenshot1.png)
@@ -42,7 +42,7 @@ We frequently need to customise code in the locked RedHat or ManageIQ Domains, f
 
 #### Importing Old Format Exports
 
-Domains are a new feature of the Automation engine for the ManageIQ _Anand_ release (CloudForms 3.1). Prior to this release all factory-supplied and user-created automation code was contained in a common structure, which made updates difficult when any user-added code was introduced (the user-supplied modifications needed exporting and re-importing/merging whenever an automation update was released).
+Domains are a new feature of the Automation engine for the ManageIQ _Anand_ release (CloudForms Management Engine 5.3). Prior to this release all factory-supplied and user-created automation code was contained in a common structure, which made updates difficult when any user-added code was introduced (the user-supplied modifications needed exporting and re-importing/merging whenever an automation update was released).
 
 To import a Datastore backup from a 3.0 and prior format Datastore, it must be converted to the new Datastore format first...
 

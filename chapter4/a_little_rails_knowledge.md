@@ -1,5 +1,5 @@
 ## A Little Rails Knowledge (goes a long way)
-CloudForms / ManageIQ is a Ruby on Rails application, and so the Automation Engine that we work in is created using Rails, but it cleverly hides most of the "Rails-ness" of the larger application from us. It is still however useful to have a slight understanding of some of the features and concepts of Rails.
+CloudForms/ManageIQ is a Ruby on Rails application, and so the Automation Engine that we work in is created using Rails, but it cleverly hides most of the "Rails-ness" of the larger application from us. It is still however useful to have a slight understanding of some of the features and concepts of Rails.
 
 ### Model-View-Controller
 Rails is a Model-View-Controller (MVC) application (see also [Ruby on Rails/Getting Started/Model-View-Controller](http://en.wikibooks.org/wiki/Ruby_on_Rails/Getting_Started/Model-View-Controller))

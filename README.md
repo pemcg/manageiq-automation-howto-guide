@@ -1,17 +1,17 @@
-# CloudForms Automation How-To Guide
+# CloudForms & ManageIQ Automation How-To Guide
 
 ## What?
-This book is an introduction and how-to guide to working with the CloudForms Automation Engine.
+This book is an introduction and how-to guide to working with the CloudForms/ManageIQ Automation Engine.
 
-The book is a work-in progress, so the format, layout, text content, images etc. will almost certainly change as the work progresses. Please feel free however to peruse the developing pages, and suggest changes or additional topics (to pemcg at bit63 dot com).
+The book is a work-in progress, so the format, layout, text content, images etc. will change as the work progresses. Please feel free however to peruse the developing pages, and suggest changes or additional topics (to pemcg at bit63 dot com).
 
 ## Why Write This?
-The Automation functionality of CloudForms / ManageIQ seems to be one of the challenging aspects of the product to master. It is (mostly) documented in the official manuals, but wading through these documents can be challenging in itself.
+The Automation functionality of CloudForms/ManageIQ seems to be one of the challenging aspects of the product to master. It is (mostly) documented in the official manuals, but wading through these documents can be challenging in itself.
 
 This book is an attempt to document my learning experiences with CloudForms Automation, and hopefully ease the process for others to master this incredibly powerful aspect of the product.
 
 ## Content
-I've tried to structure the book around the periodic revelations that I've had while learning CloudForms Automation, the _if only I'd known that weeks ago_ moments. In places this includes some deep code examination and theory, but hopefully this will help the understanding process (it did for me). I also try to illustrate the theory with coding examples.
+I've tried to structure the book around the periodic revelations that I've had while learning CloudForms Automation, the _if only I'd known that weeks ago_ moments. In places this includes some deep code examination and theory, but hopefully this will help the understanding process (it did for me). I also try to illustrate the theory with coding examples. The screenshots are taken from Red Hat CloudForms Management Engine 5.4, but most of the content also applies to the ManageIQ _Botvinnik_ release.
 
 
 ## Assumptions

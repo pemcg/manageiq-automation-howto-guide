@@ -1,6 +1,6 @@
 ##$evm and the Workspace
 
-When we program in the CloudForms Automation Engine, we access all of the CloudForms objects through a single _$evm_ variable. This is often referred to as the _Workspace_.
+When we program with the CloudForms/ManageIQ Automation Engine, we access all of the Automation objects through a single _$evm_ variable. This is often referred to as the _Workspace_.
 
 This variable is actually an instance of an _MiqAeService_ object (defined in _/var/www/miq/vmdb/lib/miq\_automation\_engine/engine/miq\_ae\_service.rb_ on the appliance), which contains over forty methods. In practice we generally only use a few of these methods, most commonly:
 
