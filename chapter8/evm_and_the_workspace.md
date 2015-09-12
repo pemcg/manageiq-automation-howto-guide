@@ -110,9 +110,17 @@ unless $evm.execute('tag_exists?', 'cost_centre', '3376')
 end
 ```
 
+```ruby
+to = 'pemcg@bit63.com'
+from = 'cloudforms@bit63.com'
+subject = 'Test Message'
+body = 'What an awesome cloud management product!'
+$evm.execute(:send_email, to, from, subject, body)
+```
+
 ### $evm.instantiate
 
-We can use $evm.instantiate to launch another Automation Instance programmatically from a running method, e.g.
+We can use $evm.instantiate to launch another Automation Instance programmatically from a running method, by specifying its URI within the Automate namespace e.g.
 
 ```ruby
 $evm.instantiate('/Discovery/Methods/ObjectWalker')
