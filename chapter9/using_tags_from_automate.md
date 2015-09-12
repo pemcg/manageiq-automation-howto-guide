@@ -25,6 +25,13 @@ vm = $evm.root['vm']
 vm.tag_assign("data_center/london")
 ```
 
+or we can remove a category/tag from an object...
+
+```ruby
+vm = $evm.root['vm']
+vm.tag_unassign("data_center/paris")
+```
+
 We can test whether an object (in this case a user group) is tagged with a particular tag...
 
 ```ruby
