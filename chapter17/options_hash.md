@@ -89,14 +89,35 @@ We can also set most options using the ```miq_provision_request.set_option``` me
 miq_provision_request.set_option(:subnet_mask,'255.255.254.0')
 ```
 
-...although some options that have a specific format have their own _mixin_ method...
+...although several options that have a specific format have their own 'set' method...
 
-```
-request.set_vlan
-request.set_dvs
-request.set_network_address_mode
-request.set_network_adapter
-```
+|   Options Hash key   |   'set' method   | 
+|:--------------------:|:------------------:|
+| :vm_notes | request.set_vm_notes |
+| :vlan | request.set_vlan |
+| :dvs | request.set_dvs |
+| :addr_mode | request.set_network_address_mode |
+| :placement_host_name | request.set_host |
+| :placement_ds_name | request.set_storage |
+| :placement_cluster_name | request.set_cluster |
+| :placement_rp_name | request.set_resource_pool |
+| :placement_folder_name | request.set_folder |
+| :pxe_server_id | request.set_pxe_server |
+| :pxe_image_id (Linux server provision) | request.set_pxe_image|
+| :pxe_image_id (Windows server provision) | request.set_windows_image|
+| :customization_template_id | request.set_customization_template |
+| :iso_image_id | request.set_iso_image |
+| :placement_availability_zone | request.set_availability_zone |
+| :cloud_tenant | request.set_cloud_tenant |
+| :cloud_network | request.set_cloud_network |
+| :cloud_subnet | request.set_cloud_subnet |
+| :security_groups | request.set_security_group |
+| :floating_ip_address | request.set_floating_ip_address |
+| :instance_type | request.set_instance_type |
+| :guest_access_key_pair | request.set_guest_access_key_pair |
+
+All but the first four of the 'set' methods listed above also perform a validity check that the value that we're setting is an eligible resource for the provisioning instance.
+
 
 Use one of the techniques discussed in [Investigative Debugging](../chapter11/investigative_debugging.md) to find out what key/value pairs are in the options hash to manipluate.
 
