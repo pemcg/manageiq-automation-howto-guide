@@ -69,13 +69,18 @@ vm = $evm.vmdb('vm').find_by_guid(guid)
 hosts = $evm.vmdb('host').find_tagged_with(:all => '/department/legal', :ns => '/managed')
 all_vms = $evm.vmdb('vm_or_template').find(:all)
 ```
+The service model object name can be specified in CamelCase (e.g. 'AvailabilityZone') or snake_case (e.g. 'availability\_zone')
 
 When called with two arguments, the second argument should be the Service Model ID to search for, i.e.
 
 ```
 owner = $evm.vmdb('user', evm_owner_id)
 ```
+We can also use more advanced query syntax to return results based on multiple conditions, i.e.
 
+```ruby
+$evm.vmdb('CloudTenant').find(:first, :conditions => ["ems_id = ? AND name = ?",  src_ems_id, tenant_name])
+```
 
 ### $evm.execute
 
