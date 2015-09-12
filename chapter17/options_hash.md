@@ -89,7 +89,7 @@ We can also set most options using the ```miq_provision_request.set_option``` me
 miq_provision_request.set_option(:subnet_mask,'255.255.254.0')
 ```
 
-...although several options that have a specific format have their own 'set' method...
+...although several options have their own 'set' method...
 
 |   Options Hash key   |   'set' method   | 
 |:--------------------:|:------------------:|
@@ -116,7 +116,7 @@ miq_provision_request.set_option(:subnet_mask,'255.255.254.0')
 | :instance_type | request.set_instance_type |
 | :guest_access_key_pair | request.set_guest_access_key_pair |
 
-All but the first four of the 'set' methods listed above also perform a validity check that the value that we're setting is an eligible resource for the provisioning instance.
+All but the first four of the 'set' methods listed above perform a validity check that the value that we're setting is an eligible resource for the provisioning instance.
 
 
 Use one of the techniques discussed in [Investigative Debugging](../chapter11/investigative_debugging.md) to find out what key/value pairs are in the options hash to manipluate.
