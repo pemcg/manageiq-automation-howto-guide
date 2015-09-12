@@ -89,7 +89,7 @@ We can also set most options using the ```miq_provision_request.set_option``` me
 miq_provision_request.set_option(:subnet_mask,'255.255.254.0')
 ```
 
-...although several options have their own 'set' method...
+Several Options Hash keys have their own 'set' method which we should use in place of request.set\_option...
 
 |   Options Hash key   |   'set' method   | 
 |:--------------------:|:------------------:|
