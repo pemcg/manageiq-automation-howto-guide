@@ -36,4 +36,27 @@ We can clone the _/System/Event_ namespace to our own domain, and add the corres
 <br>
 This Instance will now be run when the Alert is triggered.
 
+### Writing Generic Methods
 
+Our entry point into Automate governs the content of $evm.root - this is the object whose instantiation took us into Automate. If we write a generically useful method such as one that adds a disk to a VM, it might be useful to be able to call it in several ways, without necessarily knowing what $evm.root might contain.
+
+For example we might wish to add a disk during the provisioning workflow for the VM; from a button on an existing VM object in the WebUI, or even from an external RESTful call into the Automate Engine (passing the VM ID as an argument). The contents of $evm.root is different in each of these cases.
+
+For each of these cases we need to access the target VM Object in a different way, but we can use the ```$evm.root['vmdb_object_type']``` key to help us establish context...
+
+
+```ruby
+case $evm.root['vmdb_object_type']
+when 'miq_provision'                  # called from a VM provision workflow
+  vm = $evm.root['miq_provision'].destination
+  ...
+when 'vm'
+  vm = $evm.root['vm']                # called from a button
+  ...
+when 'automation_task'                # called from a RESTful automation request
+  attrs = $evm.root['automation_task'].options[:attrs]
+  vm_id = attrs[:vm_id]
+  vm = $evm.vmdb('vm').find_by_id(vm_id)
+  ...
+end
+```

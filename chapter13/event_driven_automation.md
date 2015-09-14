@@ -11,12 +11,12 @@ The first messages that we see in the log notify us of the _request\_created_ ev
 ```
 MiqAeEvent.build_evm_event >> event=<"request_created"> inputs=<{}>
 Instantiating [/System/Process/Event? \
-AutomationRequest%3A%3Aautomation_request=2000000000004& \
-MiqRequest%3A%3Amiq_request=2000000000004& \
-MiqServer%3A%3Amiq_server=2000000000001& \
-event_type=request_created& \
-object_name=Event& \
-vmdb_object_type=automation_request]
+	AutomationRequest%3A%3Aautomation_request=2000000000004& \
+	MiqRequest%3A%3Amiq_request=2000000000004& \
+	MiqServer%3A%3Amiq_server=2000000000001& \
+	event_type=request_created& \
+	object_name=Event& \
+	vmdb_object_type=automation_request]
 ```
 Here we see the event being triggered, which takes us into the standard entry point Instance...
 
@@ -110,7 +110,13 @@ The next event that we see is "request\_approved", which follows a very similar 
 
 ```
 MiqAeEvent.build_evm_event >> event=<"request_approved"> inputs=<{}>
-Instantiating [/System/Process/Event?AutomationRequest%3A%3Aautomation_request=2000000000004&MiqRequest%3A%3Amiq_request=2000000000004&MiqServer%3A%3Amiq_server=2000000000001&event_type=request_approved&object_name=Event&vmdb_object_type=automation_request]
+Instantiating [/System/Process/Event? \
+	AutomationRequest%3A%3Aautomation_request=2000000000004& \
+	MiqRequest%3A%3Amiq_request=2000000000004& \
+	MiqServer%3A3Amiq_server=2000000000001& \
+	event_type=request_approved& \
+	object_name=Event& \
+	vmdb_object_type=automation_request]
 Following Relationship [miqaedb:/System/Event/request_approved#create]
 Following Relationship [miqaedb:/System/Policy/request_approved#create]
 Following Relationship [miqaedb:/System/Process/parse_provider_category#create]
@@ -169,8 +175,7 @@ Q-task_id([automation_request_2000000000004]) \
 Finally we see the actual Task running...
 
 ```
-Q-task_id([automation_task_2000000000003]) \
-    Instantiating [/Bit63/Discovery/Methods/Test? \
+Q-task_id([automation_task_2000000000003]) Instantiating [/Bit63/Discovery/Methods/Test? \
     AutomationTask%3A%3Aautomation_task=2000000000003& \
     MiqServer%3A%3Amiq_server=2000000000001& \
     User%3A%3Auser=2000000000001& \

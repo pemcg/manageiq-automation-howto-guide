@@ -231,26 +231,4 @@ destination.unlink_storage
 destination.unregister
 ```
 
-### Writing Generic Methods
-
-If we write a generically useful Method such as one that adds a disk to a VM, it is useful to be able to call it in several ways. We might wish to add a disk during the provisioning workflow for the VM, from a button on an existing VM object in the WebUI, or even from an external RESTful call into the Automate Engine (passing the VM ID as an argument).
-
-For each of these cases we need to access the target VM Object in a different way, but we can use the ```$evm.root['vmdb_object_type']``` key to help us establish context...
-
-
-```ruby
-case $evm.root['vmdb_object_type']
-when 'miq_provision'                  # called from a VM provision workflow
-  vm = $evm.root['miq_provision'].destination
-  ...
-when 'vm'
-  vm = $evm.root['vm']                # called from a button
-  ...
-when 'automation_task'                # called from a RESTful automation request
-  attrs = $evm.root['automation_task'].options[:attrs]
-  vm_id = attrs[:vm_id]
-  vm = $evm.vmdb('vm').find_by_id(vm_id)
-  ...
-end
-```
 
