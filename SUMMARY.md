@@ -22,7 +22,7 @@
 * [Ways of Entering Automation](chapter12/ways_of_entering_automation.md)
 * [Event Processing](chapter13/event_processing.md)
    * [Event-Driven Automation](chapter13/event_driven_automation.md)
-   * [Extending Event Handling](extending_event_handling.md)
+   * [Extending Event Handling](chapter13/extending_event_handling.md)
 * [State Machines](chapter14/state_machines.md)
 * [More Advanced Schema Concepts](chapter15/more_advanced_schema_concepts.md)
 * [Requests and Tasks](chapter16/requests_and_tasks.md)
