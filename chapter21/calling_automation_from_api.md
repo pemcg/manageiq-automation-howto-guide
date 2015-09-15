@@ -1,6 +1,6 @@
 ## Calling Automation from the RESTful API
 
-We can call any Automation Instance from the RESTful API, but issuing a _POST_ call to /api/automation_requests, and enclosing a JSON-encoded parameter hash such as the following...
+We can call any Automation Instance from the RESTful API, by issuing a _POST_ call to /api/automation_requests, and enclosing a JSON-encoded parameter hash such as the following...
 
 ```ruby
 post_params = {
@@ -27,16 +27,16 @@ rest_return = RestClient::Request.execute(method: :post, url: url + query, :user
 result = JSON.parse(rest_return)
 ```
 
-The request ID is passed to us in the result from the initial call...
+The request ID is returned to us in the result from the initial call...
 
 ```ruby
 request_id = result['results'][0]['id']
-query = "/api/automation_requests/#{request_id}"
 ```
 
 ...and we call poll this to check on status...
 
 ```ruby
+query = "/api/automation_requests/#{request_id}"
 rest_return = RestClient::Request.execute(method: :get, url: url + query, :user => username, \
                 :password => password, :headers => {:accept => :json}, verify_ssl: false)
 result = JSON.parse(rest_return)
