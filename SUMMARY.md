@@ -3,7 +3,7 @@
 * [Introduction](README.md)
 * [The Automation Datastore](chapter1/the_automation_datastore.md)
    * [Domains and Namespaces](chapter1/domains_and_namespaces.md)
-   * [Classes, Schemas and Instances](chapter1/classes_schemas_and_instances.md)
+   * [Classes, Schemas, Instances, Relationships](chapter1/classes_schemas_and_instances.md)
    * [Methods and Relationships](chapter1/methods.md)
 * [Writing & Running Our Own Scripts](chapter2/writing_and_running_our_own_scripts.md)
    * [Creating the Class](chapter2/creating_the_class.md)
