@@ -1,4 +1,4 @@
-## Classes, Schemas, Instances, Relationships
+## Classes, Schemas, Instances & Relationships
 
 ### Classes
 A **Class** is similar to a template, it contains a generic definition for a set of automation operations. Each Class has a **Schema**, that defines the variables, states, relationships or methods that **Instances** of the class will use.
