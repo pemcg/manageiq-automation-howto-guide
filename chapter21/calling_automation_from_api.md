@@ -50,6 +50,9 @@ until request_state == "finished"
   sleep 3
 end
 ```
+
+#### Returning Results to the Caller
+
 The _request_ task's options hash is included in the return from the RestClient::Request call, and we can use this to our advantage, by using set_option to add return data in the form of key/value pairs to the options hash from our called Automation method. 
 
 For example from the _called_ (Automate) method...
