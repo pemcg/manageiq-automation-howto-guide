@@ -1,7 +1,7 @@
 ## Ways of Entering Automation
 
 So far we have launched Automation scripts in two ways; from **Simulate**, and from a **Custom Button**. Both of these methods can call an Automation Instance in either
-_/System/Request_ or _/System/Event_ in the Automation Datastore, and in the examples we've seen so far we've called _/System/Request/Call\_Instance_ and _/System/Process/InspectMe_.
+_/System/Request_ or _/System/Event_ in the Automation Datastore, and in the examples we've seen so far we've called _/System/Request/Call\_Instance_ and _/System/Request/InspectMe_.
 
 In fact all but one of the ways of invoking Automation must call an entry point Instance in either
 _/System/Request_ or _/System/Event_; the exception being when calling Automation from the **RESTful API**, which can invoke any Instance anywhere in the Automation Datastore.
