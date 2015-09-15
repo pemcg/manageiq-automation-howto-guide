@@ -6,7 +6,7 @@ We can call any Automation Instance from the RESTful API, but issuing a _put_ ca
 post_params = {
   :version => '1.1',
   :uri_parts => {
-    :namespace => ACME/General',
+    :namespace => 'ACME/General',
     :class => 'Methods',
     :instance => 'HelloWorld'
   },
@@ -52,18 +52,29 @@ end
 ```
 The _request_ task's options hash is included in the return from the RestClient::Request call, and we can use this to our advantage, by using set_option to add return data in the form of key/value pairs to the options hash from our called Automation method. 
 
-From the _called_ (Automate) method...
+For example from the _called_ (Automate) method...
 
 ```ruby
 automation_request = $evm.root['automation_task'].automation_request
 automation_request.set_option(:return, JSON.generate({:status => 'success', :return => some_data}))
 ```
 
-From the _calling_ (external) method...
+...and from the _calling_ (external) method...
 
 ```ruby
 puts "Results: #{result['options']['return'].inspect}"
 ```
+
+Using this technique we can write our own pseudo-API calls for CloudForms to handle anything that the standard RESTful API doesn't support. We implement the "API" using a standard Automate method, call it using the RESTful automate call, and we can pass parameters to, and retrieve result back from the called method.
+
+#### Authentication and auto\_approve
+
+When we make a RESTful call, we must authenticate using a valid username and password. This user must be an admin or equivalent however if we wish to specify _:auto\_approve => true_ in our calling arguments (only admins can auto-approve Automation requests).
+
+If we try making a RESTful call as a non-admin user, the Automation request will be blocked pending approval (as expected), but there seems to be no way for an admin user to approve such a request through the WebUI. We would need to write our own approval code.
+
+### Generic run_via_api Script Example
+
 The following is a generic _run\_via\_api_ script that can be used to call any Automation method, using arguments to pass server name, credentials, and URI parameters to the Instance t be called...
 
 ```
@@ -127,7 +138,7 @@ begin
     opts.on('-i', '--instance ', 'Instance') do |instance|
       options[:instance] = instance
     end
-    opts.on('-P', '--parameter <key,value>', Array, 'Parameter (key => value pair) for the instance') do |parameters|
+    opts.on('-P', '--parameter <key,value>', Array, 'Parameter (key,value pair) for the instance') do |parameters|
       unless parameters.length == 2
         puts "Parameter argument must be key,value list"
         exit!
