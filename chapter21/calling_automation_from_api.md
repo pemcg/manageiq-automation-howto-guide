@@ -1,6 +1,6 @@
 ## Calling Automation from the RESTful API
 
-We can call any Automation Instance from the RESTful API, but issuing a _put_ call to /api/automation_requests, and enclosing a JSON-encoded parameter hash such as the following...
+We can call any Automation Instance from the RESTful API, but issuing a _POST_ call to /api/automation_requests, and enclosing a JSON-encoded parameter hash such as the following...
 
 ```ruby
 post_params = {
