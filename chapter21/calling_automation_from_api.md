@@ -253,7 +253,7 @@ rescue => err
 end
 ```
 
-Run the script as...
+Edit the default values for server, username and password if required. Run the script as...
 
 ```
 ./run_via_api.rb -s 192.168.1.1 -u cfadmin -p password -d ACME -n General \
