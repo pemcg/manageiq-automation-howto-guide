@@ -61,7 +61,7 @@ In the called method we see the arguments visible in several places; in the task
     |    object_walker:  $evm.root['automation_task'].options[:attrs] = {:lunch=>"sandwich", :dinner=>"steak", :userid=>"admin"}  (type: Hash)
     object_walker:  $evm.root['dinner'] = steak  (type: String)
     object_walker:  $evm.root['lunch'] = sandwich  (type: String)
-    object_walker:  $evm.object'dinner'] = steak  (type: String)
+    object_walker:  $evm.object['dinner'] = steak  (type: String)
     object_walker:  $evm.object['lunch'] = sandwich  (type: String)
 ```
 
