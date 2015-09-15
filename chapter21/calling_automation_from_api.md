@@ -146,7 +146,7 @@ begin
     exit!
   end
   if options[:server].nil?
-    server = "cloudforms01"
+    server = "cloudforms_server"
   else
     server = options[:server]
   end
