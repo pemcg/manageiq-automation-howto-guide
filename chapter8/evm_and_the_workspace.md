@@ -68,8 +68,9 @@ vm = $evm.vmdb('vm').find_by_name(vm_name)
 vm = $evm.vmdb('vm').find_by_guid(guid)
 hosts = $evm.vmdb('host').find_tagged_with(:all => '/department/legal', :ns => '/managed')
 all_vms = $evm.vmdb('vm_or_template').find(:all)
+clusters = $evm.vmdb(:EmsCluster).all
 ```
-The service model object name can be specified in CamelCase (e.g. 'AvailabilityZone') or snake_case (e.g. 'availability\_zone')
+The service model object name can be specified in CamelCase (e.g. 'AvailabilityZone') or snake_case (e.g. 'availability\_zone'), and can be a string or symbol.
 
 When called with two arguments, the second argument should be the Service Model ID to search for, i.e.
 
