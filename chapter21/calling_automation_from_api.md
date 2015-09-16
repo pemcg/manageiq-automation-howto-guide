@@ -70,15 +70,15 @@ puts "Results: #{result['options']['return'].inspect}"
 
 Using this technique we can write our own pseudo-API calls for CloudForms to handle anything that the standard RESTful API doesn't support. We implement the "API" using a standard Automate method, call it using the RESTful automate call, and we can pass parameters to, and retrieve result back from the called method.
 
-#### Authentication and auto\_approve
+#### Authentication and _auto\_approve_
 
 When we make a RESTful call, we must authenticate using a valid username and password. This user must be an admin or equivalent however if we wish to specify _:auto\_approve => true_ in our calling arguments (only admins can auto-approve Automation requests).
 
-If we try making a RESTful call as a non-admin user, the Automation request will be blocked pending approval (as expected), but there seems to be no way for an admin user to approve such a request through the WebUI. We would need to write our own approval code.
+If we try making a RESTful call as a non-admin user, the Automation request will be blocked pending approval (as expected). There seems to be no way however for an admin user to approve such a request through the WebUI (BZ #1229818), so currently if we want to submit an automation request as a non-admin user, we would need to write our own approval code.
 
-### Generic run_via_api Script Example
+### Generic run\_via\_api Script Example
 
-The following is a generic _run\_via\_api_ script that can be used to call any Automation method, using arguments to pass server name, credentials, and URI parameters to the Instance t be called...
+The following is a generic _run\_via\_api_ script that can be used to call any Automation method, using arguments to pass server name, credentials, and URI parameters to the Instance to be called...
 
 ```
 Usage: run_via_api.rb [options]
