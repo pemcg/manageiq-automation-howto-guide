@@ -16,7 +16,7 @@ post_params = {
 }.to_json
 ```
 
-We can call Automate from an external Ruby script by using the rest-client gem...
+We can call the RESTful API from an external Ruby script by using the rest-client gem...
 
 ```ruby
 url = 'https://cloudforms_server'
