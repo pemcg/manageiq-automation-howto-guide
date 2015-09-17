@@ -35,13 +35,6 @@ We can optionally define a maximum number of retries that the Stage/State is all
 #### Max Time
 We can optionally define a maximum time (in seconds) that the State will be permitted to run for, before being terminated.
 
-### State Machine Workflow
-We can look at the workflow through a State Machine using the diagram in the official CloudForms _Lifecycle and Automation Guide_ (section 4.3. STATE MACHINES)...
-
-![state machine logic](images/state_machine_logic.png)
-
-Here we see that any error condition caught by the _on\_error_ method results in an abort of the State Machine. [BZ #1215990](https://bugzilla.redhat.com/show_bug.cgi?id=1215990) should allow us to set _$evm.root['ae\_result'] = 'continue'_ in an on\_error method when implemented so that the method can take remedial action to correct an error, and continue with the State Machine.
-
 #### State Machine Example
 We can look at the out-of-the-box _/Infrastructure/VM/Provisoning/StateMachines/ProvisionRequestApproval/Default_ State Machine Instance as an example, and see that it defines an attribute _max\_vms_, and has just two Stages/States; _ValidateRequest_ and _ApproveRequest_. 
 
@@ -103,7 +96,14 @@ step = $evm.root['ae_state']
 if $evm.root['ae_status_state'] == "on_entry"
   ...
 ```
+### State Machine Workflow
+We can look at the workflow through a State Machine using the diagram in the official CloudForms _Lifecycle and Automation Guide_ (section 4.3. STATE MACHINES)...
 
+![state machine logic](images/state_machine_logic.png)
+
+Here we see that any error condition caught by the _on\_error_ method results in an abort of the State Machine. [RFE BZ #1215990](https://bugzilla.redhat.com/show_bug.cgi?id=1215990) will allow us to set _$evm.root['ae\_result'] = 'continue'_ in an _on\_error_ method so that the method can take remedial action to correct an error, and continue with the State Machine.
+
+The same BZ will also let us set _$evm.root['ae\_next\_state'] = state\_name_ to allow a Stage/State to advance forward to a named future Stage/State, or for an _on\_entry_ method to call _$evm.root['ae\_result'] = 'skip'_ to advance straight to the next Stage/State. This will allow for intelligent _on\_entry_ pre-processing, and to advance if pre-conditions are already met.
 
 ### Saving Variables Between State Retries
 
