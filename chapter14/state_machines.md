@@ -9,7 +9,7 @@ If we look at all of the attributes that we can add for a schema field, in addit
 
 ![screenshot](images/screenshot2.png)
 
-### Columns
+### Schema Columns
 The schema columns for a State Machine are the same as in any other class schema, but we use more of them.
 
 #### Value (Instance)/Default Value (Schema)
@@ -18,7 +18,7 @@ As in any other class schema, this is a _relationship_ to an _instance_ to be ru
 #### On Entry
 We can optionally define an **On Entry** _method_ to be run before the "main" method (the _Value_ entry) is run. We can use this to setup or test for pre-conditions to the State, for example if the "main" method adds a tag to an object, the _On Entry_ method might check that the category and tag exist.
 
-The method name can be a relative path (i.e. just the method name), or namespace/class/method syntax.
+The method name can be specified as a relative path to the local class (i.e. just the method name), or in namespace/class/method syntax.
 
 Note - some State Machines use an **On Entry** _method_ instead of a **Value** _relationship_ to perform the main work of the State. This is useful when we wish to create self-contained State Machines with the State Machine instance and its associated methods all in one class.
 
