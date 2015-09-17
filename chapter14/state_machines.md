@@ -9,28 +9,38 @@ If we look at all of the attributes that we can add for a schema field, in addit
 
 ![screenshot](images/screenshot2.png)
 
-The last five columns in the schema field are specifically used when we define State Machines.
+### Columns
+The schema columns for a State Machine are the same as in any other class schema, but we use more of them.
+
+#### Value (Instance)/Default Value (Schema)
+As in any other class schema, this is a _relationship_ to an _instance_ to be run to perform the main processing of the State/Stage. Surprising as it may seem, we don't necessarily need a value specified here for a State Machine (see _On Entry_ below).
 
 #### On Entry
-We can optionally define an _On Entry_ method to be run before the "main" method (the _Value_ entry) is run. We can use this to setup or test for pre-conditions to the State, for example if the "main" method adds a tag to an object, the _On Entry_ method might check that the category and tag exist.
+We can optionally define an **On Entry** _method_ to be run before the "main" method (the _Value_ entry) is run. We can use this to setup or test for pre-conditions to the State, for example if the "main" method adds a tag to an object, the _On Entry_ method might check that the category and tag exist.
 
-Note - some State Machines use _On Entry_ instead of _Value_ to specifiy the name of the "main" method of the State.
+The method name can be a relative path (i.e. just the method name), or namespace/class/method syntax.
+
+Note - some State Machines use an **On Entry** _method_ instead of a **Value** _relationship_ to perform the main work of the State. This is useful when we wish to create self-contained State Machines with the State Machine instance and its associated methods all in one class.
 
 #### On Exit
-We can optionally define an _On Exit_ method to be run if the "main" method (the _Value_ entry) returns ```$evm.root['ae_result'] = 'ok'```
+We can optionally define an **On Exit** _method_ to be run if the "main" method (the _Value_ relationship/instance or _On Entry_ method) returns ```$evm.root['ae_result'] = 'ok'```
 
 #### On Error
-We can optionally define an _On Error_ method to be run if the "main" method (the _Value_ entry) returns ```$evm.root['ae_result'] = 'error'```
+We can optionally define an **On Error** _method_ to be run if the "main" method (the _Value_ relationship/instance or _On Entry_ method) returns ```$evm.root['ae_result'] = 'error'```
 
 
 #### Max Retries
-We can optionally define a maximum number of retries that a State's "main" method is allowed to attempt. Defining this in the State rather than the method itself simplifies the method coding, and makes it easier to write generic methods that can be re-used in a number of State Machines.
+We can optionally define a maximum number of retries that the Stage/State is allowed to attempt. Defining this in the State rather than the method itself simplifies the method coding, and makes it easier to write generic methods that can be re-used in a number of State Machines.
 
 #### Max Time
 We can optionally define a maximum time (in seconds) that the State will be permitted to run for, before being terminated.
 
 #### Example
-We can look at the out-of-the-box _/Infrastructure/VM/Provisoning/StateMachines/ProvisionRequestApproval/Default_ State Machine Instance as an example, and see that it defines an attribute _max\_vms_, and has just two steps; _ValidateRequest_ and _ApproveRequest_. The greyed-out values for on\_entry and on\_error are defined as Default Values in the Class schema rather than the Instance.
+We can look at the out-of-the-box _/Infrastructure/VM/Provisoning/StateMachines/ProvisionRequestApproval/Default_ State Machine Instance as an example, and see that it defines an attribute _max\_vms_, and has just two Stages/States; _ValidateRequest_ and _ApproveRequest_. 
+
+There is no _Value_ relationship specified for either State/Stage; each of these States runs a locally defined method (in the same _/Infrastructure/VM/Provisoning/StateMachines/ProvisionRequestApproval/_ class) to perform the state-related processing.
+
+The greyed-out values for _on\_entry_ and _on\_error_ are defaults defined in the Class schema rather than the Instance.
 <br> <br>
 
 ![screenshot](images/screenshot1.png)
