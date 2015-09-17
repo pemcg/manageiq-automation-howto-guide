@@ -49,10 +49,11 @@ We can retrieve the list of all tags assigned to an object...
 group_tags = group.tags
 ```
 
-...or the first tag in a particular category (in this case using the tag name as a symbol)...
+...or the tags in a particular category (in this case using the tag name as a symbol)...
 
 ```ruby
-department_tag = group.tags(:department).first
+all_department_tags = group.tags(:department)
+first_department_tag = group.tags(:department).first
 ```
 We can search for all objects tagged with a particular tag...
 

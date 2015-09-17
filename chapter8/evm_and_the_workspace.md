@@ -64,11 +64,10 @@ $evm.vmdb is a useful method that can be used to retrieve any _Service Model_ ob
 When called with a single argument, the method returns the generic Service Model object type, and we can use any of the Rails helper methods (see [A Little Rails Knowledge](../chapter4/a_little_rails_knowledge.md)) to search by database column name, i.e.
 
 ```
-vm = $evm.vmdb('vm').find_by_name(vm_name)
-vm = $evm.vmdb('vm').find_by_guid(guid)
+vm = $evm.vmdb('vm').find_by_id(vm_id)
 hosts = $evm.vmdb('host').find_tagged_with(:all => '/department/legal', :ns => '/managed')
-all_vms = $evm.vmdb('vm_or_template').find(:all)
-clusters = $evm.vmdb(:EmsCluster).all
+clusters = $evm.vmdb(:EmsCluster).find(:all)
+$evm.vmdb(:VmOrTemplate).find_each do | vm |
 ```
 The service model object name can be specified in CamelCase (e.g. 'AvailabilityZone') or snake_case (e.g. 'availability\_zone'), and can be a string or symbol.
 
@@ -82,6 +81,12 @@ We can also use more advanced query syntax to return results based on multiple c
 ```ruby
 $evm.vmdb('CloudTenant').find(:first, :conditions => ["ems_id = ? AND name = ?",  src_ems_id, tenant_name])
 ```
+Question: What's the difference between 'vm' (:Vm) and 'vm\_or\_template' (:VmOrTemplate)?
+
+Answer: Searching for a 'vm\_or\_template' (MiqAeServiceVmOrTemplate) object will return VMs _or_ Templates that satisfy the search criteria, whereas search for a 'vm' object (MiqAeServiceVm) will only return VMs. Less obviously though, MiqAeServiceVm is an extension to MiqAeServiceVmOrTemplate that adds 2 additional methods that are not relevant for templates: _vm.add\_to\_service_ and _vm.remove\_from\_service_. 
+
+Both MiqAeServiceVmOrTemplate and MiqAeServiceVm have a boolean attribute _template_, that is _true_ for a VMware/RHEV Template, and _false_ for a VM.
+
 
 ### $evm.execute
 
