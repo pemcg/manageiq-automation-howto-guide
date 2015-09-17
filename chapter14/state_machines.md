@@ -35,7 +35,14 @@ We can optionally define a maximum number of retries that the Stage/State is all
 #### Max Time
 We can optionally define a maximum time (in seconds) that the State will be permitted to run for, before being terminated.
 
-#### Example
+### State Machine Workflow
+We can look at the workflow through a State Machine using the diagram in the official CloudForms _Lifecycle and Automation Guide_ (section 4.3. STATE MACHINES)...
+
+![state machine logic](images/state_machine_logic.png)
+
+Here we see that any error condition caught by the _on\_error_ method results in an abort of the State Machine. RFE BZ #1215990 should allow us to set _$evm.root['ae___result'] = 'continue'_ when implemented so that the _on\_error_ processing can take remedial action to correct an error, and continue with the State Machine.
+
+#### State Machine Example
 We can look at the out-of-the-box _/Infrastructure/VM/Provisoning/StateMachines/ProvisionRequestApproval/Default_ State Machine Instance as an example, and see that it defines an attribute _max\_vms_, and has just two Stages/States; _ValidateRequest_ and _ApproveRequest_. 
 
 There is no _Value_ relationship specified for either State/Stage; each of these States runs a locally defined method (in the same _/Infrastructure/VM/Provisoning/StateMachines/ProvisionRequestApproval/_ class) to perform the state-related processing.
@@ -49,7 +56,7 @@ The greyed-out values for _on\_entry_ and _on\_error_ are defaults defined in th
 
 #### $evm.root['ae\_result']
 
-A Method run within the context of a State Machine can return a completion status back to the Automate Engine, which can then decide which next action to perform (such as whether to advance to the next  step).
+A method run within the context of a State Machine can return a completion status back to the Automate Engine, which can then decide which next action to perform (such as whether to advance to the next State/Stage).
 
 We do this by setting one of three values in the ```ae_result``` hash key...
 
