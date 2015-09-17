@@ -40,7 +40,7 @@ We can look at the workflow through a State Machine using the diagram in the off
 
 ![state machine logic](images/state_machine_logic.png)
 
-Here we see that any error condition caught by the _on\_error_ method results in an abort of the State Machine. RFE BZ #1215990 should allow us to set _$evm.root['ae\_result'] = 'continue'_ when implemented so that the _on\_error_ processing can take remedial action to correct an error, and continue with the State Machine.
+Here we see that any error condition caught by the _on\_error_ method results in an abort of the State Machine. [BZ #1215990](https://bugzilla.redhat.com/show_bug.cgi?id=1215990) should allow us to set _$evm.root['ae\_result'] = 'continue'_ in an on\_error method when implemented so that the method can take remedial action to correct an error, and continue with the State Machine.
 
 #### State Machine Example
 We can look at the out-of-the-box _/Infrastructure/VM/Provisoning/StateMachines/ProvisionRequestApproval/Default_ State Machine Instance as an example, and see that it defines an attribute _max\_vms_, and has just two Stages/States; _ValidateRequest_ and _ApproveRequest_. 
