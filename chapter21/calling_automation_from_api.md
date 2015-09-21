@@ -37,14 +37,24 @@ request_id = result['results'][0]['id']
 
 ```ruby
 query = "/api/automation_requests/#{request_id}"
-rest_return = RestClient::Request.execute(method: :get, url: url + query, :user => username, \
-                :password => password, :headers => {:accept => :json}, verify_ssl: false)
+rest_return = RestClient::Request.execute(
+								method: :get, 
+								url: url + query, 
+								:user => username,
+								:password => password,
+								:headers => {:accept => :json},
+								verify_ssl: false)
 result = JSON.parse(rest_return)
 request_state = result['request_state']
 until request_state == "finished"
   puts "Checking completion state..."
-  rest_return = RestClient::Request.execute(method: :get, url: url + query, :user => username, \
-                  :password => password, :headers => {:accept => :json}, verify_ssl: false)
+  rest_return = RestClient::Request.execute(
+  								method: :get,
+  								url: url + query,
+  								:user => username,
+  								:password => password,
+  								:headers => {:accept => :json},
+  								verify_ssl: false)
   result = JSON.parse(rest_return)
   request_state = result['request_state']
   sleep 3
@@ -222,9 +232,14 @@ begin
   #
   # Issue the automation request
   #
-  rest_return = RestClient::Request.execute(method: :post, url: url + query, :user => username, \
-                :password => password, :headers => {:accept => :json}, :payload => post_params, \
-                verify_ssl: false)
+  rest_return = RestClient::Request.execute(
+  						method: :post,
+  						url: url + query,
+  						:user => username,
+  						:password => password,
+  						:headers => {:accept => :json},
+  						:payload => post_params,
+  						verify_ssl: false)
   result = JSON.parse(rest_return)
   #
   # get the request ID
@@ -234,14 +249,24 @@ begin
   #
   # Now we have to poll the automate engine to see when the request_state has changed to 'finished'
   #
-  rest_return = RestClient::Request.execute(method: :get, url: url + query, :user => username, \
-                :password => password, :headers => {:accept => :json}, verify_ssl: false)
+  rest_return = RestClient::Request.execute(
+  						method: :get,
+  						url: url + query,
+  						:user => username,
+  						:password => password,
+  						:headers => {:accept => :json},
+  						verify_ssl: false)
   result = JSON.parse(rest_return)
   request_state = result['request_state']
   until request_state == "finished"
     puts "Checking completion state..."
-    rest_return = RestClient::Request.execute(method: :get, url: url + query, :user => username, \
-                  :password => password, :headers => {:accept => :json}, verify_ssl: false)
+    rest_return = RestClient::Request.execute(
+    					method: :get, 
+    					url: url + query,
+    					:user => username,
+    					:password => password,
+    					:headers => {:accept => :json},
+    					verify_ssl: false)
     result = JSON.parse(rest_return)
     request_state = result['request_state']
     sleep 3
