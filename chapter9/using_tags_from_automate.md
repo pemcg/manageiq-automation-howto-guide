@@ -3,17 +3,21 @@ Tags are a very powerful feature of CloudForms/ManageIQ, and fortunately Automat
 Tags are defined and used within the context of tag _categories_. We can check whether a category exists, and if not create it...
 
 ```ruby
-unless $evm.execute('category_exists?', "data_centre")
-  $evm.execute('category_create', :name => "data_centre", \
-               :single_value => false, :description => "Data Centre")
+unless $evm.execute('category_exists?', 'data_centre')
+  $evm.execute('category_create',
+  					:name => 'data_centre',
+  					:single_value => false,
+  					:description => "Data Centre")
 end
 ```
 We can also check whether a tag exists within a category, and if not create it...
 
 ```ruby
 unless $evm.execute('tag_exists?', 'data_centre', 'london')
-  $evm.execute('tag_create', "data_centre", :name => 'london', \
-                :description => 'London East End')
+  $evm.execute('tag_create', 
+  					'data_centre',
+  					:name => 'london',
+  					:description => 'London East End')
 end
 ```
 Note that tag and category names must be lower-case (optionally) with underscores, with a maximum length of 30 characters. The tag and category descriptions can be free text.
@@ -89,9 +93,9 @@ If we want to find a particular tag's name, given its description, we can use mo
 ```ruby
 department_classification = $evm.vmdb(:classification).find_by_name('department')
 classification_id = department_classification.id
-tag = $evm.vmdb('classification').find(:first, \
-				:conditions => ["parent_id = ? AND description = ?", \
-				 classification_id, 'Human Resources'])
+tag = $evm.vmdb('classification').find(:first,
+									   :conditions => ["parent_id = ? AND description = ?",
+									   classification_id, 'Human Resources'])
 tag_name = tag.name
 ```
 
