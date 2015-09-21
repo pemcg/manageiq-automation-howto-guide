@@ -21,9 +21,14 @@ We can call the RESTful API from an external Ruby script by using the rest-clien
 ```ruby
 url = 'https://cloudforms_server'
 query = '/api/automation_requests'
-rest_return = RestClient::Request.execute(method: :post, url: url + query, :user => username, \
-                :password => password, :headers => {:accept => :json}, :payload => post_params, \
-                verify_ssl: false)
+rest_return = RestClient::Request.execute(
+								method: :post,
+								url: url + query,
+								:user => username,
+								:password => password,
+								:headers => {:accept => :json},
+								:payload => post_params,
+								verify_ssl: false)
 result = JSON.parse(rest_return)
 ```
 
