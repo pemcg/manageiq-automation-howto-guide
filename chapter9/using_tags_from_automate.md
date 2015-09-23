@@ -99,7 +99,7 @@ tag = $evm.vmdb('classification').find(:first,
 tag_name = tag.name
 ```
 
-The tag names aren't in the _classifications_ table (just the tag description). When we call _tag.name_, Rails is running an implicit search of the _tags_ table for us, based on the tag.id...
+The tag names aren't in the _classifications_ table (just the tag description). When we call _tag.name_, Rails runs an implicit search of the _tags_ table for us, based on the tag.id...
 
 ```
 irb(main):051:0> tag.name
