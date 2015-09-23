@@ -14,8 +14,7 @@ Dynamic elements are populated from a Method, called either when the service dia
 
 #### Populating the Dynamic Fields
 
-The dynamic element has/is its own $evm.object, and we need to populate some pre-defined hash key/value pairs to define the dialog field settings, and to load the data to be displayed...
-
+The dynamic element has/is its own $evm.object, and we need to populate some pre-defined hash key/value pairs to define the dialog field settings, and to load the data to be displayed. 
 
 ```ruby
 dialog_field = $evm.object
@@ -35,6 +34,8 @@ dialog_field["required"] = "true"
 dialog_field["values"] = {1 => "one", 2 => "two", 10 => "ten", 50 => "fifty"}
 dialog_field["default_value"] = 2
 ```
+
+For a dynamic drop-down list, the _values_ key of this hash is also a hash of key/value pairs, with each pair representing a value to be displayed in the element, and the corresponding _data\_type_ value to be returned to Automate as the _dialog__*_ option if that choice is selected.
 
 Another more real-world example is...
 
@@ -64,9 +65,6 @@ Another more real-world example is...
   list_values.each { |key, value| $evm.object[key] = value }
 ```
 
-The _values_ key can take as its value either a list (of tuples) or a hash. This contains the key/value pairs representing the choices to be displayed in the dynamic element, and the corresponding _data\_type_ value to be read and returned as the _dialog\_*_ option if that choice is selected.
-
-
 ### Read-Only and Protected Elements
 
 CloudForms Management Engine 5.4 also introduced the concept of read-only elements for service dialogs, which cannot be changed once displayed. Having a text box dynamically populated, but read-only, makes it ideal for displaying messages.
@@ -76,6 +74,26 @@ CloudForms Management Engine 5.3.x added the ability to be able to mark a text b
 <br>
 ![screenshot](images/screenshot5.png)
 
+#### Programmatically Populating a Read-Only Text Box
+
+We can use dynamically-populated read-only text or text area boxes as status boxes to display messages. Here is an example of populating a text box with a message, depending on whether the user is provisioning into Amazon or not...
+
+```ruby
+ if $evm.root['vm'].vendor.downcase == 'amazon' 
+   status = "Valid for this VM type"
+ else
+   status = 'Invalid for this VM type'
+ end
+ list_values = {
+    'required'   => true,
+    'protected'   => false,
+    'read_only'  => true,
+    'value' => status,
+  }
+  list_values.each do |key, value| 
+    $evm.object[key] = value
+  end
+```
 
 ### Element Validation
 
