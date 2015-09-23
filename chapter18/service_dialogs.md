@@ -35,7 +35,7 @@ dialog_field["values"] = {1 => "one", 2 => "two", 10 => "ten", 50 => "fifty"}
 dialog_field["default_value"] = 2
 ```
 
-For a dynamic drop-down list, the _values_ key of this hash is also a hash of key/value pairs, with each pair representing a value to be displayed in the element, and the corresponding _data\_type_ value to be returned to Automate as the _dialog__*_ option if that choice is selected.
+For a dynamic drop-down list, the _values_ key of this hash is also a hash of key/value pairs, with each pair representing a value to be displayed in the element, and the corresponding _data\_type_ value to be returned to Automate as the _dialog__* option if that choice is selected.
 
 Another more real-world example is...
 
