@@ -44,7 +44,6 @@
    * [Catalog{Item,Bundle}Initialization](chapter18/catalogiteminitialization.md)
    * [Approval and Quota](chapter18/approval_and_quota.md)
    * [Example - Creating a Service Catalog Item](chapter18/creating_a_service_item.md)
-   * [Catalog Bundles](chapter18/catalog_bundles.md)
    * [Example - Creating a Service Catalog Bundle](chapter18/creating_a_service_bundle.md)
    * [Service Objects](chapter18/service_objects.md)
    * [Custom State Machines](chapter18/custom_state_machines.md)
