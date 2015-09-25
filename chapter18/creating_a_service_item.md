@@ -141,13 +141,13 @@ Click on the _Request Info_ tab, and fill in the details. Select an appropriate 
 
 Finally click the _Add_ button.
 
-Select a suitable 100x110px ShadowMan icon for a Custom Image...
+Select a suitable 100x100px ShadowMan icon for a Custom Image...
 
 ![screenshot](images/screenshot31.png?)
 
 ### Ordering the Catalog Item
 
-Navigate to the _Service Catalogs_ section in the accordian, expand the _Generic Servers_ Catalog, and highlight the _Generic RHEL 7 Server_ Catalog Item
+Navigate to the _Service Catalogs_ section in the accordion, expand the _Generic Servers_ Catalog, and highlight the _Generic RHEL 7 Server_ Catalog Item
 <br><br>
 
 ![screenshot](images/screenshot32.png)

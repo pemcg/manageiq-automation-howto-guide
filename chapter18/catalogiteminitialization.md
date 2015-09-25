@@ -70,3 +70,10 @@ tag\_0\__tag\_category_
 
 The value input into the service dialog element at run-time should be a tag within this tag category. When an element of this type is processed by the _CatalogItemInitialization_ Method, if either the category or tag don't currently exist, they will be created.
 
+### CatalogBundleInitialization
+
+The _CatalogBundleInitialization_ State Machine should be specified when we create a Service Catalog _Bundle_.
+
+The schema for the _CatalogBundleInitialization_ Instance is the same as for _CatalogItemInitialization_, except that the _pre2_ stage calls the _CatalogBundleInitialization_ method.
+
+The _CatalogBundleInitialization_ method passes the service dialog element values on to each catalog item's _CatalogItemInitialization_ method, which is still required in order to set the miq\_request\_task's options hash keys for the provision of that catalog item.
