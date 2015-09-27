@@ -1,0 +1,1688 @@
+object_walker 1.5-3 - EVM Automate Method Started
+     object_walker:   $evm.current_namespace = Bit63/Bit63   (type: String)
+     object_walker:   $evm.current_class = Methods   (type: String)
+     object_walker:   $evm.current_instance = ObjectWalker   (type: String)
+     object_walker:   $evm.current_message = create   (type: String)
+     object_walker:   $evm.current_object = /Bit63/Bit63/Methods/ObjectWalker   (type: DRb::DRbObject, URI: druby://127.0.0.1:38842)
+     object_walker:   $evm.current_object.current_field_name = Execute   (type: String)
+     object_walker:   $evm.current_object.current_field_type = method   (type: String)
+     object_walker:   $evm.current_method = object_walker   (type: String)
+     object_walker:   $evm.root = /Bit63/Service/Provisioning/StateMachines/ServiceProvision_Template/CatalogItemInitialization   (type: DRb::DRbObject, URI: druby://127.0.0.1:38842)
+     object_walker:   $evm.root['ae_result'] = ok   (type: String)
+     object_walker:   $evm.root['ae_state'] = post5   (type: String)
+     object_walker:   $evm.root['ae_state_retries'] = 0   (type: Fixnum)
+     object_walker:   $evm.root['ae_state_started'] = 2015-09-26 17:03:00 UTC   (type: String)
+     object_walker:   $evm.root['ae_status_state'] = on_entry   (type: String)
+     object_walker:   $evm.root['dialog_vm_name'] = pemcg-test03   (type: String)
+     object_walker:   $evm.root['miq_server'] => #<MiqAeMethodService::MiqAeServiceMiqServer:0x0000000c528968>   (type: DRb::DRbObject, URI: druby://127.0.0.1:38842)
+     |    object_walker:   $evm.root['miq_server'].build = 20150820153254_83e434d   (type: String)
+     |    object_walker:   $evm.root['miq_server'].capabilities = {:vixDisk=>true, :concurrent_miqproxies=>0}   (type: Hash)
+     |    object_walker:   $evm.root['miq_server'].cpu_time = 56912.0   (type: Float)
+     |    object_walker:   $evm.root['miq_server'].drb_uri = druby://127.0.0.1:35598   (type: String)
+     |    object_walker:   $evm.root['miq_server'].guid = 2571e040-61f0-11e5-a9a9-005056b87ba6   (type: String)
+     |    object_walker:   $evm.root['miq_server'].has_active_userinterface = true   (type: TrueClass)
+     |    object_walker:   $evm.root['miq_server'].has_active_webservices = true   (type: TrueClass)
+     |    object_walker:   $evm.root['miq_server'].hostname = cloudforms05.bit63.net   (type: String)
+     |    object_walker:   $evm.root['miq_server'].id = 1000000000001   (type: Fixnum)
+     |    object_walker:   $evm.root['miq_server'].ipaddress = 192.168.2.245   (type: String)
+     |    object_walker:   $evm.root['miq_server'].is_master = true   (type: TrueClass)
+     |    object_walker:   $evm.root['miq_server'].last_heartbeat = 2015-09-26 17:02:49 UTC   (type: ActiveSupport::TimeWithZone)
+     |    object_walker:   $evm.root['miq_server'].last_update_check = nil
+     |    object_walker:   $evm.root['miq_server'].log_file_depot_id = nil
+     |    object_walker:   $evm.root['miq_server'].logo = nil
+     |    object_walker:   $evm.root['miq_server'].mac_address = 00:50:56:B8:7B:A6   (type: String)
+     |    object_walker:   $evm.root['miq_server'].memory_size = 327090176   (type: Fixnum)
+     |    object_walker:   $evm.root['miq_server'].memory_usage = 165093376   (type: Fixnum)
+     |    object_walker:   $evm.root['miq_server'].name = EVM   (type: String)
+     |    object_walker:   $evm.root['miq_server'].os_priority = 21   (type: Fixnum)
+     |    object_walker:   $evm.root['miq_server'].percent_cpu = 0.21   (type: Float)
+     |    object_walker:   $evm.root['miq_server'].percent_memory = 2.69   (type: Float)
+     |    object_walker:   $evm.root['miq_server'].pid = 8780   (type: Fixnum)
+     |    object_walker:   $evm.root['miq_server'].rh_registered = nil
+     |    object_walker:   $evm.root['miq_server'].rh_subscribed = nil
+     |    object_walker:   $evm.root['miq_server'].rhn_mirror = false   (type: FalseClass)
+     |    object_walker:   $evm.root['miq_server'].sql_spid = 8785   (type: Fixnum)
+     |    object_walker:   $evm.root['miq_server'].started_on = 2015-09-23 12:40:32 UTC   (type: ActiveSupport::TimeWithZone)
+     |    object_walker:   $evm.root['miq_server'].status = started   (type: String)
+     |    object_walker:   $evm.root['miq_server'].stopped_on = nil
+     |    object_walker:   $evm.root['miq_server'].updates_available = nil
+     |    object_walker:   $evm.root['miq_server'].upgrade_message = nil
+     |    object_walker:   $evm.root['miq_server'].upgrade_status = nil
+     |    object_walker:   $evm.root['miq_server'].version = 5.4.2.0   (type: String)
+     |    object_walker:   $evm.root['miq_server'].vm_id = nil
+     |    object_walker:   $evm.root['miq_server'].zone_id = 1000000000001   (type: Fixnum)
+     |    object_walker:   --- virtual columns follow ---
+     |    object_walker:   $evm.root['miq_server'].region_description = Region 1   (type: String)
+     |    object_walker:   $evm.root['miq_server'].region_number = 1   (type: Fixnum)
+     |    object_walker:   $evm.root['miq_server'].zone_description = Default Zone   (type: String)
+     |    object_walker:   --- end of virtual columns ---
+     |    object_walker:   --- associations follow ---
+     |    object_walker:   --- end of associations ---
+     |    object_walker:   --- methods follow ---
+     |    object_walker:   $evm.root['miq_server'].region_name
+     |    object_walker:   $evm.root['miq_server'].zone
+     |    object_walker:   --- end of methods ---
+     object_walker:   $evm.root['miq_server_id'] = 1000000000001   (type: String)
+     object_walker:   $evm.root['object_name'] = CatalogItemInitialization   (type: String)
+     object_walker:   $evm.root['request'] = clone_to_service   (type: String)
+     object_walker:   $evm.root['service_template_provision_task'] => #<MiqAeMethodService::MiqAeServiceServiceTemplateProvisionTask:0x0000000c5357a8>   (type: DRb::DRbObject, URI: druby://127.0.0.1:38842)
+     |    object_walker:   $evm.root['service_template_provision_task'].created_on = 2015-09-26 16:51:55 UTC   (type: ActiveSupport::TimeWithZone)
+     |    object_walker:   $evm.root['service_template_provision_task'].description = Provisioning [Web Server] for Service [Web Server]   (type: String)
+     |    object_walker:   $evm.root['service_template_provision_task'].destination_id = 1000000000016   (type: Fixnum)
+     |    object_walker:   $evm.root['service_template_provision_task'].destination_type = Service   (type: String)
+     |    object_walker:   $evm.root['service_template_provision_task'].id = 1000000000043   (type: Fixnum)
+     |    object_walker:   $evm.root['service_template_provision_task'].message = Vm Provisioned Successfully   (type: String)
+     |    object_walker:   $evm.root['service_template_provision_task'].miq_request_id = 1000000000015   (type: Fixnum)
+     |    object_walker:   $evm.root['service_template_provision_task'].miq_request_task_id = nil
+     |    object_walker:   $evm.root['service_template_provision_task'].options[:delivered_on] = 2015-09-26 16:51:55 UTC   (type: Time)
+     |    object_walker:   $evm.root['service_template_provision_task'].options[:dialog] = {"dialog_vm_name"=>"pemcg-test03", "request"=>"clone_to_service"}   (type: Hash)
+     |    object_walker:   $evm.root['service_template_provision_task'].options[:parsed_dialog_options] = ---
+     |    object_walker:   $evm.root['service_template_provision_task'].options[:parsed_dialog_tags] = --- {}
+     |    object_walker:   $evm.root['service_template_provision_task'].options[:pass] = 0   (type: Fixnum)
+     |    object_walker:   $evm.root['service_template_provision_task'].options[:src_id] = 1000000000001   (type: Fixnum)
+     |    object_walker:   $evm.root['service_template_provision_task'].options[:workflow_settings] = {:resource_action_id=>1000000000023, :dialog_id=>1000000000006}   (type: Hash)
+     |    object_walker:   $evm.root['service_template_provision_task'].phase = nil
+     |    object_walker:   $evm.root['service_template_provision_task'].phase_context = {}   (type: Hash)
+     |    object_walker:   $evm.root['service_template_provision_task'].request_type = clone_to_service   (type: String)
+     |    object_walker:   $evm.root['service_template_provision_task'].source_id = 1000000000001   (type: Fixnum)
+     |    object_walker:   $evm.root['service_template_provision_task'].source_type = ServiceTemplate   (type: String)
+     |    object_walker:   $evm.root['service_template_provision_task'].state = finished   (type: String)
+     |    object_walker:   $evm.root['service_template_provision_task'].status = ok   (type: String)
+     |    object_walker:   $evm.root['service_template_provision_task'].type = ServiceTemplateProvisionTask   (type: String)
+     |    object_walker:   $evm.root['service_template_provision_task'].updated_on = 2015-09-26 17:02:12 UTC   (type: ActiveSupport::TimeWithZone)
+     |    object_walker:   $evm.root['service_template_provision_task'].userid = pemcg   (type: String)
+     |    object_walker:   --- virtual columns follow ---
+     |    object_walker:   $evm.root['service_template_provision_task'].region_description = Region 1   (type: String)
+     |    object_walker:   $evm.root['service_template_provision_task'].region_number = 1   (type: Fixnum)
+     |    object_walker:   --- end of virtual columns ---
+     |    object_walker:   --- associations follow ---
+     |    object_walker:   $evm.root['service_template_provision_task'].destination (type: Association)
+     |    object_walker:   destination = $evm.root['service_template_provision_task'].destination
+     |    |    object_walker:   (object type: MiqAeServiceService, object ID: 1000000000016)
+     |    |    object_walker:   destination.created_at = 2015-09-26 16:51:55 UTC   (type: ActiveSupport::TimeWithZone)
+     |    |    object_walker:   destination.description = RHEL6 Apache Web Server   (type: String)
+     |    |    object_walker:   destination.display = nil
+     |    |    object_walker:   destination.evm_owner_id = 1000000000002   (type: Fixnum)
+     |    |    object_walker:   destination.guid = e53eff0e-646e-11e5-98b5-005056b87ba6   (type: String)
+     |    |    object_walker:   destination.id = 1000000000016   (type: Fixnum)
+     |    |    object_walker:   destination.miq_group_id = 1000000000013   (type: Fixnum)
+     |    |    object_walker:   destination.name = Web Server-20150926-175205   (type: String)
+     |    |    object_walker:   destination.options[:dialog] = {"dialog_vm_name"=>"pemcg-test03"}   (type: Hash)
+     |    |    object_walker:   destination.retired = nil
+     |    |    object_walker:   destination.retirement_last_warn = nil
+     |    |    object_walker:   destination.retirement_requester = nil
+     |    |    object_walker:   destination.retirement_state = nil
+     |    |    object_walker:   destination.retirement_warn = nil
+     |    |    object_walker:   destination.retires_on = nil
+     |    |    object_walker:   destination.service_id = nil
+     |    |    object_walker:   destination.service_template_id = 1000000000001   (type: Fixnum)
+     |    |    object_walker:   destination.type = nil
+     |    |    object_walker:   destination.updated_at = 2015-09-26 17:00:48 UTC   (type: ActiveSupport::TimeWithZone)
+     |    |    object_walker:   --- virtual columns follow ---
+     |    |    object_walker:   destination.aggregate_all_vm_cpus = 1   (type: Fixnum)
+     |    |    object_walker:   destination.aggregate_all_vm_disk_count = 3   (type: Fixnum)
+     |    |    object_walker:   destination.aggregate_all_vm_disk_space_allocated = 21474836480   (type: Fixnum)
+     |    |    object_walker:   destination.aggregate_all_vm_disk_space_used = 21474836480   (type: Fixnum)
+     |    |    object_walker:   destination.aggregate_all_vm_memory = 2048   (type: Fixnum)
+     |    |    object_walker:   destination.aggregate_all_vm_memory_on_disk = 2147483648   (type: Fixnum)
+     |    |    object_walker:   destination.aggregate_direct_vm_cpus = 1   (type: Fixnum)
+     |    |    object_walker:   destination.aggregate_direct_vm_disk_count = 3   (type: Fixnum)
+     |    |    object_walker:   destination.aggregate_direct_vm_disk_space_allocated = 21474836480   (type: Fixnum)
+     |    |    object_walker:   destination.aggregate_direct_vm_disk_space_used = 21474836480   (type: Fixnum)
+     |    |    object_walker:   destination.aggregate_direct_vm_memory = 2048   (type: Fixnum)
+     |    |    object_walker:   destination.aggregate_direct_vm_memory_on_disk = 2147483648   (type: Fixnum)
+     |    |    object_walker:   destination.custom_1 = nil
+     |    |    object_walker:   destination.custom_2 = nil
+     |    |    object_walker:   destination.custom_3 = nil
+     |    |    object_walker:   destination.custom_4 = nil
+     |    |    object_walker:   destination.custom_5 = nil
+     |    |    object_walker:   destination.custom_6 = nil
+     |    |    object_walker:   destination.custom_7 = nil
+     |    |    object_walker:   destination.custom_8 = nil
+     |    |    object_walker:   destination.custom_9 = nil
+     |    |    object_walker:   destination.evm_owner_email = pemcg@bit63.com   (type: String)
+     |    |    object_walker:   destination.evm_owner_name = Peter McGowan   (type: String)
+     |    |    object_walker:   destination.evm_owner_userid = pemcg   (type: String)
+     |    |    object_walker:   destination.has_parent = false   (type: FalseClass)
+     |    |    object_walker:   destination.owned_by_current_ldap_group = nil
+     |    |    object_walker:   destination.owned_by_current_user = nil
+     |    |    object_walker:   destination.owning_ldap_group = Bit63Group_vm_user   (type: String)
+     |    |    object_walker:   destination.region_description = Region 1   (type: String)
+     |    |    object_walker:   destination.region_number = 1   (type: Fixnum)
+     |    |    object_walker:   destination.v_total_vms = 1   (type: Fixnum)
+     |    |    object_walker:   --- end of virtual columns ---
+     |    |    object_walker:   --- associations follow ---
+     |    |    object_walker:   destination.all_service_children (type: Association (empty))
+     |    |    object_walker:   destination.direct_service_children (type: Association (empty))
+     |    |    object_walker:   destination.direct_vms (type: Association)
+     |    |    object_walker:   *** not walking: 'direct_vms' isn't in the @walk_association_whitelist hash for MiqAeServiceService ***
+     |    |    object_walker:   destination.indirect_service_children (type: Association (empty))
+     |    |    object_walker:   destination.indirect_vms (type: Association (empty))
+     |    |    object_walker:   destination.parent_service (type: Association (empty))
+     |    |    object_walker:   destination.root_service (type: Association)
+     |    |    object_walker:   *** not walking: 'root_service' isn't in the @walk_association_whitelist hash for MiqAeServiceService ***
+     |    |    object_walker:   destination.service_resources (type: Association)
+     |    |    object_walker:   *** not walking: 'service_resources' isn't in the @walk_association_whitelist hash for MiqAeServiceService ***
+     |    |    object_walker:   destination.vms (type: Association)
+     |    |    object_walker:   *** not walking: 'vms' isn't in the @walk_association_whitelist hash for MiqAeServiceService ***
+     |    |    object_walker:   --- end of associations ---
+     |    |    object_walker:   --- methods follow ---
+     |    |    object_walker:   destination.automate_retirement_entrypoint
+     |    |    object_walker:   destination.custom_get
+     |    |    object_walker:   destination.custom_keys
+     |    |    object_walker:   destination.custom_set
+     |    |    object_walker:   destination.description=
+     |    |    object_walker:   destination.dialog_options
+     |    |    object_walker:   destination.display=
+     |    |    object_walker:   destination.error_retiring?
+     |    |    object_walker:   destination.finish_retirement
+     |    |    object_walker:   destination.get_dialog_option
+     |    |    object_walker:   destination.group=
+     |    |    object_walker:   destination.name=
+     |    |    object_walker:   destination.owner=
+     |    |    object_walker:   destination.parent_service=
+     |    |    object_walker:   destination.remove_from_vmdb
+     |    |    object_walker:   destination.retire_now
+     |    |    object_walker:   destination.retire_service_resources
+     |    |    object_walker:   destination.retired?
+     |    |    object_walker:   destination.retirement_state=
+     |    |    object_walker:   destination.retirement_warn=
+     |    |    object_walker:   destination.retires_on=
+     |    |    object_walker:   destination.retiring?
+     |    |    object_walker:   destination.set_dialog_option
+     |    |    object_walker:   destination.shutdown_guest
+     |    |    object_walker:   destination.start
+     |    |    object_walker:   destination.start_retirement
+     |    |    object_walker:   destination.stop
+     |    |    object_walker:   destination.suspend
+     |    |    object_walker:   --- end of methods ---
+     |    object_walker:   $evm.root['service_template_provision_task'].miq_request (type: Association)
+     |    object_walker:   miq_request = $evm.root['service_template_provision_task'].miq_request
+     |    |    object_walker:   (object type: MiqAeServiceServiceTemplateProvisionRequest, object ID: 1000000000015)
+     |    |    object_walker:   miq_request.approval_state = approved   (type: String)
+     |    |    object_walker:   miq_request.created_on = 2015-09-26 16:51:42 UTC   (type: ActiveSupport::TimeWithZone)
+     |    |    object_walker:   miq_request.description = Provisioning Service [Web Server] from [Web Server]   (type: String)
+     |    |    object_walker:   miq_request.destination_id = nil
+     |    |    object_walker:   miq_request.destination_type = nil
+     |    |    object_walker:   miq_request.fulfilled_on = 2015-09-26 17:02:12 UTC   (type: ActiveSupport::TimeWithZone)
+     |    |    object_walker:   miq_request.id = 1000000000015   (type: Fixnum)
+     |    |    object_walker:   miq_request.message = Request complete   (type: String)
+     |    |    object_walker:   miq_request.options[:delivered_on] = 2015-09-26 16:51:55 UTC   (type: Time)
+     |    |    object_walker:   miq_request.options[:dialog] = {"dialog_vm_name"=>"pemcg-test03"}   (type: Hash)
+     |    |    object_walker:   miq_request.options[:pass] = 0   (type: Fixnum)
+     |    |    object_walker:   miq_request.options[:src_id] = 1000000000001   (type: Fixnum)
+     |    |    object_walker:   miq_request.options[:workflow_settings] = {:resource_action_id=>1000000000023, :dialog_id=>1000000000006}   (type: Hash)
+     |    |    object_walker:   miq_request.request_state = finished   (type: String)
+     |    |    object_walker:   miq_request.request_type = clone_to_service   (type: String)
+     |    |    object_walker:   miq_request.requester_id = 1000000000002   (type: Fixnum)
+     |    |    object_walker:   miq_request.requester_name = Peter McGowan   (type: String)
+     |    |    object_walker:   miq_request.source_id = 1000000000001   (type: Fixnum)
+     |    |    object_walker:   miq_request.source_type = ServiceTemplate   (type: String)
+     |    |    object_walker:   miq_request.status = Ok   (type: String)
+     |    |    object_walker:   miq_request.type = ServiceTemplateProvisionRequest   (type: String)
+     |    |    object_walker:   miq_request.updated_on = 2015-09-26 17:02:12 UTC   (type: ActiveSupport::TimeWithZone)
+     |    |    object_walker:   miq_request.userid = pemcg   (type: String)
+     |    |    object_walker:   --- virtual columns follow ---
+     |    |    object_walker:   miq_request.reason = Auto-Approved   (type: String)
+     |    |    object_walker:   miq_request.region_description = Region 1   (type: String)
+     |    |    object_walker:   miq_request.region_number = 1   (type: Fixnum)
+     |    |    object_walker:   miq_request.request_type_display = Service Provision   (type: String)
+     |    |    object_walker:   miq_request.resource_type = ServiceTemplateProvisionRequest   (type: String)
+     |    |    object_walker:   miq_request.stamped_on = 2015-09-26 16:51:47 UTC   (type: ActiveSupport::TimeWithZone)
+     |    |    object_walker:   miq_request.state = finished   (type: String)
+     |    |    object_walker:   miq_request.v_approved_by = Administrator   (type: String)
+     |    |    object_walker:   miq_request.v_approved_by_email =    (type: String)
+     |    |    object_walker:   --- end of virtual columns ---
+     |    |    object_walker:   --- associations follow ---
+     |    |    object_walker:   miq_request.approvers (type: Association (empty))
+     |    |    object_walker:   miq_request.destination (type: Association (empty))
+     |    |    object_walker:   miq_request.miq_request (type: Association)
+     |    |    object_walker:   miq_request = miq_request.miq_request
+     |    |    |    object_walker:   (object type: MiqAeServiceServiceTemplateProvisionRequest, object ID: 1000000000015)
+     |    |    |    object_walker:   Object MiqAeServiceServiceTemplateProvisionRequest with ID 1000000000015 has already been dumped...
+     |    |    object_walker:   miq_request.miq_request_tasks (type: Association)
+     |    |    object_walker:   miq_request.miq_request_tasks.each do |miq_request_task|
+     |    |    |    object_walker:   (object type: MiqAeServiceMiqProvisionVmware, object ID: 1000000000045)
+     |    |    |    object_walker:   miq_request_task.created_on = 2015-09-26 16:51:56 UTC   (type: ActiveSupport::TimeWithZone)
+     |    |    |    object_walker:   miq_request_task.description = Provision from [rhel65-t] to [cfme014]   (type: String)
+     |    |    |    object_walker:   miq_request_task.destination_id = 1000000000024   (type: Fixnum)
+     |    |    |    object_walker:   miq_request_task.destination_type = Vm   (type: String)
+     |    |    |    object_walker:   miq_request_task.id = 1000000000045   (type: Fixnum)
+     |    |    |    object_walker:   miq_request_task.message = Vm Provisioned Successfully   (type: String)
+     |    |    |    object_walker:   miq_request_task.miq_request_id = 1000000000015   (type: Fixnum)
+     |    |    |    object_walker:   miq_request_task.miq_request_task_id = 1000000000044   (type: Fixnum)
+     |    |    |    object_walker:   miq_request_task.options[:addr_mode] = ["dhcp", "DHCP"]   (type: Array)
+     |    |    |    object_walker:   miq_request_task.options[:available_catalogs] = [["VMware Services", 1000000000001]]   (type: Array)
+     |    |    |    object_walker:   miq_request_task.options[:available_dialogs] = {1000000000001=>"OSE Installer", 1000000000002=>"delete_vm", 1000000000003=>"Web and Database Server Bundle", 1000000000004=>"Generic Server", 1000000000005=>"Generic", 1000000000006=>"RHEL6 VM", 1000000000007=>"Web Service Bundle"}   (type: Hash)
+     |    |    |    object_walker:   miq_request_task.options[:catalog_id] = 1000000000001   (type: String)
+     |    |    |    object_walker:   miq_request_task.options[:cluster_filter] = [nil, nil]   (type: Array)
+     |    |    |    object_walker:   miq_request_task.options[:cores_per_socket] = [1, "1"]   (type: Array)
+     |    |    |    object_walker:   miq_request_task.options[:cpu_limit] = -1   (type: Fixnum)
+     |    |    |    object_walker:   miq_request_task.options[:cpu_reserve] = 0   (type: Fixnum)
+     |    |    |    object_walker:   miq_request_task.options[:current_tab_key] = service   (type: Symbol)
+     |    |    |    object_walker:   miq_request_task.options[:customization_template_script] = nil
+     |    |    |    object_walker:   miq_request_task.options[:customize_enabled] = ["enabled"]   (type: Array)
+     |    |    |    object_walker:   miq_request_task.options[:delivered_on] = nil
+     |    |    |    object_walker:   miq_request_task.options[:description] = RHEL6 Apache Web Server   (type: String)
+     |    |    |    object_walker:   miq_request_task.options[:dest_host] = [1000000000001, "esxsrv01.bit63.net"]   (type: Array)
+     |    |    |    object_walker:   miq_request_task.options[:dest_storage] = [1000000000001, "datastore1"]   (type: Array)
+     |    |    |    object_walker:   miq_request_task.options[:dialog_id] = 1000000000006   (type: String)
+     |    |    |    object_walker:   miq_request_task.options[:dialog_vm_name] = pemcg-test03   (type: String)
+     |    |    |    object_walker:   miq_request_task.options[:disk_format] = ["unchanged", "Default"]   (type: Array)
+     |    |    |    object_walker:   miq_request_task.options[:display] = true   (type: TrueClass)
+     |    |    |    object_walker:   miq_request_task.options[:dns_domain] = nil
+     |    |    |    object_walker:   miq_request_task.options[:dns_servers] = nil
+     |    |    |    object_walker:   miq_request_task.options[:dns_suffixes] = nil
+     |    |    |    object_walker:   miq_request_task.options[:ds_filter] = [nil, nil]   (type: Array)
+     |    |    |    object_walker:   miq_request_task.options[:fqname] = /Service/Provisioning/StateMachines/ServiceProvision_Template/CatalogItemInitialization   (type: String)
+     |    |    |    object_walker:   miq_request_task.options[:gateway] = nil
+     |    |    |    object_walker:   miq_request_task.options[:host_filter] = [nil, nil]   (type: Array)
+     |    |    |    object_walker:   miq_request_task.options[:host_name] = nil
+     |    |    |    object_walker:   miq_request_task.options[:hostname] = nil
+     |    |    |    object_walker:   miq_request_task.options[:initial_pass] = true   (type: TrueClass)
+     |    |    |    object_walker:   miq_request_task.options[:ip_addr] = nil
+     |    |    |    object_walker:   miq_request_task.options[:ldap_ous] = [nil, nil]   (type: Array)
+     |    |    |    object_walker:   miq_request_task.options[:linked_clone] = [nil, nil]   (type: Array)
+     |    |    |    object_walker:   miq_request_task.options[:linux_domain_name] = nil
+     |    |    |    object_walker:   miq_request_task.options[:linux_host_name] = pemcg-test03   (type: String)
+     |    |    |    object_walker:   miq_request_task.options[:long_description] = nil
+     |    |    |    object_walker:   miq_request_task.options[:mac_address] = nil
+     |    |    |    object_walker:   miq_request_task.options[:memory_limit] = -1   (type: Fixnum)
+     |    |    |    object_walker:   miq_request_task.options[:memory_reserve] = 0   (type: Fixnum)
+     |    |    |    object_walker:   miq_request_task.options[:miq_force_unique_name] = [true, 1]   (type: Array)
+     |    |    |    object_walker:   miq_request_task.options[:miq_request_dialog_name] = miq_provision_dialogs_template   (type: String)
+     |    |    |    object_walker:   miq_request_task.options[:name] = Web Server   (type: String)
+     |    |    |    object_walker:   miq_request_task.options[:network_adapters] = [1, "1"]   (type: Array)
+     |    |    |    object_walker:   miq_request_task.options[:networks] = [{:network=>"VM Network", :mac_address=>nil}]   (type: Array)
+     |    |    |    object_walker:   miq_request_task.options[:number_of_sockets] = [1, "1"]   (type: Array)
+     |    |    |    object_walker:   miq_request_task.options[:number_of_vms] = [1, "1"]   (type: Array)
+     |    |    |    object_walker:   miq_request_task.options[:owner_address] = nil
+     |    |    |    object_walker:   miq_request_task.options[:owner_city] = nil
+     |    |    |    object_walker:   miq_request_task.options[:owner_company] = nil
+     |    |    |    object_walker:   miq_request_task.options[:owner_country] = nil
+     |    |    |    object_walker:   miq_request_task.options[:owner_department] = nil
+     |    |    |    object_walker:   miq_request_task.options[:owner_email] = pemcg@bit63.com   (type: String)
+     |    |    |    object_walker:   miq_request_task.options[:owner_first_name] = nil
+     |    |    |    object_walker:   miq_request_task.options[:owner_last_name] = nil
+     |    |    |    object_walker:   miq_request_task.options[:owner_load_ldap] = nil
+     |    |    |    object_walker:   miq_request_task.options[:owner_manager] = nil
+     |    |    |    object_walker:   miq_request_task.options[:owner_manager_mail] = nil
+     |    |    |    object_walker:   miq_request_task.options[:owner_manager_phone] = nil
+     |    |    |    object_walker:   miq_request_task.options[:owner_office] = nil
+     |    |    |    object_walker:   miq_request_task.options[:owner_phone] = nil
+     |    |    |    object_walker:   miq_request_task.options[:owner_phone_mobile] = nil
+     |    |    |    object_walker:   miq_request_task.options[:owner_state] = nil
+     |    |    |    object_walker:   miq_request_task.options[:owner_title] = nil
+     |    |    |    object_walker:   miq_request_task.options[:owner_zip] = nil
+     |    |    |    object_walker:   miq_request_task.options[:pass] = 0   (type: Fixnum)
+     |    |    |    object_walker:   miq_request_task.options[:placement_auto] = [true, 1]   (type: Array)
+     |    |    |    object_walker:   miq_request_task.options[:placement_cluster_name] = [nil, nil]   (type: Array)
+     |    |    |    object_walker:   miq_request_task.options[:placement_dc_name] = [nil, nil]   (type: Array)
+     |    |    |    object_walker:   miq_request_task.options[:placement_ds_name] = [1000000000001, "datastore1"]   (type: Array)
+     |    |    |    object_walker:   miq_request_task.options[:placement_folder_name] = [1000000000002, "vm"]   (type: Array)
+     |    |    |    object_walker:   miq_request_task.options[:placement_host_name] = [1000000000001, "esxsrv01.bit63.net"]   (type: Array)
+     |    |    |    object_walker:   miq_request_task.options[:placement_rp_name] = [nil, nil]   (type: Array)
+     |    |    |    object_walker:   miq_request_task.options['provision'] = aei-1r172   (type: String)
+     |    |    |    object_walker:   miq_request_task.options[:provision_cost] = nil
+     |    |    |    object_walker:   miq_request_task.options[:provision_type] = ["vmware", "VMware"]   (type: Array)
+     |    |    |    object_walker:   miq_request_task.options[:purpose_enabled] = ["disabled"]   (type: Array)
+     |    |    |    object_walker:   miq_request_task.options[:pxe_server_id] = [nil, nil]   (type: Array)
+     |    |    |    object_walker:   miq_request_task.options[:reconfigure_fqname] =    (type: String)
+     |    |    |    object_walker:   miq_request_task.options[:request_notes] = nil
+     |    |    |    object_walker:   miq_request_task.options[:requested_network_adapter_count] = 1   (type: Fixnum)
+     |    |    |    object_walker:   miq_request_task.options[:requester_enabled] = ["disabled"]   (type: Array)
+     |    |    |    object_walker:   miq_request_task.options[:retire_fqname] =    (type: String)
+     |    |    |    object_walker:   miq_request_task.options[:retirement] = [0, "Indefinite"]   (type: Array)
+     |    |    |    object_walker:   miq_request_task.options[:retirement_warn] = [604800, "1 Week"]   (type: Array)
+     |    |    |    object_walker:   miq_request_task.options[:root_password] = nil
+     |    |    |    object_walker:   miq_request_task.options[:rp_filter] = [nil, nil]   (type: Array)
+     |    |    |    object_walker:   miq_request_task.options[:schedule_time] = 2015-09-26 08:26:00 UTC   (type: Time)
+     |    |    |    object_walker:   miq_request_task.options[:schedule_type] = ["immediately", "Immediately on Approval"]   (type: Array)
+     |    |    |    object_walker:   miq_request_task.options[:selected] = aei-1r172   (type: String)
+     |    |    |    object_walker:   miq_request_task.options[:service_guid] = e53eff0e-646e-11e5-98b5-005056b87ba6   (type: String)
+     |    |    |    object_walker:   miq_request_task.options[:service_resource_id] = 1000000000050   (type: Fixnum)
+     |    |    |    object_walker:   miq_request_task.options[:service_template_request] = false   (type: FalseClass)
+     |    |    |    object_walker:   miq_request_task.options[:service_type] = atomic   (type: String)
+     |    |    |    object_walker:   miq_request_task.options[:snapshot] = [nil, nil]   (type: Array)
+     |    |    |    object_walker:   miq_request_task.options[:src_ems_id] = [1000000000001, "vCenter"]   (type: Array)
+     |    |    |    object_walker:   miq_request_task.options[:src_vm_id] = [1000000000003, "rhel65-t"]   (type: Array)
+     |    |    |    object_walker:   miq_request_task.options[:src_vm_lans] = ["VM Network"]   (type: Array)
+     |    |    |    object_walker:   miq_request_task.options[:src_vm_nics] = ["Network adapter 1"]   (type: Array)
+     |    |    |    object_walker:   miq_request_task.options[:st_prov_type] = vmware   (type: String)
+     |    |    |    object_walker:   miq_request_task.options[:start_date] = 9/26/2015   (type: String)
+     |    |    |    object_walker:   miq_request_task.options[:start_hour] = 8   (type: String)
+     |    |    |    object_walker:   miq_request_task.options[:start_min] = 26   (type: String)
+     |    |    |    object_walker:   miq_request_task.options[:subnet_mask] = nil
+     |    |    |    object_walker:   miq_request_task.options[:sysprep_auto_logon] = [true, 1]   (type: Array)
+     |    |    |    object_walker:   miq_request_task.options[:sysprep_auto_logon_count] = [1, "1"]   (type: Array)
+     |    |    |    object_walker:   miq_request_task.options[:sysprep_change_sid] = [true, 1]   (type: Array)
+     |    |    |    object_walker:   miq_request_task.options[:sysprep_computer_name] = nil
+     |    |    |    object_walker:   miq_request_task.options[:sysprep_delete_accounts] = [false, 0]   (type: Array)
+     |    |    |    object_walker:   miq_request_task.options[:sysprep_domain_admin] = nil
+     |    |    |    object_walker:   miq_request_task.options[:sysprep_domain_name] = ["bit63.net", "bit63.net"]   (type: Array)
+     |    |    |    object_walker:   miq_request_task.options[:sysprep_domain_password] = nil
+     |    |    |    object_walker:   miq_request_task.options[:sysprep_enabled] = [nil, nil]   (type: Array)
+     |    |    |    object_walker:   miq_request_task.options[:sysprep_full_name] = nil
+     |    |    |    object_walker:   miq_request_task.options[:sysprep_identification] = ["domain", "Domain"]   (type: Array)
+     |    |    |    object_walker:   miq_request_task.options[:sysprep_organization] = nil
+     |    |    |    object_walker:   miq_request_task.options[:sysprep_password] = nil
+     |    |    |    object_walker:   miq_request_task.options[:sysprep_per_server_max_connections] = 5   (type: String)
+     |    |    |    object_walker:   miq_request_task.options[:sysprep_product_id] = nil
+     |    |    |    object_walker:   miq_request_task.options[:sysprep_server_license_mode] = ["perServer", "Per server"]   (type: Array)
+     |    |    |    object_walker:   miq_request_task.options[:sysprep_spec_override] = [false, 0]   (type: Array)
+     |    |    |    object_walker:   miq_request_task.options[:sysprep_timezone] = [nil, "(GMT-12:00) International Date Line West"]   (type: Array)
+     |    |    |    object_walker:   miq_request_task.options[:sysprep_upload_file] = nil
+     |    |    |    object_walker:   miq_request_task.options[:sysprep_upload_text] = nil
+     |    |    |    object_walker:   miq_request_task.options[:sysprep_workgroup_name] = WORKGROUP   (type: String)
+     |    |    |    object_walker:   miq_request_task.options[:vlan] = ["VM Network", "VM Network"]   (type: Array)
+     |    |    |    object_walker:   miq_request_task.options[:vm_auto_start] = [true, 1]   (type: Array)
+     |    |    |    object_walker:   miq_request_task.options[:vm_description] = nil
+     |    |    |    object_walker:   miq_request_task.options[:vm_filter] = [nil, nil]   (type: Array)
+     |    |    |    object_walker:   miq_request_task.options[:vm_memory] = ["2048", "2048"]   (type: Array)
+     |    |    |    object_walker:   miq_request_task.options[:vm_name] = pemcg-test03   (type: String)
+     |    |    |    object_walker:   miq_request_task.options[:vm_notes] = Owner:  
+     |    |    |    object_walker:   miq_request_task.options[:vm_prefix] = nil
+     |    |    |    object_walker:   miq_request_task.options[:vm_tags] = []   (type: Array)
+     |    |    |    object_walker:   miq_request_task.options[:vm_target_hostname] = pemcg-test03   (type: String)
+     |    |    |    object_walker:   miq_request_task.options[:vm_target_name] = pemcg-test03   (type: String)
+     |    |    |    object_walker:   miq_request_task.options[:wins_servers] = nil
+     |    |    |    object_walker:   miq_request_task.phase = finish   (type: String)
+     |    |    |    object_walker:   miq_request_task.phase_context = {}   (type: Hash)
+     |    |    |    object_walker:   miq_request_task.request_type = template   (type: String)
+     |    |    |    object_walker:   miq_request_task.source_id = 1000000000003   (type: Fixnum)
+     |    |    |    object_walker:   miq_request_task.source_type = template   (type: String)
+     |    |    |    object_walker:   miq_request_task.state = finished   (type: String)
+     |    |    |    object_walker:   miq_request_task.status = ok   (type: String)
+     |    |    |    object_walker:   miq_request_task.type = MiqProvisionVmware   (type: String)
+     |    |    |    object_walker:   miq_request_task.updated_on = 2015-09-26 17:02:00 UTC   (type: ActiveSupport::TimeWithZone)
+     |    |    |    object_walker:   miq_request_task.userid = pemcg   (type: String)
+     |    |    |    object_walker:   --- virtual columns follow ---
+     |    |    |    object_walker:   miq_request_task.placement_auto = true   (type: TrueClass)
+     |    |    |    object_walker:   miq_request_task.provision_type = template   (type: String)
+     |    |    |    object_walker:   miq_request_task.region_description = Region 1   (type: String)
+     |    |    |    object_walker:   miq_request_task.region_number = 1   (type: Fixnum)
+     |    |    |    object_walker:   --- end of virtual columns ---
+     |    |    |    object_walker:   --- associations follow ---
+     |    |    |    object_walker:   miq_request_task.destination (type: Association)
+     |    |    |    object_walker:   destination = miq_request_task.destination
+     |    |    |    |    object_walker:   (object type: MiqAeServiceVmVmware, object ID: 1000000000024)
+     |    |    |    |    object_walker:   destination.autostart = nil
+     |    |    |    |    object_walker:   destination.availability_zone_id = nil
+     |    |    |    |    object_walker:   destination.boot_time = 2015-09-26 17:00:45 UTC   (type: ActiveSupport::TimeWithZone)
+     |    |    |    |    object_walker:   destination.busy = nil
+     |    |    |    |    object_walker:   destination.cloud = false   (type: FalseClass)
+     |    |    |    |    object_walker:   destination.cloud_network_id = nil
+     |    |    |    |    object_walker:   destination.cloud_subnet_id = nil
+     |    |    |    |    object_walker:   destination.cloud_tenant_id = nil
+     |    |    |    |    object_walker:   destination.config_xml = nil
+     |    |    |    |    object_walker:   destination.connection_state = connected   (type: String)
+     |    |    |    |    object_walker:   destination.cpu_affinity = nil
+     |    |    |    |    object_walker:   destination.cpu_limit = -1   (type: Fixnum)
+     |    |    |    |    object_walker:   destination.cpu_reserve = 0   (type: Fixnum)
+     |    |    |    |    object_walker:   destination.cpu_reserve_expand = false   (type: FalseClass)
+     |    |    |    |    object_walker:   destination.cpu_shares = 1000   (type: Fixnum)
+     |    |    |    |    object_walker:   destination.cpu_shares_level = normal   (type: String)
+     |    |    |    |    object_walker:   destination.created_on = 2015-09-26 17:00:42 UTC   (type: ActiveSupport::TimeWithZone)
+     |    |    |    |    object_walker:   destination.description = nil
+     |    |    |    |    object_walker:   destination.ems_cluster_id = 1000000000001   (type: Fixnum)
+     |    |    |    |    object_walker:   destination.ems_created_on = nil
+     |    |    |    |    object_walker:   destination.ems_id = 1000000000001   (type: Fixnum)
+     |    |    |    |    object_walker:   destination.ems_ref = vm-1374   (type: String)
+     |    |    |    |    object_walker:   destination.ems_ref_obj = #<DRb::DRbUnknown:0x00000001650030>   (type: DRb::DRbUnknown)
+     |    |    |    |    object_walker:   destination.evm_owner_id = 1000000000002   (type: Fixnum)
+     |    |    |    |    object_walker:   destination.fault_tolerance = false   (type: FalseClass)
+     |    |    |    |    object_walker:   destination.flavor_id = nil
+     |    |    |    |    object_walker:   destination.format = nil
+     |    |    |    |    object_walker:   destination.guid = 1f0bc216-6470-11e5-b64e-005056b87ba6   (type: String)
+     |    |    |    |    object_walker:   destination.host_id = 1000000000001   (type: Fixnum)
+     |    |    |    |    object_walker:   destination.id = 1000000000024   (type: Fixnum)
+     |    |    |    |    object_walker:   destination.last_perf_capture_on = 2015-09-26 17:02:00 UTC   (type: ActiveSupport::TimeWithZone)
+     |    |    |    |    object_walker:   destination.last_scan_attempt_on = nil
+     |    |    |    |    object_walker:   destination.last_scan_on = nil
+     |    |    |    |    object_walker:   destination.last_sync_on = nil
+     |    |    |    |    object_walker:   destination.linked_clone = false   (type: FalseClass)
+     |    |    |    |    object_walker:   destination.location = pemcg-test03/pemcg-test03.vmx   (type: String)
+     |    |    |    |    object_walker:   destination.memory_limit = -1   (type: Fixnum)
+     |    |    |    |    object_walker:   destination.memory_reserve = 0   (type: Fixnum)
+     |    |    |    |    object_walker:   destination.memory_reserve_expand = false   (type: FalseClass)
+     |    |    |    |    object_walker:   destination.memory_shares = 10240   (type: Fixnum)
+     |    |    |    |    object_walker:   destination.memory_shares_level = normal   (type: String)
+     |    |    |    |    object_walker:   destination.miq_group_id = 1000000000013   (type: Fixnum)
+     |    |    |    |    object_walker:   destination.name = pemcg-test03   (type: String)
+     |    |    |    |    object_walker:   destination.orchestration_stack_id = nil
+     |    |    |    |    object_walker:   destination.power_state = on   (type: String)
+     |    |    |    |    object_walker:   destination.previous_state = poweredOff   (type: String)
+     |    |    |    |    object_walker:   destination.publicly_available = nil
+     |    |    |    |    object_walker:   destination.raw_power_state = poweredOn   (type: String)
+     |    |    |    |    object_walker:   destination.registered = nil
+     |    |    |    |    object_walker:   destination.retired = nil
+     |    |    |    |    object_walker:   destination.retirement_last_warn = nil
+     |    |    |    |    object_walker:   destination.retirement_requester = nil
+     |    |    |    |    object_walker:   destination.retirement_state = nil
+     |    |    |    |    object_walker:   destination.retirement_warn = nil
+     |    |    |    |    object_walker:   destination.retires_on = nil
+     |    |    |    |    object_walker:   destination.smart = nil
+     |    |    |    |    object_walker:   destination.standby_action = checkpoint   (type: String)
+     |    |    |    |    object_walker:   destination.state_changed_on = 2015-09-26 17:00:53 UTC   (type: ActiveSupport::TimeWithZone)
+     |    |    |    |    object_walker:   destination.storage_id = 1000000000001   (type: Fixnum)
+     |    |    |    |    object_walker:   destination.template = false   (type: FalseClass)
+     |    |    |    |    object_walker:   destination.tools_status = toolsOld   (type: String)
+     |    |    |    |    object_walker:   destination.type = VmVmware   (type: String)
+     |    |    |    |    object_walker:   destination.uid_ems = 4238511d-4d2b-bcc6-00e9-de9c8f17d892   (type: String)
+     |    |    |    |    object_walker:   destination.updated_on = 2015-09-26 17:02:12 UTC   (type: ActiveSupport::TimeWithZone)
+     |    |    |    |    object_walker:   destination.vendor = VMware   (type: String)
+     |    |    |    |    object_walker:   destination.version = nil
+     |    |    |    |    object_walker:   destination.vnc_port = nil
+     |    |    |    |    object_walker:   --- virtual columns follow ---
+     |    |    |    |    object_walker:   destination.active = true   (type: TrueClass)
+     |    |    |    |    object_walker:   destination.aggressive_mem_recommended_change = nil
+     |    |    |    |    object_walker:   destination.aggressive_mem_recommended_change_pct = nil
+     |    |    |    |    object_walker:   destination.aggressive_recommended_mem = nil
+     |    |    |    |    object_walker:   destination.aggressive_recommended_vcpus = nil
+     |    |    |    |    object_walker:   destination.aggressive_vcpus_recommended_change = nil
+     |    |    |    |    object_walker:   destination.aggressive_vcpus_recommended_change_pct = nil
+     |    |    |    |    object_walker:   destination.allocated_disk_storage = 21474836480   (type: Fixnum)
+     |    |    |    |    object_walker:   destination.archived = false   (type: FalseClass)
+     |    |    |    |    object_walker:   destination.conservative_mem_recommended_change = nil
+     |    |    |    |    object_walker:   destination.conservative_mem_recommended_change_pct = nil
+     |    |    |    |    object_walker:   destination.conservative_recommended_mem = nil
+     |    |    |    |    object_walker:   destination.conservative_recommended_vcpus = nil
+     |    |    |    |    object_walker:   destination.conservative_vcpus_recommended_change = nil
+     |    |    |    |    object_walker:   destination.conservative_vcpus_recommended_change_pct = nil
+     |    |    |    |    object_walker:   destination.cores_per_socket = 1   (type: Fixnum)
+     |    |    |    |    object_walker:   destination.cpu_usagemhz_rate_average_avg_over_time_period = nil
+     |    |    |    |    object_walker:   destination.cpu_usagemhz_rate_average_high_over_time_period = nil
+     |    |    |    |    object_walker:   destination.cpu_usagemhz_rate_average_low_over_time_period = nil
+     |    |    |    |    object_walker:   destination.cpu_usagemhz_rate_average_max_over_time_period = nil
+     |    |    |    |    object_walker:   destination.custom_1 = nil
+     |    |    |    |    object_walker:   destination.custom_2 = nil
+     |    |    |    |    object_walker:   destination.custom_3 = nil
+     |    |    |    |    object_walker:   destination.custom_4 = nil
+     |    |    |    |    object_walker:   destination.custom_5 = nil
+     |    |    |    |    object_walker:   destination.custom_6 = nil
+     |    |    |    |    object_walker:   destination.custom_7 = nil
+     |    |    |    |    object_walker:   destination.custom_8 = nil
+     |    |    |    |    object_walker:   destination.custom_9 = nil
+     |    |    |    |    object_walker:   destination.debris_size = 0   (type: Fixnum)
+     |    |    |    |    object_walker:   destination.derived_memory_used_avg_over_time_period = nil
+     |    |    |    |    object_walker:   destination.derived_memory_used_high_over_time_period = nil
+     |    |    |    |    object_walker:   destination.derived_memory_used_low_over_time_period = nil
+     |    |    |    |    object_walker:   destination.derived_memory_used_max_over_time_period = nil
+     |    |    |    |    object_walker:   destination.disconnected = false   (type: FalseClass)
+     |    |    |    |    object_walker:   destination.disk_1_disk_type = thin   (type: String)
+     |    |    |    |    object_walker:   destination.disk_1_mode = persistent   (type: String)
+     |    |    |    |    object_walker:   destination.disk_1_partitions_aligned = Unknown   (type: String)
+     |    |    |    |    object_walker:   destination.disk_1_size = 21474836480   (type: Fixnum)
+     |    |    |    |    object_walker:   destination.disk_1_size_on_disk = nil
+     |    |    |    |    object_walker:   destination.disk_1_used_percent_of_provisioned = 0.0   (type: Float)
+     |    |    |    |    object_walker:   destination.disk_2_disk_type = nil
+     |    |    |    |    object_walker:   destination.disk_2_mode = nil
+     |    |    |    |    object_walker:   destination.disk_2_partitions_aligned = nil
+     |    |    |    |    object_walker:   destination.disk_2_size = nil
+     |    |    |    |    object_walker:   destination.disk_2_size_on_disk = nil
+     |    |    |    |    object_walker:   destination.disk_2_used_percent_of_provisioned = nil
+     |    |    |    |    object_walker:   destination.disk_3_disk_type = nil
+     |    |    |    |    object_walker:   destination.disk_3_mode = nil
+     |    |    |    |    object_walker:   destination.disk_3_partitions_aligned = nil
+     |    |    |    |    object_walker:   destination.disk_3_size = nil
+     |    |    |    |    object_walker:   destination.disk_3_size_on_disk = nil
+     |    |    |    |    object_walker:   destination.disk_3_used_percent_of_provisioned = nil
+     |    |    |    |    object_walker:   destination.disk_4_disk_type = nil
+     |    |    |    |    object_walker:   destination.disk_4_mode = nil
+     |    |    |    |    object_walker:   destination.disk_4_partitions_aligned = nil
+     |    |    |    |    object_walker:   destination.disk_4_size = nil
+     |    |    |    |    object_walker:   destination.disk_4_size_on_disk = nil
+     |    |    |    |    object_walker:   destination.disk_4_used_percent_of_provisioned = nil
+     |    |    |    |    object_walker:   destination.disk_5_disk_type = nil
+     |    |    |    |    object_walker:   destination.disk_5_mode = nil
+     |    |    |    |    object_walker:   destination.disk_5_partitions_aligned = nil
+     |    |    |    |    object_walker:   destination.disk_5_size = nil
+     |    |    |    |    object_walker:   destination.disk_5_size_on_disk = nil
+     |    |    |    |    object_walker:   destination.disk_5_used_percent_of_provisioned = nil
+     |    |    |    |    object_walker:   destination.disk_6_disk_type = nil
+     |    |    |    |    object_walker:   destination.disk_6_mode = nil
+     |    |    |    |    object_walker:   destination.disk_6_partitions_aligned = nil
+     |    |    |    |    object_walker:   destination.disk_6_size = nil
+     |    |    |    |    object_walker:   destination.disk_6_size_on_disk = nil
+     |    |    |    |    object_walker:   destination.disk_6_used_percent_of_provisioned = nil
+     |    |    |    |    object_walker:   destination.disk_7_disk_type = nil
+     |    |    |    |    object_walker:   destination.disk_7_mode = nil
+     |    |    |    |    object_walker:   destination.disk_7_partitions_aligned = nil
+     |    |    |    |    object_walker:   destination.disk_7_size = nil
+     |    |    |    |    object_walker:   destination.disk_7_size_on_disk = nil
+     |    |    |    |    object_walker:   destination.disk_7_used_percent_of_provisioned = nil
+     |    |    |    |    object_walker:   destination.disk_8_disk_type = nil
+     |    |    |    |    object_walker:   destination.disk_8_mode = nil
+     |    |    |    |    object_walker:   destination.disk_8_partitions_aligned = nil
+     |    |    |    |    object_walker:   destination.disk_8_size = nil
+     |    |    |    |    object_walker:   destination.disk_8_size_on_disk = nil
+     |    |    |    |    object_walker:   destination.disk_8_used_percent_of_provisioned = nil
+     |    |    |    |    object_walker:   destination.disk_9_disk_type = nil
+     |    |    |    |    object_walker:   destination.disk_9_mode = nil
+     |    |    |    |    object_walker:   destination.disk_9_partitions_aligned = nil
+     |    |    |    |    object_walker:   destination.disk_9_size = nil
+     |    |    |    |    object_walker:   destination.disk_9_size_on_disk = nil
+     |    |    |    |    object_walker:   destination.disk_9_used_percent_of_provisioned = nil
+     |    |    |    |    object_walker:   destination.disk_size = 0   (type: Fixnum)
+     |    |    |    |    object_walker:   destination.disks_aligned = Unknown   (type: String)
+     |    |    |    |    object_walker:   destination.ems_cluster_name = Production   (type: String)
+     |    |    |    |    object_walker:   destination.evm_owner_email = pemcg@bit63.com   (type: String)
+     |    |    |    |    object_walker:   destination.evm_owner_name = Peter McGowan   (type: String)
+     |    |    |    |    object_walker:   destination.evm_owner_userid = pemcg   (type: String)
+     |    |    |    |    object_walker:   destination.first_drift_state_timestamp = nil
+     |    |    |    |    object_walker:   destination.has_rdm_disk = false   (type: FalseClass)
+     |    |    |    |    object_walker:   destination.host_name = esxsrv01.bit63.net   (type: String)
+     |    |    |    |    object_walker:   destination.hostnames = ["localhost.localdomain"]   (type: Array)
+     |    |    |    |    object_walker:   destination.ipaddresses = ["192.168.2.192"]   (type: Array)
+     |    |    |    |    object_walker:   destination.is_evm_appliance = false   (type: FalseClass)
+     |    |    |    |    object_walker:   destination.last_compliance_status = nil
+     |    |    |    |    object_walker:   destination.last_compliance_timestamp = nil
+     |    |    |    |    object_walker:   destination.last_drift_state_timestamp = nil
+     |    |    |    |    object_walker:   destination.logical_cpus = 1   (type: Fixnum)
+     |    |    |    |    object_walker:   destination.mac_addresses = ["00:50:56:b8:7b:c0"]   (type: Array)
+     |    |    |    |    object_walker:   destination.max_cpu_usage_rate_average_avg_over_time_period = nil
+     |    |    |    |    object_walker:   destination.max_cpu_usage_rate_average_avg_over_time_period_without_overhead = nil
+     |    |    |    |    object_walker:   destination.max_cpu_usage_rate_average_high_over_time_period = nil
+     |    |    |    |    object_walker:   destination.max_cpu_usage_rate_average_high_over_time_period_without_overhead = nil
+     |    |    |    |    object_walker:   destination.max_cpu_usage_rate_average_low_over_time_period = nil
+     |    |    |    |    object_walker:   destination.max_cpu_usage_rate_average_low_over_time_period_without_overhead = nil
+     |    |    |    |    object_walker:   destination.max_cpu_usage_rate_average_max_over_time_period = nil
+     |    |    |    |    object_walker:   destination.max_mem_usage_absolute_average_avg_over_time_period = nil
+     |    |    |    |    object_walker:   destination.max_mem_usage_absolute_average_avg_over_time_period_without_overhead = nil
+     |    |    |    |    object_walker:   destination.max_mem_usage_absolute_average_high_over_time_period = nil
+     |    |    |    |    object_walker:   destination.max_mem_usage_absolute_average_high_over_time_period_without_overhead = nil
+     |    |    |    |    object_walker:   destination.max_mem_usage_absolute_average_low_over_time_period = nil
+     |    |    |    |    object_walker:   destination.max_mem_usage_absolute_average_low_over_time_period_without_overhead = nil
+     |    |    |    |    object_walker:   destination.max_mem_usage_absolute_average_max_over_time_period = nil
+     |    |    |    |    object_walker:   destination.mem_cpu = 2048   (type: Fixnum)
+     |    |    |    |    object_walker:   destination.memory_exceeds_current_host_headroom = false   (type: FalseClass)
+     |    |    |    |    object_walker:   destination.moderate_mem_recommended_change = nil
+     |    |    |    |    object_walker:   destination.moderate_mem_recommended_change_pct = nil
+     |    |    |    |    object_walker:   destination.moderate_recommended_mem = nil
+     |    |    |    |    object_walker:   destination.moderate_recommended_vcpus = nil
+     |    |    |    |    object_walker:   destination.moderate_vcpus_recommended_change = nil
+     |    |    |    |    object_walker:   destination.moderate_vcpus_recommended_change_pct = nil
+     |    |    |    |    object_walker:   destination.num_cpu = 1   (type: Fixnum)
+     |    |    |    |    object_walker:   destination.num_disks = 3   (type: Fixnum)
+     |    |    |    |    object_walker:   destination.num_hard_disks = 1   (type: Fixnum)
+     |    |    |    |    object_walker:   destination.orphaned = false   (type: FalseClass)
+     |    |    |    |    object_walker:   destination.os_image_name = linux_redhat   (type: String)
+     |    |    |    |    object_walker:   destination.overallocated_mem_pct = nil
+     |    |    |    |    object_walker:   destination.overallocated_vcpus_pct = nil
+     |    |    |    |    object_walker:   destination.owned_by_current_ldap_group = nil
+     |    |    |    |    object_walker:   destination.owned_by_current_user = nil
+     |    |    |    |    object_walker:   destination.owning_ldap_group = Bit63Group_vm_user   (type: String)
+     |    |    |    |    object_walker:   destination.paravirtualization = nil
+     |    |    |    |    object_walker:   destination.parent_blue_folder_1_name = Winchester   (type: String)
+     |    |    |    |    object_walker:   destination.parent_blue_folder_2_name =    (type: String)
+     |    |    |    |    object_walker:   destination.parent_blue_folder_3_name =    (type: String)
+     |    |    |    |    object_walker:   destination.parent_blue_folder_4_name =    (type: String)
+     |    |    |    |    object_walker:   destination.parent_blue_folder_5_name =    (type: String)
+     |    |    |    |    object_walker:   destination.parent_blue_folder_6_name =    (type: String)
+     |    |    |    |    object_walker:   destination.parent_blue_folder_7_name =    (type: String)
+     |    |    |    |    object_walker:   destination.parent_blue_folder_8_name =    (type: String)
+     |    |    |    |    object_walker:   destination.parent_blue_folder_9_name =    (type: String)
+     |    |    |    |    object_walker:   destination.platform = linux   (type: String)
+     |    |    |    |    object_walker:   destination.provisioned_storage = 23622320128   (type: Fixnum)
+     |    |    |    |    object_walker:   destination.recommended_mem = nil
+     |    |    |    |    object_walker:   destination.recommended_vcpus = nil
+     |    |    |    |    object_walker:   destination.region_description = Region 1   (type: String)
+     |    |    |    |    object_walker:   destination.region_number = 1   (type: Fixnum)
+     |    |    |    |    object_walker:   destination.snapshot_size = 0   (type: Fixnum)
+     |    |    |    |    object_walker:   destination.storage_name = datastore1   (type: String)
+     |    |    |    |    object_walker:   destination.thin_provisioned = true   (type: TrueClass)
+     |    |    |    |    object_walker:   destination.uncommitted_storage = 0   (type: Fixnum)
+     |    |    |    |    object_walker:   destination.used_disk_storage = 21474836480   (type: Fixnum)
+     |    |    |    |    object_walker:   destination.used_storage = 23622320128   (type: Fixnum)
+     |    |    |    |    object_walker:   destination.used_storage_by_state = 23622320128   (type: Fixnum)
+     |    |    |    |    object_walker:   destination.v_annotation = Owner:  
+     |    |    |    |    object_walker:   destination.v_datastore_path = datastore1/pemcg-test03/pemcg-test03.vmx   (type: String)
+     |    |    |    |    object_walker:   destination.v_host_vmm_product = ESX   (type: String)
+     |    |    |    |    object_walker:   destination.v_is_a_template = False   (type: String)
+     |    |    |    |    object_walker:   destination.v_owning_blue_folder = vm   (type: String)
+     |    |    |    |    object_walker:   destination.v_owning_blue_folder_path = Datacenters/Winchester/vm   (type: String)
+     |    |    |    |    object_walker:   destination.v_owning_cluster = Production   (type: String)
+     |    |    |    |    object_walker:   destination.v_owning_datacenter = Winchester   (type: String)
+     |    |    |    |    object_walker:   destination.v_owning_folder = Datacenters   (type: String)
+     |    |    |    |    object_walker:   destination.v_owning_folder_path = Datacenters   (type: String)
+     |    |    |    |    object_walker:   destination.v_owning_resource_pool = Default for Cluster / Deployment Role Production   (type: String)
+     |    |    |    |    object_walker:   destination.v_pct_free_disk_space = nil
+     |    |    |    |    object_walker:   destination.v_pct_used_disk_space = nil
+     |    |    |    |    object_walker:   destination.v_snapshot_newest_description = nil
+     |    |    |    |    object_walker:   destination.v_snapshot_newest_name = nil
+     |    |    |    |    object_walker:   destination.v_snapshot_newest_timestamp = nil
+     |    |    |    |    object_walker:   destination.v_snapshot_newest_total_size = nil
+     |    |    |    |    object_walker:   destination.v_snapshot_oldest_description = nil
+     |    |    |    |    object_walker:   destination.v_snapshot_oldest_name = nil
+     |    |    |    |    object_walker:   destination.v_snapshot_oldest_timestamp = nil
+     |    |    |    |    object_walker:   destination.v_snapshot_oldest_total_size = nil
+     |    |    |    |    object_walker:   destination.v_total_snapshots = 0   (type: Fixnum)
+     |    |    |    |    object_walker:   destination.vm_misc_size = 0   (type: Fixnum)
+     |    |    |    |    object_walker:   destination.vm_ram_size = 0   (type: Fixnum)
+     |    |    |    |    object_walker:   destination.vmsafe_agent_address = nil
+     |    |    |    |    object_walker:   destination.vmsafe_agent_port = nil
+     |    |    |    |    object_walker:   destination.vmsafe_enable = nil
+     |    |    |    |    object_walker:   destination.vmsafe_fail_open = nil
+     |    |    |    |    object_walker:   destination.vmsafe_immutable_vm = nil
+     |    |    |    |    object_walker:   destination.vmsafe_timeout_ms = nil
+     |    |    |    |    object_walker:   --- end of virtual columns ---
+     |    |    |    |    object_walker:   --- associations follow ---
+     |    |    |    |    object_walker:   destination.datacenter (type: Association)
+     |    |    |    |    object_walker:   *** not walking: 'datacenter' isn't in the @walk_association_whitelist hash for MiqAeServiceVmVmware ***
+     |    |    |    |    object_walker:   destination.direct_service (type: Association)
+     |    |    |    |    object_walker:   *** not walking: 'direct_service' isn't in the @walk_association_whitelist hash for MiqAeServiceVmVmware ***
+     |    |    |    |    object_walker:   destination.directories (type: Association (empty))
+     |    |    |    |    object_walker:   destination.ems_blue_folder (type: Association)
+     |    |    |    |    object_walker:   *** not walking: 'ems_blue_folder' isn't in the @walk_association_whitelist hash for MiqAeServiceVmVmware ***
+     |    |    |    |    object_walker:   destination.ems_cluster (type: Association)
+     |    |    |    |    object_walker:   *** not walking: 'ems_cluster' isn't in the @walk_association_whitelist hash for MiqAeServiceVmVmware ***
+     |    |    |    |    object_walker:   destination.ems_folder (type: Association)
+     |    |    |    |    object_walker:   *** not walking: 'ems_folder' isn't in the @walk_association_whitelist hash for MiqAeServiceVmVmware ***
+     |    |    |    |    object_walker:   destination.ext_management_system (type: Association)
+     |    |    |    |    object_walker:   *** not walking: 'ext_management_system' isn't in the @walk_association_whitelist hash for MiqAeServiceVmVmware ***
+     |    |    |    |    object_walker:   destination.files (type: Association (empty))
+     |    |    |    |    object_walker:   destination.guest_applications (type: Association (empty))
+     |    |    |    |    object_walker:   destination.hardware (type: Association)
+     |    |    |    |    object_walker:   *** not walking: 'hardware' isn't in the @walk_association_whitelist hash for MiqAeServiceVmVmware ***
+     |    |    |    |    object_walker:   destination.host (type: Association)
+     |    |    |    |    object_walker:   *** not walking: 'host' isn't in the @walk_association_whitelist hash for MiqAeServiceVmVmware ***
+     |    |    |    |    object_walker:   destination.miq_provision (type: Association)
+     |    |    |    |    object_walker:   *** not walking: 'miq_provision' isn't in the @walk_association_whitelist hash for MiqAeServiceVmVmware ***
+     |    |    |    |    object_walker:   destination.operating_system (type: Association)
+     |    |    |    |    object_walker:   *** not walking: 'operating_system' isn't in the @walk_association_whitelist hash for MiqAeServiceVmVmware ***
+     |    |    |    |    object_walker:   destination.owner (type: Association)
+     |    |    |    |    object_walker:   *** not walking: 'owner' isn't in the @walk_association_whitelist hash for MiqAeServiceVmVmware ***
+     |    |    |    |    object_walker:   destination.resource_pool (type: Association)
+     |    |    |    |    object_walker:   *** not walking: 'resource_pool' isn't in the @walk_association_whitelist hash for MiqAeServiceVmVmware ***
+     |    |    |    |    object_walker:   destination.service (type: Association)
+     |    |    |    |    object_walker:   *** not walking: 'service' isn't in the @walk_association_whitelist hash for MiqAeServiceVmVmware ***
+     |    |    |    |    object_walker:   destination.snapshots (type: Association (empty))
+     |    |    |    |    object_walker:   destination.storage (type: Association)
+     |    |    |    |    object_walker:   *** not walking: 'storage' isn't in the @walk_association_whitelist hash for MiqAeServiceVmVmware ***
+     |    |    |    |    object_walker:   --- end of associations ---
+     |    |    |    |    object_walker:   --- methods follow ---
+     |    |    |    |    object_walker:   destination.add_disk
+     |    |    |    |    object_walker:   destination.add_to_service
+     |    |    |    |    object_walker:   destination.changed_vm_value?
+     |    |    |    |    object_walker:   destination.collect_running_processes
+     |    |    |    |    object_walker:   destination.create_snapshot
+     |    |    |    |    object_walker:   destination.custom_get
+     |    |    |    |    object_walker:   destination.custom_keys
+     |    |    |    |    object_walker:   destination.custom_set
+     |    |    |    |    object_walker:   destination.ems_custom_get
+     |    |    |    |    object_walker:   destination.ems_custom_keys
+     |    |    |    |    object_walker:   destination.ems_custom_set
+     |    |    |    |    object_walker:   destination.ems_ref_string
+     |    |    |    |    object_walker:   destination.error_retiring?
+     |    |    |    |    object_walker:   destination.event_log_threshold?
+     |    |    |    |    object_walker:   destination.event_threshold?
+     |    |    |    |    object_walker:   destination.finish_retirement
+     |    |    |    |    object_walker:   destination.group=
+     |    |    |    |    object_walker:   destination.migrate
+     |    |    |    |    object_walker:   destination.owner=
+     |    |    |    |    object_walker:   destination.performances_maintains_value_for_duration?
+     |    |    |    |    object_walker:   destination.reboot_guest
+     |    |    |    |    object_walker:   destination.reconfigured_hardware_value?
+     |    |    |    |    object_walker:   destination.refresh
+     |    |    |    |    object_walker:   destination.registered?
+     |    |    |    |    object_walker:   destination.remove_all_snapshots
+     |    |    |    |    object_walker:   destination.remove_from_disk
+     |    |    |    |    object_walker:   destination.remove_from_service
+     |    |    |    |    object_walker:   destination.remove_from_vmdb
+     |    |    |    |    object_walker:   destination.remove_snapshot
+     |    |    |    |    object_walker:   destination.retire_now
+     |    |    |    |    object_walker:   destination.retired?
+     |    |    |    |    object_walker:   destination.retirement_state=
+     |    |    |    |    object_walker:   destination.retirement_warn=
+     |    |    |    |    object_walker:   destination.retires_on=
+     |    |    |    |    object_walker:   destination.retiring?
+     |    |    |    |    object_walker:   destination.revert_to_snapshot
+     |    |    |    |    object_walker:   destination.scan
+     |    |    |    |    object_walker:   destination.set_memory
+     |    |    |    |    object_walker:   destination.set_number_of_cpus
+     |    |    |    |    object_walker:   destination.shutdown_guest
+     |    |    |    |    object_walker:   destination.snapshot_operation
+     |    |    |    |    object_walker:   destination.standby_guest
+     |    |    |    |    object_walker:   destination.start
+     |    |    |    |    object_walker:   destination.start_retirement
+     |    |    |    |    object_walker:   destination.stop
+     |    |    |    |    object_walker:   destination.suspend
+     |    |    |    |    object_walker:   destination.sync_or_async_ems_operation
+     |    |    |    |    object_walker:   destination.unlink_storage
+     |    |    |    |    object_walker:   destination.unregister
+     |    |    |    |    object_walker:   --- end of methods ---
+     |    |    |    object_walker:   miq_request_task.eligible_clusters (type: Association)
+     |    |    |    object_walker:   *** not walking: 'eligible_clusters' isn't in the @walk_association_whitelist hash for MiqAeServiceMiqProvisionVmware ***
+     |    |    |    object_walker:   miq_request_task.eligible_customization_templates (type: Association (empty))
+     |    |    |    object_walker:   miq_request_task.eligible_folders (type: Association (empty))
+     |    |    |    object_walker:   miq_request_task.eligible_hosts (type: Association)
+     |    |    |    object_walker:   *** not walking: 'eligible_hosts' isn't in the @walk_association_whitelist hash for MiqAeServiceMiqProvisionVmware ***
+     |    |    |    object_walker:   miq_request_task.eligible_iso_images (type: Association (empty))
+     |    |    |    object_walker:   miq_request_task.eligible_pxe_images (type: Association (empty))
+     |    |    |    object_walker:   miq_request_task.eligible_pxe_servers (type: Association (empty))
+     |    |    |    object_walker:   miq_request_task.eligible_resource_pools (type: Association (empty))
+     |    |    |    object_walker:   miq_request_task.eligible_storages (type: Association)
+     |    |    |    object_walker:   *** not walking: 'eligible_storages' isn't in the @walk_association_whitelist hash for MiqAeServiceMiqProvisionVmware ***
+     |    |    |    object_walker:   miq_request_task.eligible_windows_images (type: Association (empty))
+     |    |    |    object_walker:   miq_request_task.miq_provision_request (type: Association)
+     |    |    |    object_walker:   *** not walking: 'miq_provision_request' isn't in the @walk_association_whitelist hash for MiqAeServiceMiqProvisionVmware ***
+     |    |    |    object_walker:   miq_request_task.miq_request (type: Association)
+     |    |    |    object_walker:   miq_request = miq_request_task.miq_request
+     |    |    |    |    object_walker:   (object type: MiqAeServiceServiceTemplateProvisionRequest, object ID: 1000000000015)
+     |    |    |    |    object_walker:   Object MiqAeServiceServiceTemplateProvisionRequest with ID 1000000000015 has already been dumped...
+     |    |    |    object_walker:   miq_request_task.miq_request_task (type: Association)
+     |    |    |    object_walker:   *** not walking: 'miq_request_task' isn't in the @walk_association_whitelist hash for MiqAeServiceMiqProvisionVmware ***
+     |    |    |    object_walker:   miq_request_task.miq_request_tasks (type: Association (empty))
+     |    |    |    object_walker:   miq_request_task.source (type: Association)
+     |    |    |    object_walker:   source = miq_request_task.source
+     |    |    |    |    object_walker:   (object type: MiqAeServiceTemplateVmware, object ID: 1000000000003)
+     |    |    |    |    object_walker:   source.autostart = nil
+     |    |    |    |    object_walker:   source.availability_zone_id = nil
+     |    |    |    |    object_walker:   source.boot_time = 2014-01-31 07:59:21 UTC   (type: ActiveSupport::TimeWithZone)
+     |    |    |    |    object_walker:   source.busy = nil
+     |    |    |    |    object_walker:   source.cloud = false   (type: FalseClass)
+     |    |    |    |    object_walker:   source.cloud_network_id = nil
+     |    |    |    |    object_walker:   source.cloud_subnet_id = nil
+     |    |    |    |    object_walker:   source.cloud_tenant_id = nil
+     |    |    |    |    object_walker:   source.config_xml = nil
+     |    |    |    |    object_walker:   source.connection_state = connected   (type: String)
+     |    |    |    |    object_walker:   source.cpu_affinity = nil
+     |    |    |    |    object_walker:   source.cpu_limit = -1   (type: Fixnum)
+     |    |    |    |    object_walker:   source.cpu_reserve = 0   (type: Fixnum)
+     |    |    |    |    object_walker:   source.cpu_reserve_expand = false   (type: FalseClass)
+     |    |    |    |    object_walker:   source.cpu_shares = 1000   (type: Fixnum)
+     |    |    |    |    object_walker:   source.cpu_shares_level = normal   (type: String)
+     |    |    |    |    object_walker:   source.created_on = 2015-09-23 13:22:02 UTC   (type: ActiveSupport::TimeWithZone)
+     |    |    |    |    object_walker:   source.description = nil
+     |    |    |    |    object_walker:   source.ems_cluster_id = 1000000000001   (type: Fixnum)
+     |    |    |    |    object_walker:   source.ems_created_on = nil
+     |    |    |    |    object_walker:   source.ems_id = 1000000000001   (type: Fixnum)
+     |    |    |    |    object_walker:   source.ems_ref = vm-85   (type: String)
+     |    |    |    |    object_walker:   source.ems_ref_obj = #<DRb::DRbUnknown:0x000000027e3e50>   (type: DRb::DRbUnknown)
+     |    |    |    |    object_walker:   source.evm_owner_id = nil
+     |    |    |    |    object_walker:   source.fault_tolerance = false   (type: FalseClass)
+     |    |    |    |    object_walker:   source.flavor_id = nil
+     |    |    |    |    object_walker:   source.format = nil
+     |    |    |    |    object_walker:   source.guid = 13952c50-61f6-11e5-b4d5-005056b87ba6   (type: String)
+     |    |    |    |    object_walker:   source.host_id = 1000000000001   (type: Fixnum)
+     |    |    |    |    object_walker:   source.id = 1000000000003   (type: Fixnum)
+     |    |    |    |    object_walker:   source.last_perf_capture_on = nil
+     |    |    |    |    object_walker:   source.last_scan_attempt_on = nil
+     |    |    |    |    object_walker:   source.last_scan_on = nil
+     |    |    |    |    object_walker:   source.last_sync_on = nil
+     |    |    |    |    object_walker:   source.linked_clone = false   (type: FalseClass)
+     |    |    |    |    object_walker:   source.location = rhel64-t/rhel64-t.vmtx   (type: String)
+     |    |    |    |    object_walker:   source.memory_limit = -1   (type: Fixnum)
+     |    |    |    |    object_walker:   source.memory_reserve = 0   (type: Fixnum)
+     |    |    |    |    object_walker:   source.memory_reserve_expand = false   (type: FalseClass)
+     |    |    |    |    object_walker:   source.memory_shares = 10240   (type: Fixnum)
+     |    |    |    |    object_walker:   source.memory_shares_level = normal   (type: String)
+     |    |    |    |    object_walker:   source.miq_group_id = nil
+     |    |    |    |    object_walker:   source.name = rhel65-t   (type: String)
+     |    |    |    |    object_walker:   source.orchestration_stack_id = nil
+     |    |    |    |    object_walker:   source.power_state = never   (type: String)
+     |    |    |    |    object_walker:   source.previous_state = nil
+     |    |    |    |    object_walker:   source.publicly_available = nil
+     |    |    |    |    object_walker:   source.raw_power_state = never   (type: String)
+     |    |    |    |    object_walker:   source.registered = nil
+     |    |    |    |    object_walker:   source.retired = nil
+     |    |    |    |    object_walker:   source.retirement_last_warn = nil
+     |    |    |    |    object_walker:   source.retirement_requester = nil
+     |    |    |    |    object_walker:   source.retirement_state = nil
+     |    |    |    |    object_walker:   source.retirement_warn = nil
+     |    |    |    |    object_walker:   source.retires_on = nil
+     |    |    |    |    object_walker:   source.smart = nil
+     |    |    |    |    object_walker:   source.standby_action = checkpoint   (type: String)
+     |    |    |    |    object_walker:   source.state_changed_on = 2015-09-23 13:22:02 UTC   (type: ActiveSupport::TimeWithZone)
+     |    |    |    |    object_walker:   source.storage_id = 1000000000001   (type: Fixnum)
+     |    |    |    |    object_walker:   source.template = true   (type: TrueClass)
+     |    |    |    |    object_walker:   source.tools_status = toolsNotRunning   (type: String)
+     |    |    |    |    object_walker:   source.type = TemplateVmware   (type: String)
+     |    |    |    |    object_walker:   source.uid_ems = 42385ece-574a-7bab-0ac9-bb022c979161   (type: String)
+     |    |    |    |    object_walker:   source.updated_on = 2015-09-23 13:22:02 UTC   (type: ActiveSupport::TimeWithZone)
+     |    |    |    |    object_walker:   source.vendor = VMware   (type: String)
+     |    |    |    |    object_walker:   source.version = nil
+     |    |    |    |    object_walker:   source.vnc_port = nil
+     |    |    |    |    object_walker:   --- virtual columns follow ---
+     |    |    |    |    object_walker:   source.active = false   (type: FalseClass)
+     |    |    |    |    object_walker:   source.aggressive_mem_recommended_change = nil
+     |    |    |    |    object_walker:   source.aggressive_mem_recommended_change_pct = nil
+     |    |    |    |    object_walker:   source.aggressive_recommended_mem = nil
+     |    |    |    |    object_walker:   source.aggressive_recommended_vcpus = nil
+     |    |    |    |    object_walker:   source.aggressive_vcpus_recommended_change = nil
+     |    |    |    |    object_walker:   source.aggressive_vcpus_recommended_change_pct = nil
+     |    |    |    |    object_walker:   source.allocated_disk_storage = 21474836480   (type: Fixnum)
+     |    |    |    |    object_walker:   source.archived = false   (type: FalseClass)
+     |    |    |    |    object_walker:   source.conservative_mem_recommended_change = nil
+     |    |    |    |    object_walker:   source.conservative_mem_recommended_change_pct = nil
+     |    |    |    |    object_walker:   source.conservative_recommended_mem = nil
+     |    |    |    |    object_walker:   source.conservative_recommended_vcpus = nil
+     |    |    |    |    object_walker:   source.conservative_vcpus_recommended_change = nil
+     |    |    |    |    object_walker:   source.conservative_vcpus_recommended_change_pct = nil
+     |    |    |    |    object_walker:   source.cores_per_socket = 1   (type: Fixnum)
+     |    |    |    |    object_walker:   source.cpu_usagemhz_rate_average_avg_over_time_period = nil
+     |    |    |    |    object_walker:   source.cpu_usagemhz_rate_average_high_over_time_period = nil
+     |    |    |    |    object_walker:   source.cpu_usagemhz_rate_average_low_over_time_period = nil
+     |    |    |    |    object_walker:   source.cpu_usagemhz_rate_average_max_over_time_period = nil
+     |    |    |    |    object_walker:   source.custom_1 = nil
+     |    |    |    |    object_walker:   source.custom_2 = nil
+     |    |    |    |    object_walker:   source.custom_3 = nil
+     |    |    |    |    object_walker:   source.custom_4 = nil
+     |    |    |    |    object_walker:   source.custom_5 = nil
+     |    |    |    |    object_walker:   source.custom_6 = nil
+     |    |    |    |    object_walker:   source.custom_7 = nil
+     |    |    |    |    object_walker:   source.custom_8 = nil
+     |    |    |    |    object_walker:   source.custom_9 = nil
+     |    |    |    |    object_walker:   source.debris_size = 0   (type: Fixnum)
+     |    |    |    |    object_walker:   source.derived_memory_used_avg_over_time_period = nil
+     |    |    |    |    object_walker:   source.derived_memory_used_high_over_time_period = nil
+     |    |    |    |    object_walker:   source.derived_memory_used_low_over_time_period = nil
+     |    |    |    |    object_walker:   source.derived_memory_used_max_over_time_period = nil
+     |    |    |    |    object_walker:   source.disconnected = false   (type: FalseClass)
+     |    |    |    |    object_walker:   source.disk_1_disk_type = thin   (type: String)
+     |    |    |    |    object_walker:   source.disk_1_mode = persistent   (type: String)
+     |    |    |    |    object_walker:   source.disk_1_partitions_aligned = Unknown   (type: String)
+     |    |    |    |    object_walker:   source.disk_1_size = 21474836480   (type: Fixnum)
+     |    |    |    |    object_walker:   source.disk_1_size_on_disk = nil
+     |    |    |    |    object_walker:   source.disk_1_used_percent_of_provisioned = 0.0   (type: Float)
+     |    |    |    |    object_walker:   source.disk_2_disk_type = nil
+     |    |    |    |    object_walker:   source.disk_2_mode = nil
+     |    |    |    |    object_walker:   source.disk_2_partitions_aligned = nil
+     |    |    |    |    object_walker:   source.disk_2_size = nil
+     |    |    |    |    object_walker:   source.disk_2_size_on_disk = nil
+     |    |    |    |    object_walker:   source.disk_2_used_percent_of_provisioned = nil
+     |    |    |    |    object_walker:   source.disk_3_disk_type = nil
+     |    |    |    |    object_walker:   source.disk_3_mode = nil
+     |    |    |    |    object_walker:   source.disk_3_partitions_aligned = nil
+     |    |    |    |    object_walker:   source.disk_3_size = nil
+     |    |    |    |    object_walker:   source.disk_3_size_on_disk = nil
+     |    |    |    |    object_walker:   source.disk_3_used_percent_of_provisioned = nil
+     |    |    |    |    object_walker:   source.disk_4_disk_type = nil
+     |    |    |    |    object_walker:   source.disk_4_mode = nil
+     |    |    |    |    object_walker:   source.disk_4_partitions_aligned = nil
+     |    |    |    |    object_walker:   source.disk_4_size = nil
+     |    |    |    |    object_walker:   source.disk_4_size_on_disk = nil
+     |    |    |    |    object_walker:   source.disk_4_used_percent_of_provisioned = nil
+     |    |    |    |    object_walker:   source.disk_5_disk_type = nil
+     |    |    |    |    object_walker:   source.disk_5_mode = nil
+     |    |    |    |    object_walker:   source.disk_5_partitions_aligned = nil
+     |    |    |    |    object_walker:   source.disk_5_size = nil
+     |    |    |    |    object_walker:   source.disk_5_size_on_disk = nil
+     |    |    |    |    object_walker:   source.disk_5_used_percent_of_provisioned = nil
+     |    |    |    |    object_walker:   source.disk_6_disk_type = nil
+     |    |    |    |    object_walker:   source.disk_6_mode = nil
+     |    |    |    |    object_walker:   source.disk_6_partitions_aligned = nil
+     |    |    |    |    object_walker:   source.disk_6_size = nil
+     |    |    |    |    object_walker:   source.disk_6_size_on_disk = nil
+     |    |    |    |    object_walker:   source.disk_6_used_percent_of_provisioned = nil
+     |    |    |    |    object_walker:   source.disk_7_disk_type = nil
+     |    |    |    |    object_walker:   source.disk_7_mode = nil
+     |    |    |    |    object_walker:   source.disk_7_partitions_aligned = nil
+     |    |    |    |    object_walker:   source.disk_7_size = nil
+     |    |    |    |    object_walker:   source.disk_7_size_on_disk = nil
+     |    |    |    |    object_walker:   source.disk_7_used_percent_of_provisioned = nil
+     |    |    |    |    object_walker:   source.disk_8_disk_type = nil
+     |    |    |    |    object_walker:   source.disk_8_mode = nil
+     |    |    |    |    object_walker:   source.disk_8_partitions_aligned = nil
+     |    |    |    |    object_walker:   source.disk_8_size = nil
+     |    |    |    |    object_walker:   source.disk_8_size_on_disk = nil
+     |    |    |    |    object_walker:   source.disk_8_used_percent_of_provisioned = nil
+     |    |    |    |    object_walker:   source.disk_9_disk_type = nil
+     |    |    |    |    object_walker:   source.disk_9_mode = nil
+     |    |    |    |    object_walker:   source.disk_9_partitions_aligned = nil
+     |    |    |    |    object_walker:   source.disk_9_size = nil
+     |    |    |    |    object_walker:   source.disk_9_size_on_disk = nil
+     |    |    |    |    object_walker:   source.disk_9_used_percent_of_provisioned = nil
+     |    |    |    |    object_walker:   source.disk_size = 0   (type: Fixnum)
+     |    |    |    |    object_walker:   source.disks_aligned = Unknown   (type: String)
+     |    |    |    |    object_walker:   source.ems_cluster_name = Production   (type: String)
+     |    |    |    |    object_walker:   source.evm_owner_email = nil
+     |    |    |    |    object_walker:   source.evm_owner_name = nil
+     |    |    |    |    object_walker:   source.evm_owner_userid = nil
+     |    |    |    |    object_walker:   source.first_drift_state_timestamp = nil
+     |    |    |    |    object_walker:   source.has_rdm_disk = false   (type: FalseClass)
+     |    |    |    |    object_walker:   source.host_name = esxsrv01.bit63.net   (type: String)
+     |    |    |    |    object_walker:   source.hostnames = ["localhost.localdomain"]   (type: Array)
+     |    |    |    |    object_walker:   source.ipaddresses = ["192.168.2.155"]   (type: Array)
+     |    |    |    |    object_walker:   source.is_evm_appliance = false   (type: FalseClass)
+     |    |    |    |    object_walker:   source.last_compliance_status = nil
+     |    |    |    |    object_walker:   source.last_compliance_timestamp = nil
+     |    |    |    |    object_walker:   source.last_drift_state_timestamp = nil
+     |    |    |    |    object_walker:   source.logical_cpus = 1   (type: Fixnum)
+     |    |    |    |    object_walker:   source.mac_addresses = ["00:50:56:b8:00:02"]   (type: Array)
+     |    |    |    |    object_walker:   source.max_cpu_usage_rate_average_avg_over_time_period = nil
+     |    |    |    |    object_walker:   source.max_cpu_usage_rate_average_avg_over_time_period_without_overhead = nil
+     |    |    |    |    object_walker:   source.max_cpu_usage_rate_average_high_over_time_period = nil
+     |    |    |    |    object_walker:   source.max_cpu_usage_rate_average_high_over_time_period_without_overhead = nil
+     |    |    |    |    object_walker:   source.max_cpu_usage_rate_average_low_over_time_period = nil
+     |    |    |    |    object_walker:   source.max_cpu_usage_rate_average_low_over_time_period_without_overhead = nil
+     |    |    |    |    object_walker:   source.max_cpu_usage_rate_average_max_over_time_period = nil
+     |    |    |    |    object_walker:   source.max_mem_usage_absolute_average_avg_over_time_period = nil
+     |    |    |    |    object_walker:   source.max_mem_usage_absolute_average_avg_over_time_period_without_overhead = nil
+     |    |    |    |    object_walker:   source.max_mem_usage_absolute_average_high_over_time_period = nil
+     |    |    |    |    object_walker:   source.max_mem_usage_absolute_average_high_over_time_period_without_overhead = nil
+     |    |    |    |    object_walker:   source.max_mem_usage_absolute_average_low_over_time_period = nil
+     |    |    |    |    object_walker:   source.max_mem_usage_absolute_average_low_over_time_period_without_overhead = nil
+     |    |    |    |    object_walker:   source.max_mem_usage_absolute_average_max_over_time_period = nil
+     |    |    |    |    object_walker:   source.mem_cpu = 1024   (type: Fixnum)
+     |    |    |    |    object_walker:   source.memory_exceeds_current_host_headroom = false   (type: FalseClass)
+     |    |    |    |    object_walker:   source.moderate_mem_recommended_change = nil
+     |    |    |    |    object_walker:   source.moderate_mem_recommended_change_pct = nil
+     |    |    |    |    object_walker:   source.moderate_recommended_mem = nil
+     |    |    |    |    object_walker:   source.moderate_recommended_vcpus = nil
+     |    |    |    |    object_walker:   source.moderate_vcpus_recommended_change = nil
+     |    |    |    |    object_walker:   source.moderate_vcpus_recommended_change_pct = nil
+     |    |    |    |    object_walker:   source.num_cpu = 1   (type: Fixnum)
+     |    |    |    |    object_walker:   source.num_disks = 3   (type: Fixnum)
+     |    |    |    |    object_walker:   source.num_hard_disks = 1   (type: Fixnum)
+     |    |    |    |    object_walker:   source.orphaned = false   (type: FalseClass)
+     |    |    |    |    object_walker:   source.os_image_name = linux_redhat   (type: String)
+     |    |    |    |    object_walker:   source.overallocated_mem_pct = nil
+     |    |    |    |    object_walker:   source.overallocated_vcpus_pct = nil
+     |    |    |    |    object_walker:   source.owned_by_current_ldap_group = nil
+     |    |    |    |    object_walker:   source.owned_by_current_user = nil
+     |    |    |    |    object_walker:   source.owning_ldap_group = nil
+     |    |    |    |    object_walker:   source.paravirtualization = nil
+     |    |    |    |    object_walker:   source.parent_blue_folder_1_name = Winchester   (type: String)
+     |    |    |    |    object_walker:   source.parent_blue_folder_2_name =    (type: String)
+     |    |    |    |    object_walker:   source.parent_blue_folder_3_name =    (type: String)
+     |    |    |    |    object_walker:   source.parent_blue_folder_4_name =    (type: String)
+     |    |    |    |    object_walker:   source.parent_blue_folder_5_name =    (type: String)
+     |    |    |    |    object_walker:   source.parent_blue_folder_6_name =    (type: String)
+     |    |    |    |    object_walker:   source.parent_blue_folder_7_name =    (type: String)
+     |    |    |    |    object_walker:   source.parent_blue_folder_8_name =    (type: String)
+     |    |    |    |    object_walker:   source.parent_blue_folder_9_name =    (type: String)
+     |    |    |    |    object_walker:   source.platform = linux   (type: String)
+     |    |    |    |    object_walker:   source.provisioned_storage = 22548578304   (type: Fixnum)
+     |    |    |    |    object_walker:   source.recommended_mem = nil
+     |    |    |    |    object_walker:   source.recommended_vcpus = nil
+     |    |    |    |    object_walker:   source.region_description = Region 1   (type: String)
+     |    |    |    |    object_walker:   source.region_number = 1   (type: Fixnum)
+     |    |    |    |    object_walker:   source.snapshot_size = 0   (type: Fixnum)
+     |    |    |    |    object_walker:   source.storage_name = datastore1   (type: String)
+     |    |    |    |    object_walker:   source.thin_provisioned = true   (type: TrueClass)
+     |    |    |    |    object_walker:   source.uncommitted_storage = 1073741824   (type: Fixnum)
+     |    |    |    |    object_walker:   source.used_disk_storage = 21474836480   (type: Fixnum)
+     |    |    |    |    object_walker:   source.used_storage = 22548578304   (type: Fixnum)
+     |    |    |    |    object_walker:   source.used_storage_by_state = 21474836480   (type: Fixnum)
+     |    |    |    |    object_walker:   source.v_annotation = MIQ GUID=6fa06738-3635-11e3-8af3-005056b80000   (type: String)
+     |    |    |    |    object_walker:   source.v_datastore_path = datastore1/rhel64-t/rhel64-t.vmtx   (type: String)
+     |    |    |    |    object_walker:   source.v_host_vmm_product = ESX   (type: String)
+     |    |    |    |    object_walker:   source.v_is_a_template = True   (type: String)
+     |    |    |    |    object_walker:   source.v_owning_blue_folder = vm   (type: String)
+     |    |    |    |    object_walker:   source.v_owning_blue_folder_path = Datacenters/Winchester/vm   (type: String)
+     |    |    |    |    object_walker:   source.v_owning_cluster = Production   (type: String)
+     |    |    |    |    object_walker:   source.v_owning_datacenter = Winchester   (type: String)
+     |    |    |    |    object_walker:   source.v_owning_folder = Datacenters   (type: String)
+     |    |    |    |    object_walker:   source.v_owning_folder_path = Datacenters   (type: String)
+     |    |    |    |    object_walker:   source.v_owning_resource_pool =    (type: String)
+     |    |    |    |    object_walker:   source.v_pct_free_disk_space = nil
+     |    |    |    |    object_walker:   source.v_pct_used_disk_space = nil
+     |    |    |    |    object_walker:   source.v_snapshot_newest_description = nil
+     |    |    |    |    object_walker:   source.v_snapshot_newest_name = nil
+     |    |    |    |    object_walker:   source.v_snapshot_newest_timestamp = nil
+     |    |    |    |    object_walker:   source.v_snapshot_newest_total_size = nil
+     |    |    |    |    object_walker:   source.v_snapshot_oldest_description = nil
+     |    |    |    |    object_walker:   source.v_snapshot_oldest_name = nil
+     |    |    |    |    object_walker:   source.v_snapshot_oldest_timestamp = nil
+     |    |    |    |    object_walker:   source.v_snapshot_oldest_total_size = nil
+     |    |    |    |    object_walker:   source.v_total_snapshots = 0   (type: Fixnum)
+     |    |    |    |    object_walker:   source.vm_misc_size = 0   (type: Fixnum)
+     |    |    |    |    object_walker:   source.vm_ram_size = 0   (type: Fixnum)
+     |    |    |    |    object_walker:   source.vmsafe_agent_address = nil
+     |    |    |    |    object_walker:   source.vmsafe_agent_port = nil
+     |    |    |    |    object_walker:   source.vmsafe_enable = nil
+     |    |    |    |    object_walker:   source.vmsafe_fail_open = nil
+     |    |    |    |    object_walker:   source.vmsafe_immutable_vm = nil
+     |    |    |    |    object_walker:   source.vmsafe_timeout_ms = nil
+     |    |    |    |    object_walker:   --- end of virtual columns ---
+     |    |    |    |    object_walker:   --- associations follow ---
+     |    |    |    |    object_walker:   source.datacenter (type: Association)
+     |    |    |    |    object_walker:   *** not walking: 'datacenter' isn't in the @walk_association_whitelist hash for MiqAeServiceTemplateVmware ***
+     |    |    |    |    object_walker:   source.direct_service (type: Association (empty))
+     |    |    |    |    object_walker:   source.directories (type: Association (empty))
+     |    |    |    |    object_walker:   source.ems_blue_folder (type: Association)
+     |    |    |    |    object_walker:   *** not walking: 'ems_blue_folder' isn't in the @walk_association_whitelist hash for MiqAeServiceTemplateVmware ***
+     |    |    |    |    object_walker:   source.ems_cluster (type: Association)
+     |    |    |    |    object_walker:   *** not walking: 'ems_cluster' isn't in the @walk_association_whitelist hash for MiqAeServiceTemplateVmware ***
+     |    |    |    |    object_walker:   source.ems_folder (type: Association)
+     |    |    |    |    object_walker:   *** not walking: 'ems_folder' isn't in the @walk_association_whitelist hash for MiqAeServiceTemplateVmware ***
+     |    |    |    |    object_walker:   source.ext_management_system (type: Association)
+     |    |    |    |    object_walker:   *** not walking: 'ext_management_system' isn't in the @walk_association_whitelist hash for MiqAeServiceTemplateVmware ***
+     |    |    |    |    object_walker:   source.files (type: Association (empty))
+     |    |    |    |    object_walker:   source.guest_applications (type: Association (empty))
+     |    |    |    |    object_walker:   source.hardware (type: Association)
+     |    |    |    |    object_walker:   *** not walking: 'hardware' isn't in the @walk_association_whitelist hash for MiqAeServiceTemplateVmware ***
+     |    |    |    |    object_walker:   source.host (type: Association)
+     |    |    |    |    object_walker:   *** not walking: 'host' isn't in the @walk_association_whitelist hash for MiqAeServiceTemplateVmware ***
+     |    |    |    |    object_walker:   source.miq_provision (type: Association (empty))
+     |    |    |    |    object_walker:   source.operating_system (type: Association)
+     |    |    |    |    object_walker:   *** not walking: 'operating_system' isn't in the @walk_association_whitelist hash for MiqAeServiceTemplateVmware ***
+     |    |    |    |    object_walker:   source.owner (type: Association (empty))
+     |    |    |    |    object_walker:   source.resource_pool (type: Association (empty))
+     |    |    |    |    object_walker:   source.service (type: Association (empty))
+     |    |    |    |    object_walker:   source.snapshots (type: Association (empty))
+     |    |    |    |    object_walker:   source.storage (type: Association)
+     |    |    |    |    object_walker:   *** not walking: 'storage' isn't in the @walk_association_whitelist hash for MiqAeServiceTemplateVmware ***
+     |    |    |    |    object_walker:   --- end of associations ---
+     |    |    |    |    object_walker:   --- methods follow ---
+     |    |    |    |    object_walker:   source.changed_vm_value?
+     |    |    |    |    object_walker:   source.collect_running_processes
+     |    |    |    |    object_walker:   source.custom_get
+     |    |    |    |    object_walker:   source.custom_keys
+     |    |    |    |    object_walker:   source.custom_set
+     |    |    |    |    object_walker:   source.ems_custom_get
+     |    |    |    |    object_walker:   source.ems_custom_keys
+     |    |    |    |    object_walker:   source.ems_custom_set
+     |    |    |    |    object_walker:   source.ems_ref_string
+     |    |    |    |    object_walker:   source.error_retiring?
+     |    |    |    |    object_walker:   source.event_log_threshold?
+     |    |    |    |    object_walker:   source.event_threshold?
+     |    |    |    |    object_walker:   source.finish_retirement
+     |    |    |    |    object_walker:   source.group=
+     |    |    |    |    object_walker:   source.migrate
+     |    |    |    |    object_walker:   source.owner=
+     |    |    |    |    object_walker:   source.performances_maintains_value_for_duration?
+     |    |    |    |    object_walker:   source.reboot_guest
+     |    |    |    |    object_walker:   source.reconfigured_hardware_value?
+     |    |    |    |    object_walker:   source.refresh
+     |    |    |    |    object_walker:   source.registered?
+     |    |    |    |    object_walker:   source.remove_from_disk
+     |    |    |    |    object_walker:   source.remove_from_vmdb
+     |    |    |    |    object_walker:   source.retire_now
+     |    |    |    |    object_walker:   source.retired?
+     |    |    |    |    object_walker:   source.retirement_state=
+     |    |    |    |    object_walker:   source.retirement_warn=
+     |    |    |    |    object_walker:   source.retires_on=
+     |    |    |    |    object_walker:   source.retiring?
+     |    |    |    |    object_walker:   source.scan
+     |    |    |    |    object_walker:   source.shutdown_guest
+     |    |    |    |    object_walker:   source.standby_guest
+     |    |    |    |    object_walker:   source.start
+     |    |    |    |    object_walker:   source.start_retirement
+     |    |    |    |    object_walker:   source.stop
+     |    |    |    |    object_walker:   source.suspend
+     |    |    |    |    object_walker:   source.sync_or_async_ems_operation
+     |    |    |    |    object_walker:   source.unlink_storage
+     |    |    |    |    object_walker:   source.unregister
+     |    |    |    |    object_walker:   --- end of methods ---
+     |    |    |    object_walker:   miq_request_task.vm (type: Association)
+     |    |    |    object_walker:   *** not walking: 'vm' isn't in the @walk_association_whitelist hash for MiqAeServiceMiqProvisionVmware ***
+     |    |    |    object_walker:   miq_request_task.vm_template (type: Association)
+     |    |    |    object_walker:   *** not walking: 'vm_template' isn't in the @walk_association_whitelist hash for MiqAeServiceMiqProvisionVmware ***
+     |    |    |    object_walker:   --- end of associations ---
+     |    |    |    object_walker:   --- methods follow ---
+     |    |    |    object_walker:   miq_request_task.add_tag
+     |    |    |    object_walker:   miq_request_task.check_quota
+     |    |    |    object_walker:   miq_request_task.clear_tag
+     |    |    |    object_walker:   miq_request_task.eligible_resources
+     |    |    |    object_walker:   miq_request_task.execute
+     |    |    |    object_walker:   miq_request_task.finished
+     |    |    |    object_walker:   miq_request_task.get_classification
+     |    |    |    object_walker:   miq_request_task.get_classifications
+     |    |    |    object_walker:   miq_request_task.get_domain_details
+     |    |    |    object_walker:   miq_request_task.get_domain_name
+     |    |    |    object_walker:   miq_request_task.get_folder_paths
+     |    |    |    object_walker:   miq_request_task.get_network_details
+     |    |    |    object_walker:   miq_request_task.get_network_scope
+     |    |    |    object_walker:   miq_request_task.get_option
+     |    |    |    object_walker:   miq_request_task.get_option_last
+     |    |    |    object_walker:   miq_request_task.get_tag
+     |    |    |    object_walker:   miq_request_task.get_tags
+     |    |    |    object_walker:   miq_request_task.message=
+     |    |    |    object_walker:   miq_request_task.register_automate_callback
+     |    |    |    object_walker:   miq_request_task.set_cluster
+     |    |    |    object_walker:   miq_request_task.set_customization_spec
+     |    |    |    object_walker:   miq_request_task.set_customization_template
+     |    |    |    object_walker:   miq_request_task.set_dvs
+     |    |    |    object_walker:   miq_request_task.set_folder
+     |    |    |    object_walker:   miq_request_task.set_host
+     |    |    |    object_walker:   miq_request_task.set_iso_image
+     |    |    |    object_walker:   miq_request_task.set_network_adapter
+     |    |    |    object_walker:   miq_request_task.set_network_address_mode
+     |    |    |    object_walker:   miq_request_task.set_nic_settings
+     |    |    |    object_walker:   miq_request_task.set_option
+     |    |    |    object_walker:   miq_request_task.set_pxe_image
+     |    |    |    object_walker:   miq_request_task.set_pxe_server
+     |    |    |    object_walker:   miq_request_task.set_resource
+     |    |    |    object_walker:   miq_request_task.set_resource_pool
+     |    |    |    object_walker:   miq_request_task.set_storage
+     |    |    |    object_walker:   miq_request_task.set_vlan
+     |    |    |    object_walker:   miq_request_task.set_vm_notes
+     |    |    |    object_walker:   miq_request_task.set_windows_image
+     |    |    |    object_walker:   miq_request_task.statemachine_task_status
+     |    |    |    object_walker:   miq_request_task.target_type
+     |    |    |    object_walker:   miq_request_task.user_message=
+     |    |    |    object_walker:   --- end of methods ---
+     |    |    object_walker:   --- next miq_request_task ---
+     |    |    |    object_walker:   (object type: MiqAeServiceServiceTemplateProvisionTask, object ID: 1000000000043)
+     |    |    |    object_walker:   Object MiqAeServiceServiceTemplateProvisionTask with ID 1000000000043 has already been dumped...
+     |    |    object_walker:   --- next miq_request_task ---
+     |    |    |    object_walker:   (object type: MiqAeServiceServiceTemplateProvisionTask, object ID: 1000000000044)
+     |    |    |    object_walker:   miq_request_task.created_on = 2015-09-26 16:51:56 UTC   (type: ActiveSupport::TimeWithZone)
+     |    |    |    object_walker:   miq_request_task.description = Provisioning VM [rhel65-t] for Service [rhel65-t]   (type: String)
+     |    |    |    object_walker:   miq_request_task.destination_id = 1000000000016   (type: Fixnum)
+     |    |    |    object_walker:   miq_request_task.destination_type = Service   (type: String)
+     |    |    |    object_walker:   miq_request_task.id = 1000000000044   (type: Fixnum)
+     |    |    |    object_walker:   miq_request_task.message = Vm Provisioned Successfully   (type: String)
+     |    |    |    object_walker:   miq_request_task.miq_request_id = 1000000000015   (type: Fixnum)
+     |    |    |    object_walker:   miq_request_task.miq_request_task_id = 1000000000043   (type: Fixnum)
+     |    |    |    object_walker:   miq_request_task.options[:delivered_on] = 2015-09-26 16:51:55 UTC   (type: Time)
+     |    |    |    object_walker:   miq_request_task.options[:dialog] = {"request"=>"clone_to_service"}   (type: Hash)
+     |    |    |    object_walker:   miq_request_task.options[:parent_service_id] = 1000000000016   (type: Fixnum)
+     |    |    |    object_walker:   miq_request_task.options[:parent_task_id] = 1000000000043   (type: Fixnum)
+     |    |    |    object_walker:   miq_request_task.options[:pass] = 0   (type: Fixnum)
+     |    |    |    object_walker:   miq_request_task.options[:scaling_idx] = 1   (type: Fixnum)
+     |    |    |    object_walker:   miq_request_task.options[:scaling_min] = 1   (type: Fixnum)
+     |    |    |    object_walker:   miq_request_task.options[:service_resource_id] = 1000000000050   (type: Fixnum)
+     |    |    |    object_walker:   miq_request_task.options[:src_id] = 1000000000003   (type: Fixnum)
+     |    |    |    object_walker:   miq_request_task.options[:workflow_settings] = {:resource_action_id=>1000000000023, :dialog_id=>1000000000006}   (type: Hash)
+     |    |    |    object_walker:   miq_request_task.phase = nil
+     |    |    |    object_walker:   miq_request_task.phase_context = {}   (type: Hash)
+     |    |    |    object_walker:   miq_request_task.request_type = clone_to_service   (type: String)
+     |    |    |    object_walker:   miq_request_task.source_id = 1000000000003   (type: Fixnum)
+     |    |    |    object_walker:   miq_request_task.source_type = MiqRequest   (type: String)
+     |    |    |    object_walker:   miq_request_task.state = finished   (type: String)
+     |    |    |    object_walker:   miq_request_task.status = ok   (type: String)
+     |    |    |    object_walker:   miq_request_task.type = ServiceTemplateProvisionTask   (type: String)
+     |    |    |    object_walker:   miq_request_task.updated_on = 2015-09-26 17:02:12 UTC   (type: ActiveSupport::TimeWithZone)
+     |    |    |    object_walker:   miq_request_task.userid = pemcg   (type: String)
+     |    |    |    object_walker:   --- virtual columns follow ---
+     |    |    |    object_walker:   miq_request_task.region_description = Region 1   (type: String)
+     |    |    |    object_walker:   miq_request_task.region_number = 1   (type: Fixnum)
+     |    |    |    object_walker:   --- end of virtual columns ---
+     |    |    |    object_walker:   --- associations follow ---
+     |    |    |    object_walker:   miq_request_task.destination (type: Association)
+     |    |    |    object_walker:   destination = miq_request_task.destination
+     |    |    |    |    object_walker:   (object type: MiqAeServiceService, object ID: 1000000000016)
+     |    |    |    |    object_walker:   Object MiqAeServiceService with ID 1000000000016 has already been dumped...
+     |    |    |    object_walker:   miq_request_task.miq_request (type: Association)
+     |    |    |    object_walker:   miq_request = miq_request_task.miq_request
+     |    |    |    |    object_walker:   (object type: MiqAeServiceServiceTemplateProvisionRequest, object ID: 1000000000015)
+     |    |    |    |    object_walker:   Object MiqAeServiceServiceTemplateProvisionRequest with ID 1000000000015 has already been dumped...
+     |    |    |    object_walker:   miq_request_task.miq_request_task (type: Association)
+     |    |    |    object_walker:   *** not walking: 'miq_request_task' isn't in the @walk_association_whitelist hash for MiqAeServiceServiceTemplateProvisionTask ***
+     |    |    |    object_walker:   miq_request_task.miq_request_tasks (type: Association)
+     |    |    |    object_walker:   miq_request_task.miq_request_tasks.each do |miq_request_task|
+     |    |    |    |    object_walker:   (object type: MiqAeServiceMiqProvisionVmware, object ID: 1000000000045)
+     |    |    |    |    object_walker:   Object MiqAeServiceMiqProvisionVmware with ID 1000000000045 has already been dumped...
+     |    |    |    object_walker:   --- end of miq_request_task.miq_request_tasks.each do |miq_request_task| ---
+     |    |    |    object_walker:   miq_request_task.service_resource (type: Association)
+     |    |    |    object_walker:   service_resource = miq_request_task.service_resource
+     |    |    |    |    object_walker:   (object type: MiqAeServiceServiceResource, object ID: 1000000000050)
+     |    |    |    |    object_walker:   service_resource.created_at = 2015-09-26 12:42:54 UTC   (type: ActiveSupport::TimeWithZone)
+     |    |    |    |    object_walker:   service_resource.group_idx = 0   (type: Fixnum)
+     |    |    |    |    object_walker:   service_resource.id = 1000000000050   (type: Fixnum)
+     |    |    |    |    object_walker:   service_resource.name = nil
+     |    |    |    |    object_walker:   service_resource.provision_index = 0   (type: Fixnum)
+     |    |    |    |    object_walker:   service_resource.resource_id = 1000000000003   (type: Fixnum)
+     |    |    |    |    object_walker:   service_resource.resource_type = MiqRequest   (type: String)
+     |    |    |    |    object_walker:   service_resource.scaling_max = -1   (type: Fixnum)
+     |    |    |    |    object_walker:   service_resource.scaling_min = 1   (type: Fixnum)
+     |    |    |    |    object_walker:   service_resource.service_id = nil
+     |    |    |    |    object_walker:   service_resource.service_template_id = 1000000000001   (type: Fixnum)
+     |    |    |    |    object_walker:   service_resource.source_id = nil
+     |    |    |    |    object_walker:   service_resource.source_type = nil
+     |    |    |    |    object_walker:   service_resource.start_action = nil
+     |    |    |    |    object_walker:   service_resource.start_delay = nil
+     |    |    |    |    object_walker:   service_resource.stop_action = nil
+     |    |    |    |    object_walker:   service_resource.stop_delay = nil
+     |    |    |    |    object_walker:   service_resource.updated_at = 2015-09-26 12:42:54 UTC   (type: ActiveSupport::TimeWithZone)
+     |    |    |    |    object_walker:   --- virtual columns follow ---
+     |    |    |    |    object_walker:   service_resource.region_description = Region 1   (type: String)
+     |    |    |    |    object_walker:   service_resource.region_number = 1   (type: Fixnum)
+     |    |    |    |    object_walker:   service_resource.resource_description = Provision from [rhel65-t] to [cfme###]   (type: String)
+     |    |    |    |    object_walker:   service_resource.resource_name =    (type: String)
+     |    |    |    |    object_walker:   --- end of virtual columns ---
+     |    |    |    |    object_walker:   --- associations follow ---
+     |    |    |    |    object_walker:   service_resource.resource (type: Association)
+     |    |    |    |    object_walker:   resource = service_resource.resource
+     |    |    |    |    |    object_walker:   (object type: MiqAeServiceMiqProvisionRequestTemplate, object ID: 1000000000003)
+     |    |    |    |    |    object_walker:   resource.approval_state = pending_approval   (type: String)
+     |    |    |    |    |    object_walker:   resource.created_on = 2015-09-25 08:29:36 UTC   (type: ActiveSupport::TimeWithZone)
+     |    |    |    |    |    object_walker:   resource.description = Provision from [rhel65-t] to [cfme###]   (type: String)
+     |    |    |    |    |    object_walker:   resource.destination_id = nil
+     |    |    |    |    |    object_walker:   resource.destination_type = nil
+     |    |    |    |    |    object_walker:   resource.fulfilled_on = nil
+     |    |    |    |    |    object_walker:   resource.id = 1000000000003   (type: Fixnum)
+     |    |    |    |    |    object_walker:   resource.message = VM Provisioning - Request Created   (type: String)
+     |    |    |    |    |    object_walker:   resource.options[:addr_mode] = ["dhcp", "DHCP"]   (type: Array)
+     |    |    |    |    |    object_walker:   resource.options[:available_catalogs] = [["VMware Services", 1000000000001]]   (type: Array)
+     |    |    |    |    |    object_walker:   resource.options[:available_dialogs] = {1000000000001=>"OSE Installer", 1000000000002=>"delete_vm", 1000000000003=>"Web and Database Server Bundle", 1000000000004=>"Generic Server", 1000000000005=>"Generic", 1000000000006=>"RHEL6 VM", 1000000000007=>"Web Service Bundle"}   (type: Hash)
+     |    |    |    |    |    object_walker:   resource.options[:catalog_id] = 1000000000001   (type: String)
+     |    |    |    |    |    object_walker:   resource.options[:cluster_filter] = [nil, nil]   (type: Array)
+     |    |    |    |    |    object_walker:   resource.options[:cores_per_socket] = [1, "1"]   (type: Array)
+     |    |    |    |    |    object_walker:   resource.options[:cpu_limit] = -1   (type: Fixnum)
+     |    |    |    |    |    object_walker:   resource.options[:cpu_reserve] = 0   (type: Fixnum)
+     |    |    |    |    |    object_walker:   resource.options[:current_tab_key] = service   (type: Symbol)
+     |    |    |    |    |    object_walker:   resource.options[:customization_template_script] = nil
+     |    |    |    |    |    object_walker:   resource.options[:customize_enabled] = ["enabled"]   (type: Array)
+     |    |    |    |    |    object_walker:   resource.options[:delivered_on] = nil
+     |    |    |    |    |    object_walker:   resource.options[:description] = RHEL6 Apache Web Server   (type: String)
+     |    |    |    |    |    object_walker:   resource.options[:dialog_id] = 1000000000006   (type: String)
+     |    |    |    |    |    object_walker:   resource.options[:disk_format] = ["unchanged", "Default"]   (type: Array)
+     |    |    |    |    |    object_walker:   resource.options[:display] = true   (type: TrueClass)
+     |    |    |    |    |    object_walker:   resource.options[:dns_servers] = nil
+     |    |    |    |    |    object_walker:   resource.options[:dns_suffixes] = nil
+     |    |    |    |    |    object_walker:   resource.options[:ds_filter] = [nil, nil]   (type: Array)
+     |    |    |    |    |    object_walker:   resource.options[:fqname] = /Service/Provisioning/StateMachines/ServiceProvision_Template/CatalogItemInitialization   (type: String)
+     |    |    |    |    |    object_walker:   resource.options[:gateway] = nil
+     |    |    |    |    |    object_walker:   resource.options[:host_filter] = [nil, nil]   (type: Array)
+     |    |    |    |    |    object_walker:   resource.options[:host_name] = nil
+     |    |    |    |    |    object_walker:   resource.options[:hostname] = nil
+     |    |    |    |    |    object_walker:   resource.options[:initial_pass] = true   (type: TrueClass)
+     |    |    |    |    |    object_walker:   resource.options[:ip_addr] = nil
+     |    |    |    |    |    object_walker:   resource.options[:ldap_ous] = [nil, nil]   (type: Array)
+     |    |    |    |    |    object_walker:   resource.options[:linked_clone] = [nil, nil]   (type: Array)
+     |    |    |    |    |    object_walker:   resource.options[:linux_domain_name] = nil
+     |    |    |    |    |    object_walker:   resource.options[:linux_host_name] = nil
+     |    |    |    |    |    object_walker:   resource.options[:long_description] = nil
+     |    |    |    |    |    object_walker:   resource.options[:mac_address] = nil
+     |    |    |    |    |    object_walker:   resource.options[:memory_limit] = -1   (type: Fixnum)
+     |    |    |    |    |    object_walker:   resource.options[:memory_reserve] = 0   (type: Fixnum)
+     |    |    |    |    |    object_walker:   resource.options[:miq_request_dialog_name] = miq_provision_dialogs_template   (type: String)
+     |    |    |    |    |    object_walker:   resource.options[:name] = Web Server   (type: String)
+     |    |    |    |    |    object_walker:   resource.options[:network_adapters] = [1, "1"]   (type: Array)
+     |    |    |    |    |    object_walker:   resource.options[:number_of_sockets] = [1, "1"]   (type: Array)
+     |    |    |    |    |    object_walker:   resource.options[:number_of_vms] = [1, "1"]   (type: Array)
+     |    |    |    |    |    object_walker:   resource.options[:owner_address] = nil
+     |    |    |    |    |    object_walker:   resource.options[:owner_city] = nil
+     |    |    |    |    |    object_walker:   resource.options[:owner_company] = nil
+     |    |    |    |    |    object_walker:   resource.options[:owner_country] = nil
+     |    |    |    |    |    object_walker:   resource.options[:owner_department] = nil
+     |    |    |    |    |    object_walker:   resource.options[:owner_email] = nil
+     |    |    |    |    |    object_walker:   resource.options[:owner_first_name] = nil
+     |    |    |    |    |    object_walker:   resource.options[:owner_last_name] = nil
+     |    |    |    |    |    object_walker:   resource.options[:owner_load_ldap] = nil
+     |    |    |    |    |    object_walker:   resource.options[:owner_manager] = nil
+     |    |    |    |    |    object_walker:   resource.options[:owner_manager_mail] = nil
+     |    |    |    |    |    object_walker:   resource.options[:owner_manager_phone] = nil
+     |    |    |    |    |    object_walker:   resource.options[:owner_office] = nil
+     |    |    |    |    |    object_walker:   resource.options[:owner_phone] = nil
+     |    |    |    |    |    object_walker:   resource.options[:owner_phone_mobile] = nil
+     |    |    |    |    |    object_walker:   resource.options[:owner_state] = nil
+     |    |    |    |    |    object_walker:   resource.options[:owner_title] = nil
+     |    |    |    |    |    object_walker:   resource.options[:owner_zip] = nil
+     |    |    |    |    |    object_walker:   resource.options[:placement_auto] = [true, 1]   (type: Array)
+     |    |    |    |    |    object_walker:   resource.options[:placement_cluster_name] = [nil, nil]   (type: Array)
+     |    |    |    |    |    object_walker:   resource.options[:placement_dc_name] = [nil, nil]   (type: Array)
+     |    |    |    |    |    object_walker:   resource.options[:placement_ds_name] = [nil, nil]   (type: Array)
+     |    |    |    |    |    object_walker:   resource.options[:placement_folder_name] = [nil, nil]   (type: Array)
+     |    |    |    |    |    object_walker:   resource.options[:placement_host_name] = [nil, nil]   (type: Array)
+     |    |    |    |    |    object_walker:   resource.options[:placement_rp_name] = [nil, nil]   (type: Array)
+     |    |    |    |    |    object_walker:   resource.options['provision'] = aei-1r172   (type: String)
+     |    |    |    |    |    object_walker:   resource.options[:provision_cost] = nil
+     |    |    |    |    |    object_walker:   resource.options[:provision_type] = ["vmware", "VMware"]   (type: Array)
+     |    |    |    |    |    object_walker:   resource.options[:purpose_enabled] = ["disabled"]   (type: Array)
+     |    |    |    |    |    object_walker:   resource.options[:pxe_server_id] = [nil, nil]   (type: Array)
+     |    |    |    |    |    object_walker:   resource.options[:reconfigure_fqname] =    (type: String)
+     |    |    |    |    |    object_walker:   resource.options[:request_notes] = nil
+     |    |    |    |    |    object_walker:   resource.options[:requester_enabled] = ["disabled"]   (type: Array)
+     |    |    |    |    |    object_walker:   resource.options[:retire_fqname] =    (type: String)
+     |    |    |    |    |    object_walker:   resource.options[:retirement] = [0, "Indefinite"]   (type: Array)
+     |    |    |    |    |    object_walker:   resource.options[:retirement_warn] = [604800, "1 Week"]   (type: Array)
+     |    |    |    |    |    object_walker:   resource.options[:root_password] = nil
+     |    |    |    |    |    object_walker:   resource.options[:rp_filter] = [nil, nil]   (type: Array)
+     |    |    |    |    |    object_walker:   resource.options[:schedule_time] = 2015-09-26 08:26:00 UTC   (type: Time)
+     |    |    |    |    |    object_walker:   resource.options[:schedule_type] = ["immediately", "Immediately on Approval"]   (type: Array)
+     |    |    |    |    |    object_walker:   resource.options[:selected] = aei-1r172   (type: String)
+     |    |    |    |    |    object_walker:   resource.options[:service_template_request] = true   (type: TrueClass)
+     |    |    |    |    |    object_walker:   resource.options[:service_type] = atomic   (type: String)
+     |    |    |    |    |    object_walker:   resource.options[:snapshot] = [nil, nil]   (type: Array)
+     |    |    |    |    |    object_walker:   resource.options[:src_ems_id] = [1000000000001, "vCenter"]   (type: Array)
+     |    |    |    |    |    object_walker:   resource.options[:src_vm_id] = [1000000000003, "rhel65-t"]   (type: Array)
+     |    |    |    |    |    object_walker:   resource.options[:src_vm_lans] = ["VM Network"]   (type: Array)
+     |    |    |    |    |    object_walker:   resource.options[:src_vm_nics] = ["Network adapter 1"]   (type: Array)
+     |    |    |    |    |    object_walker:   resource.options[:st_prov_type] = vmware   (type: String)
+     |    |    |    |    |    object_walker:   resource.options[:start_date] = 9/26/2015   (type: String)
+     |    |    |    |    |    object_walker:   resource.options[:start_hour] = 8   (type: String)
+     |    |    |    |    |    object_walker:   resource.options[:start_min] = 26   (type: String)
+     |    |    |    |    |    object_walker:   resource.options[:subnet_mask] = nil
+     |    |    |    |    |    object_walker:   resource.options[:sysprep_auto_logon] = [true, 1]   (type: Array)
+     |    |    |    |    |    object_walker:   resource.options[:sysprep_auto_logon_count] = [1, "1"]   (type: Array)
+     |    |    |    |    |    object_walker:   resource.options[:sysprep_change_sid] = [true, 1]   (type: Array)
+     |    |    |    |    |    object_walker:   resource.options[:sysprep_computer_name] = nil
+     |    |    |    |    |    object_walker:   resource.options[:sysprep_delete_accounts] = [false, 0]   (type: Array)
+     |    |    |    |    |    object_walker:   resource.options[:sysprep_domain_admin] = nil
+     |    |    |    |    |    object_walker:   resource.options[:sysprep_domain_name] = ["bit63.net", "bit63.net"]   (type: Array)
+     |    |    |    |    |    object_walker:   resource.options[:sysprep_domain_password] = nil
+     |    |    |    |    |    object_walker:   resource.options[:sysprep_enabled] = [nil, nil]   (type: Array)
+     |    |    |    |    |    object_walker:   resource.options[:sysprep_full_name] = nil
+     |    |    |    |    |    object_walker:   resource.options[:sysprep_identification] = ["domain", "Domain"]   (type: Array)
+     |    |    |    |    |    object_walker:   resource.options[:sysprep_organization] = nil
+     |    |    |    |    |    object_walker:   resource.options[:sysprep_password] = nil
+     |    |    |    |    |    object_walker:   resource.options[:sysprep_per_server_max_connections] = 5   (type: String)
+     |    |    |    |    |    object_walker:   resource.options[:sysprep_product_id] = nil
+     |    |    |    |    |    object_walker:   resource.options[:sysprep_server_license_mode] = ["perServer", "Per server"]   (type: Array)
+     |    |    |    |    |    object_walker:   resource.options[:sysprep_spec_override] = [false, 0]   (type: Array)
+     |    |    |    |    |    object_walker:   resource.options[:sysprep_timezone] = [nil, "(GMT-12:00) International Date Line West"]   (type: Array)
+     |    |    |    |    |    object_walker:   resource.options[:sysprep_upload_file] = nil
+     |    |    |    |    |    object_walker:   resource.options[:sysprep_upload_text] = nil
+     |    |    |    |    |    object_walker:   resource.options[:sysprep_workgroup_name] = WORKGROUP   (type: String)
+     |    |    |    |    |    object_walker:   resource.options[:vlan] = ["VM Network", "VM Network"]   (type: Array)
+     |    |    |    |    |    object_walker:   resource.options[:vm_auto_start] = [true, 1]   (type: Array)
+     |    |    |    |    |    object_walker:   resource.options[:vm_description] = nil
+     |    |    |    |    |    object_walker:   resource.options[:vm_filter] = [nil, nil]   (type: Array)
+     |    |    |    |    |    object_walker:   resource.options[:vm_memory] = ["2048", "2048"]   (type: Array)
+     |    |    |    |    |    object_walker:   resource.options[:vm_name] = changeme   (type: String)
+     |    |    |    |    |    object_walker:   resource.options[:vm_prefix] = nil
+     |    |    |    |    |    object_walker:   resource.options[:vm_tags] = []   (type: Array)
+     |    |    |    |    |    object_walker:   resource.options[:wins_servers] = nil
+     |    |    |    |    |    object_walker:   resource.request_state = pending   (type: String)
+     |    |    |    |    |    object_walker:   resource.request_type = template   (type: String)
+     |    |    |    |    |    object_walker:   resource.requester_id = 1000000000001   (type: Fixnum)
+     |    |    |    |    |    object_walker:   resource.requester_name = Administrator   (type: String)
+     |    |    |    |    |    object_walker:   resource.source_id = 1000000000003   (type: Fixnum)
+     |    |    |    |    |    object_walker:   resource.source_type = template   (type: String)
+     |    |    |    |    |    object_walker:   resource.status = Ok   (type: String)
+     |    |    |    |    |    object_walker:   resource.type = MiqProvisionRequestTemplate   (type: String)
+     |    |    |    |    |    object_walker:   resource.updated_on = 2015-09-26 12:42:53 UTC   (type: ActiveSupport::TimeWithZone)
+     |    |    |    |    |    object_walker:   resource.userid = admin   (type: String)
+     |    |    |    |    |    object_walker:   --- virtual columns follow ---
+     |    |    |    |    |    object_walker:   resource.provision_type = template   (type: String)
+     |    |    |    |    |    object_walker:   resource.reason = nil
+     |    |    |    |    |    object_walker:   resource.region_description = Region 1   (type: String)
+     |    |    |    |    |    object_walker:   resource.region_number = 1   (type: Fixnum)
+     |    |    |    |    |    object_walker:   resource.request_type_display = VM Provision Template   (type: String)
+     |    |    |    |    |    object_walker:   resource.resource_type = MiqProvisionRequestTemplate   (type: String)
+     |    |    |    |    |    object_walker:   resource.stamped_on = nil
+     |    |    |    |    |    object_walker:   resource.state = pending   (type: String)
+     |    |    |    |    |    object_walker:   resource.v_approved_by =    (type: String)
+     |    |    |    |    |    object_walker:   resource.v_approved_by_email =    (type: String)
+     |    |    |    |    |    object_walker:   --- end of virtual columns ---
+     |    |    |    |    |    object_walker:   --- associations follow ---
+     |    |    |    |    |    object_walker:   *** De-duplicating the following associations: ["miq_request", "miq_request"] (product bug?) ***
+     |    |    |    |    |    object_walker:   resource.approvers (type: Association (empty))
+     |    |    |    |    |    object_walker:   resource.destination (type: Association (empty))
+     |    |    |    |    |    object_walker:   resource.eligible_clusters (type: Association)
+     |    |    |    |    |    object_walker:   *** not walking: 'eligible_clusters' isn't in the @walk_association_whitelist hash for MiqAeServiceMiqProvisionRequestTemplate ***
+     |    |    |    |    |    object_walker:   resource.eligible_customization_templates (type: Association (empty))
+     |    |    |    |    |    object_walker:   resource.eligible_folders (type: Association (empty))
+     |    |    |    |    |    object_walker:   resource.eligible_hosts (type: Association)
+     |    |    |    |    |    object_walker:   *** not walking: 'eligible_hosts' isn't in the @walk_association_whitelist hash for MiqAeServiceMiqProvisionRequestTemplate ***
+     |    |    |    |    |    object_walker:   resource.eligible_iso_images (type: Association (empty))
+     |    |    |    |    |    object_walker:   resource.eligible_pxe_images (type: Association (empty))
+     |    |    |    |    |    object_walker:   resource.eligible_pxe_servers (type: Association (empty))
+     |    |    |    |    |    object_walker:   resource.eligible_resource_pools (type: Association)
+     |    |    |    |    |    object_walker:   *** not walking: 'eligible_resource_pools' isn't in the @walk_association_whitelist hash for MiqAeServiceMiqProvisionRequestTemplate ***
+     |    |    |    |    |    object_walker:   resource.eligible_storages (type: Association)
+     |    |    |    |    |    object_walker:   *** not walking: 'eligible_storages' isn't in the @walk_association_whitelist hash for MiqAeServiceMiqProvisionRequestTemplate ***
+     |    |    |    |    |    object_walker:   resource.eligible_windows_images (type: Association (empty))
+     |    |    |    |    |    object_walker:   resource.miq_provisions (type: Association (empty))
+     |    |    |    |    |    object_walker:   resource.miq_request (type: Association)
+     |    |    |    |    |    object_walker:   *** not walking: 'miq_request' isn't in the @walk_association_whitelist hash for MiqAeServiceMiqProvisionRequestTemplate ***
+     |    |    |    |    |    object_walker:   resource.miq_request_tasks (type: Association (empty))
+     |    |    |    |    |    object_walker:   resource.requester (type: Association)
+     |    |    |    |    |    object_walker:   *** not walking: 'requester' isn't in the @walk_association_whitelist hash for MiqAeServiceMiqProvisionRequestTemplate ***
+     |    |    |    |    |    object_walker:   resource.resource (type: Association)
+     |    |    |    |    |    object_walker:   *** not walking: 'resource' isn't in the @walk_association_whitelist hash for MiqAeServiceMiqProvisionRequestTemplate ***
+     |    |    |    |    |    object_walker:   resource.source (type: Association)
+     |    |    |    |    |    object_walker:   source = resource.source
+     |    |    |    |    |    |    object_walker:   (object type: MiqAeServiceTemplateVmware, object ID: 1000000000003)
+     |    |    |    |    |    |    object_walker:   Object MiqAeServiceTemplateVmware with ID 1000000000003 has already been dumped...
+     |    |    |    |    |    object_walker:   resource.vm_template (type: Association)
+     |    |    |    |    |    object_walker:   *** not walking: 'vm_template' isn't in the @walk_association_whitelist hash for MiqAeServiceMiqProvisionRequestTemplate ***
+     |    |    |    |    |    object_walker:   --- end of associations ---
+     |    |    |    |    |    object_walker:   --- methods follow ---
+     |    |    |    |    |    object_walker:   resource.add_tag
+     |    |    |    |    |    object_walker:   resource.approve
+     |    |    |    |    |    object_walker:   resource.authorized?
+     |    |    |    |    |    object_walker:   resource.check_quota
+     |    |    |    |    |    object_walker:   resource.ci_type
+     |    |    |    |    |    object_walker:   resource.clear_tag
+     |    |    |    |    |    object_walker:   resource.deny
+     |    |    |    |    |    object_walker:   resource.description=
+     |    |    |    |    |    object_walker:   resource.eligible_resources
+     |    |    |    |    |    object_walker:   resource.get_classification
+     |    |    |    |    |    object_walker:   resource.get_classifications
+     |    |    |    |    |    object_walker:   resource.get_folder_paths
+     |    |    |    |    |    object_walker:   resource.get_option
+     |    |    |    |    |    object_walker:   resource.get_option_last
+     |    |    |    |    |    object_walker:   resource.get_retirement_days
+     |    |    |    |    |    object_walker:   resource.get_tag
+     |    |    |    |    |    object_walker:   resource.get_tags
+     |    |    |    |    |    object_walker:   resource.pending
+     |    |    |    |    |    object_walker:   resource.register_automate_callback
+     |    |    |    |    |    object_walker:   resource.set_cluster
+     |    |    |    |    |    object_walker:   resource.set_customization_template
+     |    |    |    |    |    object_walker:   resource.set_dvs
+     |    |    |    |    |    object_walker:   resource.set_folder
+     |    |    |    |    |    object_walker:   resource.set_host
+     |    |    |    |    |    object_walker:   resource.set_iso_image
+     |    |    |    |    |    object_walker:   resource.set_message
+     |    |    |    |    |    object_walker:   resource.set_network_adapter
+     |    |    |    |    |    object_walker:   resource.set_network_address_mode
+     |    |    |    |    |    object_walker:   resource.set_nic_settings
+     |    |    |    |    |    object_walker:   resource.set_option
+     |    |    |    |    |    object_walker:   resource.set_pxe_image
+     |    |    |    |    |    object_walker:   resource.set_pxe_server
+     |    |    |    |    |    object_walker:   resource.set_resource
+     |    |    |    |    |    object_walker:   resource.set_resource_pool
+     |    |    |    |    |    object_walker:   resource.set_storage
+     |    |    |    |    |    object_walker:   resource.set_vlan
+     |    |    |    |    |    object_walker:   resource.set_vm_notes
+     |    |    |    |    |    object_walker:   resource.set_windows_image
+     |    |    |    |    |    object_walker:   resource.src_vm_id
+     |    |    |    |    |    object_walker:   resource.target_type
+     |    |    |    |    |    object_walker:   resource.user_message=
+     |    |    |    |    |    object_walker:   --- end of methods ---
+     |    |    |    |    object_walker:   service_resource.service (type: Association (empty))
+     |    |    |    |    object_walker:   service_resource.service_template (type: Association)
+     |    |    |    |    object_walker:   service_template = service_resource.service_template
+     |    |    |    |    |    object_walker:   (object type: MiqAeServiceServiceTemplate, object ID: 1000000000001)
+     |    |    |    |    |    object_walker:   service_template.created_at = 2015-09-25 08:29:38 UTC   (type: ActiveSupport::TimeWithZone)
+     |    |    |    |    |    object_walker:   service_template.description = RHEL6 Apache Web Server   (type: String)
+     |    |    |    |    |    object_walker:   service_template.display = nil
+     |    |    |    |    |    object_walker:   service_template.evm_owner_id = nil
+     |    |    |    |    |    object_walker:   service_template.guid = 8f41161a-635f-11e5-94a1-005056b87ba6   (type: String)
+     |    |    |    |    |    object_walker:   service_template.id = 1000000000001   (type: Fixnum)
+     |    |    |    |    |    object_walker:   service_template.long_description =    (type: String)
+     |    |    |    |    |    object_walker:   service_template.miq_group_id = nil
+     |    |    |    |    |    object_walker:   service_template.name = Web Server   (type: String)
+     |    |    |    |    |    object_walker:   service_template.prov_type = vmware   (type: String)
+     |    |    |    |    |    object_walker:   service_template.provision_cost = nil
+     |    |    |    |    |    object_walker:   service_template.service_template_catalog_id = 1000000000001   (type: Fixnum)
+     |    |    |    |    |    object_walker:   service_template.service_template_id = nil
+     |    |    |    |    |    object_walker:   service_template.service_type = atomic   (type: String)
+     |    |    |    |    |    object_walker:   service_template.type = nil
+     |    |    |    |    |    object_walker:   service_template.updated_at = 2015-09-26 12:42:54 UTC   (type: ActiveSupport::TimeWithZone)
+     |    |    |    |    |    object_walker:   --- virtual columns follow ---
+     |    |    |    |    |    object_walker:   service_template.evm_owner_email = nil
+     |    |    |    |    |    object_walker:   service_template.evm_owner_name = nil
+     |    |    |    |    |    object_walker:   service_template.evm_owner_userid = nil
+     |    |    |    |    |    object_walker:   service_template.owned_by_current_ldap_group = nil
+     |    |    |    |    |    object_walker:   service_template.owned_by_current_user = nil
+     |    |    |    |    |    object_walker:   service_template.owning_ldap_group = nil
+     |    |    |    |    |    object_walker:   service_template.region_description = Region 1   (type: String)
+     |    |    |    |    |    object_walker:   service_template.region_number = 1   (type: Fixnum)
+     |    |    |    |    |    object_walker:   service_template.type_display = Item   (type: String)
+     |    |    |    |    |    object_walker:   --- end of virtual columns ---
+     |    |    |    |    |    object_walker:   --- associations follow ---
+     |    |    |    |    |    object_walker:   service_template.service_resources (type: Association)
+     |    |    |    |    |    object_walker:   service_template.service_resources.each do |service_resource|
+     |    |    |    |    |    |    object_walker:   (object type: MiqAeServiceServiceResource, object ID: 1000000000050)
+     |    |    |    |    |    |    object_walker:   Object MiqAeServiceServiceResource with ID 1000000000050 has already been dumped...
+     |    |    |    |    |    object_walker:   --- end of service_template.service_resources.each do |service_resource| ---
+     |    |    |    |    |    object_walker:   service_template.service_templates (type: Association (empty))
+     |    |    |    |    |    object_walker:   service_template.services (type: Association)
+     |    |    |    |    |    object_walker:   *** not walking: 'services' isn't in the @walk_association_whitelist hash for MiqAeServiceServiceTemplate ***
+     |    |    |    |    |    object_walker:   --- end of associations ---
+     |    |    |    |    |    object_walker:   --- methods follow ---
+     |    |    |    |    |    object_walker:   service_template.group=
+     |    |    |    |    |    object_walker:   service_template.owner=
+     |    |    |    |    |    object_walker:   --- end of methods ---
+     |    |    |    |    object_walker:   service_resource.source (type: Association (empty))
+     |    |    |    |    object_walker:   --- end of associations ---
+     |    |    |    |    object_walker:   --- methods follow ---
+     |    |    |    |    object_walker:   --- end of methods ---
+     |    |    |    object_walker:   miq_request_task.source (type: Association)
+     |    |    |    object_walker:   source = miq_request_task.source
+     |    |    |    |    object_walker:   (object type: MiqAeServiceMiqProvisionRequestTemplate, object ID: 1000000000003)
+     |    |    |    |    object_walker:   Object MiqAeServiceMiqProvisionRequestTemplate with ID 1000000000003 has already been dumped...
+     |    |    |    object_walker:   --- end of associations ---
+     |    |    |    object_walker:   --- methods follow ---
+     |    |    |    object_walker:   miq_request_task.add_tag
+     |    |    |    object_walker:   miq_request_task.clear_tag
+     |    |    |    object_walker:   miq_request_task.dialog_options
+     |    |    |    object_walker:   miq_request_task.execute
+     |    |    |    object_walker:   miq_request_task.finished
+     |    |    |    object_walker:   miq_request_task.get_classification
+     |    |    |    object_walker:   miq_request_task.get_classifications
+     |    |    |    object_walker:   miq_request_task.get_dialog_option
+     |    |    |    object_walker:   miq_request_task.get_option
+     |    |    |    object_walker:   miq_request_task.get_option_last
+     |    |    |    object_walker:   miq_request_task.get_tag
+     |    |    |    object_walker:   miq_request_task.get_tags
+     |    |    |    object_walker:   miq_request_task.group_sequence_run_now?
+     |    |    |    object_walker:   miq_request_task.message=
+     |    |    |    object_walker:   miq_request_task.provisioned
+     |    |    |    object_walker:   miq_request_task.set_dialog_option
+     |    |    |    object_walker:   miq_request_task.set_option
+     |    |    |    object_walker:   miq_request_task.statemachine_task_status
+     |    |    |    object_walker:   miq_request_task.user_message=
+     |    |    |    object_walker:   --- end of methods ---
+     |    |    object_walker:   --- end of miq_request.miq_request_tasks.each do |miq_request_task| ---
+     |    |    object_walker:   miq_request.requester (type: Association)
+     |    |    object_walker:   requester = miq_request.requester
+     |    |    |    object_walker:   (object type: MiqAeServiceUser, object ID: 1000000000002)
+     |    |    |    object_walker:   requester.created_on = 2015-09-26 12:40:13 UTC   (type: ActiveSupport::TimeWithZone)
+     |    |    |    object_walker:   requester.current_group_id = 1000000000013   (type: Fixnum)
+     |    |    |    object_walker:   requester.email = pemcg@bit63.com   (type: String)
+     |    |    |    object_walker:   requester.filters = {"managed"=>[["/managed/visibility/bit63group_vm_user"]], "belongsto"=>[]}   (type: Hash)
+     |    |    |    object_walker:   requester.first_name = nil
+     |    |    |    object_walker:   requester.icon = nil
+     |    |    |    object_walker:   requester.id = 1000000000002   (type: Fixnum)
+     |    |    |    object_walker:   requester.last_name = nil
+     |    |    |    object_walker:   requester.lastlogoff = nil
+     |    |    |    object_walker:   requester.lastlogon = 2015-09-26 16:37:40 UTC   (type: ActiveSupport::TimeWithZone)
+     |    |    |    object_walker:   requester.name = Peter McGowan   (type: String)
+     |    |    |    object_walker:   requester['password_digest'] = $2a$10$Rjk6SzLdgBtl0V4aBFCkmOzcG9U.fWVK82jDXIJOzJ5hdaMUG.Fzq   (type: String)
+     |    |    |    object_walker:   requester.region = 1   (type: Fixnum)
+     |    |    |    object_walker:   requester.settings = {}   (type: Hash)
+     |    |    |    object_walker:   requester.ui_task_set_id = nil
+     |    |    |    object_walker:   requester.updated_on = 2015-09-26 16:37:40 UTC   (type: ActiveSupport::TimeWithZone)
+     |    |    |    object_walker:   requester.userid = pemcg   (type: String)
+     |    |    |    object_walker:   --- virtual columns follow ---
+     |    |    |    object_walker:   requester.allocated_memory = 8589934592   (type: Fixnum)
+     |    |    |    object_walker:   requester.allocated_storage = 85899345920   (type: Fixnum)
+     |    |    |    object_walker:   requester.allocated_vcpu = 4   (type: Fixnum)
+     |    |    |    object_walker:   requester.custom_1 = nil
+     |    |    |    object_walker:   requester.custom_2 = nil
+     |    |    |    object_walker:   requester.custom_3 = nil
+     |    |    |    object_walker:   requester.custom_4 = nil
+     |    |    |    object_walker:   requester.custom_5 = nil
+     |    |    |    object_walker:   requester.custom_6 = nil
+     |    |    |    object_walker:   requester.custom_7 = nil
+     |    |    |    object_walker:   requester.custom_8 = nil
+     |    |    |    object_walker:   requester.custom_9 = nil
+     |    |    |    object_walker:   requester.ldap_group = Bit63Group_vm_user   (type: String)
+     |    |    |    object_walker:   requester.miq_group_description = Bit63Group_vm_user   (type: String)
+     |    |    |    object_walker:   requester.miq_user_role_name = Bit63Role-vm_user   (type: String)
+     |    |    |    object_walker:   requester.provisioned_storage = 94489280512   (type: Fixnum)
+     |    |    |    object_walker:   requester.region_description = Region 1   (type: String)
+     |    |    |    object_walker:   requester.region_number = 1   (type: Fixnum)
+     |    |    |    object_walker:   --- end of virtual columns ---
+     |    |    |    object_walker:   --- associations follow ---
+     |    |    |    object_walker:   requester.current_group (type: Association)
+     |    |    |    object_walker:   *** not walking: 'current_group' isn't in the @walk_association_whitelist hash for MiqAeServiceUser ***
+     |    |    |    object_walker:   requester.miq_requests (type: Association)
+     |    |    |    object_walker:   *** not walking: 'miq_requests' isn't in the @walk_association_whitelist hash for MiqAeServiceUser ***
+     |    |    |    object_walker:   requester.vms (type: Association)
+     |    |    |    object_walker:   *** not walking: 'vms' isn't in the @walk_association_whitelist hash for MiqAeServiceUser ***
+     |    |    |    object_walker:   --- end of associations ---
+     |    |    |    object_walker:   --- methods follow ---
+     |    |    |    object_walker:   requester.custom_get
+     |    |    |    object_walker:   requester.custom_keys
+     |    |    |    object_walker:   requester.custom_set
+     |    |    |    object_walker:   requester.get_ldap_attribute
+     |    |    |    object_walker:   requester.get_ldap_attribute_names
+     |    |    |    object_walker:   requester.miq_group
+     |    |    |    object_walker:   requester.role
+     |    |    |    object_walker:   --- end of methods ---
+     |    |    object_walker:   miq_request.resource (type: Association)
+     |    |    object_walker:   resource = miq_request.resource
+     |    |    |    object_walker:   (object type: MiqAeServiceServiceTemplateProvisionRequest, object ID: 1000000000015)
+     |    |    |    object_walker:   Object MiqAeServiceServiceTemplateProvisionRequest with ID 1000000000015 has already been dumped...
+     |    |    object_walker:   miq_request.source (type: Association)
+     |    |    object_walker:   source = miq_request.source
+     |    |    |    object_walker:   (object type: MiqAeServiceServiceTemplate, object ID: 1000000000001)
+     |    |    |    object_walker:   Object MiqAeServiceServiceTemplate with ID 1000000000001 has already been dumped...
+     |    |    object_walker:   --- end of associations ---
+     |    |    object_walker:   --- methods follow ---
+     |    |    object_walker:   miq_request.add_tag
+     |    |    object_walker:   miq_request.approve
+     |    |    object_walker:   miq_request.authorized?
+     |    |    object_walker:   miq_request.ci_type
+     |    |    object_walker:   miq_request.clear_tag
+     |    |    object_walker:   miq_request.deny
+     |    |    object_walker:   miq_request.description=
+     |    |    object_walker:   miq_request.get_classification
+     |    |    object_walker:   miq_request.get_classifications
+     |    |    object_walker:   miq_request.get_option
+     |    |    object_walker:   miq_request.get_option_last
+     |    |    object_walker:   miq_request.get_tag
+     |    |    object_walker:   miq_request.get_tags
+     |    |    object_walker:   miq_request.pending
+     |    |    object_walker:   miq_request.set_message
+     |    |    object_walker:   miq_request.set_option
+     |    |    object_walker:   miq_request.user_message=
+     |    |    object_walker:   --- end of methods ---
+     |    object_walker:   $evm.root['service_template_provision_task'].miq_request_task (type: Association (empty))
+     |    object_walker:   $evm.root['service_template_provision_task'].miq_request_tasks (type: Association)
+     |    object_walker:   $evm.root['service_template_provision_task'].miq_request_tasks.each do |miq_request_task|
+     |    |    object_walker:   (object type: MiqAeServiceServiceTemplateProvisionTask, object ID: 1000000000044)
+     |    |    object_walker:   Object MiqAeServiceServiceTemplateProvisionTask with ID 1000000000044 has already been dumped...
+     |    object_walker:   --- end of $evm.root['service_template_provision_task'].miq_request_tasks.each do |miq_request_task| ---
+     |    object_walker:   $evm.root['service_template_provision_task'].service_resource (type: Association (empty))
+     |    object_walker:   $evm.root['service_template_provision_task'].source (type: Association)
+     |    object_walker:   source = $evm.root['service_template_provision_task'].source
+     |    |    object_walker:   (object type: MiqAeServiceServiceTemplate, object ID: 1000000000001)
+     |    |    object_walker:   Object MiqAeServiceServiceTemplate with ID 1000000000001 has already been dumped...
+     |    object_walker:   --- end of associations ---
+     |    object_walker:   --- methods follow ---
+     |    object_walker:   $evm.root['service_template_provision_task'].add_tag
+     |    object_walker:   $evm.root['service_template_provision_task'].clear_tag
+     |    object_walker:   $evm.root['service_template_provision_task'].dialog_options
+     |    object_walker:   $evm.root['service_template_provision_task'].execute
+     |    object_walker:   $evm.root['service_template_provision_task'].finished
+     |    object_walker:   $evm.root['service_template_provision_task'].get_classification
+     |    object_walker:   $evm.root['service_template_provision_task'].get_classifications
+     |    object_walker:   $evm.root['service_template_provision_task'].get_dialog_option
+     |    object_walker:   $evm.root['service_template_provision_task'].get_option
+     |    object_walker:   $evm.root['service_template_provision_task'].get_option_last
+     |    object_walker:   $evm.root['service_template_provision_task'].get_tag
+     |    object_walker:   $evm.root['service_template_provision_task'].get_tags
+     |    object_walker:   $evm.root['service_template_provision_task'].group_sequence_run_now?
+     |    object_walker:   $evm.root['service_template_provision_task'].message=
+     |    object_walker:   $evm.root['service_template_provision_task'].provisioned
+     |    object_walker:   $evm.root['service_template_provision_task'].set_dialog_option
+     |    object_walker:   $evm.root['service_template_provision_task'].set_option
+     |    object_walker:   $evm.root['service_template_provision_task'].statemachine_task_status
+     |    object_walker:   $evm.root['service_template_provision_task'].user_message=
+     |    object_walker:   --- end of methods ---
+     object_walker:   $evm.root['service_template_provision_task_id'] = 1000000000043   (type: String)
+     object_walker:   $evm.root['user'] => #<MiqAeMethodService::MiqAeServiceUser:0x0000000c5431c8>   (type: DRb::DRbObject, URI: druby://127.0.0.1:38842)
+     |    object_walker:   Object MiqAeServiceUser with ID 1000000000002 has already been dumped...
+     object_walker:   $evm.root['user_id'] = 1000000000002   (type: String)
+     object_walker:   $evm.root['vmdb_object_type'] = service_template_provision_task   (type: String)
+     object_walker:   $evm.object = /Bit63/Bit63/Methods/ObjectWalker   (type: DRb::DRbObject, URI: druby://127.0.0.1:38842)
+     object_walker:   $evm.parent = /Bit63/Service/Provisioning/StateMachines/ServiceProvision_Template/CatalogItemInitialization   (type: DRb::DRbObject, URI: druby://127.0.0.1:38842)
+     object_walker:   $evm.parent['ae_result'] = ok   (type: String)
+     object_walker:   $evm.parent['ae_state'] = post5   (type: String)
+     object_walker:   $evm.parent['ae_state_retries'] = 0   (type: Fixnum)
+     object_walker:   $evm.parent['ae_state_started'] = 2015-09-26 17:03:00 UTC   (type: String)
+     object_walker:   $evm.parent['ae_status_state'] = on_entry   (type: String)
+     object_walker:   $evm.parent['dialog_vm_name'] = pemcg-test03   (type: String)
+     object_walker:   $evm.parent['miq_server'] => #<MiqAeMethodService::MiqAeServiceMiqServer:0x0000000c528968>   (type: DRb::DRbObject, URI: druby://127.0.0.1:38842)
+     |    object_walker:   Object MiqAeServiceMiqServer with ID 1000000000001 has already been dumped...
+     object_walker:   $evm.parent['miq_server_id'] = 1000000000001   (type: String)
+     object_walker:   $evm.parent['object_name'] = CatalogItemInitialization   (type: String)
+     object_walker:   $evm.parent['request'] = clone_to_service   (type: String)
+     object_walker:   $evm.parent['service_template_provision_task'] => #<MiqAeMethodService::MiqAeServiceServiceTemplateProvisionTask:0x0000000c5357a8>   (type: DRb::DRbObject, URI: druby://127.0.0.1:38842)
+     |    object_walker:   Object MiqAeServiceServiceTemplateProvisionTask with ID 1000000000043 has already been dumped...
+     object_walker:   $evm.parent['service_template_provision_task_id'] = 1000000000043   (type: String)
+     object_walker:   $evm.parent['user'] => #<MiqAeMethodService::MiqAeServiceUser:0x0000000c5431c8>   (type: DRb::DRbObject, URI: druby://127.0.0.1:38842)
+     |    object_walker:   Object MiqAeServiceUser with ID 1000000000002 has already been dumped...
+     object_walker:   $evm.parent['user_id'] = 1000000000002   (type: String)
+     object_walker:   $evm.parent['vmdb_object_type'] = service_template_provision_task   (type: String)
+object_walker - EVM Automate Method Ended
