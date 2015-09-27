@@ -230,5 +230,10 @@ destination.sync_or_async_ems_operation
 destination.unlink_storage
 destination.unregister
 ```
+In the case of provisioning a VM, the same Destination Object is also availble via the _vm_ association, i.e.
 
+```
+$evm.root['miq_provision'].vm
+```
 
+We often find that objects are accessible via multiple association names.

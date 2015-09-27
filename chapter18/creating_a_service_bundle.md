@@ -93,7 +93,7 @@ Click on the _Resources_ tab, and select each of the unassigned catalog items to
 Change the _Action Order_ and _Provisioning Order_ according to our desired sequence ('3' won't be visible until '2' is set for an option)...
 <br><br>
 
-![screenshot](images/screenshot49.png?)
+![screenshot](images/screenshot49.png)
 
 Finally click the _Add_ button.
 
