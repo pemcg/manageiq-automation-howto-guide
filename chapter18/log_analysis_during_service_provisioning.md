@@ -29,13 +29,13 @@ Following Rel'ship [miqaedb:/System/Event/request_approved#create]
 Following Rel'ship [miqaedb:/System/Policy/request_approved#create]
 Following Rel'ship [miqaedb:/System/Process/parse_provider_category#create]
 Followed  Rel'ship [miqaedb:/System/Process/parse_provider_category#create]
+```
+
+We see the request approval, and the creation of the service template provisioning _request_ (service\_template\_provision\_request\_1000000000011). We see some processing in _request_ context...
+
+```
 Following Rel'ship [miqaedb:/System/Policy/ServiceTemplateProvisionRequest_Approved#create]
 Following Rel'ship [miqaedb:/Service/Provisioning/Email/ServiceTemplateProvisionRequest_Approved#create]
-```
-
-We see some processing in the context of the service template provisioning _request_...
-
-```
 Q-task_id([stp_request_10...11]) Following Rel'ship [miqaedb:/System/Event/request_starting#create]
 Q-task_id([stp_request_10...11]) Following Rel'ship [miqaedb:/System/Policy/request_starting#create]
 Q-task_id([stp_request_10...11]) Following Rel'ship [miqaedb:/System/Process/parse_provider_category#create]
