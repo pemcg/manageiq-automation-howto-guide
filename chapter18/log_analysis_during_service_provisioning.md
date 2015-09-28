@@ -219,7 +219,7 @@ Q-task_id([miq_provision_10...33]) Followed  Rel'ship [miqaedb:/Infrastructure/V
 Q-task_id([miq_provision_10...33]) Followed  Rel'ship [miqaedb:/infrastructure/VM/Lifecycle/Provisioning#create]
 ```
 
-...and finally we see the _Service_ provisioning state machine _CheckProvisioned_ method return success, and continue with the remainder of the state machine...
+...and finally we see both of the _Service_ provisioning state machine _CheckProvisioned_ methods return success, and continue with the remainder of their state machines...
 
 ```
 Q-task_id([stp_task_10...32]) Following Rel'ship [miqaedb:/Service/Provisioning/StateMachines/Methods/CheckProvisioned#create]
