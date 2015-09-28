@@ -20,11 +20,15 @@ One of the more complex tasks that must be achieved by some state in the Service
 ![task hierachy](images/task_hierarchy.png?)
 <br> <br>
 
-This object hierarchy is represented at the highest level by the Service Template Provisioning Task (which we access from ```$evm.root['service_template_provision_task']```). This has an assocation, _miq\_request\_tasks_, containing a single the _miq\_request\_task_ object representing the creation of the _Service Resource_.
+This object hierarchy is represented at the highest level by the Service Template Provisioning Task (which we access from ```$evm.root['service_template_provision_task']```). 
 
-This _child_ miq\_request\_task also has an assocation _miq\_request\_tasks_ containing the VM Provisioning Tasks associated with creating the VMs for the service.
+The Service Template Provisioning Task has an assocation, _miq\_request\_tasks_, containing the _miq\_request\_task_ objects representing the creation of the _service resource(s)_, which are items or resources making up the service request (even a single service catalog item is treated as a bundle containing one service resource).
 
-It is to the second level of miq\_request\_task (also known as the _grandchild tasks_) that we must pass the Service Dialog values that affect the provisioning of the VM (such as _:vm\_memory_ or _:vm\_target\_name_).
+Each _child_ (service resource) miq\_request\_task also has an _miq\_request\_tasks_ assocation  containing the VM Provisioning Tasks associated with creating the actual VMs for the service resource. This _miq\_request\_task_ is provider-specific.
+
+It is to the second level of miq\_request\_task (also known as the _grandchild task_) that we must pass the Service Dialog values that affect the provisioning of the VM (such as _:vm\_memory_ or _:vm\_target\_name_).
+
+(see [Service Objects](service_objects.md) for more details of the service object structure)
 
 ### Accessing the Service Dialog Options
 

@@ -47,6 +47,7 @@
    * [Example - Creating a Service Catalog Bundle](chapter18/creating_a_service_bundle.md)
    * [Service Objects](chapter18/service_objects.md)
    * [Custom State Machines](chapter18/custom_state_machines.md)
+   * [Log Analysis During Service Provisioning](chapter18/log_analysis_during_service_provisioning.md)
    * [Tips and Tricks](chapter18/tips_and_tricks.md)
 * [Argument Passing and Handling](chapter19/argument_passing_and_handling.md)
 * [Distributed Automation Processing](chapter20/distributed_processing.md)
