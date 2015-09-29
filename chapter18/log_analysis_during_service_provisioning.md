@@ -62,7 +62,10 @@ Q-task_id([stp_request_10...11]) Followed  Rel'ship [miqaedb:/System/Request/UI_
 
 Notice that this _request_ processing runs the naming method, which is therefore processed **before** CatalogItemInitialization (which is processed in _task_ context).
 
-We see two service template provisioning _tasks_ created, our top-level and child task objects (service\_template\_provision\_task\_1000000000031 and service\_template\_provision\_task\_1000000000032)...
+Next we see two service template provisioning _tasks_ created, our top-level and child task objects (service\_template\_provision\_task\_1000000000031 and service\_template\_provision\_task\_1000000000032). 
+
+The two tasks are actually running through two separate state machines. Task 
+_service\_template\_provision\_task\_1000000000031_ is running through _/Service/Provisioning/StateMachines/ServiceProvision\_Template/CatalogItemInitialization_, while task _service\_template\_provision\_task\_1000000000032_ is running through _/Service/Provisioning/StateMachines/ServiceProvision\_Template/clone\_to\_service_.
 
 ```
 Q-task_id([stp_task_10...31]) Following Rel'ship [miqaedb:/Service/Provisioning/StateMachines/Methods/DialogParser#create]
