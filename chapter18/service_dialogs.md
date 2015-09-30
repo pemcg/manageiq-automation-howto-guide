@@ -104,7 +104,7 @@ CloudForms Management Engine 5.4 introduced the ability to add input field valid
 
 ### Using the Input from One Element in Another Element's Dynamic Method
 
-We can link elements in such a way that a user's input in the one element can be used by subsequent dynamic elements that have the _Show Refresh Button_ selected. The subsequent dynamic method, when refreshed, can access the first element's input value using $evm.object['dialog\_elementname'].
+We can link elements in such a way that a user's input in the one element can be used by subsequent dynamic elements that have the _Show Refresh Button_ selected. The subsequent dynamic method, when refreshed, can access the first element's input value using $evm.root['dialog\_elementname'].
 
 We can use this in several useful ways, such as to populate a dynamic list based on a value input previously, or to create a validation method.
 
