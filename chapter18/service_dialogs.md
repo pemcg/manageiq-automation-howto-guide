@@ -101,3 +101,51 @@ CloudForms Management Engine 5.4 introduced the ability to add input field valid
 
 <br>
 ![screenshot](images/screenshot6.png)
+
+### Using the Input from One Element in Another Element's Dynamic Method
+
+We can link elements in such a way that a user's input in the one element can be used by subsequent dynamic elements that have the _Show Refresh Button_ selected. The subsequent dynamic method, when refreshed, can access the first element's input value using $evm.object['dialog\_elementname'].
+
+We can use this in several useful ways, such as to populate a dynamic list based on a value input previously, or to create a validation method.
+
+In the following example a read-only text area box element is used to display a validation message, with the user instructed to click the 'Refresh' button to validate their input to a previous field.
+
+The service dialog has a text box element that prompts for the name of a new OpenStack tenant to be created in each of several OpenStack providers. The validation method checks that the tenant name doesn't already exist.
+
+Until the 'Refresh' button is clicked, the Validation text area box displays "Validation...". Once the 'Refresh' button is clicked, the validation message changes according to whether the tenant exists or not.
+
+
+```ruby
+display_string = "Validation...\n"
+tenant_found = false
+#
+# Read the input from the 'tenant' element
+#
+tenant_name = $evm.root['dialog_tenant_name']
+$evm.log(:info, "Tenant name = \'#{tenant_name}\'")
+unless tenant_name.length.zero?
+  lowercase_tenant = tenant_name.gsub(/\W/,'_').downcase
+  tenant_objects = $evm.vmdb('CloudTenant').find(:all)
+  tenant_objects.each do | tenant |
+    if tenant.name.downcase == lowercase_tenant
+      tenant_found = true
+      display_string += "   Tenant \'#{tenant.name}\' exists in OpenStack Provider: " 
+      display_string += "#{$evm.vmdb('ems', tenant.ems_id).name}\n"
+    end
+  end
+  display_string += "   Tenant \'#{lowercase_tenant}\' is available for use" unless tenant_found
+end
+
+list_values = {
+  'required'   => true,
+  'protected'   => false,
+  'read_only'  => true,
+  'value' => display_string,
+}
+list_values.each do |key, value| 
+  $evm.log(:info, "Setting dialog variable #{key} to #{value}")
+  $evm.object[key] = value
+end
+exit MIQ_OK
+```
+
