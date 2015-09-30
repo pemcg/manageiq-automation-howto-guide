@@ -7,6 +7,7 @@ unless $evm.execute('category_exists?', 'data_centre')
   $evm.execute('category_create',
   					:name => 'data_centre',
   					:single_value => false,
+  					:perf_by_tag => false,
   					:description => "Data Centre")
 end
 ```
