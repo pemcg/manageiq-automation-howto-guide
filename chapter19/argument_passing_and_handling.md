@@ -71,7 +71,7 @@ For this use-case we call ObjectWalker from another running automation method us
 <br> <br>
 
 ```ruby
-$evm.instantiate("Discovery/Methods/ObjectWalker?lunch=salad&dinner=spaghetti")
+$evm.instantiate("/Discovery/Methods/ObjectWalker?lunch=salad&dinner=spaghetti")
 ```
 <br>
 When called in this way, the called method only receives the arguments from $evm.object (one of our (grand)parent instances is $evm.root, our immediate caller is $evm.parent)...

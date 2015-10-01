@@ -101,9 +101,9 @@ We can look at the workflow through a State Machine using the diagram in the off
 
 ![state machine logic](images/state_machine_logic.png)
 
-Here we see that any error condition caught by the _on\_error_ method results in an abort of the State Machine. [RFE BZ #1215990](https://bugzilla.redhat.com/show_bug.cgi?id=1215990) will allow us to set _$evm.root['ae\_result'] = 'continue'_ in an _on\_error_ method so that the method can take remedial action to correct an error, and continue with the State Machine.
+Here we see that any error condition caught by the _on\_error_ method results in an abort of the State Machine. The next ManageIQ release _Capablanca_ will allow us to set ```$evm.root['ae_result'] = 'continue'``` in an _on\_error_ method so that the method can take remedial action to correct an error, and continue with the State Machine.
 
-The same BZ will also let us set _$evm.root['ae\_next\_state'] = state\_name_ to allow a Stage/State to advance forward to a named future Stage/State, or for an _on\_entry_ method to call _$evm.root['ae\_result'] = 'skip'_ to advance straight to the next Stage/State. This will allow for intelligent _on\_entry_ pre-processing, and to advance if pre-conditions are already met.
+The same update will also let us set ```$evm.root['ae_next_state'] = state_name``` to allow a Stage/State to advance forward to a named future Stage/State, or for an _on\_entry_ method to call ```$evm.root['ae_result'] = 'skip'``` to advance straight to the next Stage/State. This will allow for intelligent _on\_entry_ pre-processing, and to advance if pre-conditions are already met.
 
 ### Saving Variables Between State Retries
 

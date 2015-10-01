@@ -8,10 +8,20 @@ User-initiated Automation operations have two distinct stages - the **Request** 
 | Automation Request   | automation\_request | automation\_task |
 | Provisioning a Host  | miq\_host\_provision\_request | miq\_host\_provision |
 | Provisioning a VM    | miq\_provision\_request | miq\_provision |
-| Clone a VM to Template | miq\_provision\_request\_template | miq\_provision |
 | Reconfiguring a VM   | vm\_reconfigure\_request | vm\_reconfigure\_task |
 | Requesting a Service | service\_template\_provision\_request | service\_template\_provision\_task |
 | Migrating a VM       | vm\_migrate\_request | vm\_migrate\_task |
+
+In addition to those listed above, a kind of pseudo-request object is created when we add a Service Catalog Item to provision a VM. 
+
+When we create the Catalog Item, we fill out the _Request Info_ fields, as if we were provisioning a VM interactively via the Infrastructure -> Virtual Machines -> Lifecycle -> Provision VMs menu (See [Example - Creating a Service Catalog Item](../chapter18/creating_a_service_item.md)). 
+
+The values that we select or enter are added to the options hash in a newly created _miq\_provision\_request\_template_ object. This then serves as the "request" template for all subsequent VM provision operations from this Service Catalog Item.
+
+
+|   Operation          |   "Request" Object   |   Task Object   |
+|:--------------------:|:------------------:|:---------------:|
+| VM Ordered from a Service Catalog Item | miq\_provision\_request\_template | miq\_provision |
 
 ### Approval
 _Requests_ need to be approved before the Task is created. Admin-level users can auto-approve their own requests, while non-admin users sometimes need the request explicitly approved, depending on the Automation Request type.
@@ -19,7 +29,7 @@ _Requests_ need to be approved before the Task is created. Admin-level users can
 The most common Automation operation that non-admin users frequently perform is to provision a VM, and for this there are approval thresholds in place (_max\_vms, max\_cpus, max\_memory, max\_retirement\_days_). VM Provision Requests specifying numbers or sizes below these thresholds are auto-approved, whereas requests exceeding these thresholds are blocked, pending approval by an admin-level user.
 
 ### Objects
-If the _Request_ is approved, one or more _Task_ objects will be created from information contained in the _Request_ object.
+If the _Request_ is approved, one or more _Task_ objects will be created from information contained in the _Request_ object (a single request for three VMs will result in three task objects for example).
 
 If we look at the class ancestry for the _Request_ objects...
 
@@ -68,6 +78,12 @@ prov = $evm.root['miq_provision_request'] || $evm.root['miq_provision'] \
 If we have a Request object, there may not necessarily be a Task object (yet), but if we have a Task object we can always follow an association to find the Request object that preceeded it.
 
 Tip - when we're developing automation methods, having an understanding of whether we're running in a Request or Task context can be really useful. Think about what stage in the Automation flow the method will be running - before or after approval.
+
+Example - we wish to set the number of VMs to be provisioned as part of a VM provisioning operation. We know that an options hash key _:number\_of\_vms_ can be set, but this appears in the options hash for both the _Task_ and _Request_ objects. (See [The Options Hash](../chapter17/options_hash.md) for more details). Where should we set it?
+
+Answer - the _Task_ objects are created after the _Request_ is approved, and the number of VMs to be provisioned is one of the criteria that auto-approval uses to decide whether or not to approve the request. The _:number\_of\_vms_ key also determines how many _Task_ objects are created (it is the _Task_ object that contains the VM-specific options hash keys such as _:vm\_target\_name_, _:ip\_addr_, etc.) 
+
+We must therefore set _:number\_of\_vms_ in the _Request_ options hash, **before** the _Task_ objects are created.
 
 ### Object Contents
 
