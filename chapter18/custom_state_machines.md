@@ -24,7 +24,7 @@ After following Kevin's instructions on downloading and zipping the Automation c
 
 ![screenshot](images/screenshot55.png)
 
-Kevin has made quite a few enhancements, so we need to import some Methods and Instances from four different namespaces in the imported domain into our own domain.
+Kevin has made quite a few enhancements, so we need to import some Methods and Instances from four different namespaces in the imported domain into our own domain. We'll be using a VMware provider for this example, so we'll copy the VMware-specific customisations.
 
 From the _Infrastructure_ namespace...
 
@@ -55,10 +55,9 @@ The _Template_ element is dynamic. Ensure that its Entry Point is our newly impo
 
 We'll create the new Service Catalog Item as we did before, but we'll pick _Generic_ as the Catalog Item Type.
 
-Enter a Name and Description, and check _Display in Catalog_ to reveal the other options. Select a suitable Catalog, and the _VMware - Generic - Build\_VMProvisionRequest_ Dialog from the drop-downs.
+We enter a Name and Description, and check _Display in Catalog_ to reveal the other options. We select a suitable Catalog, and the new _VMware - Generic - Build\_VMProvisionRequest_ Dialog from the drop-downs.
 
-
-Select _/Service/Provisioning/StateMachines/ServiceProvision\_Template/VMware\_Build\_VMProvisionRequest_ as the Provisioning Entry Point, and ensure that _Include Domain prefix in the path_ is checked.
+Finally we select _/Service/Provisioning/StateMachines/ServiceProvision\_Template/VMware\_Build\_VMProvisionRequest_ from our Domain as the Provisioning Entry Point, and ensure that _Include Domain prefix in the path_ is checked. Save the new Catalog Item.
 
 ### Ordering the Service
 
@@ -71,6 +70,8 @@ We complete the dialog and click _Submit_, and after a while our new Service is 
 <br> <br>
 
 ![screenshot](images/screenshot62.png)
+
+Success!
 
 
  
