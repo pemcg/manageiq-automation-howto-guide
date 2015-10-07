@@ -119,7 +119,7 @@ Several Options Hash keys have their own 'set' method which we should use in pla
 All but the first four of the 'set' methods listed above perform a validity check that the value that we're setting is an eligible resource for the provisioning instance.
 
 
-Use one of the techniques discussed in [Investigative Debugging](../chapter11/investigative_debugging.md) to find out what key/value pairs are in the options hash to manipluate.
+Tip - use one of the techniques discussed in [Investigative Debugging](../chapter11/investigative_debugging.md) to find out what key/value pairs are in the options hash to manipluate.
 
 
 ### miq\_provision

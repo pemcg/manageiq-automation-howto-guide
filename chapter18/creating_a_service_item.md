@@ -43,10 +43,10 @@ Using the reader after we've provisioned a VM, we see that the same values are i
 
 ```
 ~/object_walker_reader.rb | grep 'miq_provision' | grep "memory\|cpu\|core\|socket"
-     |    object_walker:   $evm.root['miq_provision'].options[:cores_per_socket] = [1, "1"]   (type: Array)
-     |    object_walker:   $evm.root['miq_provision'].options[:memory_reserve] = nil
-     |    object_walker:   $evm.root['miq_provision'].options[:number_of_sockets] = [1, "1"]   (type: Array)
-     |    object_walker:   $evm.root['miq_provision'].options[:vm_memory] = ["1024", "1024"]   (type: Array)
+     |    $evm.root['miq_provision'].options[:cores_per_socket] = [1, "1"]   (type: Array)
+     |    $evm.root['miq_provision'].options[:memory_reserve] = nil
+     |    $evm.root['miq_provision'].options[:number_of_sockets] = [1, "1"]   (type: Array)
+     |    $evm.root['miq_provision'].options[:vm_memory] = ["1024", "1024"]   (type: Array)
 ```
 
 ##### Some Commonly Used Element Names
@@ -68,7 +68,7 @@ The following table lists some commonly used element names for typical VM charac
 
 We know from the investigation above that we must name our service dialog elements: _vm\_name_, _service\_name_, _option\_0\_cores\_per\_socket_ and _option\_0\_vm\_memory_.
 
-We'll create our service dialog in the same way that we did in [A More Advanced Example](../chapter7/a_more_advanced_example.md), but this time we'll create two boxes _Service and VM Names_, and _VM Characteristics_, each containing two elements...
+We'll create our service dialog in the same way that we did in [A More Advanced Example](../chapter7/a_more_advanced_example.md), but this time we'll create two boxes: _Service and VM Names_, and _VM Characteristics_, each containing two elements...
 <br><br>
 
 ![screenshot](images/screenshot22.png)

@@ -51,7 +51,7 @@ In this way we are able to create a generic Class and Instance definition that c
 ### Assertions
 An **Assertion** is a boolean check that we can put (usually at the top) in our Class schema. If the Assertion evaluates to _true_ the remaining Instance schema fields are processed. If the Assertion evaluates to _false_ the remainder of the Instance fields are not processed.
 
-An example of an Assertion is found at the start of the Schema for the _Placement_ Class. Placement methods are only relevant if the _Automatic_ check box has been selected at provisioning time, and this check box sets a boolean value _miq\_provision.placement\_auto_. The Assertion checks that this value is true, and prevents the remainder of the Instance from running if atimomatic placement has not been selected.
+An example of an Assertion is found at the start of the Schema for the _Placement_ Class. Placement methods are only relevant if the _Automatic_ check box has been selected at provisioning time, and this check box sets a boolean value _miq\_provision.placement\_auto_. The Assertion checks that this value is true, and prevents the remainder of the Instance from running if automatic placement has not been selected.
 
 ![screenshot](images/screenshot1.png)
 <br><br>

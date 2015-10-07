@@ -68,7 +68,7 @@ stp_task.miq_request_tasks.each do |child_task|
   when "Large"
     memory_size = 8192
   end
-  child_task.set_dialog_option('memory', memory_size)
+  child_task.set_dialog_option('dialog_memory', memory_size)
 end
 ```
 
