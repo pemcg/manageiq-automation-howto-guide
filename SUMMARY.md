@@ -50,7 +50,6 @@
    * [Log Analysis During Service Provisioning](chapter18/log_analysis_during_service_provisioning.md)
    * [Tips and Tricks](chapter18/tips_and_tricks.md)
 * [Argument Passing and Handling](chapter19/argument_passing_and_handling.md)
-* [Distributed Automation Processing](chapter20/distributed_processing.md)
 * [Calling Automation from the RESTful API](chapter21/calling_automation_from_api.md)
 * [Integration - Calling External Services](chapter22/calling_external_services.md)
 * [Coding Tips](chapter23/coding_tips.md)
