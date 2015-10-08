@@ -18,6 +18,8 @@ The schema for the _CatalogItemInitialization_ Instance is as follows...
 <br>
 We can see that the schema uses the _pre1_ and _pre2_ states to add a dialog parser (common between the _CatalogItemInitialization_ and _CatalogBundleInitialization_ State Machines), and the _CatalogItemInitialization_ Method to set the child object _options\_hash_ values and/or tags accordingly.
 
+The _CatalogItemInitialization_ Method itself relies on the dialog inputs having been parsed correctly by _dialog\_parser_, and this requires us to use a 'standard' naming convention for our service dialog elements.
+
 #### Service Dialog Element Naming Convention
 
 To perform the service dialog -> options_hash or tag substitution correctly, we must name our service dialog elements in a particular way, depending on whether the element is requesting input for a single option or tag, or a comma-separated list (array) of options or tags.

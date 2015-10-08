@@ -91,6 +91,30 @@ When we make a RESTful call, we must authenticate using a valid username and pas
 
 If we try making a RESTful call as a non-admin user, the Automation request will be blocked pending approval (as expected). There seems to be no way however for an admin user to approve such a request through the WebUI (BZ #1229818), so currently if we want to submit an automation request as a non-admin user, we would need to write our own approval code.
 
+#### Zone Implications
+
+When we submit an Automation Request via the API, by default the Automate Task is queued on the same appliance that the Web Service is running on. This will be de-queued to run by any appliance with the _Automation Engine_ role set **in the same zone**. If we have separated out our UI/Web Service appliances into a separate zone, this may not necessarily be our desired behaviour.
+
+We can add a parameter _miq\_zone_ to the automation request to override this...
+
+```ruby
+  :requester => {
+    :auto_approve => true
+  },
+  :parameters => {
+  	 :miq_zone => 'Zone Name'
+  }
+```
+
+
+The behaviour of this parameter is as follows (from [BZ #1162832](https://bugzilla.redhat.com/show_bug.cgi?id=1162832)):
+
+1. If the parameter is not passed the request should use the zone of the server that receives the request.
+2. If passed but empty (example 'parameters' => "miq_zone=",) the zone should be set to nil and any appliance can process the request.
+3. Passed a valid zone name parameter (example 'parameters' => "miq_zone=Test",) should process the work in the "Test" zone.
+4. Passing an invalid zone name should raise an error of "unknown zone <Zone_name>" back to the caller.
+
+
 ### Generic run\_via\_api Script Example
 
 The following is a generic _run\_via\_api_ script that can be used to call any Automation method, using arguments to pass server name, credentials, and URI parameters to the Instance to be called...
@@ -124,14 +148,14 @@ require 'optparse'
 
 begin
   options = {
-            :server => nil,
-            :username => nil,
-            :password => nil,
-            :domain => nil,
-            :namespace => nil,
-            :class => nil,
-            :instance => nil,
-            :parameters => []
+            :server 	 => nil,
+            :username 	 => nil,
+            :password 	 => nil,
+            :domain 	 => nil,
+            :namespace   => nil,
+            :class 		 => nil,
+            :instance 	 => nil,
+            :parameters  => []
             }
   parser = OptionParser.new do|opts|
     opts.banner = "Usage: run_via_api.rb [options]"
@@ -240,10 +264,10 @@ begin
   rest_return = RestClient::Request.execute(
   						method: :post,
   						url: url + query,
-  						:user => username,
-  						:password => password,
-  						:headers => {:accept => :json},
-  						:payload => post_params,
+  						:user 		=> username,
+  						:password 	=> password,
+  						:headers 	=> {:accept => :json},
+  						:payload 	=> post_params,
   						verify_ssl: false)
   result = JSON.parse(rest_return)
   #
@@ -257,9 +281,9 @@ begin
   rest_return = RestClient::Request.execute(
   						method: :get,
   						url: url + query,
-  						:user => username,
-  						:password => password,
-  						:headers => {:accept => :json},
+  						:user 		=> username,
+  						:password 	=> password,
+  						:headers 	=> {:accept => :json},
   						verify_ssl: false)
   result = JSON.parse(rest_return)
   request_state = result['request_state']
@@ -268,9 +292,9 @@ begin
     rest_return = RestClient::Request.execute(
     					method: :get, 
     					url: url + query,
-    					:user => username,
-    					:password => password,
-    					:headers => {:accept => :json},
+    					:user 		=> username,
+    					:password 	=> password,
+    					:headers 	=> {:accept => :json},
     					verify_ssl: false)
     result = JSON.parse(rest_return)
     request_state = result['request_state']

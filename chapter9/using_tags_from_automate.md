@@ -60,21 +60,6 @@ group_tags = group.tags
 all_department_tags = group.tags(:department)
 first_department_tag = group.tags(:department).first
 ```
-We can search for all objects tagged with a particular tag...
-
-```ruby
-tag = "/managed/department/legal"
-hosts = $evm.vmdb(:host).find_tagged_with(:all => tag, :ns => "*")
-```
-This example uses a method defined in Rails rather than the automation engine, and shows that categories themselves are organised into namespaces behind the scenes. In practice the only namespace that seems to be in use is _/managed_ and we rarely need to specify this. This method also doesn't return MiqAeService* objects, but Rails Active Records so there's a limited number of operations that we can perform on the returned list. We can pull out _.name_  from each item though, which is often all that we want, i.e.
-
-```ruby
-tag = "/department/legal"
-hosts = $evm.vmdb(:host).find_tagged_with(:all => tag, :ns => "/managed")
-hosts.each do |host|
-  $evm.log("info", "Host: #{host.name} is tagged with #{tag}")
-end
-```
 
 Getting the list of tags in a particular category is more challenging. Both tags and categories are listed in the same _classifications_ table, but tags also have a valid _parent\_id_ column that ties them to their category.
 
