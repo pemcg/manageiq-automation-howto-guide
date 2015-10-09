@@ -55,38 +55,64 @@ In practice a _@walk\_association\_policy_ of _:blacklist_ produces so much outp
 There is a companion _object\_walker\_reader_ script that can be copied to the CloudForms appliance to extract the object\_walker dumps from automation.log, list the dumps, and even _diff_ two dumps - useful when running object\_walker before and after a built-in method (for example in a State Machine) to see what the method has changed.
 
 ```
-[root@cloudforms ~]# ~/object_walker_reader.rb
-object_walker 1.5-2 - EVM Automate Method Started
-     object_walker:   $evm.current_namespace = Bit63/General   (type: String)
-     object_walker:   $evm.current_class = Methods   (type: String)
-     object_walker:   $evm.current_instance = ObjectWalker   (type: String)
-     object_walker:   $evm.current_message = create   (type: String)
-     object_walker:   $evm.current_object = /Bit63/General/Methods/ObjectWalker   (type: DRb::DRbObject, URI: druby://127.0.0.1:56027)
-     object_walker:   $evm.current_object.current_field_name = execute   (type: String)
-     object_walker:   $evm.current_object.current_field_type = method   (type: String)
-     object_walker:   $evm.current_method = object_walker   (type: String)
-     object_walker:   $evm.root = /ManageIQ/SYSTEM/PROCESS/Request   (type: DRb::DRbObject, URI: druby://127.0.0.1:56027)
-     object_walker:   $evm.root['ae_provider_category'] = infrastructure   (type: String)
-     object_walker:   $evm.root.class = DRb::DRbObject   (type: Class)
-     object_walker:   $evm.root['instance'] = ObjectWalker   (type: String)
-     object_walker:   $evm.root['miq_server'] => #<MiqAeMethodService::MiqAeServiceMiqServer:0x0000000a948180>   (type: DRb::DRbObject, URI: druby://127.0.0.1:56027)
-     |    object_walker:   $evm.root['miq_server'].build = 20150108100920_387a856   (type: String)
-     |    object_walker:   $evm.root['miq_server'].capabilities = {:vixDisk=>true, :concurrent_miqproxies=>2}   (type: Hash)
-     |    object_walker:   $evm.root['miq_server'].cpu_time = 15221.0   (type: Float)
-     |    object_walker:   $evm.root['miq_server'].drb_uri = druby://127.0.0.1:43128   (type: String)
-...
-     |    object_walker:   $evm.root['user'].region_number = 1   (type: Fixnum)
-     |    object_walker:   --- end of virtual columns ---
-     |    object_walker:   --- associations follow ---
-     |    object_walker:   $evm.root['user'].current_group (type: Association)
-     |    object_walker:   current_group = $evm.root['user'].current_group
-     |    |    object_walker:   (object type: MiqAeServiceMiqGroup, object ID: 1000000000001)
-     |    |    object_walker:   current_group.created_on = 2014-11-13 17:41:16 UTC   (type: ActiveSupport::TimeWithZone)
-     |    |    object_walker:   current_group.description = EvmGroup-super_administrator   (type: String)
-     |    |    object_walker:   current_group.filters = nil
-     |    |    object_walker:   current_group.group_type = system   (type: String)
-     |    |    object_walker:   current_group.guid = 44d8d21c-6b5c-11e4-b699-001a4aa01599   (type: String)
-...
+Object Walker 1.6 Starting
+     --- $evm.current_* details ---
+     $evm.current_namespace = bit63/bit63   (type: String)
+     $evm.current_class = methods   (type: String)
+     $evm.current_instance = objectwalker   (type: String)
+     $evm.current_message = create   (type: String)
+     $evm.current_object = /bit63/bit63/methods/objectwalker   (type: DRb::DRbObject, URI: druby://127.0.0.1:56498)
+     $evm.current_object.current_field_name = Execute   (type: String)
+     $evm.current_object.current_field_type = method   (type: String)
+     $evm.current_method = object_walker   (type: String)
+     --- object hierarchy ---
+     $evm.root = /ManageIQ/SYSTEM/PROCESS/Request
+       $evm.parent = /ManageIQ/System/Request/call_instance
+         $evm.object = /bit63/bit63/methods/objectwalker
+     --- walking $evm.root ---
+     $evm.root = /ManageIQ/SYSTEM/PROCESS/Request   (type: DRb::DRbObject, URI: druby://127.0.0.1:56498)
+     |    --- attributes follow ---
+     |    $evm.root['ae_provider_category'] = infrastructure   (type: String)
+     |    $evm.root.class = DRb::DRbObject   (type: Class)
+     |    $evm.root['dialog_walk_association_whitelist'] =    (type: String)
+     |    $evm.root['instance'] = objectwalker   (type: String)
+     |    $evm.root['miq_server'] => #<MiqAeMethodService::MiqAeServiceMiqServer:0x0000000d2b9370>   (type: DRb::DRbObject, URI: druby://127.0.0.1:56498)
+     |    |    --- attributes follow ---
+     |    |    $evm.root['miq_server'].build = 20150820153254_83e434d   (type: String)
+     |    |    $evm.root['miq_server'].capabilities = {:vixDisk=>true, :concurrent_miqproxies=>2}   (type: Hash)
+     |    |    $evm.root['miq_server'].cpu_time = 9884.0   (type: Float)
+...skipping...
+     |    |    $evm.root['miq_server'].version = 5.4.2.0   (type: String)
+     |    |    $evm.root['miq_server'].vm_id = nil
+     |    |    $evm.root['miq_server'].zone_id = 1000000000001   (type: Fixnum)
+     |    |    --- end of attributes ---
+     |    |    --- virtual columns follow ---
+     |    |    $evm.root['miq_server'].region_description = Region 1   (type: String)
+     |    |    $evm.root['miq_server'].region_number = 1   (type: Fixnum)
+     |    |    $evm.root['miq_server'].zone_description = Default Zone   (type: String)
+     |    |    --- end of virtual columns ---
+     |    |    --- no associations ---
+     |    |    --- methods follow ---
+     |    |    $evm.root['miq_server'].region_name
+     |    |    $evm.root['miq_server'].zone
+     |    |    --- end of methods ---
+...skipping...
+     |    |    |    hardware.ipaddresses = ["192.168.2.171"]   (type: Array)
+     |    |    |    hardware.mac_addresses = ["00:50:56:b8:00:02"]   (type: Array)
+     |    |    |    hardware.region_description = Region 1   (type: String)
+     |    |    |    hardware.region_number = 1   (type: Fixnum)
+     |    |    |    --- end of virtual columns ---
+     |    |    |    --- associations follow ---
+     |    |    |    hardware.guest_devices (type: Association)
+     |    |    |    hardware.guest_devices.each do |guest_device|
+     |    |    |    |    (object type: MiqAeServiceGuestDevice, object ID: 1000000000016)
+     |    |    |    |    --- attributes follow ---
+     |    |    |    |    guest_device.address = 00:50:56:b8:00:02   (type: String)
+     |    |    |    |    guest_device.auto_detect = nil
+     |    |    |    |    guest_device.chap_auth_enabled = nil
+     |    |    |    |    guest_device.controller_type = ethernet   (type: String)
+     |    |    |    |    guest_device.device_name = Network adapter 1   (type: String)
+     |    |    |    |    guest_device.device_type = ethernet   (type: String)
 ```
 
 

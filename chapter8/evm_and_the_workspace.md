@@ -1,6 +1,6 @@
-##$evm and the Workspace
+## $evm and the Workspace
 
-When we program with the CloudForms/ManageIQ Automation Engine, we access all of the Automation objects through a single _$evm_ variable. This is often referred to as the _Workspace_.
+When we program with the CloudForms/ManageIQ Automation Engine, we access all of the Automation objects through a single _$evm_ variable. This is sometimes referred to as the _Workspace_.
 
 This variable is actually an instance of an _MiqAeService_ object (defined in _/var/www/miq/vmdb/lib/miq\_automation\_engine/engine/miq\_ae\_service.rb_ on the appliance), which contains over forty methods. In practice we generally only use a few of these methods, most commonly:
 
@@ -18,17 +18,17 @@ We can look at these methods in more detail.
 
 ### $evm.log
 
-$evm.log is a simple method that we've used already. It writes a message to automation.log, and accepts two arguments, a log level, and the text string to write. The log level can be written as a Ruby symbol (e.g. :info, :warn), or as a text string (e.g. "info", "warn").
+_$evm.log_ is a simple method that we've used already. It writes a message to automation.log, and accepts two arguments, a log level, and the text string to write. The log level can be written as a Ruby symbol (e.g. :info, :warn), or as a text string (e.g. "info", "warn").
 
 ### $evm.root
 
-$evm.root is a method that returns the root object in the workspace (environment, variables, linked objects etc.). This is the Instance whose invocation took us into the Automation Engine. From $evm.root hang several other Service Model objects that we can access programmatically such as $evm.root['vm'], $evm.root['user'], or $evm.root['miq_request'], (the actual objects available depend on the context of the Automation taks that we are performing).
+_$evm.root_ is the method that returns to us the root object in the workspace (environment, variables, linked objects etc.). This is the Instance whose invocation took us into the Automation Engine. From _$evm.root_ we can access other Service Model objects such as _$evm.root['vm']_, _$evm.root['user']_, or _$evm.root\['miq\_request'\]_, (the actual objects available depend on the context of the Automation tasks that we are performing).
 
 
 ![Object Model](images/object_model.png)
 
 
-$evm.root contains a lot of useful information that we use programatically to establish our running context (for example to see if we've been called by an API call or from a button, e.g.
+_$evm.root_ contains a lot of useful information that we use programatically to establish our running context (for example to see if we've been called by an API call or from a button, e.g.
 
 ```
 $evm.root['vmdb_object_type'] = vm   (type: String)
@@ -43,29 +43,37 @@ $evm.root['instance'] = ObjectWalker   (type: String)
 
 (see also [Investigative Debugging](../chapter11/investigative_debugging.md))
 
-$evm.root also contains any variables that were defined on our entry into the Automation engine, such as the $evm.root['dialog_*'] variables that were defined from our service dialog.
+_$evm.root_ also contains any variables that were defined on our entry into the Automation engine, such as the _$evm.root\['dialog\_*'\]_ variables that were defined from our service dialog.
 
-### $evm.object ($evm.current) and $evm.parent
+### $evm.object, $evm.current and $evm.parent
 
-The $evm.object (more accurately _$evm.object(nil)_) method returns the currently instantiated instance (which can be also accessed via $evm.current). When we wanted to access our schema variable _username_, we accessed it from $evm.object['username'].
+As we saw, _$evm.root_ returns to us the object representing the Instance that was launched when we entered Automate. Many Instances have schemas that contain Relationships to other Instances, and as each Relationship is followed, a new child object is created under the calling object to represent the called Instance. Fortunately we can access any of the objects in this parent-child hierarchy using _$evm.object_.
 
-Instances can invoke or execute other instances (often via relationships), which then appear in a parent/child object relationship. In the example of calling an Automation Instance via a button on a VM object as we did when running GetCredentials:
+Calling _$evm.object_ with no arguments returns the currently instantiated/running Instance. This can also be accessed using the alias _$evm.current_. When we wanted to access our schema variable _username_, we accessed it using _$evm.object\['username'\]_.
+
+We can access our parent object (the one that called us) using _$evm.object("..")_, or the alias _$evm.parent_. 
+
+Fact: _$evm.root_ is actually an alias for _$evm.object("/")_ 
+
+When we ran our first example script, _HelloWorld_ (from Simulation), we specified an entry point of /System/Process/Request, and our Request was to an Instance called _Call\_Instance_. We passsed to this the Namespace, Class and Instance that we wanted it to run (via a Relationship).
+
+This would have resulted in an object hierarchy (when viewed from the _hello\_world_ method) as follows...
 
 ```
-$evm.object = /ACME/General/Methods/GetCredentials (the currently running instance)
-$evm.parent = /ManageIQ/System/Request/Call_Instance
-$evm.root = /ManageIQ/SYSTEM/PROCESS/Request
+     --- object hierarchy ---
+     $evm.root = /ManageIQ/SYSTEM/PROCESS/Request
+       $evm.parent = /ManageIQ/System/Request/Call_Instance
+         $evm.object = /ACME/General/Methods/HelloWorld
 ```
 
 ### $evm.vmdb
 
-$evm.vmdb is a useful method that can be used to retrieve any _Service Model_ object (see [The MiqAeService* Model](../chapter5/the_miqaeservice_model.md)). The method can be called with one or two arguments,
+_$evm.vmdb_ is a useful method that can be used to retrieve any _Service Model_ object (see [The MiqAeService* Model](../chapter5/the_miqaeservice_model.md)). The method can be called with one or two arguments,
 
 When called with a single argument, the method returns the generic Service Model object type, and we can use any of the Rails helper methods (see [A Little Rails Knowledge](../chapter4/a_little_rails_knowledge.md)) to search by database column name, i.e.
 
 ```
 vm = $evm.vmdb('vm').find_by_id(vm_id)
-hosts = $evm.vmdb('host').find_tagged_with(:all => '/department/legal', :ns => '/managed')
 clusters = $evm.vmdb(:EmsCluster).find(:all)
 $evm.vmdb(:VmOrTemplate).find_each do | vm |
 ```
@@ -79,7 +87,8 @@ owner = $evm.vmdb('user', evm_owner_id)
 We can also use more advanced query syntax to return results based on multiple conditions, i.e.
 
 ```ruby
-$evm.vmdb('CloudTenant').find(:first, :conditions => ["ems_id = ? AND name = ?",  src_ems_id, tenant_name])
+$evm.vmdb('CloudTenant').find(:first, 
+							  :conditions => ["ems_id = ? AND name = ?",  src_ems_id, tenant_name])
 ```
 Question: What's the difference between 'vm' (:Vm) and 'vm\_or\_template' (:VmOrTemplate)?
 
@@ -90,7 +99,7 @@ Both MiqAeServiceVmOrTemplate and MiqAeServiceVm have a boolean attribute _templ
 
 ### $evm.execute
 
-We can use $evm.execute to call a method from _/var/www/miq/vmdb/lib/miq\_automation\_engine/service\_models/miq\_ae\_service\_methods.rb_. The usable methods are:
+We can use _$evm.execute_ to call a method from _/var/www/miq/vmdb/lib/miq\_automation\_engine/service\_models/miq\_ae\_service\_methods.rb_. The usable methods are:
 
 ```ruby
 send_email
@@ -116,6 +125,8 @@ unless $evm.execute('tag_exists?', 'cost_centre', '3376')
 end
 ```
 
+or
+
 ```ruby
 to = 'pemcg@bit63.com'
 from = 'cloudforms@bit63.com'
@@ -126,11 +137,11 @@ $evm.execute(:send_email, to, from, subject, body)
 
 ### $evm.instantiate
 
-We can use $evm.instantiate to launch another Automation Instance programmatically from a running method, by specifying its URI within the Automate namespace e.g.
+We can use _$evm.instantiate_ to launch another Automation Instance programmatically from a running method, by specifying its URI within the Automate namespace e.g.
 
 ```ruby
 $evm.instantiate('/Discovery/Methods/ObjectWalker')
 ```
-Instances called in this way execute synchronously, and so our calling method waits for completion before continuing.
+Instances called in this way execute synchronously, and so the calling method waits for completion before continuing. The called Instance also appears as a child object of the caller (it sees the caller as its _$evm.parent_).
 
 

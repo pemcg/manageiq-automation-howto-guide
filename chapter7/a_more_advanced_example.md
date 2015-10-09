@@ -23,7 +23,7 @@ Give the tab a Label and Description of _Main_, and click _+ -> Add a new Box to
 ![Screenshot](images/screenshot3.png?)
 
 <br> <br>
-Give the box a Label and Description of _Custom Attribute_, check the Submit and Cancel options, and click _+ -> Add a new Element to this Box_ (don't click the _Add_ button yet...)
+Give the box a Label and Description of _Custom Attribute_, and click _+ -> Add a new Element to this Box_ (don't click the _Add_ button yet...)
 <br> <br>
 
 ![Screenshot](images/screenshot4.png)
