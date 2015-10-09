@@ -43,7 +43,7 @@ $evm.root['instance'] = ObjectWalker   (type: String)
 
 (see also [Investigative Debugging](../chapter11/investigative_debugging.md))
 
-_$evm.root_ also contains any variables that were defined on our entry into the Automation engine, such as the _$evm.root\['dialog\_*'\]_ variables that were defined from our service dialog.
+_$evm.root_ also contains any variables that were defined on our entry into the Automation engine, such as the _$evm.root\['dialog*']_ variables that were defined from our service dialog.
 
 ### $evm.object, $evm.current and $evm.parent
 
