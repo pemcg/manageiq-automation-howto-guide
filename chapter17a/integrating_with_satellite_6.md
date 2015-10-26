@@ -265,7 +265,7 @@ request = RestClient::Request.new(
   )
 rest_result = request.execute
 ```
-The full script is available here.
+The full script is available [here](https://github.com/pemcg/cloudforms-automation-howto-guide/blob/master/chapter17a/scripts/register_satellite.rb).
 
 #### ActivateSatellite
 
@@ -389,7 +389,7 @@ ansible_results = `#{cmd}`
 $evm.log(:info, "Finished ansible-playbook, results: #{ansible_results}")
 tempfile.unlink
 ```
-The full script is available here.
+The full script is available The full script is available [here](https://github.com/pemcg/cloudforms-automation-howto-guide/blob/master/chapter17a/scripts/activate_satellite.rb).
 
 ### Provisioning a New VM
 
