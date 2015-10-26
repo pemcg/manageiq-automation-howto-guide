@@ -485,7 +485,7 @@ If we are quick we can see the contents of the Ansible playbook file:
 
 ```
 ---
-- hosts: 192.168.2.170
+- hosts: 192.168.1.170
   tasks:
   - name: Install Cert
     command: "/usr/bin/yum -y localinstall http://satellite01.bit63.net/pub/katello-ca-consumer-latest.noarch.rpm"
