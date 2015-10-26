@@ -49,7 +49,7 @@ _$evm.root_ also contains any variables that were defined on our entry into the 
 
 As we saw, _$evm.root_ returns to us the object representing the Instance that was launched when we entered Automate. Many Instances have schemas that contain Relationships to other Instances, and as each Relationship is followed, a new child object is created under the calling object to represent the called Instance. Fortunately we can access any of the objects in this parent-child hierarchy using _$evm.object_.
 
-Calling _$evm.object_ with no arguments returns the currently instantiated/running Instance. This can also be accessed using the alias _$evm.current_. When we wanted to access our schema variable _username_, we accessed it using _$evm.object\['username'\]_.
+Calling _$evm.object_ with no arguments returns the currently instantiated/running Instance. As Automation scripters we can think of this as "our currently running code", and this can also be accessed using the alias _$evm.current_. When we wanted to access our schema variable _username_, we accessed it using _$evm.object\['username'\]_.
 
 We can access our parent object (the one that called us) using _$evm.object("..")_, or the alias _$evm.parent_. 
 
@@ -57,7 +57,7 @@ Fact: _$evm.root_ is actually an alias for _$evm.object("/")_
 
 When we ran our first example script, _HelloWorld_ (from Simulation), we specified an entry point of /System/Process/Request, and our Request was to an Instance called _Call\_Instance_. We passsed to this the Namespace, Class and Instance that we wanted it to run (via a Relationship).
 
-This would have resulted in an object hierarchy (when viewed from the _hello\_world_ method) as follows...
+This would have resulted in an object hierarchy (when viewed from the _hello\_world_ method) as follows:
 
 ```
      --- object hierarchy ---

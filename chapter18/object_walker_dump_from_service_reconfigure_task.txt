@@ -1,0 +1,242 @@
+Object Walker 1.6 Starting
+     --- $evm.current_* details ---
+     $evm.current_namespace = Bit63/Bit63   (type: String)
+     $evm.current_class = Methods   (type: String)
+     $evm.current_instance = ObjectWalker   (type: String)
+     $evm.current_message = create   (type: String)
+     $evm.current_object = /Bit63/Bit63/Methods/ObjectWalker   (type: DRb::DRbObject, URI: druby://127.0.0.1:41166)
+     $evm.current_object.current_field_name = Execute   (type: String)
+     $evm.current_object.current_field_type = method   (type: String)
+     $evm.current_method = object_walker   (type: String)
+     --- object hierarchy ---
+     $evm.root = /ACME/Service/Reconfiguration/StateMachines/ServiceReconfiguration/Default
+       $evm.object = /Bit63/Bit63/Methods/ObjectWalker
+     --- walking $evm.root ---
+     $evm.root = /ACME/Service/Reconfiguration/StateMachines/ServiceReconfiguration/Default   (type: DRb::DRbObject, URI: druby://127.0.0.1:41166)
+     |    --- attributes follow ---
+     |    $evm.root['ae_result'] = ok   (type: String)
+     |    $evm.root['ae_state'] = reconfigure   (type: String)
+     |    $evm.root['ae_state_retries'] = 0   (type: Fixnum)
+     |    $evm.root['ae_state_started'] = 2015-10-09 16:30:36 UTC   (type: String)
+     |    $evm.root['ae_status_state'] = on_entry   (type: String)
+     |    $evm.root['dialog_vm_name'] = pemcg-test11   (type: String)
+     |    $evm.root['miq_server'] => #<MiqAeMethodService::MiqAeServiceMiqServer:0x0000000e931210>   (type: DRb::DRbObject, URI: druby://127.0.0.1:41166)
+     |    |    --- attributes follow ---
+     |    |    $evm.root['miq_server'].build = 20150820153254_83e434d   (type: String)
+     |    |    $evm.root['miq_server'].capabilities = {:vixDisk=>true, :concurrent_miqproxies=>2}   (type: Hash)
+     |    |    $evm.root['miq_server'].cpu_time = 30144.0   (type: Float)
+     |    |    $evm.root['miq_server'].drb_uri = druby://127.0.0.1:43575   (type: String)
+     |    |    $evm.root['miq_server'].guid = 2571e040-61f0-11e5-a9a9-005056b87ba6   (type: String)
+     |    |    $evm.root['miq_server'].has_active_userinterface = true   (type: TrueClass)
+     |    |    $evm.root['miq_server'].has_active_webservices = true   (type: TrueClass)
+     |    |    $evm.root['miq_server'].hostname = cloudforms05.bit63.net   (type: String)
+     |    |    $evm.root['miq_server'].id = 1000000000001   (type: Fixnum)
+     |    |    $evm.root['miq_server'].ipaddress = 192.168.2.245   (type: String)
+     |    |    $evm.root['miq_server'].is_master = true   (type: TrueClass)
+     |    |    $evm.root['miq_server'].last_heartbeat = 2015-10-09 16:30:11 UTC   (type: ActiveSupport::TimeWithZone)
+     |    |    $evm.root['miq_server'].last_update_check = nil
+     |    |    $evm.root['miq_server'].log_file_depot_id = nil
+     |    |    $evm.root['miq_server'].logo = nil
+     |    |    $evm.root['miq_server'].mac_address = 00:50:56:B8:7B:A6   (type: String)
+     |    |    $evm.root['miq_server'].memory_size = 380293120   (type: Fixnum)
+     |    |    $evm.root['miq_server'].memory_usage = 211238912   (type: Fixnum)
+     |    |    $evm.root['miq_server'].name = cloudforms05   (type: String)
+     |    |    $evm.root['miq_server'].os_priority = 21   (type: Fixnum)
+     |    |    $evm.root['miq_server'].percent_cpu = 0.08   (type: Float)
+     |    |    $evm.root['miq_server'].percent_memory = 3.44   (type: Float)
+     |    |    $evm.root['miq_server'].pid = 27657   (type: Fixnum)
+     |    |    $evm.root['miq_server'].rh_registered = nil
+     |    |    $evm.root['miq_server'].rh_subscribed = nil
+     |    |    $evm.root['miq_server'].rhn_mirror = false   (type: FalseClass)
+     |    |    $evm.root['miq_server'].sql_spid = 27662   (type: Fixnum)
+     |    |    $evm.root['miq_server'].started_on = 2015-10-08 08:54:19 UTC   (type: ActiveSupport::TimeWithZone)
+     |    |    $evm.root['miq_server'].status = started   (type: String)
+     |    |    $evm.root['miq_server'].stopped_on = nil
+     |    |    $evm.root['miq_server'].updates_available = nil
+     |    |    $evm.root['miq_server'].upgrade_message = nil
+     |    |    $evm.root['miq_server'].upgrade_status = nil
+     |    |    $evm.root['miq_server'].version = 5.4.2.0   (type: String)
+     |    |    $evm.root['miq_server'].vm_id = nil
+     |    |    $evm.root['miq_server'].zone_id = 1000000000001   (type: Fixnum)
+     |    |    --- end of attributes ---
+     |    |    --- virtual columns follow ---
+     |    |    $evm.root['miq_server'].region_description = Region 1   (type: String)
+     |    |    $evm.root['miq_server'].region_number = 1   (type: Fixnum)
+     |    |    $evm.root['miq_server'].zone_description = Default Zone   (type: String)
+     |    |    --- end of virtual columns ---
+     |    |    --- no associations ---
+     |    |    --- methods follow ---
+     |    |    $evm.root['miq_server'].region_name
+     |    |    $evm.root['miq_server'].zone
+     |    |    --- end of methods ---
+     |    $evm.root['miq_server_id'] = 1000000000001   (type: String)
+     |    $evm.root['object_name'] = Default   (type: String)
+     |    $evm.root['request'] = service_reconfigure   (type: String)
+     |    $evm.root['service_reconfigure_task'] => #<MiqAeMethodService::MiqAeServiceServiceReconfigureTask:0x0000000ebe9c00>   (type: DRb::DRbObject, URI: druby://127.0.0.1:41166)
+     |    |    --- attributes follow ---
+     |    |    $evm.root['service_reconfigure_task'].created_on = 2015-10-09 16:30:30 UTC   (type: ActiveSupport::TimeWithZone)
+     |    |    $evm.root['service_reconfigure_task'].description = Service Reconfigure for: Web Server-20151009-164359   (type: String)
+     |    |    $evm.root['service_reconfigure_task'].destination_id = nil
+     |    |    $evm.root['service_reconfigure_task'].destination_type = nil
+     |    |    $evm.root['service_reconfigure_task'].id = 1000000000063   (type: Fixnum)
+     |    |    $evm.root['service_reconfigure_task'].message = Processing reconfigure   (type: String)
+     |    |    $evm.root['service_reconfigure_task'].miq_request_id = 1000000000031   (type: Fixnum)
+     |    |    $evm.root['service_reconfigure_task'].miq_request_task_id = nil
+     |    |    $evm.root['service_reconfigure_task'].options[:delivered_on] = 2015-10-09 16:30:30 UTC   (type: Time)
+     |    |    $evm.root['service_reconfigure_task'].options[:dialog] = {"dialog_vm_name"=>"pemcg-test11", "request"=>"service_reconfigure"}   (type: Hash)
+     |    |    $evm.root['service_reconfigure_task'].options[:src_id] = 1000000000021   (type: Fixnum)
+     |    |    $evm.root['service_reconfigure_task'].options[:workflow_settings] = {:resource_action_id=>1000000000209, :dialog_id=>1000000000006}   (type: Hash)
+     |    |    $evm.root['service_reconfigure_task'].phase = nil
+     |    |    $evm.root['service_reconfigure_task'].phase_context = {}   (type: Hash)
+     |    |    $evm.root['service_reconfigure_task'].request_type = service_reconfigure   (type: String)
+     |    |    $evm.root['service_reconfigure_task'].source_id = 1000000000021   (type: Fixnum)
+     |    |    $evm.root['service_reconfigure_task'].source_type = Service   (type: String)
+     |    |    $evm.root['service_reconfigure_task'].state = pending   (type: String)
+     |    |    $evm.root['service_reconfigure_task'].status = retry   (type: String)
+     |    |    $evm.root['service_reconfigure_task'].type = ServiceReconfigureTask   (type: String)
+     |    |    $evm.root['service_reconfigure_task'].updated_on = 2015-10-09 16:30:36 UTC   (type: ActiveSupport::TimeWithZone)
+     |    |    $evm.root['service_reconfigure_task'].userid = admin   (type: String)
+     |    |    --- end of attributes ---
+     |    |    --- virtual columns follow ---
+     |    |    $evm.root['service_reconfigure_task'].region_description = Region 1   (type: String)
+     |    |    $evm.root['service_reconfigure_task'].region_number = 1   (type: Fixnum)
+     |    |    --- end of virtual columns ---
+     |    |    --- associations follow ---
+     |    |    $evm.root['service_reconfigure_task'].destination (type: Association (empty))
+     |    |    $evm.root['service_reconfigure_task'].miq_request (type: Association)
+     |    |    *** not walking: 'miq_request' isn't in the @walk_association_whitelist hash for MiqAeServiceServiceReconfigureTask ***
+     |    |    $evm.root['service_reconfigure_task'].miq_request_task (type: Association (empty))
+     |    |    $evm.root['service_reconfigure_task'].miq_request_tasks (type: Association (empty))
+     |    |    $evm.root['service_reconfigure_task'].source (type: Association)
+     |    |    *** not walking: 'source' isn't in the @walk_association_whitelist hash for MiqAeServiceServiceReconfigureTask ***
+     |    |    --- end of associations ---
+     |    |    --- methods follow ---
+     |    |    $evm.root['service_reconfigure_task'].add_tag
+     |    |    $evm.root['service_reconfigure_task'].clear_tag
+     |    |    $evm.root['service_reconfigure_task'].dialog_options
+     |    |    $evm.root['service_reconfigure_task'].execute
+     |    |    $evm.root['service_reconfigure_task'].finished
+     |    |    $evm.root['service_reconfigure_task'].get_classification
+     |    |    $evm.root['service_reconfigure_task'].get_classifications
+     |    |    $evm.root['service_reconfigure_task'].get_dialog_option
+     |    |    $evm.root['service_reconfigure_task'].get_option
+     |    |    $evm.root['service_reconfigure_task'].get_option_last
+     |    |    $evm.root['service_reconfigure_task'].get_tag
+     |    |    $evm.root['service_reconfigure_task'].get_tags
+     |    |    $evm.root['service_reconfigure_task'].message=
+     |    |    $evm.root['service_reconfigure_task'].set_dialog_option
+     |    |    $evm.root['service_reconfigure_task'].set_option
+     |    |    $evm.root['service_reconfigure_task'].statemachine_task_status
+     |    |    $evm.root['service_reconfigure_task'].user_message=
+     |    |    --- end of methods ---
+     |    $evm.root['service_reconfigure_task_id'] = 1000000000063   (type: String)
+     |    $evm.root['user'] => #<MiqAeMethodService::MiqAeServiceUser:0x0000000dd9c030>   (type: DRb::DRbObject, URI: druby://127.0.0.1:41166)
+     |    |    --- attributes follow ---
+     |    |    $evm.root['user'].created_on = 2015-09-23 12:39:49 UTC   (type: ActiveSupport::TimeWithZone)
+     |    |    $evm.root['user'].current_group_id = 1000000000001   (type: Fixnum)
+     |    |    $evm.root['user'].email = nil
+     |    |    $evm.root['user'].filters = nil
+     |    |    $evm.root['user'].first_name = nil
+     |    |    $evm.root['user'].icon = nil
+     |    |    $evm.root['user'].id = 1000000000001   (type: Fixnum)
+     |    |    $evm.root['user'].last_name = nil
+     |    |    $evm.root['user'].lastlogoff = nil
+     |    |    $evm.root['user'].lastlogon = 2015-10-09 14:15:04 UTC   (type: ActiveSupport::TimeWithZone)
+     |    |    $evm.root['user'].name = Administrator   (type: String)
+     |    |    $evm.root['user']['password_digest'] = $2a$10$fwhEWXOHZgVH31EvYiD6UelQb6p20MwTiww0OHmuwSXoXo05oDdZ6   (type: String)
+     |    |    $evm.root['user'].region = 1   (type: Fixnum)
+     |    |    $evm.root['user'].settings = {:explorer=>{"miq_ae_class"=>{:width=>"508"}, "vm_infra"=>{:width=>"284"}, "catalog"=>{:width=>"286"}, "miq_ae_customization"=>{:width=>"381"}, "service"=>{:width=>"268"}}, :col_widths=>{:"ServiceTemplate-svccat_tree"=>{"name"=>185, "description"=>229, nil=>100}, :MiqRequest=>{"status"=>60, "state"=>60, "id"=>60, "requester_name"=>97, "request_type_display"=>60, "fulfilled_on"=>60, "description"=>259, "approval_state"=>60, "v_approved_by"=>60, "stamped_on"=>60, "created_on"=>60, "updated_on"=>60, "reason"=>60, "message"=>421, "region_description"=>60}}}   (type: Hash)
+     |    |    $evm.root['user'].ui_task_set_id = nil
+     |    |    $evm.root['user'].updated_on = 2015-10-09 16:08:10 UTC   (type: ActiveSupport::TimeWithZone)
+     |    |    $evm.root['user'].userid = admin   (type: String)
+     |    |    --- end of attributes ---
+     |    |    --- virtual columns follow ---
+     |    |    $evm.root['user'].allocated_memory = 0   (type: Fixnum)
+     |    |    $evm.root['user'].allocated_storage = 0   (type: Fixnum)
+     |    |    $evm.root['user'].allocated_vcpu = 0   (type: Fixnum)
+     |    |    $evm.root['user'].custom_1 = nil
+     |    |    $evm.root['user'].custom_2 = nil
+     |    |    $evm.root['user'].custom_3 = nil
+     |    |    $evm.root['user'].custom_4 = nil
+     |    |    $evm.root['user'].custom_5 = nil
+     |    |    $evm.root['user'].custom_6 = nil
+     |    |    $evm.root['user'].custom_7 = nil
+     |    |    $evm.root['user'].custom_8 = nil
+     |    |    $evm.root['user'].custom_9 = nil
+     |    |    $evm.root['user'].ldap_group = EvmGroup-super_administrator   (type: String)
+     |    |    $evm.root['user'].miq_group_description = EvmGroup-super_administrator   (type: String)
+     |    |    $evm.root['user'].miq_user_role_name = EvmRole-super_administrator   (type: String)
+     |    |    $evm.root['user'].provisioned_storage = 0   (type: Fixnum)
+     |    |    $evm.root['user'].region_description = Region 1   (type: String)
+     |    |    $evm.root['user'].region_number = 1   (type: Fixnum)
+     |    |    --- end of virtual columns ---
+     |    |    --- associations follow ---
+     |    |    $evm.root['user'].current_group (type: Association)
+     |    |    current_group = $evm.root['user'].current_group
+     |    |    |    (object type: MiqAeServiceMiqGroup, object ID: 1000000000001)
+     |    |    |    --- attributes follow ---
+     |    |    |    current_group.created_on = 2015-09-23 12:39:48 UTC   (type: ActiveSupport::TimeWithZone)
+     |    |    |    current_group.description = EvmGroup-super_administrator   (type: String)
+     |    |    |    current_group.filters = nil
+     |    |    |    current_group.group_type = system   (type: String)
+     |    |    |    current_group.guid = 2d889440-61f0-11e5-95cc-005056b87ba6   (type: String)
+     |    |    |    current_group.id = 1000000000001   (type: Fixnum)
+     |    |    |    current_group.miq_user_role_id = 1000000000001   (type: Fixnum)
+     |    |    |    current_group.resource_id = nil
+     |    |    |    current_group.resource_type = nil
+     |    |    |    current_group.sequence = 1   (type: Fixnum)
+     |    |    |    current_group.settings = nil
+     |    |    |    current_group.ui_task_set_id = nil
+     |    |    |    current_group.updated_on = 2015-09-23 12:39:48 UTC   (type: ActiveSupport::TimeWithZone)
+     |    |    |    --- end of attributes ---
+     |    |    |    --- virtual columns follow ---
+     |    |    |    current_group.allocated_memory = 3221225472   (type: Fixnum)
+     |    |    |    current_group.allocated_storage = 64424509440   (type: Fixnum)
+     |    |    |    current_group.allocated_vcpu = 3   (type: Fixnum)
+     |    |    |    current_group.custom_1 = nil
+     |    |    |    current_group.custom_2 = nil
+     |    |    |    current_group.custom_3 = nil
+     |    |    |    current_group.custom_4 = nil
+     |    |    |    current_group.custom_5 = nil
+     |    |    |    current_group.custom_6 = nil
+     |    |    |    current_group.custom_7 = nil
+     |    |    |    current_group.custom_8 = nil
+     |    |    |    current_group.custom_9 = nil
+     |    |    |    current_group.miq_user_role_name = EvmRole-super_administrator   (type: String)
+     |    |    |    current_group.provisioned_storage = 67645734912   (type: Fixnum)
+     |    |    |    current_group.read_only = true   (type: TrueClass)
+     |    |    |    current_group.region_description = Region 1   (type: String)
+     |    |    |    current_group.region_number = 1   (type: Fixnum)
+     |    |    |    current_group.user_count = 1   (type: Fixnum)
+     |    |    |    --- end of virtual columns ---
+     |    |    |    --- associations follow ---
+     |    |    |    current_group.users (type: Association)
+     |    |    |    *** not walking: 'users' isn't in the @walk_association_whitelist hash for MiqAeServiceMiqGroup ***
+     |    |    |    current_group.vms (type: Association)
+     |    |    |    *** not walking: 'vms' isn't in the @walk_association_whitelist hash for MiqAeServiceMiqGroup ***
+     |    |    |    --- end of associations ---
+     |    |    |    --- methods follow ---
+     |    |    |    current_group.custom_get
+     |    |    |    current_group.custom_keys
+     |    |    |    current_group.custom_set
+     |    |    |    --- end of methods ---
+     |    |    $evm.root['user'].miq_requests (type: Association)
+     |    |    *** not walking: 'miq_requests' isn't in the @walk_association_whitelist hash for MiqAeServiceUser ***
+     |    |    $evm.root['user'].vms (type: Association (empty))
+     |    |    --- end of associations ---
+     |    |    --- methods follow ---
+     |    |    $evm.root['user'].custom_get
+     |    |    $evm.root['user'].custom_keys
+     |    |    $evm.root['user'].custom_set
+     |    |    $evm.root['user'].get_ldap_attribute
+     |    |    $evm.root['user'].get_ldap_attribute_names
+     |    |    $evm.root['user'].miq_group
+     |    |    $evm.root['user'].role
+     |    |    --- end of methods ---
+     |    $evm.root['user_id'] = 1000000000001   (type: String)
+     |    $evm.root['vmdb_object_type'] = service_reconfigure_task   (type: String)
+     |    --- end of attributes ---
+     --- walking $evm.object ---
+     $evm.object = /Bit63/Bit63/Methods/ObjectWalker   (type: DRb::DRbObject, URI: druby://127.0.0.1:41166)
+     |    --- no attributes ---
+Object Walker Complete
