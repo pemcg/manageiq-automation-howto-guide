@@ -38,7 +38,7 @@
    * [The VM Provisioning Dialog](chapter17/provisioning_dialog.md)
    * [VM Provisioning Objects](chapter17/provisioning_objects.md)
    * [Creating Provisioning Requests Programmatically](chapter17/create_provision_request.md)
-* [Integrating with Satellite 6](chapter17a/integrating_with_satellite_6.md)
+* [Integrating with Satellite 6 During Provisioning](chapter17a/integrating_with_satellite_6.md)
 * [Working with Services](chapter18/working_with_services.md)
    * [Service Dialogs](chapter18/service_dialogs.md)
    * [The Service Provisioning State Machine](chapter18/state_machine.md)

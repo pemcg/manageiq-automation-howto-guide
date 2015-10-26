@@ -1,4 +1,4 @@
-## Integrating with Satellite 6
+## Integrating with Satellite 6 During Provisioning
 
 It is a relatively common requirement to register newly provisioned Linux VMs directly with Satellite 6 (or Foreman) as part of the provisioning process. This ensures that the resultant VM is patched and up to date, and is configured by Puppet according to a server role.
 
