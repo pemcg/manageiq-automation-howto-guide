@@ -174,7 +174,7 @@ The register_satellite Method can access these in the usual way, from $evm.objec
 
 ```
 
-We need to ensure that we only register Linux VMs with Satellite, and we can select a Host Group by testing the VM operating_system object's _product\_name_ attribute (we're only provisioning RHEL 6 or 7, both x86_64):
+We need to ensure that we only register Linux VMs with Satellite, and we can select a Host Group by testing the VM operating\_system object's _product\_name_ attribute (we're only provisioning RHEL 6 or 7, both x86_64):
 
 ```ruby
 ...
