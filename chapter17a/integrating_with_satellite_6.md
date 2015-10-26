@@ -147,7 +147,7 @@ host_key_checking = False
 
 ### Modifying the CloudForms Provisioning Workflow
 
-We need to make two additions to the VMProvision_VM State Machine. We need to add a _RegisterSatellite_ state/stage to register the new VM with Satellite 6 as a _Host_. We also need to add an _ActivateSatellite_ state/state to create the Ansible playbook, and initiate the subscription-manager activation of the new system as a _Content Host_. 
+We need to make two additions to the VMProvision\_VM State Machine. We need to add a _RegisterSatellite_ state/stage to register the new VM with Satellite 6 as a _Host_. We also need to add an _ActivateSatellite_ state/state to create the Ansible playbook, and initiate the subscription-manager activation of the new system as a _Content Host_. 
 
 Both of these stages must be added at some point **after** the VM has been provisioned.
 The registration must include the MAC address of the new VM, and the activation uses Ansible to connect via ssh to the running VM.
