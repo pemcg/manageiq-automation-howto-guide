@@ -415,7 +415,7 @@ Once the VM has finished cloning, we see the output from register_satellite in t
 		 :location_id=>"4", :organization_id=>"3", :build=>"false"}
 <AEMethod register_satellite> return code => <200>
 ```
-In Satellite we see the new _Host_ entry:
+In Satellite we see the new _Host_ entry, but the 'N' icon indicates that no reports have been received from it yet:
 
 ![screenshot](images/screenshot10.png)
 
@@ -472,7 +472,7 @@ PLAY RECAP ********************************************************************
 192.168.1.170              : ok=13   changed=10   unreachable=0    failed=0
 ```
 
-In Satellite we see the new _Content Host_ entry, showing that all packages have been updated:
+In Satellite we now see the new _Content Host_ entry, showing that all packages have been updated:
 <br> <br>
 
 ![screenshot](images/screenshot12.png?)
@@ -481,7 +481,7 @@ and we see that the new _Host_ record is shown as _Active_, showing that the Pup
  
 ![screenshot](images/screenshot11.png)
 
-If we are quick we can see that the contents of the Ansible playbook file was:
+If we are quick we can see the contents of the Ansible playbook file:
 
 ```
 ---

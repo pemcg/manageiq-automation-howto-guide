@@ -1,7 +1,7 @@
-# ssh-keygen -R 192.168.2.163
+# ssh-keygen -R 192.168.1.163 first
 
 ---
-- hosts: 192.168.2.163
+- hosts: 192.168.1.163
   vars:
    - satellite_host: satellite01.bit63.net
    - organization: Bit63
