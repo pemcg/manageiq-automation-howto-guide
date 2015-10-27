@@ -9,43 +9,42 @@ require 'json'
 require 'openssl'
 require 'base64'
 
-# ----------------------------------------------------
-
-def query_id (uri, field, content)
-
-  url = URI.escape("#{@uri_base}/#{uri}?search=#{field}=\"#{content}\"")
-  request = RestClient::Request.new(
-    method: :get,
-    url: url,
-    headers: @headers,
-    verify_ssl: OpenSSL::SSL::VERIFY_NONE
-  )
-
-  rest_result = request.execute
-  json_parse = JSON.parse(rest_result)
-  
-  # The subtotal value is the number of matching results.
-  # If it is higher than one, the query got no unique result!
-  subtotal = json_parse['subtotal'].to_i
-  
-  if subtotal.zero?
-    $evm.log(:info, "query failed, no result #{url}")
-    return -1
-  elsif subtotal == 1
-    id = json_parse['results'][0]['id'].to_s
-    return id
-  elsif subtotal > 1
-    $evm.log(:info, "query failed, more than one result #{url}")
-    return -1
-  end
-
-  $evm.log(:info, "query failed, unknown condition #{url}")
-  return -1
-end
-
-# ----------------------------------------------------
 
 begin
+  # ----------------------------------------------------
+  
+  def query_id (uri, field, content)
+  
+    url = URI.escape("#{@uri_base}/#{uri}?search=#{field}=\"#{content}\"")
+    request = RestClient::Request.new(
+      method: :get,
+      url: url,
+      headers: @headers,
+      verify_ssl: OpenSSL::SSL::VERIFY_NONE
+    )
+  
+    id = nil
+    rest_result = request.execute
+    json_parse = JSON.parse(rest_result)
+  
+    subtotal = json_parse['subtotal'].to_i
+    if subtotal == 1
+      id = json_parse['results'][0]['id'].to_s
+    elsif subtotal.zero?
+      $evm.log(:error, "Query to #{url} failed, no result")
+      id = -1
+    elsif subtotal > 1
+      $evm.log(:error, "Query to #{url} returned multiple results")
+      id = -1
+    else
+      $evm.log(:error, "Query to #{url} failed, unknown condition")
+      id = -1
+    end
+    id
+  end
+  
+  # ----------------------------------------------------
+
   servername    = $evm.object['servername']
   username      = $evm.object['username']
   password      = $evm.object.decrypt('password')
@@ -63,9 +62,9 @@ begin
     # Pick a host-group based on the operating system being provisioned
     #
     if vm.operating_system.product_name == 'Red Hat Enterprise Linux 6 (64-bit)'
-      hostgroup_name = 'Generic_RHEL6_Servers'
+      hostgroup = 'Generic_RHEL6_Servers'
     elsif vm.operating_system.product_name == 'Red Hat Enterprise Linux 7 (64-bit)'
-      hostgroup_name = 'Generic_RHEL7_Servers'
+      hostgroup = 'Generic_RHEL7_Servers'
     else
       raise "Unrecognised Operating System Name"
     end
@@ -79,33 +78,26 @@ begin
     #
     # Get the host-group id 
     #
-    $evm.log(:info, 'Getting hostgroup id from Satellite')
-    hostgroup_id = query_id("hostgroups", "name", hostgroup_name)
+    $evm.log(:info, "Getting hostgroup id for '#{hostgroup}' from Satellite")
+    hostgroup_id = query_id("hostgroups", "name", hostgroup)
+    raise "Cannot determine hostgroup id for '#{hostgroup}'" if hostgroup_id == -1
     $evm.log(:info, "hostgroup_id: #{hostgroup_id}")
-    if hostgroup_id == -1
-      $evm.log(:info, "Cannot continue without hostgroup_id")
-      exit MIQ_ABORT
-    end
+
     #
     # Get the location id 
     #
-    $evm.log(:info, 'Getting location id from Satellite')
+    $evm.log(:info, "Getting location id for '#{location}' from Satellite")
     location_id = query_id("locations", "name", location)
+    raise "Cannot determine location id for '#{location}'" if location_id == -1
     $evm.log(:info, "location_id: #{location_id}")
-    if location_id == -1
-      $evm.log(:info, "Cannot continue without location_id")
-      exit MIQ_ABORT
-    end
+
     #
     # Get the organization id 
     #
-    $evm.log(:info, 'Getting organization id from Satellite')
+    $evm.log(:info, "Getting organization id for '#{organization}' from Satellite")
     organization_id = query_id("organizations", "name", organization)
+    raise "Cannot determine organization id for '#{organization}'" if organization_id == -1
     $evm.log(:info, "organization_id: #{organization_id}")
-    if organization_id == -1
-      $evm.log(:info, "Cannot continue without organization_id")
-      exit MIQ_ABORT
-    end
     #
     # Create the host record
     #
@@ -133,9 +125,15 @@ begin
   vm.start
   $evm.root['ae_result'] = 'ok'
   exit MIQ_OK
+rescue RestClient::Exception => err
+  $evm.log(:error, "The REST request failed with code: #{err.response.code}") unless err.response.nil?
+  $evm.log(:error, "The response body was:\n#{err.response.body.inspect}") unless err.response.nil?
+  $evm.root['ae_result'] = 'error'
+  $evm.root['ae_reason'] = "The REST request failed with code: #{err.response.code}" unless err.response.nil?
+  exit MIQ_STOP
 rescue => err
   $evm.log(:error, "[#{err}]\n#{err.backtrace.join("\n")}")
   $evm.root['ae_result'] = 'error'
-  $evm.root['ae_reason'] = "Error registering with Satellite"
+  $evm.root['ae_reason'] = "Error registering with Satellite: #{err}"
   exit MIQ_ERROR
 end

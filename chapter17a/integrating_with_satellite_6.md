@@ -187,9 +187,9 @@ if template.platform == "linux"
   # Pick a host group based on the operating system being provisioned
   #
   if vm.operating_system.product_name == 'Red Hat Enterprise Linux 6 (64-bit)'
-    hostgroup_name = 'Generic_RHEL6_Servers'
+    hostgroup = 'Generic_RHEL6_Servers'
   elsif vm.operating_system.product_name == 'Red Hat Enterprise Linux 7 (64-bit)'
-    hostgroup_name = 'Generic_RHEL7_Servers'
+    hostgroup = 'Generic_RHEL7_Servers'
   else
     raise "Unrecognised Operating System Name"
   end
@@ -203,6 +203,7 @@ We'll be creating the new Host entry using the Satellite API, and this requires 
 
 ```ruby
 def query_id (uri, field, content)
+ 
   url = URI.escape("#{@uri_base}/#{uri}?search=#{field}=\"#{content}\"")
   request = RestClient::Request.new(
     method: :get,
@@ -210,33 +211,32 @@ def query_id (uri, field, content)
     headers: @headers,
     verify_ssl: OpenSSL::SSL::VERIFY_NONE
   )
+ 
+  id = nil
   rest_result = request.execute
   json_parse = JSON.parse(rest_result)
   
-  # The subtotal value is the number of matching results.
-  # If it is higher than one, the query got no unique result!
   subtotal = json_parse['subtotal'].to_i
-  
-  if subtotal.zero?
-    $evm.log(:info, "query failed, no result #{url}")
-    return -1
-  elsif subtotal == 1
+  if subtotal == 1
     id = json_parse['results'][0]['id'].to_s
-    return id
+  elsif subtotal.zero?
+    $evm.log(:error, "Query to #{url} failed, no result")
+    id = -1
   elsif subtotal > 1
-    $evm.log(:info, "query failed, more than one result #{url}")
-    return -1
+    $evm.log(:error, "Query to #{url} returned multiple results")
+    id = -1
+  else
+    $evm.log(:error, "Query to #{url} failed, unknown condition")
+    id = -1
   end
-  $evm.log(:info, "query failed, unknown condition #{url}")
-  return -1
+  id
 end
 
 ...
-location_id = query_id("locations", "name", location_name)
-if location_id == -1
-  $evm.log(:info, "Cannot continue without location_id")
-  exit MIQ_ABORT
-end
+$evm.log(:info, "Getting hostgroup id for '#{hostgroup}' from Satellite")
+hostgroup_id = query_id("hostgroups", "name", hostgroup)
+raise "Cannot determine hostgroup id for '#{hostgroup}'" if hostgroup_id == -1
+$evm.log(:info, "hostgroup_id: #{hostgroup_id}")
 ```
 
 Finally we create the Host record. We specify the _:build_ parameter as _false_ because we don't want Satellite to provision the VM:
@@ -389,9 +389,9 @@ ansible_results = `#{cmd}`
 $evm.log(:info, "Finished ansible-playbook, results: #{ansible_results}")
 tempfile.unlink
 ```
-The full script is available The full script is available [here](https://github.com/pemcg/cloudforms-automation-howto-guide/blob/master/chapter17a/scripts/activate_satellite.rb).
+The full script is available [here](https://github.com/pemcg/cloudforms-automation-howto-guide/blob/master/chapter17a/scripts/activate_satellite.rb).
 
-### Provisioning a New VM
+### Testing the Integration - Provisioning a New VM
 
 We have no hosts with _test_ in their name in our Satellite:
 
@@ -401,14 +401,14 @@ We'll provision a RHEL 6 VM named _testserver01_ from CloudForms:
 
 ![screenshot](images/screenshot8.png)
 
-Once the VM has finished cloning, we see the output from register_satellite in the log:
+Once the VM has finished cloning, we see the output from register_satellite in automation.log:
 
 ```
-<AEMethod register_satellite> Getting hostgroup id from Satellite
+<AEMethod register_satellite> Getting hostgroup id for 'Generic_RHEL6_Servers' from Satellite
 <AEMethod register_satellite> hostgroup_id: 3
-<AEMethod register_satellite> Getting location id from Satellite
+<AEMethod register_satellite> Getting location id for 'Winchester' from Satellite
 <AEMethod register_satellite> location_id: 4
-<AEMethod register_satellite> Getting organization id from Satellite
+<AEMethod register_satellite> Getting organization id for 'Bit63' from Satellite
 <AEMethod register_satellite> organization_id: 3
 <AEMethod register_satellite> Creating host record in Satellite with the following details: \
 		{:name=>"testserver01", :mac=>"00:50:56:b8:51:da", :hostgroup_id=>"3", \
@@ -419,7 +419,7 @@ In Satellite we see the new _Host_ entry, but the 'N' icon indicates that no rep
 
 ![screenshot](images/screenshot10.png)
 
-Soon afterwards we see the output from activate_satellite in the log:
+Soon afterwards we see the output from activate_satellite in automation.log:
 
 ```
 <AEMethod activate_satellite> VM doesnt have an IP address yet - retrying in 1 minute
@@ -481,7 +481,7 @@ and we see that the new _Host_ record is shown as _Active_, showing that the Pup
  
 ![screenshot](images/screenshot11.png)
 
-If we are quick we can see the contents of the Ansible playbook file:
+If we are quick we can see the contents of the Ansible playbook file before it is deleted:
 
 ```
 ---
