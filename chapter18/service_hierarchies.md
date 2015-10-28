@@ -198,3 +198,6 @@ The full script is available [here](https://github.com/pemcg/cloudforms-automati
 ##### Putting It All Together
 
 Finally we create two _Add to Service_ buttons, one on a _Service_ object type, and one on a _VM and Instance_ object type. We can go ahead and organise our Service hierarchies.
+
+
+_Exercise_: filter the list of services presented in the drop-down to remove the _current_ service - we would never wish to add a Service as its own parent.
