@@ -18,6 +18,7 @@ There are several ways of remotely running commands in a newly created VM, inclu
 * cloud-init (RHEV, OpenStack and Amazon Providers)
 * ssh, including Ansible (all Providers)
 
+<br>
 For flexibility (at the expense of some added complexity), we'll be triggering the subscription-manager registration of the newly provisioned system using an Ansible playbook, dynamically created as part of the provisioning workflow.
 
 ### The Satellite 6 Host Entry
