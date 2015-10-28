@@ -8,9 +8,9 @@ In this example we'll look at the changes that we need to make to our provisioni
 
 Christian Jung's excellent [blog](http://www.jung-christian.de) also contains several articles on CloudForms and Foreman integration, particularly when provisioning using kickstart. Some of the code here is borrowed from Chris's examples.
 
-#### The Challenge of Triggering the Client Connection 
+#### The Challenge of Triggering the Client Operations 
 
-For this example we'll be provisioning into a VMware Provider, and cloning from fully installed 'fat' templates (i.e. no kickstarting). Cloning from Template (Infrastructure Providers) or Image (Cloud Providers) presents us with the challenge of how to initiate a _subscription-manager register_ command, using dynamic arguments such as --activationkey or --org.
+For this example we'll be provisioning into a VMware Provider, and cloning from fully installed 'fat' templates (i.e. no kickstarting). Cloning from Template (Infrastructure Providers) or Image (Cloud Providers) presents us with the challenge of how to initiate several commands on the new VM, including _subscription-manager register_, using dynamic arguments such as _--activationkey_ or _--org_.
 
 There are several ways of remotely running commands in a newly created VM, including:
 
