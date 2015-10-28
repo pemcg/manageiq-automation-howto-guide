@@ -4,9 +4,21 @@ It is a relatively common requirement to register newly provisioned Linux VMs di
 
 Registering a new system with Satellite 6.1 currently requires two operations. We need to create a Satellite _Host_ entry, which registers the server as a configuration management client, manageable by Puppet. We also need to use subscription-manager to activate the server as a _Content Host_, which associates one or more Red Hat Subscriptions with the server, and makes software package repository content available.
 
-In this example we'll look at the changes that we need to make to our provisioning workflow to make this happen. We'll be provisioning into VMware, from fully installed 'fat' templates (i.e. no kickstarting). We'll be triggering the subscription-manager registration of the newly provisioned system using an Ansible playbook, dynamically created as part of the provisioning workflow.
+In this example we'll look at the changes that we need to make to our provisioning workflow to make this happen.
 
 Christian Jung's excellent [blog](http://www.jung-christian.de) also contains several articles on CloudForms and Foreman integration, particularly when provisioning using kickstart. Some of the code here is borrowed from Chris's examples.
+
+#### The Challenge of Triggering the Client Connection 
+
+For this example we'll be provisioning into a VMware Provider, and cloning from fully installed 'fat' templates (i.e. no kickstarting). Cloning from Template (Infrastructure Providers) or Image (Cloud Providers) presents us with the challenge of how to initiate a _subscription-manager register_ command, using dynamic arguments such as --activationkey or --org.
+
+There are several ways of remotely running commands in a newly created VM, including:
+
+* VMware VIX SDK Library to connect to VMware Tools runing in a guest (VMware only)
+* cloud-init (RHEV, OpenStack and Amazon Providers)
+* ssh, including Ansible (all Providers)
+
+For flexibility (at the expense of some added complexity), we'll be triggering the subscription-manager registration of the newly provisioned system using an Ansible playbook, dynamically created as part of the provisioning workflow.
 
 ### The Satellite 6 Host Entry
 

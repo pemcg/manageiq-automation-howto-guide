@@ -134,6 +134,6 @@ rescue RestClient::Exception => err
 rescue => err
   $evm.log(:error, "[#{err}]\n#{err.backtrace.join("\n")}")
   $evm.root['ae_result'] = 'error'
-  $evm.root['ae_reason'] = "Error registering with Satellite: #{err}"
+  $evm.root['ae_reason'] = "Error registering with Satellite: #{err.message}"
   exit MIQ_ERROR
 end
