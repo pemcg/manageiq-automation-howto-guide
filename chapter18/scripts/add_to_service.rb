@@ -1,4 +1,3 @@
-
 begin
   parent_service_id = $evm.root['dialog_service']
   parent_service = $evm.vmdb('service').find_by_id(parent_service_id)
@@ -8,7 +7,7 @@ begin
   else
     case $evm.root['vmdb_object_type']
     when 'service'
-      $evm.log(:info, "Adding service #{$evm.root['service'].name} to #{parent_service.name}")
+      $evm.log(:info, "Adding Service #{$evm.root['service'].name} to #{parent_service.name}")
       $evm.root['service'].parent_service = parent_service
     when 'vm'
       vm = $evm.root['vm']
