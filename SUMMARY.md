@@ -49,7 +49,7 @@
    * [Service Objects](chapter18/service_objects.md)
    * [Log Analysis During Service Provisioning](chapter18/log_analysis_during_service_provisioning.md)
    * [Custom State Machines](chapter18/custom_state_machines.md)
-   * [Service Hierarchies](service_hierarchies.md)
+   * [Service Hierarchies](chapter18/service_hierarchies.md)
    * [Service Reconfiguration](chapter18/service_reconfiguration.md)
    * [Tips and Tricks](chapter18/tips_and_tricks.md)
 * [Retirement](chapter19/retirement.md)
