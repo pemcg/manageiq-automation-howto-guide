@@ -6,8 +6,6 @@ _/System/Request_ or _/System/Event_ in the Automation Datastore, and in the exa
 In fact all but one of the ways of invoking Automation must call an entry point Instance in either
 _/System/Request_ or _/System/Event_; the exception being when calling Automation from the **RESTful API**, which can invoke any Instance anywhere in the Automation Datastore.
 
-There is a slightly special use-case when provisoning a VM interactively from the Infrastructure -> Virtual Machines -> Lifecycle -> Provision VMs menu. This always launches into Automation via the _/System/Request/UI\_Provision\_Info_ Instance.
-
 There are a further two ways that an Automation script can be launched.
 
 ### Control Policy Actions
@@ -28,7 +26,7 @@ An **Alert** can be created that sends a Management Event, which calls an Instan
 ![screenshot](images/screenshot2.png)
 
 <br>
-We can clone the _/System/Event_ namespace to our own domain, and add the corresponding Instance
+We can clone the _/System/Event_ namespace to our own domain, and add the corresponding Instance:
 <br> <br>
 
 ![screenshot](images/screenshot3.png)

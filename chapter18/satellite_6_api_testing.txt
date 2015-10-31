@@ -1,0 +1,311 @@
+https://satellite01.bit63.net/api/v2/hostgroups/
+{
+  "total": 2,
+  "subtotal": 2,
+  "page": 1,
+  "per_page": 20,
+  "search": null,
+  "sort": {
+    "by": null,
+    "order": null
+  },
+  "results": [
+  {"id":3,
+  "name":"Generic_RHEL6_Servers",
+  "title":"Generic_RHEL6_Servers",
+  "subnet_id":null,
+  "subnet_name":null,
+  "operatingsystem_id":2,
+  "operatingsystem_name":"RHEL 6.7",
+  "domain_id":1,
+  "domain_name":"bit63.net",
+  "environment_id":7,
+  "environment_name":"KT_Bit63_Production_RHEL6_Q4_2015_6",
+  "compute_profile_id":null,
+  "compute_profile_name":null,
+  "ancestry":null,
+  "puppet_proxy_id":1,
+  "puppet_ca_proxy_id":1,
+  "ptable_id":7,
+  "ptable_name":"Kickstart default",
+  "medium_id":null,
+  "medium_name":null,
+  "architecture_id":1,
+  "architecture_name":"x86_64",
+  "realm_id":null,
+  "realm_name":null,
+  "created_at":"2015-10-16T16:39:37Z",
+  "updated_at":"2015-10-16T16:49:34Z"},
+  {"id":2,
+  "name":"Generic_RHEL7_Servers",
+  "title":"Generic_RHEL7_Servers",
+  "subnet_id":null,
+  "subnet_name":null,
+  "operatingsystem_id":1,
+  "operatingsystem_name":"RHEL 7.1",
+  "domain_id":1,
+  "domain_name":"bit63.net",
+  "environment_id":5,
+  "environment_name":"KT_Bit63_Production_RHEL7_Q4_2015_5",
+  "compute_profile_id":null,
+  "compute_profile_name":null,
+  "ancestry":null,
+  "puppet_proxy_id":1,
+  "puppet_ca_proxy_id":1,
+  "ptable_id":7,
+  "ptable_name":"Kickstart default",
+  "medium_id":null,
+  "medium_name":null,
+  "architecture_id":1,
+  "architecture_name":"x86_64",
+  "realm_id":null,
+  "realm_name":null,
+  "created_at":"2015-10-13T09:59:56Z",
+  "updated_at":"2015-10-16T16:38:08Z"}
+  ]
+}
+
+https://satellite01.bit63.net/api/v2/hostgroups/3/
+{"id":3,
+"name":"Generic_RHEL6_Servers",
+"title":"Generic_RHEL6_Servers",
+"subnet_id":null,
+"subnet_name":null,
+"operatingsystem_id":2,
+"operatingsystem_name":"RHEL 6.7",
+"domain_id":1,
+"domain_name":"bit63.net",
+"environment_id":7,
+"environment_name":"KT_Bit63_Production_RHEL6_Q4_2015_6",
+"compute_profile_id":null,
+"compute_profile_name":null,
+"ancestry":null,
+"puppet_proxy_id":1,
+"puppet_ca_proxy_id":1,
+"ptable_id":7,
+"ptable_name":"Kickstart default",
+"medium_id":null,
+"medium_name":null,
+"architecture_id":1,
+"architecture_name":"x86_64",
+"realm_id":null,
+"realm_name":null,
+"created_at":"2015-10-16T16:39:37Z",
+"updated_at":"2015-10-16T16:49:34Z",
+"all_puppetclasses":
+  [
+  {"id":86,
+  "name":"access_insights_client",
+  "module_name":"access_insights_client"},
+  {"id":87,
+  "name":"motd",
+  "module_name":"motd"},
+  {"id":82,
+  "name":"ntp",
+  "module_name":"ntp"}
+  ],
+"locations":
+  [
+  {"id":2,
+  "name":"Default Location",
+  "title":"Default Location"},
+  {"id":4,
+  "name":"Winchester",
+  "title":"Winchester"}
+  ],
+"organizations":
+  [
+  {"id":3,
+  "name":"Bit63",
+  "title":"Bit63"},
+  {"id":1,
+  "name":"Default Organization",
+  "title":"Default Organization"}
+  ],
+"parameters":
+  [
+  {"id":2,
+  "name":"kt_activation_keys",
+  "value":"RHEL6-Generic,RHEL6-Library"}
+  ],
+"template_combinations":
+  [],
+"puppetclasses":
+  [
+  {"id":86,
+  "name":"access_insights_client",
+  "module_name":"access_insights_client"},
+  {"id":87,
+  "name":"motd",
+  "module_name":"motd"},
+  {"id":82,
+  "name":"ntp",
+  "module_name":"ntp"}
+  ],
+"config_groups":
+  []
+}
+
+https://satellite01.bit63.net/api/v2/hostgroups/3/puppetclasses
+{
+  "total": 2,
+  "subtotal": 2,
+  "page": 1,
+  "per_page": 20,
+  "search": null,
+  "sort": {
+    "by": null,
+    "order": null
+  },
+  "results": {
+  "motd":[{"id":87,"name":"motd","created_at":"2015-10-13T10:08:20Z","updated_at":"2015-10-28T15:34:10Z"}],
+  "ntp":[{"id":82,"name":"ntp","created_at":"2015-10-11T14:06:26Z","updated_at":"2015-10-28T15:34:10Z"}]
+  }
+}
+
+
+https://satellite01.bit63.net/api/v2/hostgroups/3/puppetclasses/87
+{
+"id":87,
+"name":"motd",
+"module_name":"motd",
+"created_at":"2015-10-13T10:08:20Z",
+"updated_at":"2015-10-28T15:34:10Z",
+"smart_variables":[],
+"smart_class_parameters":[{"parameter":"content","id":647},{"parameter":"template","id":646}],
+"environments":[{"name":"KT_Bit63_Library_RHEL6_Q4_2015_6","id":6},{"name":"KT_Bit63_Library_RHEL7_Q4_2015_5","id":4},{"name":"KT_Bit63_Production_RHEL6_Q4_2015_6","id":7},{"name":"KT_Bit63_Production_RHEL7_Q4_2015_5","id":5}],
+"hostgroups":[{"id":2,"name":"Generic_RHEL7_Servers","title":"Generic_RHEL7_Servers"},{"id":3,"name":"Generic_RHEL6_Servers","title":"Generic_RHEL6_Servers"}]
+}
+
+https://satellite01.bit63.net/api/v2/hostgroups/3/smart_class_parameters
+{
+  "total": 2,
+  "subtotal": 2,
+  "page": 1,
+  "per_page": 20,
+  "search": null,
+  "sort": {
+    "by": null,
+    "order": null
+  },
+  "results": [
+  {"parameter":"content",
+  "id":647,
+  "description":"",
+  "override":true,
+  "parameter_type":"string",
+  "default_value":"",
+  "use_puppet_default":false,
+  "required":false,
+  "validator_type":"",
+  "validator_rule":null,
+  "merge_overrides":null,
+  "avoid_duplicates":null,
+  "override_value_order":"fqdn\nhostgroup\nos\ndomain",
+  "override_values_count":2,
+  "created_at":"2015-10-13T10:08:20Z",
+  "updated_at":"2015-10-24T14:32:06Z"},
+  {"parameter":"servers",
+  "id":624,
+  "description":"",
+  "override":true,
+  "parameter_type":"array",
+  "default_value":["${$ntp::params::servers}"],
+  "use_puppet_default":false,
+  "required":false,
+  "validator_type":"",
+  "validator_rule":null,
+  "merge_overrides":false,
+  "avoid_duplicates":null,
+  "override_value_order":"fqdn\nhostgroup\nos\ndomain",
+  "override_values_count":0,
+  "created_at":"2015-10-13T09:55:16Z",
+  "updated_at":"2015-10-19T15:10:37Z"}
+  ]
+}
+
+https://satellite01.bit63.net/api/v2/hostgroups/3/smart_class_parameters/647
+{
+"parameter":"content",
+"id":647,
+"description":"",
+"override":true,
+"parameter_type":"string",
+"default_value":"",
+"use_puppet_default":false,
+"required":false,
+"validator_type":"",
+"validator_rule":null,
+"merge_overrides":null,
+"avoid_duplicates":null,
+"override_value_order":"fqdn\nhostgroup\nos\ndomain",
+"override_values_count":2,
+"created_at":"2015-10-13T10:08:20Z",
+"updated_at":"2015-10-24T14:32:06Z",
+"puppetclass":{"id":87,"name":"motd","module_name":"motd"},
+"override_values":[
+  {
+  "id":3,
+  "match":"hostgroup=Generic_RHEL7_Servers",
+  "value":"Default message for RHEL 7 Servers",
+  "use_puppet_default":true
+  },
+  {
+  "id":2,
+  "match":"hostgroup=Generic_RHEL6_Servers",
+  "value":"Default message for RHEL 6 Servers",
+  "use_puppet_default":true
+  }
+  ],
+  "environments":[
+    {"id":6,
+    "name":"KT_Bit63_Library_RHEL6_Q4_2015_6"},
+    {"id":4,
+    "name":"KT_Bit63_Library_RHEL7_Q4_2015_5"},
+    {"id":7,
+    "name":"KT_Bit63_Production_RHEL6_Q4_2015_6"},
+    {"id":5,
+    "name":"KT_Bit63_Production_RHEL7_Q4_2015_5"}
+    ]
+}
+
+https://satellite01.bit63.net/api/v2/hostgroups/3/smart_class_parameters/647/override_values
+{
+  "total": 2,
+  "subtotal": 2,
+  "page": 1,
+  "per_page": 20,
+  "search": null,
+  "sort": {
+    "by": null,
+    "order": null
+  },
+  "results": [
+  {"id":3,
+  "match":"hostgroup=Generic_RHEL7_Servers",
+  "value":"Default message for RHEL 7 Servers",
+  "use_puppet_default":true,
+  "created_at":"2015-10-21T14:50:11Z",
+  "updated_at":"2015-10-24T14:32:06Z"},
+  {"id":2,
+  "match":"hostgroup=Generic_RHEL6_Servers",
+  "value":"Default message for RHEL 6 Servers",
+  "use_puppet_default":true,
+  "created_at":"2015-10-21T14:49:42Z",
+  "updated_at":"2015-10-24T14:32:06Z"}
+  ]
+}
+
+https://satellite01.bit63.net/api/v2/hostgroups/3/parameters
+{
+  "total": 1,
+  "subtotal": 1,
+  "page": 1,
+  "per_page": 20,
+  "search": null,
+  "sort": {
+    "by": null,
+    "order": null
+  },
+  "results": [{"id":2,"name":"kt_activation_keys","value":"RHEL6-Generic,RHEL6-Library","priority":3,"created_at":"2015-10-16T16:41:34Z","updated_at":"2015-10-30T07:55:13Z"}]
+}

@@ -11,7 +11,7 @@ If we create a Service Catalog Item to have a Reconfigure Entry Point State Mach
 
 If we select this option, we are presented with the original Service Dialog once more. Entering new values and clicking the _Submit_ button will create a _ServiceReconfigureRequest_ to peform the reconfiguration action, based on the revised values that we have have entered into the dialog.
 
-This duel-use of an initial configuration dialog as a reconfiguration dialog, works well if we are using a configuration management tool such as Foreman (or Satellite 6), and Puppet. In this case we can specify Puppet Class _Smart Variables_ in our Service Dialog that can be passed to Foreman and used as overrides to static Smart Class Parameters.
+This duel-use of an initial configuration dialog as a reconfiguration dialog, works well if we are using a configuration management tool such as Foreman (or Satellite 6), and Puppet. In this case we can specify Puppet  _Smart Class Parameters_ in our Service Dialog that can be passed to Foreman and used as overrides to static Smart Class Parameters.
 
 ### Wiring it all Together
 
