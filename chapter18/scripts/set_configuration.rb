@@ -36,7 +36,9 @@ begin
     hostgroup_id    = $evm.root['dialog_hostgroup_id']
     hostname        = $evm.root['dialog_vm_name']  
   end
-  
+  #
+  # Only set the smart class parameter if we've been passed a parameter value from a service dialog
+  #
   unless parameter_value.nil?
     uri_base = "https://#{servername}/api/v2"
     #

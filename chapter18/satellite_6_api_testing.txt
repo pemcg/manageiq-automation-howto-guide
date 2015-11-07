@@ -309,3 +309,31 @@ https://satellite01.bit63.net/api/v2/hostgroups/3/parameters
   },
   "results": [{"id":2,"name":"kt_activation_keys","value":"RHEL6-Generic,RHEL6-Library","priority":3,"created_at":"2015-10-16T16:41:34Z","updated_at":"2015-10-30T07:55:13Z"}]
 }
+
+https://satellite01.bit63.net/api/v2/smart_class_parameters/647/override_values
+{
+  "total": 2,
+  "subtotal": 2,
+  "page": 1,
+  "per_page": 20,
+  "search": null,
+  "sort": {
+    "by": null,
+    "order": null
+  },
+  "results":
+  [
+  {"id":5,
+  "match":"fqdn=p1-host.bit63.net",
+  "value":"Message for Saturday Afternoon",
+  "use_puppet_default":false,
+  "created_at":"2015-10-31T15:02:26Z",
+  "updated_at":"2015-10-31T15:02:26Z"},
+  {"id":6,
+  "match":"fqdn=s1-host.bit63.net",
+  "value":"Message for Saturday Afternoon",
+  "use_puppet_default":false,
+  "created_at":"2015-10-31T15:11:15Z",
+  "updated_at":"2015-10-31T15:11:15Z"}
+  ]
+}

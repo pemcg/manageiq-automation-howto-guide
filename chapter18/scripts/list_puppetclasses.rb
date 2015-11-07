@@ -4,7 +4,7 @@ require 'openssl'
 require 'base64'
 
 begin
-  
+
   def rest_action(uri, verb, payload=nil)
     headers = {
       :content_type  => 'application/json',
@@ -38,6 +38,7 @@ begin
         values_hash['!'] = '-- select from list --'
       end
       rest_return['results'].each do |classname, classinfo|
+        $evm.log(:info, "Found Puppet Class '#{classname}' with ID: #{classinfo[0]['id'].to_s}")
         $evm.log(:info, "Classname: #{classname}")
         values_hash[classinfo[0]['id'].to_s] = classname
       end

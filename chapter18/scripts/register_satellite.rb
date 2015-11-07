@@ -48,13 +48,10 @@ begin
   #
   if template.platform == "linux"
     #
-    # Only register with Satellite if we're provisioning from a Service
+    # Only register with Satellite if we've been passed a hostgroup ID from a service dialog
     #
-    unless vm.service.nil?
-      #
-      # Take the host-group from the service dialog
-      #
-      hostgroup_id = $evm.root['miq_provision'].get_option(:dialog_hostgroup_id)
+    hostgroup_id = $evm.root['miq_provision'].get_option(:dialog_hostgroup_id)
+    unless hostgroup_id.nil?
       
       @uri_base = "https://#{servername}/api/v2"
       @headers = {

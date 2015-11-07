@@ -10,6 +10,7 @@ User-initiated Automation operations have two distinct stages - the **Request** 
 | Provisioning a VM    | miq\_provision\_request | miq\_provision |
 | Reconfiguring a VM   | vm\_reconfigure\_request | vm\_reconfigure\_task |
 | Requesting a Service | service\_template\_provision\_request | service\_template\_provision\_task |
+| Reconfiguring a Service | service\_reconfigure\_request | service\_reconfigure\_task |
 | Migrating a VM       | vm\_migrate\_request | vm\_migrate\_task |
 
 In addition to those listed above, a kind of pseudo-request object is created when we add a Service Catalog Item to provision a VM. 

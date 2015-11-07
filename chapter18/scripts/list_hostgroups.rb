@@ -4,7 +4,7 @@ require 'openssl'
 require 'base64'
 
 begin
-  
+
   def rest_action(uri, verb, payload=nil)
     headers = {
       :content_type  => 'application/json',
@@ -20,7 +20,7 @@ begin
     ).execute
     return JSON.parse(response.to_str)
   end
-  
+
   servername = $evm.object['servername']
   @username  = $evm.object['username']
   @password  = $evm.object.decrypt('password')
@@ -36,6 +36,7 @@ begin
       values_hash['!'] = '-- select from list --'
     end
     rest_return['results'].each do |hostgroup|
+      $evm.log(:info, "Found Host Group '#{hostgroup['name']}' with ID: #{hostgroup['id'].to_s}")
       values_hash[hostgroup['id'].to_s] = hostgroup['name']
     end
   else

@@ -4,7 +4,7 @@ require 'openssl'
 require 'base64'
 
 begin
-  
+
   def rest_action(uri, verb, payload=nil)
     headers = {
       :content_type  => 'application/json',
@@ -36,6 +36,7 @@ begin
     rest_return['results'].each do |hostgroup_parameter|
       if hostgroup_parameter['name'].to_s == "kt_activation_keys"
         hostgroup_parameter['value'].split(',').each do |activationkey|
+          $evm.log(:info, "Found Activation Key: '#{activationkey}'")
           values_hash[activationkey] = activationkey
         end
       end

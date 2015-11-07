@@ -4,7 +4,7 @@ require 'openssl'
 require 'base64'
 
 begin
-  
+
   def rest_action(uri, verb, payload=nil)
     headers = {
       :content_type  => 'application/json',
@@ -33,14 +33,19 @@ begin
   if puppet_class_id.nil?
     values_hash['!'] = "Select a Puppet Class and click 'Refresh'"
   else
-    rest_return = rest_action("#{uri_base}/hostgroups/#{hostgroup_id}/smart_class_parameters", :get)
-    rest_return['results'].each do |smart_class_parameter|
+    call_string = "#{uri_base}/hostgroups/#{hostgroup_id}/smart_class_parameters"
+    rest_return = rest_action(call_string, :get)
+    rest_return['results'].each do |parameter|
+      $evm.log(:info, "Found smart class parameter '#{parameter['parameter']}' with ID: #{parameter['id'].to_s}")
       #
-      # Retrieve the details of this smart class parameter to find out which puppet class it's associated with
+      # Retrieve the details of this smart class parameter
+      # to find out which puppet class it's associated with
       #
-      parameter_details = rest_action("#{uri_base}/hostgroups/#{hostgroup_id}/smart_class_parameters/#{smart_class_parameter['id']}", :get)
+      call_string = "#{uri_base}/hostgroups/#{hostgroup_id}/smart_class_parameters/#{parameter['id']}"
+      parameter_details = rest_action(call_string, :get)
       if parameter_details['puppetclass']['id'].to_s == puppet_class_id
-        values_hash[smart_class_parameter['id'].to_s] = parameter_details['parameter']
+        $evm.log(:info, "Parameter #{parameter['id'].to_s} matches the requested Puppet Class")
+        values_hash[parameter['id'].to_s] = parameter_details['parameter']
       end
     end
     if values_hash.length > 0
