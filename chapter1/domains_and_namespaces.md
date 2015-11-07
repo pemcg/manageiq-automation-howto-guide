@@ -17,7 +17,7 @@ User-added Domains can be individually enabled or disabled, and all Domains can 
 
 
 #### Importing / Exporting Domains
-Domains can be exported using _rake_ from the command line, and imported either using _rake_ or from the WebUI. (Using rake enables us to specify more import and export options). A typical rake import line is...
+Domains can be exported using _rake_ from the command line, and imported either using _rake_ or from the WebUI. (Using rake enables us to specify more import and export options). A typical rake import line is as follows:
 
 ```
 bin/rake evm:automate:import YAML_FILE=Buttons.yaml IMPORT_AS=Bit63 \
@@ -44,7 +44,7 @@ We frequently need to customise code in the locked RedHat or ManageIQ Domains, f
 
 Domains are a new feature of the Automation engine for the ManageIQ _Anand_ release (CloudForms Management Engine 5.3). Prior to this release all factory-supplied and user-created automation code was contained in a common structure, which made updates difficult when any user-added code was introduced (the user-supplied modifications needed exporting and re-importing/merging whenever an automation update was released).
 
-To import a Datastore backup from a 3.0 and prior format Datastore, it must be converted to the new Datastore format first...
+To import a Datastore backup from a 3.0 and prior format Datastore, it must be converted to the new Datastore format first, e.g.
 
 ```
 cd /var/www/miq/vmdb

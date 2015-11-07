@@ -31,7 +31,7 @@ class Host < ActiveRecord::Base
 ```
 We see that there are several associations from a host object, including to the cluster that it's a member of, and to the VMs that run on that host.
 
-Although these associations are defined in Rails, they are available to us when we work with the corresponding MiqAeService objects from the Automation Engine (see [The MiqAeService* Model](../chapter7/the_miqaeservice_model.md)).
+Although these associations are defined in Rails, they are available to us when we work with the corresponding MiqAeService objects from the Automation Engine (see [The MiqAeService* Model](../chapter4/the_miqaeservice_model.md)).
 
 ### Rails Helper Methods (.find\_by\_*)
 Rails does a lot of things to make our lives easier, including dynamically creating _helper methods_. The most useful ones are the find\_by\_\* methods.

@@ -41,7 +41,7 @@ We'll run our new instance using the _Simulation_ functionality of Automation, b
 [root@cloudforms ~]# tail -f /var/www/miq/vmdb/log/automation.log
 ```
 
-In the simulation we actually run an instance called _Call\_Instance_ in the _/System/Request/_ namespace of the _ManageIQ_ domain, and this in turn calls our instance using the _namespace_, _class_ and _instance_ attribute/value pairs that we pass to it (see [Ways of Entering Automation](../chapter12/ways_of_entering_automation.md)).
+In the simulation we actually run an instance called _Call\_Instance_ in the _/System/Request/_ namespace of the _ManageIQ_ domain, and this in turn calls our instance using the _namespace_, _class_ and _instance_ attribute/value pairs that we pass to it (see [Ways of Entering Automation](../chapter10/ways_of_entering_automation.md)).
 
 From the _Automation -> Simulation_ menu, complete the details in the _Options_ sidebar as shown...
 <br> <br>

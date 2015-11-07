@@ -13,7 +13,7 @@ The Automation functionality of CloudForms/ManageIQ seems to be one of the chall
 This book is an attempt to document my learning experiences with CloudForms Automation, and hopefully ease the process for others to master this incredibly powerful aspect of the product.
 
 ## Content
-I've tried to structure the book around the periodic revelations that I've had while learning CloudForms Automation, the _if only I'd known that weeks ago_ moments. In places this includes some deep code examination and theory, but hopefully this will help the understanding process (it did for me). I also try to illustrate the theory with coding examples. The screenshots are taken from Red Hat CloudForms Management Engine 5.4, but most of the content also applies to the ManageIQ _Botvinnik_ release.
+I've tried to structure the book around the periodic revelations that I've had while learning CloudForms Automation, the _if only I'd known that weeks ago_ moments. In places this includes some deep code examination and theory, but hopefully this will help the understanding process (it did for me). I also try to illustrate the theory with coding examples. The screenshots are taken from Red Hat CloudForms Management Engine 5.4 and 5.5, but most of the content also applies to the ManageIQ _Botvinnik_ & _Capablanca_ releases.
 
 
 ## Assumptions
