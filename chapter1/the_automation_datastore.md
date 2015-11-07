@@ -15,4 +15,4 @@ The icon theme in the CloudForms Management Engine 5.5 / ManageIQ _Capablanca_ r
 ![Datastore](images/screenshot11.png)
 
 <br>
-We can look at each of these types of object in more detail.
+We can look at each of these types of object in more detail in the following sections.
