@@ -51,7 +51,7 @@
    * [Custom State Machines](chapter18/custom_state_machines.md)
    * [Service Hierarchies](chapter18/service_hierarchies.md)
    * [Service Reconfiguration](chapter18/service_reconfiguration.md)
-   * [Tips and Tricks](chapter18/tips_and_tricks.md)
+   * [Service Tips and Tricks](chapter18/tips_and_tricks.md)
 * [Retirement](chapter19/retirement.md)
 * [Argument Passing and Handling](chapter20/argument_passing_and_handling.md)
 * [Calling Automation from the RESTful API](chapter21/calling_automation_from_api.md)

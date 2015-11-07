@@ -306,7 +306,7 @@ If a Smart Class Parameter override value has not been input the Method simply e
   unless parameter_value.nil?
      ...
 ```
-The Method must fetch the default domain name from the Host Group to assemble a correct FQDN:
+The Method must fetch the default domain name from the Host Group to assemble the correct FQDN for the match:
 
 ```ruby
 rest_return = rest_action("#{uri_base}/hostgroups/#{hostgroup_id}", :get)
