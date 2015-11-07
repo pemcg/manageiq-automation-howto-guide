@@ -75,24 +75,9 @@ These Activation Keys will define defaults for:
 * Red Hat Subscriptions
 * Repository Content Sets
 
-#### Creating a VMware Customization Specification
-
-We want our newly provisioned VMs to be given a Linux hostname that corresponds to their VM name. Our RHEL 6 and RHEL 7 VMware Templates have the VMware Tools packages installed, and so we can use a Linux Customization Specification to set the hostname.
-
-We'll create a Customization Specification called _Generic RHEL_:
-<br> <br>
-
-![screenshot](images/screenshot5.png)
-
-<br>
-and we'll specify this when we provision our VMs in CloudForms:
-<br> <br>
-
-![screenshot](images/screenshot4.png?)
-
 #### Adding an SSH Key to the VMware Template
 
-We're going to be using Ansible from the CloudForms server to register the new VM with Satellite, and install and run Puppet. We need to copy root's public key from the CloudForms server to the VMware Template and add to /root/.ssh/autorized_keys.
+We're going to be using Ansible from the CloudForms server to set the new VM's hostname, register the new VM with Satellite, and install and run Puppet. We need to copy root's public key from the CloudForms server to the VMware Template and add to /root/.ssh/autorized_keys.
 
 ### Installing and Configuring Ansible on the CloudForms Appliance
 
@@ -209,7 +194,7 @@ if template.platform == "linux"
 ...
 ```
 
-(In a more advanced example we could present a selection of Host Groups to register with in a Service Dialog drop-down list)
+(In a more advanced example we could present a selection of Host Groups to register with in a Service Dialog drop-down list - see [Service Reconfiguration](../chapter18/service_reconfiguration.md))
 
 We'll be creating the new Host entry using the Satellite API, and this requires us to use the internal Satellite ID for each parameter, rather than a name. We define a generic _query\_id_ method, and call it three times to retrieve the IDs for the Location, Organization and Host Group:
 
@@ -340,6 +325,9 @@ playbook = []
 this_host = {}
 this_host['hosts'] = []
 this_host['hosts'] = "#{ip_address}"
+this_host['tasks'] << { 'name'      => 'Set hostname',
+                        'hostname'  => "name=#{vm.name}"
+                      }
 this_host['tasks'] = []
 this_host['tasks'] << { 'name'      => 'Install Cert',
                         'command'   => "/usr/bin/yum -y localinstall http://#{servername}/pub/katello-ca-consumer-latest.noarch.rpm"
@@ -445,6 +433,9 @@ PLAY [192.168.1.170] **********************************************************
 GATHERING FACTS ***************************************************************
 ok: [192.168.1.170]
 
+TASK: [Set hostname] **********************************************************
+changed: [192.168.1.170]
+
 TASK: [Install Cert] **********************************************************
 changed: [192.168.1.170]
 
@@ -500,6 +491,8 @@ If we are quick we can see the contents of the Ansible playbook file before it i
 ---
 - hosts: 192.168.1.170
   tasks:
+  - name: Set hostname
+    hostname: name=testserver01
   - name: Install Cert
     command: "/usr/bin/yum -y localinstall http://satellite01.bit63.net/pub/katello-ca-consumer-latest.noarch.rpm"
   - name: Register with Satellite

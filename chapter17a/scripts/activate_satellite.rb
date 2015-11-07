@@ -57,6 +57,9 @@ begin
     this_host['hosts'] = []
     this_host['hosts'] = "#{ip_address}"
     this_host['tasks'] = []
+    this_host['tasks'] << { 'name'      => 'Set hostname',
+                            'hostname'  => "name=#{vm.name}"
+                          }
     this_host['tasks'] << { 'name'      => 'Install Cert',
                             'command'   => "/usr/bin/yum -y localinstall http://#{servername}/pub/katello-ca-consumer-latest.noarch.rpm"
                           }
@@ -82,14 +85,14 @@ begin
     this_host['tasks'] << { 'name'      => 'Configure Puppet Agent',
                             'command'   => "/usr/bin/puppet config set server #{servername} --section agent",
                             'when'      => 'puppet_installed|success'
-                          }
+                              }
     this_host['tasks'] << { 'name'      => 'Run Puppet Test',
                             'command'   => '/usr/bin/puppet agent --test --noop --onetime --waitforcert 60',
                             'when'      => 'puppet_installed|success'
                           }
     this_host['tasks'] << { 'name'      => 'Start Puppet',
                             'service'   => 'name=puppet state=started'
-                          }
+                          }                         
     this_host['tasks'] << { 'name'      => 'Update all packages',
                             'command'   => '/usr/bin/yum -y update'
                           }
