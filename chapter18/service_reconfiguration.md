@@ -92,7 +92,7 @@ When ordered the Dialog will look as follows:
  
 ![screenshot](images/screenshot83.png)
 
-### Methods
+### Instances and Methods
 
 #### Dynamic Dialogs
 
@@ -136,9 +136,9 @@ uri_base = "https://#{servername}/api/v2"
 values_hash = {}
 ```
 
-##### list_hostgroups
+##### ListHostGroups
 
-The Method **list\_hostgroups** makes a simple call to /hostgroups:
+The **list\_hostgroups** Method makes a simple call to /hostgroups:
 
 ```ruby
 rest_return = rest_action("#{uri_base}/hostgroups", :get)
@@ -154,9 +154,9 @@ else
   values_hash['!'] = 'No hostgroups are available'
 end
 ```
-##### list_activationkeys
+##### ListActivationKeys
 
-The Method **list\_activationkeys** retrieves the hostgroup\_id from the _Host Group_ element, and makes a call to get the hostgroup parameters
+The **list\_activationkeys** Method retrieves the hostgroup\_id from the _Host Group_ element, and makes a call to get the hostgroup parameters:
 
 ```ruby
   hostgroup_id = $evm.object['dialog_hostgroup_id']
@@ -182,9 +182,9 @@ The Method **list\_activationkeys** retrieves the hostgroup\_id from the _Host G
   end
 ```
 
-##### list_puppetclasses
+##### ListPuppetClasses
 
-The Method **list\_puppetclasses** retrieves the hostgroup\_id from the _Host Group_ element, and makes a call to get the puppet classes associated with the host group
+The **list\_puppetclasses** Method retrieves the hostgroup\_id from the _Host Group_ element, and makes a call to get the puppet classes associated with the host group:
 
 ```ruby
 hostgroup_id = $evm.object['dialog_hostgroup_id']
@@ -206,9 +206,9 @@ else
 end
 ```
 
-##### list_smart_class_parameters
+##### ListSmartClassParameters
 
-The Method **list\_smart\_class\_parameters** retrieves the hostgroup\_id and puppetclass_id from previous elements, and makes a call to get the puppet smart class parameters associated with the host group. For each parameter returned it then makes a further call to cross-reference against the requested puppet class (this operation will be slow if many puppet classes with smart class variables are defined in our host group, but is suitable for our example).
+The **list\_smart\_class\_parameters** Method retrieves the hostgroup\_id and puppetclass_id from previous elements, and makes a call to get the puppet smart class parameters associated with the host group. For each parameter returned it then makes a further call to cross-reference against the requested puppet class (this operation will be slow if many puppet classes with smart class variables are defined in our host group, but is suitable for our example):
 
 ```ruby
 hostgroup_id    = $evm.object['dialog_hostgroup_id']
@@ -241,9 +241,46 @@ end
 ```
 
 
-#### Configuration
+#### Configuration Workflow
 
-The _SetConfiguration_ Instance will be called from two completely different State Machines, once to perform an initial configuration during provisioning, and possibly again during a service reconfigure request. The _set\_configuration_ Method must retrieve the Service Dialog values from either of two different places:
+##### RegisterSatellite
+
+We edit the **register\_satellite** method from [Integrating with Satellite 6 During Provisioning](../chapter17a/integrating_with_satellite_6.md) to take out the hard-coded selection of Host Group. We also bypass Satellite registration entirely if we don't find the hostgroup_id:
+
+```ruby
+#
+# Only register if the provisioning template is linux
+#
+if template.platform == "linux"
+  #
+  # Only register with Satellite if we've been passed a 
+  # hostgroup ID from a service dialog
+  #
+  hostgroup_id = $evm.root['miq_provision'].get_option(:dialog_hostgroup_id)
+  unless hostgroup_id.nil?
+    ...
+```
+
+##### ActivateSatellite
+
+We edit the **activate\_satellite** method from [Integrating with Satellite 6 During Provisioning](../chapter17a/integrating_with_satellite_6.md) to take out the hard-coded selection of Activation Key. We also bypass Satellite activation entirely if we don't find the Activation Key name:
+
+```ruby
+#
+# Only register if the provisioning template is linux
+#
+if template.platform == "linux"
+  #
+  # Only register and activate with Satellite if we've been passed an 
+  # activation key from a service dialog
+  #
+  activationkey = $evm.root['miq_provision'].get_option(:dialog_activationkey_name)
+  unless activationkey.nil?
+    ...
+```
+##### SetConfiguration
+
+The **set\_configuration** Method will be called from two completely different State Machines, once to perform an initial configuration during provisioning, and possibly again during a service reconfigure request. The Method must retrieve the Service Dialog values from either of two different places:
 
 
 ```ruby
@@ -259,12 +296,63 @@ The _SetConfiguration_ Instance will be called from two completely different Sta
     hostname        = $evm.root['dialog_vm_name']  
   end
 ```
+If a Smart Class Parameter override value has not been input the Method simply exits:
+
+```ruby
+  #
+  # Only set the smart class parameter if we've been passed a 
+  # parameter value from a service dialog
+  #
+  unless parameter_value.nil?
+     ...
+```
+The Method must fetch the default domain name from the Host Group to assemble a correct FQDN:
+
+```ruby
+rest_return = rest_action("#{uri_base}/hostgroups/#{hostgroup_id}", :get)
+domain_name = rest_return['domain_name']
+match = "fqdn=#{hostname}.#{domain_name}"
+```
+
+The Method must determine whether the override match already exists. If it doesn't exist it must be created with a POST action; if it does exist is must be updated with a PUT action:
+
+```ruby
+call_string = "#{uri_base}/smart_class_parameters/#{parameter_id}/override_values"
+rest_return = rest_action(call_string, :get)
+override_value_id = 0
+if rest_return['total'] > 0
+  rest_return['results'].each do |override_value|
+    if override_value['match'] == match
+      override_value_id = override_value['id']
+    end
+  end
+end
+if override_value_id.zero?
+  payload = {
+    :match => match,
+    :value => parameter_value
+  }
+  call_string = "#{uri_base}/smart_class_parameters/#{parameter_id}/override_values"
+  rest_return = rest_action(call_string, :post, JSON.generate(payload))
+else
+  payload = {
+    :value => parameter_value
+  }
+  call_string = "#{uri_base}/smart_class_parameters/#{parameter_id}/override_values/#{override_value_id}"
+  rest_return = rest_action(call_string, :put, JSON.generate(payload))
+end
+```
+
+The full code for the Methods is [here](https://github.com/pemcg/cloudforms-automation-howto-guide/tree/master/chapter18/scripts)
+
 ### Testing
 
-We'll order a new service, we'll select the _motd_ class, and override the _content_ Smart Class Parameter:
+We'll order a new service, and select appropriate Host Group and Activation Keys from the drop-downs. We'll select the _motd_ Puppet Class, and override the _content_ Smart Class Parameter:
 <br> <br>
  
 ![screenshot](images/screenshot86.png)
+
+We click _Submit_, and wait for our newly provisioned Service.
 
 Logging in to the newly provisioned server confirms that the motd has been set:
 
@@ -290,13 +378,13 @@ is successful you will be notified via email when the Service is available.
 
 Approvers notes: Auto-Approved
 
-To view this Request go to: https://192.168.1.245/miq_request/show/1000000000109
+To view this Request go to: https://cloudforms05/miq_request/show/1000000000109
 
 Thank you,
 Virtualization Infrastructure Team
 ```
 
-We can login to the Satellite 6 User Interface to confirm that the "Override value for specific hosts" contains our updated value:
+We can login to the Satellite 6 User Interface to confirm that the "Override value for specific hosts" contains our updated value against the match filter:
 <br> <br>
 
 ![screenshot](images/screenshot88.png)
