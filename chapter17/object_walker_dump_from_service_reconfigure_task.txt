@@ -31,7 +31,7 @@ Object Walker 1.6 Starting
      |    |    $evm.root['miq_server'].has_active_webservices = true   (type: TrueClass)
      |    |    $evm.root['miq_server'].hostname = cloudforms05.bit63.net   (type: String)
      |    |    $evm.root['miq_server'].id = 1000000000001   (type: Fixnum)
-     |    |    $evm.root['miq_server'].ipaddress = 192.168.2.245   (type: String)
+     |    |    $evm.root['miq_server'].ipaddress = 192.168.1.245   (type: String)
      |    |    $evm.root['miq_server'].is_master = true   (type: TrueClass)
      |    |    $evm.root['miq_server'].last_heartbeat = 2015-10-09 16:30:11 UTC   (type: ActiveSupport::TimeWithZone)
      |    |    $evm.root['miq_server'].last_update_check = nil

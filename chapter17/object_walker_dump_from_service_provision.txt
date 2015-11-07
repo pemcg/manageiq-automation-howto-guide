@@ -24,7 +24,7 @@ object_walker 1.5-3 - EVM Automate Method Started
      |    object_walker:   $evm.root['miq_server'].has_active_webservices = true   (type: TrueClass)
      |    object_walker:   $evm.root['miq_server'].hostname = cloudforms05.bit63.net   (type: String)
      |    object_walker:   $evm.root['miq_server'].id = 1000000000001   (type: Fixnum)
-     |    object_walker:   $evm.root['miq_server'].ipaddress = 192.168.2.245   (type: String)
+     |    object_walker:   $evm.root['miq_server'].ipaddress = 192.168.1.245   (type: String)
      |    object_walker:   $evm.root['miq_server'].is_master = true   (type: TrueClass)
      |    object_walker:   $evm.root['miq_server'].last_heartbeat = 2015-09-26 17:02:49 UTC   (type: ActiveSupport::TimeWithZone)
      |    object_walker:   $evm.root['miq_server'].last_update_check = nil
@@ -573,7 +573,7 @@ object_walker 1.5-3 - EVM Automate Method Started
      |    |    |    |    object_walker:   destination.has_rdm_disk = false   (type: FalseClass)
      |    |    |    |    object_walker:   destination.host_name = esxsrv01.bit63.net   (type: String)
      |    |    |    |    object_walker:   destination.hostnames = ["localhost.localdomain"]   (type: Array)
-     |    |    |    |    object_walker:   destination.ipaddresses = ["192.168.2.192"]   (type: Array)
+     |    |    |    |    object_walker:   destination.ipaddresses = ["192.168.1.192"]   (type: Array)
      |    |    |    |    object_walker:   destination.is_evm_appliance = false   (type: FalseClass)
      |    |    |    |    object_walker:   destination.last_compliance_status = nil
      |    |    |    |    object_walker:   destination.last_compliance_timestamp = nil
@@ -943,7 +943,7 @@ object_walker 1.5-3 - EVM Automate Method Started
      |    |    |    |    object_walker:   source.has_rdm_disk = false   (type: FalseClass)
      |    |    |    |    object_walker:   source.host_name = esxsrv01.bit63.net   (type: String)
      |    |    |    |    object_walker:   source.hostnames = ["localhost.localdomain"]   (type: Array)
-     |    |    |    |    object_walker:   source.ipaddresses = ["192.168.2.155"]   (type: Array)
+     |    |    |    |    object_walker:   source.ipaddresses = ["192.168.1.155"]   (type: Array)
      |    |    |    |    object_walker:   source.is_evm_appliance = false   (type: FalseClass)
      |    |    |    |    object_walker:   source.last_compliance_status = nil
      |    |    |    |    object_walker:   source.last_compliance_timestamp = nil

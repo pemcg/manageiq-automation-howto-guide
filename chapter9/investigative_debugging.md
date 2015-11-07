@@ -97,7 +97,7 @@ Object Walker 1.6 Starting
      |    |    $evm.root['miq_server'].zone
      |    |    --- end of methods ---
 ...skipping...
-     |    |    |    hardware.ipaddresses = ["192.168.2.171"]   (type: Array)
+     |    |    |    hardware.ipaddresses = ["192.168.1.171"]   (type: Array)
      |    |    |    hardware.mac_addresses = ["00:50:56:b8:00:02"]   (type: Array)
      |    |    |    hardware.region_description = Region 1   (type: String)
      |    |    |    hardware.region_number = 1   (type: Fixnum)
@@ -136,7 +136,7 @@ irb(main):002:0> Host.all
    (3.6ms)  SELECT version()
   Host Load (0.7ms)  SELECT "hosts".* FROM "hosts"
   Host Inst (85.2ms - 2rows)
-=> [#<HostRedhat id: 1000000000002, name: "rhelh02.bit63.net", hostname: "192.168.2.223", ipaddress: "192.168.2.223", ...
+=> [#<HostRedhat id: 1000000000002, name: "rhelh02.bit63.net", hostname: "192.168.1.223", ipaddress: "192.168.1.223", ...
 
 irb(main):003:0>
 ```

@@ -357,7 +357,7 @@ We click _Submit_, and wait for our newly provisioned Service.
 Logging in to the newly provisioned server confirms that the motd has been set:
 
 ```
-root@192.168.2.193's password:
+root@192.168.1.193's password:
 Last login: Sat Nov  7 09:48:50 2015 from cloudforms05.bit63.net
 Power Shutdown Saturday 7th Nov 12pm
 #[root@s3-host01 ~]#
@@ -392,7 +392,7 @@ We can login to the Satellite 6 User Interface to confirm that the "Override val
 Once the Puppet agent has run on the client again, we can login and see the new message:
 
 ```
-root@192.168.2.193's password:
+root@192.168.1.193's password:
 Last login: Sat Nov  7 10:02:29 2015 from my-macbook-pro.bit63.net
 Power Shutdown Cancelled
 #[root@s3-host01 ~]#
