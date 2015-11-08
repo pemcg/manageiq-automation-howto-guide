@@ -2,31 +2,31 @@
 
 Our next Automation example will reference variables that we can define and set in the schema of our class and instance.
 
-We'll edit the schema of the _Methods_ class...
+We'll edit the schema of the _Methods_ class:
 <br> <br>
 
 ![Screenshot](images/screenshot17.png)
 
 <br>
-...and add three attributes, _servername_, _username_ and _password_, as shown...
+and add three attributes, _servername_, _username_ and _password_, as shown:
 <br> <br>
 
 ![Screenshot](images/screenshot18.png)
 
 <br>
-Click _Save_...
+Click _Save_:
 <br> <br>
 
 ![Screenshot](images/screenshot19.png)
 
 <br>
-We need to ensure that the schema method (our _execute_ field) is listed _after_ the three new schema attributes in the field list, otherwise they won't be visible to the method when it runs. If necessary, run _Configuration -> Edit sequence_ to shuffle the schema fields up or down...
+We need to ensure that the schema method (our _execute_ field) is listed _after_ the three new schema attributes in the field list, otherwise they won't be visible to the method when it runs. If necessary, run _Configuration -> Edit sequence_ to shuffle the schema fields up or down:
 <br> <br>
 
 ![Screenshot](images/screenshot20.png)
 
 <br>
-Now we'll create a new instance as before, this time called _GetCredentials_, and we'll fill in some values for the _servername_, _username_ and _password_ schema attributes.
+Now we'll create a new instance as before, this time called _GetCredentials_, and we'll fill in some values for the _servername_, _username_ and _password_ schema attributes:
 <br> <br>
 
 ![Screenshot](images/screenshot21.png)
@@ -38,8 +38,8 @@ We'll create a method _get\_credentials_ containing the following code:
 $evm.log(:info, "get_credentials started")
 
 servername = $evm.object['servername']
-username = $evm.object['username']
-password = $evm.object.decrypt('password')
+username   = $evm.object['username']
+password   = $evm.object.decrypt('password')
 
 $evm.log(:info, "Server: #{servername}, Username: #{username}, Password: #{password}")
 exit MIQ_OK
@@ -49,7 +49,7 @@ exit MIQ_OK
 ![Screenshot](images/screenshot22.png)
 
 <br>
-Finally we'll run the new instance through Automate -> Simulation again, invoking Call_Instance once more with the following attributes...
+Finally we'll run the new instance through Automate -> Simulation again, invoking Call_Instance once more with the following attributes:
 <br> <br>
 
 ![Screenshot](images/screenshot23.png)

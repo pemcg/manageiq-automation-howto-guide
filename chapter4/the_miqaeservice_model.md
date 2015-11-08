@@ -6,7 +6,7 @@ The objects that we work with in the Automation Engine are all _Service Models_ 
 
 The Automation Engine hides this from us pretty well, and generally presents the appropriate object to us via $evm.root (for example if we're working with a ```$evm.root['vm']``` object from a RHEV provider, it's actually an instance of an _MiqAeServiceVmRedhat_ object).
 
-All of the MiqAeService\* objects extend a common _MiqAeServiceModelBase_ class that contains some common methods available to all objects, such as...
+All of the MiqAeService\* objects extend a common _MiqAeServiceModelBase_ class that contains some common methods available to all objects, such as:
 
 ```
 .tagged_with?(category, name)
@@ -24,7 +24,7 @@ MiqAeServiceMiqProvisionRedhatViaPxe <
 				MiqAeServiceModelBase
 ```
 
-The following list is the class definition for all of the CloudForms 3.2 MiqAeService Model classes, showing their immediate superclass...
+The following list is the class definition for all of the CloudForms 3.2 MiqAeService Model classes, showing their immediate superclass:
 
 ```
  class MiqAeServiceAuthKeyPairCloud < MiqAeServiceAuthPrivateKey
@@ -196,7 +196,7 @@ The following list is the class definition for all of the CloudForms 3.2 MiqAeSe
 
 ###Distributed Ruby (dRuby)
 
-Distributed Ruby (dRuby) is used as the communication mechanism between a Worker and the Automate Method it spawns. Many of the $evm methods such as _.root_ and _.object_ are  dRuby stub objects (_DRb::DRbObject_ objects). The actual methods are DRb server methods that run in a different namespace, accessed using a URI such as...
+Distributed Ruby (dRuby) is used as the communication mechanism between a Worker and the Automate Method it spawns. Many of the $evm methods such as _.root_ and _.object_ are  dRuby stub objects (_DRb::DRbObject_ objects). The actual methods are DRb server methods that run in a different namespace, accessed using a URI such as:
 
  ```
  druby://127.0.0.1:52182

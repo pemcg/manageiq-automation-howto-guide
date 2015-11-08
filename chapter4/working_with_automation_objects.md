@@ -4,8 +4,7 @@ When we write our own Automation scripts, we work with the MiqAeService\* Automa
 
 ### Attributes
 
-Just like any other Ruby object, the MiqAeService\* Automation objects that we work with have **Attributes** that we often use. For example, the Attributes for a RHEV Host object (_MiqAeServiceHostRedhat_), with some typical values, are...
-<br> <br>
+Just like any other Ruby object, the MiqAeService\* Automation objects that we work with have **Attributes** that we often use. For example, the Attributes for a RHEV Host object (_MiqAeServiceHostRedhat_), with some typical values, are:
 
 ```
 host.admin_disabled = nil
@@ -52,8 +51,8 @@ this_object.attributes.each do |key, value|
 
 In addition to the standard object Attributes, Rails makes available a number of **Virtual Columns** and attaches them to the object. We access theses Virtual Columns just as we would access Attributes, using "object.virtual\_column\_name" syntax.
 
-For example, the Virtual Columns for our same RHEV Host object, with some typical values, are...
-<br> <br>
+For example, the Virtual Columns for our same RHEV Host object, with some typical values, are:
+
 
 ```
 host.all_enabled_ports = []   (type: Array)
@@ -115,13 +114,13 @@ this_object.virtual_column_names.each do |virtual_column_name|
 
 ### Associations
 
-We saw from [A Little Rails Knowledge](../chapter4/a_little_rails_knowledge.md) that there are **Associations** between many of the Active Records (and hence Service Models), and we use these extensively when scripting. For example to find the name of the cluster that our VM is running on, we follow the assocation between the VM object (_MiqAeServiceVmRedhat_) and its Cluster object (_MiqAeServiceEmsCluster_), and referencing to the Cluster object's _name_ attribute...
+We saw from [A Little Rails Knowledge](../chapter4/a_little_rails_knowledge.md) that there are **Associations** between many of the Active Records (and hence Service Models), and we use these extensively when scripting. For example to find the name of the cluster that our VM is running on, we follow the assocation between the VM object ( _MiqAeServiceVmRedhat_ ) and its Cluster object ( _MiqAeServiceEmsCluster_ ), and referencing to the Cluster object's _name_ attribute:
 
 ```ruby
 cluster = $evm.root['vm'].ems_cluster.name
 ```
 
-We find more about the hardware that our VM has by following associations between the VM object (_MiqAeServiceVmRedhat_), and its Hardware and GuestDevice objects (_MiqAeServiceHardware_ and _MiqAeServiceGuestDevice_)...
+We find more about the hardware that our VM has by following associations between the VM object (_MiqAeServiceVmRedhat_), and its Hardware and GuestDevice objects ( _MiqAeServiceHardware_ and _MiqAeServiceGuestDevice_ ):
 
 ```ruby
 hardware = $evm.root['vm'].hardware
@@ -132,7 +131,7 @@ hardware.guest_devices.each do |guest_device|
 end
 ```
 
-We can find out a user's role by following the association between the User object (_MiqAeServiceUser_) and its Group object (_MiqAeServiceMiqGroup_), and referencing the Group object's _miq\_user\_role\_name_ attribute...
+We can find out a user's role by following the association between the User object ( _MiqAeServiceUser_ ) and its Group object ( _MiqAeServiceMiqGroup_ ), and referencing the Group object's _miq\_user\_role\_name_ attribute:
 
 ```ruby
 role = $evm.root['user'].current_group.miq_user_role_name
@@ -140,7 +139,7 @@ role = $evm.root['user'].current_group.miq_user_role_name
 
 As Automation scripters, we don't need to know anything about the Active Records or Service Models behind the scenes, we just follow the links. See [Investigative Debugging](../chapter9/investigative_debugging.md) to find out what associations there are to follow.
 
-Continuing our exploration of our RHEV Host object (_MiqAeServiceHostRedhat_), the Associations available to this object are...
+Continuing our exploration of our RHEV Host object ( _MiqAeServiceHostRedhat_ ), the Associations available to this object are:
 <br> <br>
 
 ```
@@ -170,7 +169,7 @@ this_object.associations.each do |association|
 
 Most of the objects that we work with have **Methods** defined, either in their own class or superclasses. The description of (most of) these Methods is in the _Management Engine 5.x Methods Available for Automation_ manual.
 
-For example the Methods available to call for our RHEV Host object (_MiqAeServiceHostRedhat_) are...
+For example the Methods available to call for our RHEV Host object ( _MiqAeServiceHostRedhat_ ) are:
 
 ```
 host.authentication_password

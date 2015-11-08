@@ -4,15 +4,10 @@ Before we start investigating CloudForms/ManageIQ Automation in detail, it's wor
 
 ### The Automation Datastore
 
-The Automation Datastore has a directory-like structure, consisting of several types of object:
+The Automation Datastore has a directory-like structure, consisting of several types of object. The screenshot below shows the icon styles for CloudForms Management Engine 5.4 (left) and CloudForms Management Engine 5.5 (right) 
 <br> <br>
 
-![Datastore](images/datastore.png) 
-
-The new user interface theme in the CloudForms Management Engine 5.5 / ManageIQ _Capablanca_ release has has given the icons a monochrome style:
-<br> <br>
-
-![Datastore](images/screenshot11.png)
+![Datastore](images/screenshot12.png) 
 
 <br>
 We can look at each of these types of object in more detail in the following sections.

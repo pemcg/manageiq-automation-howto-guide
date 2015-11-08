@@ -55,7 +55,7 @@ vm = $evm.root['vm']
 #
 # Get the dialog values
 #
-key = $evm.root['dialog_key']
+key   = $evm.root['dialog_key']
 value = $evm.root['dialog_value']
 #
 # Set the custom attribute
@@ -68,48 +68,48 @@ exit MIQ_OK
 Values entered into a dialog box are available to our method through $evm.root. The Automation Engine prefixes the dialog element names with "dialog\_", and so the values that we want to read are $evm.root['dialog\_key'] and $evm.root['dialog\_value'].
 
 #### Create the /System Entry Point
-We're going to be calling our new Instance directly from the /System/ Namespace this time rather than redirecting through Call_Instance as before, so first we must copy/clone the /ManageIQ/System/Request Class into our own domain
+To illustrate an alternative way of calling an Instance, we're going to be creating our own entry point directly in the /System/ Namespace, rather than redirecting through Call_Instance as before. First we must copy/clone the /ManageIQ/System/Request Class into our own domain:
 <br> <br>
 
 ![Screenshot](images/screenshot11.png)
 
 <br>
-Copy the class into the ACME Domain, to the same path...
+Copy the class into the ACME Domain, to the same path:
 <br> <br>
 ![Screenshot](images/screenshot12.png)
 
 <br>
-Next we have to create a new Instance of the Class...
+Next we have to create a new Instance of the Class:
 <br> <br>
 
 ![Screenshot](images/screenshot13.png)
 
 <br>
-...and we enter _/General/Methods/AddCustomAttribute_ into the _rel1_ field...
+...and we enter _/General/Methods/AddCustomAttribute_ into the _rel1_ field:
 <br> <br>
 
 ![Screenshot](images/screenshot14.png)
 
 ### Creating the Button
-Navigate to _Automate -> Customization_, select _Buttons_ in the accordion, highlight _Object Types -> VM and Instance_, then select _Configuration -> Add a new Button Group_
+Navigate to _Automate -> Customization_, select _Buttons_ in the accordion, highlight _Object Types -> VM and Instance_, then select _Configuration -> Add a new Button Group_:
 <br> <br>
 
 ![Screenshot](images/screenshot7.png)
 
 <br>
-Create a Button Group called _VM Actions_, select a Button Group Image
+Create a Button Group called _VM Actions_, select a Button Group Image:
 <br> <br>
 
 ![Screenshot](images/screenshot8.png)
 
 <br>
-Click the _Add_ button. Now highlight this new _VM Actions_ button group in the accordion, and select _Configuration -> Add a new Button_
+Click the _Add_ button. Now highlight this new _VM Actions_ button group in the accordion, and select _Configuration -> Add a new Button_:
 <br> <br>
 
 ![Screenshot](images/screenshot9.png)
 
 <br>
-Specify a Button and Hover Text of _Add Custom Attribute_, select a suitable button image, and pick our new _Button_ Dialog from the drop-down list.
+Specify a Button and Hover Text of _Add Custom Attribute_, select a suitable button image, and pick our new _Button_ Dialog from the drop-down list:
 <br> <br>
 
 ![Screenshot](images/screenshot10.png?)
@@ -122,13 +122,13 @@ If we navigate to a VM and drill down into the details, we should see our new bu
 ![Screenshot](images/screenshot15.png)
 
 <br>
-If we click on the _Add Custom Attribute_ button we should be presented with our dialog...
+If we click on the _Add Custom Attribute_ button we should be presented with our dialog:
 <br> <br>
 
 ![Screenshot](images/screenshot16.png)
 
 <br>
-Enter some text and click _Submit_, wait a few seconds, and we should see the new custom attribute displayed at the botton of the VM details pane...
+Enter some text and click _Submit_, wait a few seconds, and we should see the new custom attribute displayed at the botton of the VM details pane:
 <br> <br>
 
 ![Screenshot](images/screenshot17.png)

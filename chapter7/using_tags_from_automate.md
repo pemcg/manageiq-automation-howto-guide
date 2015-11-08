@@ -1,6 +1,6 @@
 ## Using Tags from Automate
 Tags are a very powerful feature of CloudForms/ManageIQ, and fortunately Automate has extensive support for tag-related operations.
-Tags are defined and used within the context of tag _categories_. We can check whether a category exists, and if not create it...
+Tags are defined and used within the context of tag _categories_. We can check whether a category exists, and if not create it:
 
 ```ruby
 unless $evm.execute('category_exists?', 'data_centre')
@@ -11,7 +11,7 @@ unless $evm.execute('category_exists?', 'data_centre')
   					:description => "Data Centre")
 end
 ```
-We can also check whether a tag exists within a category, and if not create it...
+We can also check whether a tag exists within a category, and if not create it:
 
 ```ruby
 unless $evm.execute('tag_exists?', 'data_centre', 'london')
@@ -23,21 +23,21 @@ end
 ```
 Note that tag and category names must be lower-case (optionally) with underscores, with a maximum length of 30 characters. The tag and category descriptions can be free text.
 
-We can assign a category/tag to an object (in this case a VM)...
+We can assign a category/tag to an object (in this case a VM):
 
 ```ruby
 vm = $evm.root['vm']
 vm.tag_assign("data_center/london")
 ```
 
-or we can remove a category/tag from an object...
+or we can remove a category/tag from an object:
 
 ```ruby
 vm = $evm.root['vm']
 vm.tag_unassign("data_center/paris")
 ```
 
-We can test whether an object (in this case a user group) is tagged with a particular tag...
+We can test whether an object (in this case a user group) is tagged with a particular tag:
 
 ```ruby
 ci_owner = 'engineering'
@@ -48,13 +48,13 @@ groups.each do |group|
   end
 end
 ```
-We can retrieve the list of all tags assigned to an object...
+We can retrieve the list of all tags assigned to an object:
 
 ```ruby
 group_tags = group.tags
 ```
 
-...or the tags in a particular category (in this case using the tag name as a symbol)...
+...or the tags in a particular category (in this case using the tag name as a symbol):
 
 ```ruby
 all_department_tags = group.tags(:department)
@@ -73,7 +73,7 @@ $evm.vmdb('classification').find_all_by_parent_id(tag_classification.id).each do
 end
 ```
 
-If we want to find a particular tag's name, given its description, we can use more Rails-syntax in our _find_ call to lookup two fields at once...
+If we want to find a particular tag's name, given its description, we can use more Rails-syntax in our _find_ call to lookup two fields at once:
 
 
 ```ruby
@@ -85,7 +85,7 @@ tag = $evm.vmdb('classification').find(:first,
 tag_name = tag.name
 ```
 
-The tag names aren't in the _classifications_ table (just the tag description). When we call _tag.name_, Rails runs an implicit search of the _tags_ table for us, based on the tag.id...
+The tag names aren't in the _classifications_ table (just the tag description). When we call _tag.name_, Rails runs an implicit search of the _tags_ table for us, based on the tag.id:
 
 ```
 irb(main):051:0> tag.name
@@ -94,7 +94,7 @@ irb(main):051:0> tag.name
 => "hr"
 ```
 
-Finally, we can just search for a tag in a given category...
+Finally, we can just search for a tag in a given category:
 
 ```ruby
 tag = $evm.vmdb(:classification).find_by_name('department/hr')

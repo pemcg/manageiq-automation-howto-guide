@@ -59,13 +59,13 @@ vmdb_production=# \d services
  ...
 ```
 
-...we see that we could call...
+...we see that we could call:
 
 ```ruby
 $evm.vmdb('service').find_by_service_template_id(template_id)
 ```
 
-...if we wanted.
+if we wanted.
 
 Tip - don't try searching the CloudForms sources for ```def find_by_id``` though, these are not statically defined methods and so don't exist in the CloudForms code.
 
