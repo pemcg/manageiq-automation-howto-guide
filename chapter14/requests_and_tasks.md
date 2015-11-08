@@ -32,7 +32,7 @@ The most common Automation operation that non-admin users frequently perform is 
 ### Objects
 If the _Request_ is approved, one or more _Task_ objects will be created from information contained in the _Request_ object (a single request for three VMs will result in three task objects for example).
 
-If we look at the class ancestry for the _Request_ objects...
+If we look at the class ancestry for the _Request_ objects:
 
 ```
 MiqAeServiceAutomationRequest < MiqAeServiceMiqRequest
@@ -45,7 +45,7 @@ MiqAeServiceVmMigrateRequest < MiqAeServiceMiqRequest
 MiqAeServiceVmReconfigureRequest < MiqAeServiceMiqRequest
 ```
 
-...and for the _Task_ objects...
+and for the _Task_ objects:
 
 ```
 MiqAeServiceAutomationTask < MiqAeServiceMiqRequestTask
@@ -105,19 +105,19 @@ Much of the information in the Request object is propagated to the Task object, 
 #### Dumping the Object Contents
 We can use object_walker to show the difference between an Automation Request and Task object.
 
-Using the following walk\_association\_whitelist...
+Using the following walk\_association\_whitelist:
 
 ```ruby
 @walk_association_whitelist = \
     { "MiqAeServiceAutomationTask" => ["automation_request", "miq_request"]}
 ```
 
-...we can call the ObjectWalker from the RESTful API, using the /api/automation_requests URI.
+we can call the ObjectWalker from the RESTful API, using the /api/automation_requests URI.
 
 
 When the Automation Instance (in this case ObjectWalker) runs, the Request has already been approved and so the Task object exists.
 
-The Request object is reachable via an Association from the Task object...
+The Request object is reachable via an Association from the Task object:
 
 ```
 automation_request = $evm.root['automation_task'].automation_request
@@ -187,7 +187,7 @@ automation_request = $evm.root['automation_task'].automation_request
 |    --- end of methods ---
 ```
 
-...but the Task object is available from $evm.root...
+but the Task object is available from $evm.root:
 
 
 ```

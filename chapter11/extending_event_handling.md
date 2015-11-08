@@ -8,7 +8,7 @@ We can override this behaviour in either of two ways.
 
 ### Adding a New Automation Instance to /System/Event
 
-We can add a new Automate Instance called _/System/Event/compute.instance.power\_on.end_, that runs a method containing the following code...
+We can add a new Automate Instance called _/System/Event/compute.instance.power\_on.end_, that runs a method containing the following code:
 
 ```ruby
 if $evm.root['ems_event'].source == 'OPENSTACK' 
@@ -20,7 +20,7 @@ This will trigger an EMS refresh of the OpenStack Provider for any OpenStack Ins
 
 ### Edit /var/www/miq/vmdb/config/event_handling.tmpl.yml
 
-There is a YAML file on each appliance _/var/www/miq/vmdb/config/event\_handling.tmpl.yml_ that controls the default actions to be taken when each event type is raised. This file has the following section to hande OpenStack _compute.instance.power\_off.end_ events...
+There is a YAML file on each appliance _/var/www/miq/vmdb/config/event\_handling.tmpl.yml_ that controls the default actions to be taken when each event type is raised. This file has the following section to hande OpenStack _compute.instance.power\_off.end_ events:
 
 ```
   compute.instance.power_off.end:
@@ -31,7 +31,7 @@ There is a YAML file on each appliance _/var/www/miq/vmdb/config/event\_handling
     - vm_poweroff
 ```
 
-If we add...
+If we add:
 
 ```
   compute.instance.power_on.end:
@@ -39,4 +39,4 @@ If we add...
     - ems
 ```
 
-...and restart the evmserverd service, our _compute.instance.power\_off.end_ events are now handled as expected without having to create new Instances under /System/Event
+and restart the evmserverd service, our _compute.instance.power\_off.end_ events are now handled as expected without having to create new Instances under /System/Event

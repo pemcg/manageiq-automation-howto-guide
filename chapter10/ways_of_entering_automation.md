@@ -10,7 +10,7 @@ There are a further two ways that an Automation script can be launched.
 
 ### Control Policy Actions
 
-A **Control Policy Action** can be created that launches a Custom Automation Instance.
+A **Control Policy Action** can be created that launches a Custom Automation Instance:
 <br> <br>
 
 ![screenshot](images/screenshot1.png?)
@@ -20,7 +20,7 @@ This can launch any Instance in _/System/Request_, but as before we can use _Cal
 
 ### Alerts
 
-An **Alert** can be created that sends a Management Event, which calls an Instance under _/System/Event_ in the Automation Datastore that corresponds to the Management Event name.
+An **Alert** can be created that sends a Management Event, which calls an Instance under _/System/Event_ in the Automation Datastore that corresponds to the Management Event name:
 <br> <br>
 
 ![screenshot](images/screenshot2.png)
@@ -40,7 +40,7 @@ Our entry point into Automate governs the content of $evm.root - this is the obj
 
 For example we might wish to add a disk during the provisioning workflow for the VM; from a button on an existing VM object in the WebUI, or even from an external RESTful call into the Automate Engine (passing the VM ID as an argument). The contents of $evm.root is different in each of these cases.
 
-For each of these cases we need to access the target VM Object in a different way, but we can use the ```$evm.root['vmdb_object_type']``` key to help us establish context...
+For each of these cases we need to access the target VM Object in a different way, but we can use the ```$evm.root['vmdb_object_type']``` key to help us establish context:
 
 
 ```ruby

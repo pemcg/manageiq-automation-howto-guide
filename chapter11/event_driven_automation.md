@@ -6,7 +6,7 @@ In the following example an Automation Request has been submitted through the RE
 
 ### Event: request_created
 
-The first messages that we see in the log notify us of the _request\_created_ event happening...
+The first messages that we see in the log notify us of the _request\_created_ event happening:
 
 ```
 MiqAeEvent.build_evm_event >> event=<"request_created"> inputs=<{}>
@@ -18,14 +18,14 @@ Instantiating [/System/Process/Event? \
 	object_name=Event& \
 	vmdb_object_type=automation_request]
 ```
-Here we see the event being triggered, which takes us into the standard entry point Instance...
+Here we see the event being triggered, which takes us into the standard entry point Instance:
 
 
 <br>
 ![screenshot](images/screenshot1.png?)
 
 <br>
-This is a relationship that takes us to _/System/Event/{#event\_type}_, and in our case _event\_type_ is _request\_created_, so we follow the chain...
+This is a relationship that takes us to _/System/Event/{#event\_type}_, and in our case _event\_type_ is _request\_created_, so we follow the chain:
 
 ```
 Following Relationship [miqaedb:/System/Event/request_created#create]
@@ -35,7 +35,7 @@ Following Relationship [miqaedb:/System/Event/request_created#create]
 ![screenshot](images/screenshot2.png)
 
 <br>
-This is a relationship that takes us to _/System/Policy/request\_created_, so we follow the chain...
+This is a relationship that takes us to _/System/Policy/request\_created_, so we follow the chain:
 
 ```
 Following Relationship [miqaedb:/System/Policy/request_created#create]
@@ -46,7 +46,7 @@ Following Relationship [miqaedb:/System/Policy/request_created#create]
 
 <br>
 
-This Instance runs _get\_request\_type_ to find out what type of automation request has been initiated (notice that at this stage we're running withing the context of an _Automation Request_ (ID: 2000000000004))...
+This Instance runs _get\_request\_type_ to find out what type of automation request has been initiated (notice that at this stage we're running withing the context of an _Automation Request_ (ID: 2000000000004)):
 
 ```
 Q-task_id([automation_request_2000000000004]) \
@@ -67,7 +67,7 @@ Q-task_id([automation_request_2000000000004]) \
 
 _get\_request\_type_ returns ```Request Type:<AutomationRequest>```
 
-Next we follow the _rel4_ relationship to _/System/Process/parse\_provider\_category_
+Next we follow the _rel4_ relationship to _/System/Process/parse\_provider\_category_:
 
 ```
 Q-task_id([automation_request_2000000000004]) \
@@ -96,7 +96,7 @@ Q-task_id([automation_request_2000000000004]) \
 
 _parse\_provider\_category_ returns _nil_ as this Automation Request does not involve any _Provider_ operations (as it would if we were provisioning a VM, for example).
 
-Finally we follow the _rel5_ relationship to _/System/Policy/AutomationRequest\_created_ ("AutomationRequest" having been substituted for ${#request\_type}). This doesn't exist (we can create one if we choose), so we see the warning message
+Finally we follow the _rel5_ relationship to _/System/Policy/AutomationRequest\_created_ ("AutomationRequest" having been substituted for ${#request\_type}). This doesn't exist (we can create one if we choose), so we see the warning message:
 
 ```
 Instance [/ManageIQ/System/Policy/AutomationRequest_created] not found in MiqAeDatastore - trying [.missing]
@@ -106,7 +106,7 @@ The .missing Instance does nothing, so we end that Event-initiated chain.
 
 ### Event: request_approved
 
-The next event that we see is "request\_approved", which follows a very similar chain of references (actually _request\_approved_ executes almost concurrently with _request\_created_ because we specified ```:auto_approve => true``` in the Automation Request API call)...
+The next event that we see is "request\_approved", which follows a very similar chain of references (actually _request\_approved_ executes almost concurrently with _request\_created_ because we specified ```:auto_approve => true``` in the Automation Request API call):
 
 ```
 MiqAeEvent.build_evm_event >> event=<"request_approved"> inputs=<{}>
@@ -132,7 +132,7 @@ Once again we have no _AutomationRequest\_Approved_ method, so we terminate this
 
 ### Event: request_starting
 
-The third event that we see is _request\_starting_...
+The third event that we see is _request\_starting_:
 
 ```
 Q-task_id([automation_request_2000000000004]) \
@@ -161,7 +161,7 @@ Q-task_id([automation_request_2000000000004]) \
     Followed  Relationship [miqaedb:/System/Event/request_starting#create]
 ```
 
-But at the end of this chain we see the Automation Request queueing the Automation Task...
+But at the end of this chain we see the Automation Request queueing the Automation Task:
 
 ```
 Q-task_id([automation_request_2000000000004]) \
@@ -172,7 +172,7 @@ Q-task_id([automation_request_2000000000004]) \
 
 ### Task Processing
 
-Finally we see the actual Task running...
+Finally we see the actual Task running:
 
 ```
 Q-task_id([automation_task_2000000000003]) Instantiating [/Bit63/Discovery/Methods/Test? \

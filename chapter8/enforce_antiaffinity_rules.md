@@ -8,15 +8,13 @@ Write an Automation Method that enforces anti-affinity rules for VMs, based on a
 
 The Automation Method should be run from a Button visible on the VM details page. If another VM with the same _server\_role_ tag is found running on the same host (hypervisor) as the displayed VM, then we live migrate the current VM to another host with no other such tagged VMs (VM migration is only supported when we're working with a VMware vCenter Provider). We also email all users in the EvmGroup-administrator group that the migration occurred.
 
-We can achieve the task using the following script...
+We can achieve the task using the following script:
 <br> <br>
 
 ```ruby
 #----------------------------------------------------------------------------
 #
 # CFME Automate Method: enforce_anti-affinity
-#
-# Author: Peter McGowan (Red Hat)
 #
 # Notes: This method enforces an anti-affinity rule based on server_role tag
 #

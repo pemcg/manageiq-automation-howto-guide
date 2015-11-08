@@ -6,7 +6,7 @@ As seen in [Working with Automation Objects](../chapter4/working_with_automation
 
 **InspectMe** is an Instance/Method combination supplied out-of-the-box that we can call to dump some attributes of $evm.root and its associated objects. As an example we can call InspectMe from a button on a _VM and Instance_ object as we did when running our AddCustomAttribute instance in [A More Advanced Example](../chapter5/a_more_advanced_example.md). As both the Instance and Method are in the _ManageIQ/System/Request_ namespace, we can call InspectMe directly rather than calling _Call\_Instance_ as an intermediary.
 
-We can view the results of the InspectMe dump in automation.log...
+We can view the results of the InspectMe dump in automation.log:
 
 ```
 [root@cloudforms ~]# vmdb
@@ -45,9 +45,9 @@ One of the features of object\_walker is the ability to be able to selectively c
 In practice a _@walk\_association\_policy_ of _:blacklist_ produces so much output that it's rarely used, and so a _:whitelist_ is more often defined, e.g.
 
 ```ruby
-@walk_association_whitelist = { "MiqAeServiceVmRedhat" => ["hardware", "host", "storage"],
-                                "MiqAeServiceVmVmware" => ["hardware", "host", "storage"],
-                                "MiqAeServiceHardware" => ["nics", "guest_devices", "ports", "storage_adapters" ],
+@walk_association_whitelist = { "MiqAeServiceVmRedhat"    => ["hardware", "host", "storage"],
+                                "MiqAeServiceVmVmware"    => ["hardware", "host", "storage"],
+                                "MiqAeServiceHardware"    => ["nics", "ports", "storage_adapters" ],
                                 "MiqAeServiceGuestDevice" => ["hardware", "lan", "network"] }
 ```
 
@@ -57,18 +57,18 @@ There is a companion _object\_walker\_reader_ script that can be copied to the C
 ```
 Object Walker 1.6 Starting
      --- $evm.current_* details ---
-     $evm.current_namespace = bit63/bit63   (type: String)
+     $evm.current_namespace = bit63   (type: String)
      $evm.current_class = methods   (type: String)
      $evm.current_instance = objectwalker   (type: String)
      $evm.current_message = create   (type: String)
-     $evm.current_object = /bit63/bit63/methods/objectwalker   (type: DRb::DRbObject, URI: druby://127.0.0.1:56498)
+     $evm.current_object = /bit63/methods/objectwalker   (type: DRb::DRbObject, URI: druby://127.0.0.1:56498)
      $evm.current_object.current_field_name = Execute   (type: String)
      $evm.current_object.current_field_type = method   (type: String)
      $evm.current_method = object_walker   (type: String)
      --- object hierarchy ---
      $evm.root = /ManageIQ/SYSTEM/PROCESS/Request
        $evm.parent = /ManageIQ/System/Request/call_instance
-         $evm.object = /bit63/bit63/methods/objectwalker
+         $evm.object = /bit63/methods/objectwalker
      --- walking $evm.root ---
      $evm.root = /ManageIQ/SYSTEM/PROCESS/Request   (type: DRb::DRbObject, URI: druby://127.0.0.1:56498)
      |    --- attributes follow ---
@@ -97,7 +97,7 @@ Object Walker 1.6 Starting
      |    |    $evm.root['miq_server'].zone
      |    |    --- end of methods ---
 ...skipping...
-     |    |    |    hardware.ipaddresses = ["192.168.1.171"]   (type: Array)
+     |    |    |    hardware.ipaddresses = ["192.168.12.171"]   (type: Array)
      |    |    |    hardware.mac_addresses = ["00:50:56:b8:00:02"]   (type: Array)
      |    |    |    hardware.region_description = Region 1   (type: String)
      |    |    |    hardware.region_number = 1   (type: Fixnum)
@@ -129,19 +129,19 @@ Loading production environment (Rails 3.2.17)
 irb(main):001:0>
 ```
 <br>
-Once in the Rails console there are a number of things that we can do, such as use Rails object syntax to look at all _Host_ Active Records...
+Once in the Rails console there are a number of things that we can do, such as use Rails object syntax to look at all _Host_ Active Records:
 
 ```
 irb(main):002:0> Host.all
    (3.6ms)  SELECT version()
   Host Load (0.7ms)  SELECT "hosts".* FROM "hosts"
   Host Inst (85.2ms - 2rows)
-=> [#<HostRedhat id: 1000000000002, name: "rhelh02.bit63.net", hostname: "192.168.1.223", ipaddress: "192.168.1.223", ...
+=> [#<HostRedhat id: 1000000000002, name: "rhelh02.bit63.net", hostname: "192.168.12.22", ipaddress: "192.168.12.22", ...
 
 irb(main):003:0>
 ```
 <br>
-We can even generate our own $evm variable that matches the Automation Engine default...
+We can even generate our own $evm variable that matches the Automation Engine default:
 
 ```ruby
 $evm = MiqAeMethodService::MiqAeService.new(MiqAeEngine::MiqAeWorkspaceRuntime.new)
@@ -198,7 +198,7 @@ More details are available from https://github.com/georgegoh/cloudforms-util
 
 ### Rails db
 
-It is occasionaly useful to be able to examine some of the database tables (such as to look for column headers that we can find\_by\_* on). We can connect to Rails db, which puts us directly into a psql session...
+It is occasionaly useful to be able to examine some of the database tables (such as to look for column headers that we can find\_by\_* on). We can connect to Rails db, which puts us directly into a psql session:
 
 ```
 [root@cloudforms ~]# vmdb

@@ -4,7 +4,7 @@ There are three more Class/Schema concepts that we use with varying degrees of f
 ### Messages
 Each Schema Field has a **Message** column/value that we can optionally use to identify a particular Field to execute or evaluate when we call the Instance. We can think of this as an index key into the schema.
 
-The default message is _create_, and if we look at the schema that we created for our _/ACME/General/Methods_ class, we see that the default Message value of _create_ was automatically set for us for all fields...
+The default message is _create_, and if we look at the schema that we created for our _/ACME/General/Methods_ class, we see that the default Message value of _create_ was automatically set for us for all fields:
 <br> <br>
 
 ![screenshot](images/screenshot3.png)
@@ -12,7 +12,7 @@ The default message is _create_, and if we look at the schema that we created fo
 <br>
 We specify the Message when we create a Relationship to an Instance, by appending _#message_ after the URI to the Instance. If we don't explicitly specify a Message then _#create_ is implicitly used.
 
-For example we could create a Relationship to run our first _HelloWorld_ Instance, using a URI of either
+For example we could create a Relationship to run our first _HelloWorld_ Instance, using a URI of either:
 
 ```
 /ACME/General/Methods/HelloWorld
@@ -27,19 +27,19 @@ or
 In both cases the _hello\_world_ Method would execute as this is the _Method_ schema field "indexed" by the _create_ message.
 
 #### Specifying our own Messages
-It can be useful to create a Class/Instance schema that allows for one of several Methods to be executed, depending on the Message passed to the Instance at run-time. For example the schema for the _Infrastructure/VM/Provisioning/Placement_ Class allows for a Provider-specific VM placement algorithm to be created...
+It can be useful to create a Class/Instance schema that allows for one of several Methods to be executed, depending on the Message passed to the Instance at run-time. For example the schema for the _Infrastructure/VM/Provisioning/Placement_ Class allows for a Provider-specific VM placement algorithm to be created:
 <br> <br>
 
 ![screenshot](images/screenshot2.png)
 
 <br>
-The _default_ Instance created from this Class has the Method values filled in accordingly...
+The _default_ Instance created from this Class has the Method values filled in accordingly:
 <br> <br>
 
 ![screenshot](images/screenshot4.png)
 
 <br>
-...which means that it can be called as part of the VM Provisioning State Machine, by appending a Message created from a variable substitution corresponding to the provisioning source vendor (i.e. redhat, vmware or microsoft)...
+...which means that it can be called as part of the VM Provisioning State Machine, by appending a Message created from a variable substitution corresponding to the provisioning source vendor (i.e. redhat, vmware or microsoft):
 
 ```
 /Infrastructure/VM/Provisioning/Placement/default#${/#miq_provision.source.vendor}

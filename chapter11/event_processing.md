@@ -6,7 +6,7 @@ One of the powerful features of CloudForms / ManageIQ is its event handling capa
 
 External events are monitored by _EventCatcher_ workers, which monitor the real-time message or event busses on the various Providers - AWS:config for Amazon, AMQP/RabbitMQ for OpenStack, the native VMware Message Bus, or the RHEV-M events exposed through the RESTful API for example.
 
-From evm.log we can see...
+From evm.log we can see:
 
 ```
 MIQ(EventCatcherOpenstack) EMS [rhosp-cont] as [admin] Caught event [compute.instance.power_on.start]
@@ -19,7 +19,7 @@ MIQ(EventCatcherOpenstack) EMS [rhosp-cont] as [admin] Caught event [compute.ins
 MIQ(EventCatcherOpenstack) EMS [rhosp-cont] as [admin] Caught event [compute.instance.power_off.end]
 ```
 
-The events are passed to one or more _EventHandler_ workers...
+The events are passed to one or more _EventHandler_ workers:
 
 ```
 MIQ(EmsEventHandler-handle_event) Processing EMS event [compute.instance.power_off.start] chain_id [0] \
@@ -34,7 +34,7 @@ MIQ(EmsEventHandler-handle_event) Processing EMS event [compute.instance.power_o
 
 ### Raising Events
 
-In addition to catching external events, CloudForms / ManageIQ can raise its own events that can be processed by Control Policies or Alerts. An example of this can be seen with the following evm.log extract. In this case an OpenStack Instance and a RHEV VM have each been powered off, and the respective Provider events _compute.instance.power\_off.end_ (OpenStack) and _USER\_STOP\_VM_ (RHEV) have been caught. For each Provider-specific event caught, the Event Handler raises the same generic _vm\_poweroff_ event that can be optionally handled by Control.
+In addition to catching external events, CloudForms / ManageIQ can raise its own events that can be processed by Control Policies or Alerts. An example of this can be seen with the following evm.log extract. In this case an OpenStack Instance and a RHEV VM have each been powered off, and the respective Provider events _compute.instance.power\_off.end_ (OpenStack) and _USER\_STOP\_VM_ (RHEV) have been caught. For each Provider-specific event caught, the Event Handler raises the same generic _vm\_poweroff_ event that can be optionally handled by Control:
 
 ```
 MIQ(EventCatcherOpenstack) EMS [rhosp-cont] as [admin] Caught event [compute.instance.power_off.end]
@@ -80,7 +80,7 @@ MIQ(MiqAeEngine.deliver) Delivering :event_id=>1000000003170, \
 MIQ(EmsEventHandler-handle_event) Processing EMS event [USER_RUN_VM] chain_id [] on EMS [1000000000001]...Complete
 ```
 
-The MIQ Provision Request workflow also uses raised events to control the processing sequence... 
+The MIQ Provision Request workflow also uses raised events to control the processing sequence: 
 
 ```
 MIQ(MiqProvisionRequest.call_automate_event) Raising event [request_created] to Automate
