@@ -134,7 +134,7 @@ We'll submit three automation requests via the RESTful API, calling a simple _Te
 - As user _admin_, specifying ```:auto_approve => false```
 - As a user who is a member of the group _Bit63Group\_vm\_user_
 
-For the first call, our assertion correctly prevents our custom approval workflow from running. From automation.log we see:
+For the first call, our assertion correctly prevents our custom approval workflow from running (the request has already been auto-approved). From automation.log we see:
 
 ```
 Evaluating substituted assertion ["approved" == "pending_approval"]
@@ -172,9 +172,9 @@ Thank you,
 Virtualization Infrastructure Team
 ```
 
-Clicking the link takes us to an approval page, and we can approve the request, whoch then continues.
+Clicking the link takes us to an approval page, and we can approve the request, which then continues.
 
-For the third call we see that the assertion avaulates to _true_, but this time we see the valid group profile being used:
+For the third call we see that the assertion evaluates to _true_, but this time we see the valid group profile being used:
 
 ```
 Evaluating substituted assertion ["pending_approval" == "pending_approval"]
