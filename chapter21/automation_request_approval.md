@@ -133,6 +133,7 @@ We'll submit three automation requests via the RESTful API, calling a simple _Te
 - As user _admin_, specifying ```:auto_approve => true```
 - As user _admin_, specifying ```:auto_approve => false```
 - As a user who is a member of the group _Bit63Group\_vm\_user_
+<br> <br>
 
 For the first call, our assertion correctly prevents our custom approval workflow from running (the request has already been auto-approved). From automation.log we see:
 
