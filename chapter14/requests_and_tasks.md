@@ -7,6 +7,7 @@ Some, relatively simple Automation operations launch directly into a running Ins
 - Automation Instances running to populate dynamic dialog elements
 - Automation Instances entered as a result of a Control Policy Action Type of _Invoke a Custom Automation_
 - Alerts that send a _Management Event_
+<br> <br>
 
 Some other more complex Automation operations - such as provisioning VMs or Cloud Instances - may alter or consume resources in our virtual or cloud infrastructure, and for these CloudForms/ManageIQ allows us to insert an approval stage into the Automation workflow. It does this by separating the operation into two distinct stages - the **Request** and the **Task**, with an approval being required to progress from one to the other.
 
