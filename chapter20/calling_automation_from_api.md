@@ -89,7 +89,7 @@ Using this technique we can write our own pseudo-API calls for CloudForms to han
 
 When we make a RESTful call, we must authenticate using a valid username and password. This user must be an admin or equivalent however if we wish to specify _:auto\_approve => true_ in our calling arguments (only admins can auto-approve Automation requests).
 
-If we try making a RESTful call as a non-admin user, the Automation request will be blocked pending approval (as expected). There seems to be no way however for an admin user to approve such a request through the WebUI (BZ #1229818), so currently if we want to submit an automation request as a non-admin user, we would need to write our own approval code.
+If we try making a RESTful call as a non-admin user, the Automation request will be blocked pending approval (as expected). If we want to submit an auto-approved automation request as a non-admin user, we would need to write our own approval workflow (see [Automation Request Approval](../chapter21/automation_request_approval.md)).
 
 #### Zone Implications
 

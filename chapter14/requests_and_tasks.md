@@ -1,6 +1,30 @@
 ## Requests and Tasks
 
-User-initiated Automation operations have two distinct stages - the **Request** and the **Task**. There are corresponding request and task objects representing these stages, each holding information relevant to the operation.
+Some, relatively simple Automation operations launch directly into a running Instance/Method known as the **Task**. Examples of these are:
+
+- Running an Automation Instance from a button
+- Running an Automation Instance from simulation
+- Automation Instances running to populate dynamic dialog elements
+- Automation Instances entered as a result of a Control Policy Action Type of _Invoke a Custom Automation_
+- Alerts that send a _Management Event_
+
+Some other more complex Automation operations - such as provisioning VMs or Cloud Instances - may alter or consume resources in our virtual or cloud infrastructure, and for these CloudForms/ManageIQ allows us to insert an approval stage into the Automation workflow. It does this by separating the operation into two distinct stages - the **Request** and the **Task**, with an approval being required to progress from one to the other.
+
+Examples of these are:
+
+- Calling an automation request via the RESTful API
+- Provisioning a Host
+- Provisioning a VM
+- Requesting a Service
+- Reconfiguring a VM
+- Reconfiguring a Service
+- Migrating a VM
+
+We will look at these in more detail in this section.
+
+### Object Types
+
+There are corresponding request and task objects representing each of these more complex 'workflow'-type operations. Each object holds information relevant to the operation.
 
 |   Operation          |   Request Object   |   Task Object   |
 |:--------------------:|:------------------:|:---------------:|
@@ -25,11 +49,13 @@ The values that we select or enter are added to the options hash in a newly crea
 | VM Ordered from a Service Catalog Item | miq\_provision\_request\_template | miq\_provision |
 
 ### Approval
+
 _Requests_ need to be approved before the Task is created. Admin-level users can auto-approve their own requests, while non-admin users sometimes need the request explicitly approved, depending on the Automation Request type.
 
 The most common Automation operation that non-admin users frequently perform is to provision a VM, and for this there are approval thresholds in place (_max\_vms, max\_cpus, max\_memory, max\_retirement\_days_). VM Provision Requests specifying numbers or sizes below these thresholds are auto-approved, whereas requests exceeding these thresholds are blocked, pending approval by an admin-level user.
 
-### Objects
+### Object Class Ancestry
+
 If the _Request_ is approved, one or more _Task_ objects will be created from information contained in the _Request_ object (a single request for three VMs will result in three task objects for example).
 
 If we look at the class ancestry for the _Request_ objects:
@@ -76,7 +102,7 @@ prov = $evm.root['miq_provision_request'] || $evm.root['miq_provision'] \
     || $evm.root['miq_provision_request_template']
 ```
 
-If we have a Request object, there may not necessarily be a Task object (yet), but if we have a Task object we can always follow an association to find the Request object that preceeded it.
+If we have a Request object, there may not necessarily be a Task object (yet), but if we have one of these more complex Task objects we can always follow an association to find the Request object that preceeded it.
 
 Tip - when we're developing automation methods, having an understanding of whether we're running in a Request or Task context can be really useful. Think about what stage in the Automation flow the method will be running - before or after approval.
 

@@ -55,7 +55,8 @@
 * [Retirement](chapter18/retirement.md)
 * [Argument Passing and Handling](chapter19/argument_passing_and_handling.md)
 * [Calling Automation from the RESTful API](chapter20/calling_automation_from_api.md)
-* [Integration - Calling External Services](chapter21/calling_external_services.md)
-* [Coding Tips](chapter22/coding_tips.md)
+* [Automation Request Approval](chapter21/automation_request_approval.md)
+* [Integration - Calling External Services](chapter22/calling_external_services.md)
+* [Coding Tips](chapter23/coding_tips.md)
 
 
