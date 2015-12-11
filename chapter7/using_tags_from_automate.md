@@ -219,10 +219,8 @@ begin
   rest_return = rest_action("#{uri_base}/categories/#{category.id}", :delete)
   exit MIQ_OK
 rescue RestClient::Exception => err
-  $evm.log(:error, 
-  			"The REST request failed with code: #{err.response.code}") unless err.response.nil?
-  $evm.log(:error, 
-  			"The response body was:\n#{err.response.body.inspect}") unless err.response.nil?
+  $evm.log(:error, "REST request failed, code: #{err.response.code}") unless err.response.nil?
+  $evm.log(:error, "Response body:\n#{err.response.body.inspect}") unless err.response.nil?
   exit MIQ_STOP
 rescue => err
   $evm.log(:error, "[#{err}]\n#{err.backtrace.join("\n")}")
