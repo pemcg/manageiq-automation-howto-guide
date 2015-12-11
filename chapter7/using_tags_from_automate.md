@@ -24,7 +24,7 @@ unless $evm.execute('tag_exists?', 'data_centre', 'london')
   					:description => 'London East End')
 end
 ```
-Note that tag and category names must be lower-case (optionally) with underscores, with a maximum length of 30 characters. The tag and category descriptions can be free text.
+Note that tag and category names must be lower-case, and optionally contain underscores. They have a maximum length of 30 characters. The tag and category descriptions can be free text.
 
 ### Assigning and Removing Tags
 
@@ -73,16 +73,16 @@ Note: The ```.tags``` method returns the tags as "category/tag" strings.
 
 ### Searching for Specifically-Tagged Objects
 
-We can search for objects tagged with a particular tag using _find\_tagged\_with_:
+We can search for objects tagged with a particular tag using ```.find_tagged_with```:
 
 ```ruby
 tag = "/managed/department/legal"
 hosts = $evm.vmdb(:host).find_tagged_with(:all => tag, :ns => "*")
 ```
-This example shows that categories themselves are organised into namespaces behind the scenes. In practice the only namespace that seems to be in use is _/managed_ and we rarely need to specify this. The ```.find_tagged_with``` method has a slightly ambiguous past. It was present with ManageIQ _Anand_ (CFME 5.3), but returned Active Records rather than service objects. It was unusable from Automate with ManageIQ _Botvinnik_ (CFME 5.4), but is thankfully back with ManageIQ _Capablanca_ (CFME 5.5), and now returns service objects as expected.
+This example shows that categories themselves are organised into namespaces behind the scenes. In practice the only namespace that seems to be in use is _/managed_ and we rarely need to specify this. The ```.find_tagged_with``` method has a slightly ambiguous past. It was present with ManageIQ _Anand_ (CFME 5.3), but returned Active Records rather than MiqAeService objects. It was unavailable from Automate with ManageIQ _Botvinnik_ (CFME 5.4), but is thankfully back with ManageIQ _Capablanca_ (CFME 5.5), and now returns service objects as expected.
 
 <hr>
-Practical example: 
+#### Practical example
 
 We could use this to discover all infrastructure components tagged with '/department/engineering' as follows:
 
@@ -93,18 +93,18 @@ tag = '/department/engineering'
   these_objects = $evm.vmdb(service_object).find_tagged_with(:all => tag, :ns => "/managed")
   these_objects.each do |this_object|
     service_object_class = "#{this_object.method_missing(:class)}".demodulize
-    $evm.log("info", "#{service_object_class}: #{this_object.name} is tagged with #{tag}")
+    $evm.log("info", "#{service_object_class}: #{this_object.name} is tagged")
   end
 end
 ```
 On a small CFME 5.5 system this prints:
 
 ```
-MiqAeServiceManageIQ_Providers_Redhat_InfraManager_Template: rhel7-generic is tagged with /department/engineering
-MiqAeServiceManageIQ_Providers_Redhat_InfraManager_Vm: rhel7srv010 is tagged with /department/engineering
-MiqAeServiceManageIQ_Providers_Openstack_CloudManager_Vm: rhel7srv031 is tagged with /department/engineering
-MiqAeServiceManageIQ_Providers_Redhat_InfraManager_Host: rhelh03.bit63.net is tagged with /department/engineering
-MiqAeServiceStorage: Data is tagged with /department/engineering
+MiqAeServiceManageIQ_Providers_Redhat_InfraManager_Template: rhel7-generic is tagged
+MiqAeServiceManageIQ_Providers_Redhat_InfraManager_Vm: rhel7srv010 is tagged
+MiqAeServiceManageIQ_Providers_Openstack_CloudManager_Vm: rhel7srv031 is tagged
+MiqAeServiceManageIQ_Providers_Redhat_InfraManager_Host: rhelh03.bit63.net is tagged
+MiqAeServiceStorage: Data is tagged
 ```
 
 
@@ -219,8 +219,10 @@ begin
   rest_return = rest_action("#{uri_base}/categories/#{category.id}", :delete)
   exit MIQ_OK
 rescue RestClient::Exception => err
-  $evm.log(:error, "The REST request failed with code: #{err.response.code}") unless err.response.nil?
-  $evm.log(:error, "The response body was:\n#{err.response.body.inspect}") unless err.response.nil?
+  $evm.log(:error, 
+  			"The REST request failed with code: #{err.response.code}") unless err.response.nil?
+  $evm.log(:error, 
+  			"The response body was:\n#{err.response.body.inspect}") unless err.response.nil?
   exit MIQ_STOP
 rescue => err
   $evm.log(:error, "[#{err}]\n#{err.backtrace.join("\n")}")
