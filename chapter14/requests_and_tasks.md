@@ -9,7 +9,7 @@ Some, relatively simple Automation operations launch directly into a running Ins
 - Alerts that send a _Management Event_
 <br> <br>
 
-Some other more complex Automation operations - such as provisioning VMs or Cloud Instances - may alter or consume resources in our virtual or cloud infrastructure, and for these CloudForms/ManageIQ allows us to insert an approval stage into the Automation workflow. It does this by separating the operation into two distinct stages - the **Request** and the **Task**, with an approval being required to progress from one to the other.
+Other more complex Automation operations - such as provisioning VMs or Cloud Instances - may alter or consume resources in our virtual or cloud infrastructure, and for these CloudForms/ManageIQ allows us to insert an approval stage into the Automation workflow. It does this by separating the operation into two distinct stages - the **Request** and the **Task**, with an approval being required to progress from one to the other.
 
 Examples of these are:
 
@@ -25,7 +25,7 @@ We will look at these in more detail in this section.
 
 ### Object Types
 
-There are corresponding request and task objects representing each of these more complex 'workflow'-type operations. Each object holds information relevant to the operation.
+There are corresponding request and task objects representing each of these more complex operations. Each object holds information relevant to the operation.
 
 |   Operation          |   Request Object   |   Task Object   |
 |:--------------------:|:------------------:|:---------------:|

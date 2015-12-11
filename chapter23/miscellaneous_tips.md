@@ -1,4 +1,10 @@
-## Coding Tips
+## Miscellaneous Tips
+
+### Updating the Appliance
+
+When a minor update to CloudForms Management Engine is released and installed (e.g. 5.4.1 -> 5.4.2), any changes to the Automate code are not automatically visible to the Automate Explorer. Go to Import / Export, and _Reset all Datastore custom classes and instances to default_ to get the updates added and visible.
+
+![Screenshot](images/screenshot2.png)
 
 ### The ManageIQ Coding Style and Standards Guide
 
@@ -30,13 +36,13 @@ unless user.nil?
 
 ```ruby
 prov = $evm.root['miq_provision']
-if prov.options.has_key?(:ws_values)
+if prov.options.key?(:ws_values)
   ws_values = prov.options[:ws_values]
   ...
 ```
 
-
 ### Use an External IDE
+
 The in-built WebUI code editor is fairly basic. It is often easier to develop in an external editor or IDE, and copy and paste code into the in-built editor when complete.
 
 

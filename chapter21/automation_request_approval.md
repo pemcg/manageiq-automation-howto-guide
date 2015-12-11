@@ -112,7 +112,7 @@ We need to generate Policy Instances for two AutomationRequest events, _Automati
 
 Our Policy Instance for _AutomationRequest\_created_ has three entries; an assertion and two relationships. We need to recognise whether an automation request was made with the ```:auto_approve => true``` parameter. If it was, we need to skip our own approval workflow.
 
-We know (from some investigative debugging using _object\_walker_) that when a request is made that specifies ```:auto_approve => true```, we have an _$evm.root['automation___request'].approval\_state_ attribute with a value of _approved_. When a request is made that specifies ```:auto_approve => false``` this value is _pending\_approval_. We can therefore create our assertion to look for ```$evm.root['automation_request'].approval_state == 'pending_approval'```, and only continue with the Instance if the boolean test returns _true_.
+We know (from some investigative debugging using _object\_walker_) that when a request is made that specifies ```:auto_approve => true```, we have an _$evm.root['automation\_request'].approval\_state_ attribute with a value of _approved_. When a request is made that specifies ```:auto_approve => false``` this value is _pending\_approval_. We can therefore create our assertion to look for ```$evm.root['automation_request'].approval_state == 'pending_approval'```, and only continue with the Instance if the boolean test returns _true_.
 
 The _rel5_ relationship of this Instance performs a Profile lookup based on our user group, to find the Auto-Approval State Machine Instance that should be run.
 

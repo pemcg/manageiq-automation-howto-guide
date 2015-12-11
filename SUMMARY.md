@@ -57,6 +57,6 @@
 * [Calling Automation from the RESTful API](chapter20/calling_automation_from_api.md)
 * [Automation Request Approval](chapter21/automation_request_approval.md)
 * [Integration - Calling External Services](chapter22/calling_external_services.md)
-* [Coding Tips](chapter23/coding_tips.md)
+* [Miscellaneous Tips](chapter23/miscellaneous_tips.md)
 
 
