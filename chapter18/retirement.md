@@ -71,7 +71,7 @@ The VM Retirement State Machines(s) undo many of the operations performed by the
 
 ##### StartRetirement
 
-The **StartRetirement** Instance calls the _start\_retirement_ State Machine Method, which checks whether the VM is already in state 'retired' or retiring', and if so it aborts. If in neither of these states it calls the VM's _start\_retirement_ method, which sets the retirement_state attribute to 'retiring'.
+The **StartRetirement** Instance calls the _start\_retirement_ State Machine Method, which checks whether the VM is already in state 'retired' or 'retiring', and if so it aborts. If in neither of these states it calls the VM's _start\_retirement_ method, which sets the retirement_state attribute to 'retiring'.
 
 ##### PreRetirement / CheckPreRetirement
 
@@ -85,11 +85,11 @@ The **RemoveFromProvider** stage allows us some flexibility in handling the actu
 
 The **RemoveFromProvider** stage of the _Default_ State Machine links to the _RemoveFromProvider_ Instance, which calls the _remove\_from\_provider_ State Machine Method, passing the argument ```removal_type => 'remove_from_disk'```. This checks whether the VM was provisioned from CloudForms / ManageIQ (vm.miq_provision is not _nil_), **or** if the VM is tagged with _lifecycle/retire\_full_. If either of these is true it fully deletes the VM from the underlying provider, including the disk image. Having done so it sets a boolean state variable _vm\_removed\_from\_provider_ to _true_.
 
-If neither of these checks is true, no action is performed.
+If neither of these checks returns _true_, no action is performed.
 
 ###### Unregister
 
-The **RemoveFromProvider** stage of the _Unregister_ State Machine links to the _UnregisterFromProvider_ Instance, which calls the _remove\_from\_provider_ State Machine Method, passing the argument ```removal_type => 'unregister'```. This checks whether the VM was provisioned from CloudForms / ManageIQ (vm.miq_provision is not _nil_), **or** if the VM is tagged with _lifecycle/retire\_full_. If either of these is true it deletes the VM from the underlying provider, but retains the VM's disk image, allowing the VM to be re-created if required in the future. Having done so it sets a boolean state variable _vm\_removed\_from\_provider_ to _true_.
+The **RemoveFromProvider** stage of the _Unregister_ State Machine links to the _UnregisterFromProvider_ Instance, which calls the _remove\_from\_provider_ State Machine Method, passing the argument ```removal_type => 'unregister'```. This checks whether the VM was provisioned from CloudForms / ManageIQ (vm.miq\_provision is not _nil_ ), **or** if the VM is tagged with _lifecycle/retire\_full_. If either of these is true it deletes the VM from the underlying provider, but retains the VM's disk image, allowing the VM to be re-created if required in the future. Having done so it sets a boolean state variable _vm\_removed\_from\_provider_ to _true_.
 
 If neither of these checks is true, no action is performed.
 
@@ -117,7 +117,7 @@ When we create a Service Catalog Item, we can optionally specify a Retirement En
 
 ![screenshot](images/screenshot8.png)
 
-If we specify our own Retirement Entry Point, then this state Machine will be used to retire any services created from this Catalog Item, rather than the Default.
+If we specify our own Retirement Entry Point, then this State Machine will be used to retire any services created from this Catalog Item, rather than the Default.
 
 #### Retiring the Service
 
@@ -126,18 +126,18 @@ Service retirement is initiated from the Lifecycle menu on the Service details f
 
 ![screenshot](images/screenshot6.png)
 
-This raises a _request\_service\_retire_ event that enters the Event Switchboard as a _Policy Event_ :
+This raises a _request\_service\_retire_ event that enters the Event Switchboard as an _MiqEvent/POLICY_ event:
 <br> <br>
 
 ![screenshot](images/screenshot7.png)
 <br> <br>
-...which redirects to _/Service/Retirement/StateMachines/Methods/GetRetirementEntryPoint_:
+which redirects to _/Service/Retirement/StateMachines/Methods/GetRetirementEntryPoint_:
 <br> <br>
 
 ![screenshot](images/screenshot9.png)
 <br> <br>
 
-This Instance runs a Method _get\_retirement\_entry\_point_ that returns the Retirement Entry Point defined when the Service Catalog Item was created, or if this is empty then the _/Service/Retirement/StateMachines/ServiceRetirement/Default_ State Machine.
+This Instance runs a Method _get\_retirement\_entry\_point_ that returns the Retirement Entry Point defined when the Service Catalog Item was created. If this is empty then _/Service/Retirement/StateMachines/ServiceRetirement/Default_ is returned.
 
 #### Retirement-Related Attributes and Methods
 
@@ -174,7 +174,7 @@ The Default Service Retirement State Machine is simpler than its VM counterpart:
 
 ##### StartRetirement
 
-The **StartRetirement** Instance calls the _start\_retirement_ State Machine Method, which checks whether the Service is already in state 'retired' or retiring', and if so it aborts. If in neither of these states it calls the Service's _start\_retirement_ method, which sets the retirement_state attribute to 'retiring'.
+The **StartRetirement** Instance calls the _start\_retirement_ State Machine Method, which checks whether the Service is already in state 'retired' or 'retiring', and if so it aborts. If in neither of these states it calls the Service's _start\_retirement_ method, which sets the retirement_state attribute to 'retiring'.
 
 ##### RetireService / CheckServiceRetired
 
