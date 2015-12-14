@@ -11,7 +11,7 @@ We've discussed the **Request Object** in detail already - this is the object th
 
 #### Request Context
 
-When working at the _Request_ stage of the provisioning process, the object is accessible directly from our workspace...
+When working at the _Request_ stage of the provisioning process, the object is accessible directly from our workspace:
 
 ```
 $evm.root['miq_provision_request']
@@ -19,7 +19,7 @@ $evm.root['miq_provision_request']
 
 There are a number of useful attributes that we can read from the Request Object, including the requester (person) details, and we can set key/value pairs in the Options Hash to control the VM provisioning process itself.
 
-The Request Object has a number of useful methods that we can use...
+The Request Object has a number of useful methods that we can use:
 
 ```ruby
 miq_provision_request.add_tag
@@ -66,7 +66,7 @@ miq_provision_request.target_type
 
 #### Task Context
 
-When working at the _Task_ stage we have a different workspace ($evm), and here $evm.root does not link directly to _miq\_provision\_request_. We can however still get to the Request Object via an association from the Task Object...
+When working at the _Task_ stage we have a different workspace ($evm), and here $evm.root does not link directly to _miq\_provision\_request_. We can however still get to the Request Object via an association from the Task Object:
 
 ```
 $evm.root['miq_provision'].miq_provision_request
@@ -78,7 +78,7 @@ Note that by the time we're in the _Task_, setting options in the _Request_ will
 
 The **Task Object** is created once the VM Provisioning _Request_ has been approved. Most of the information in the preceding Request Object is propagated into the Task Object, most importantly the Options Hash.
 
-The Task Object has a similar set of Methods to the Request Object...
+The Task Object has a similar set of Methods to the Request Object:
 
 ```
 miq_provision.add_tag
@@ -130,7 +130,7 @@ miq_provision.user_message=
 
 When provisioning a VM from Template, we need an object to represent the source template itself, and this is the **Source Object**.
 
-The Source Object is accessible via either of two associations...
+The Source Object is accessible via either of two associations:
 
 ```
 $evm.root['miq_provision_request'].source
@@ -144,9 +144,9 @@ $evm.root['miq_provision'].source
 $evm.root['miq_provision'].vm_template
 ```
 
-...in either _Request_ or _Task_ context.
+in either _Request_ or _Task_ context.
 
-The Source Object contains a very useful Attribute...
+The Source Object contains a very useful Attribute:
 
 ```
 source.vendor
@@ -157,7 +157,7 @@ source.vendor
 /Infrastructure/VM/Provisioning/Placement/default#${/#miq_provision.source.vendor}
 ```
 
-There is also an equally useful Virtual Column...
+There is also an equally useful Virtual Column:
 
 ```
 source.platform
@@ -172,7 +172,7 @@ All of the Source Object classes extend from MiqAeServiceVmOrTemplate, and so ha
 Once the VM has been created (i.e. after the _Provision_ State of the VMProvision\_VM State Machine), we have an object that represents the newly created VM. This is the **Destination Object**.
 
 
-The Destination Object is accessible as an association from the Task Object...
+The Destination Object is accessible as an association from the Task Object:
 
 ```
 $evm.root['miq_provision'].destination
@@ -180,7 +180,7 @@ $evm.root['miq_provision'].destination
 
 If we wish to make any customisations to the VM as part of the provisioning workflow, such as add a disk or NIC, change VLAN, etc., we make the changes to the Destination Object.
 
-The Destination Object is a subclass of MiqAeServiceVmOrTemplate so has the standard set of VM-related methods...
+The Destination Object is a subclass of MiqAeServiceVmOrTemplate so has the standard set of VM-related methods:
 
 ```
 destination.add_to_service

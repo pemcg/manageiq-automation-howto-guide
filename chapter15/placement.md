@@ -2,7 +2,7 @@
 
 One of the stages in the VMProvision\_VM State Machine is _Placement_, and it's here that the decision is made where to create the new VM, i.e. which Cluster, Host and Datastore.
 
-The value for the _Placement_ stage in the _template_ Instance of this State Machine is...
+The value for the _Placement_ stage in the _template_ Instance of this State Machine is:
 <br>
 
 ```ruby
@@ -12,7 +12,7 @@ The value for the _Placement_ stage in the _template_ Instance of this State Mac
 ![screenshot](images/screenshot24.png)
 <br>
 
-The _default_ Instance is as follows...
+The _default_ Instance is as follows:
 
 <br>
 ![screenshot](images/screenshot25.png)
@@ -22,7 +22,7 @@ The _default_ Instance is as follows...
 
 ### Customising Placement
 
-As part of the added-value that CloudForms brings over ManageIQ, the _RedHat_ Domain includes improved placement Methods that we can optionally use...
+As part of the added-value that CloudForms brings over ManageIQ, the _RedHat_ Domain includes improved placement Methods that we can optionally use:
 
 <br>
 ![screenshot](images/screenshot26.png)

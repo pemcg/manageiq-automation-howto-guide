@@ -108,7 +108,7 @@ MiqAeServiceStorage: Data is tagged
 ```
 
 
-This code snippet shows an example of where we need to work with or around dRuby. The loop:
+This code snippet shows an example of where we need to work with or around Distributed Ruby (dRuby), which is the client-server mechanism that links our Ruby automate method with the Automation Engine running in a CloudForms / ManageIQ Generic Worker. The loop:
 
 ```ruby
 these_objects.each do |this_object|
@@ -117,7 +117,7 @@ end
 ```
 enumerates through _these\_objects_, returning a dRuby client object as _this\_object_ for each pass through. Normally this is transparent to us and we can refer to the dRuby server object methods such as ```.name```, and all works as expected. 
 
-In this case however we also wish to find the class name of the object. If we call ```this_object.class``` we get the string _DRb::DRbObject_, which is the correct class name for a dRuby client object. We have to tell dRuby to forward the ```.class``` method call on to the dRuby server (the Automate Engine running in a Generic Worker), and we do this by calling ```this_object.method_missing(:class)```. Now we get returned the full module::class name of the remote dRuby object (such as _MiqAeMethodService::MiqAeServiceStorage_), but we can call the ```.demodulize``` method on the string to strip the _MiqAeMethodService::_ module path from the name, leaving us with _MiqAeServiceStorage_.
+In this case however we also wish to find the class name of the object. If we call ```this_object.class``` we get the string "DRb::DRbObject", which is the correct class name for a dRuby client object. We have to tell dRuby to forward the ```.class``` method call on to the dRuby server , and we do this by calling ```this_object.method_missing(:class)```. Now we get returned the full module::class name of the remote dRuby object (such as _MiqAeMethodService::MiqAeServiceStorage_), but we can call the ```.demodulize``` method on the string to strip the _MiqAeMethodService::_ module path from the name, leaving us with _MiqAeServiceStorage_.
 <hr>
 
 ### Getting the List of Tag Categories

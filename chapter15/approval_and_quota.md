@@ -8,13 +8,13 @@ The approval process for a VM Provision Request is entered as a result of the _S
 ![screenshot](images/screenshot33.png)
 
 <br>
-The Schema for the _ProvisionRequestApproval_ State Machine is...
+The Schema for the _ProvisionRequestApproval_ State Machine is:
 <br> <br>
 
 ![screenshot](images/screenshot34.png)
 
 <br>
-...and the _Default_ Instance has the following Field values...
+The _Default_ Instance has the following Field values:
 <br> <br>
 
 ![screenshot](images/screenshot35.png)
@@ -26,7 +26,7 @@ We can copy the _Default_ Instance (including path) to our own Domain and change
 
 ### Overriding the Schema Default - Template Tagging
 
-We can override the auto-approval _max_\_* values stored in the _ProvisionRequestApproval_ State Machine on a per-Template basis, by applying tags from one or more of the following tag categories to the Template...
+We can override the auto-approval _max_\_* values stored in the _ProvisionRequestApproval_ State Machine on a per-Template basis, by applying tags from one or more of the following tag categories to the Template:
 <br>
 
 |  Tag Category Name  | Tag Category Display Name  |
@@ -53,12 +53,12 @@ Three of the Instances are approval-related. The _to\_email\_address_ value for 
 
 The quota checking process for a VM Provision Request is entered as a result of the _MiqProvisionRequest\_starting_ event being triggered. This results in a Provisioning Profile lookup to read the value of the _get\_quota\_state\_machine_ attribute, which by default is _ProvisionRequestQuotaVerification_ for an Infrastructure VM Provision Request. The second relationship from the event runs the _Default_ Instance of this State Machine.
 
-The Schema for the _ProvisionRequestQuotaVerification_ State Machine is...
+The Schema for the _ProvisionRequestQuotaVerification_ State Machine is:
 <br> <br>
 ![screenshot](images/screenshot37.png?)
 
 <br>
-...and the _Default_ Instance has the following Field values...
+The _Default_ Instance has the following Field values:
 <br> <br>
 ![screenshot](images/screenshot38.png)
 <br>
@@ -69,7 +69,7 @@ We are free to copy the _Default_ Instance (including path) to our own Domain an
 
 ### Overriding the Schema Default - User and Group Tagging
 
-We can override the quota _max_\_* values stored in the _ProvisionRequestQuotaVerification_ State Machine on a per-User or per-Group basis, by applying tags from one or more of the following tag categories to the User or Group...
+We can override the quota _max_\_* values stored in the _ProvisionRequestQuotaVerification_ State Machine on a per-User or per-Group basis, by applying tags from one or more of the following tag categories to the User or Group:
 <br>
 
 |  Tag Category Name  | Tag Category Display Name  |
@@ -78,7 +78,7 @@ We can override the quota _max_\_* values stored in the _ProvisionRequestQuotaVe
 | quota\_max\_memory | Quota - Max  Memory |
 | quota\_max\_storage | Quota - Max  Storage |
 
-for example...
+For example:
 <br> <br>
 ![screenshot](images/screenshot39.png)
 <br> <br>

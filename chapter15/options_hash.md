@@ -2,7 +2,7 @@
 
 ### miq\_provision\_request
 
-The inputs and options selected from the Provisioning Dialog are added to the _miq\_provision\_request_ object as key/value pairs in a hash known as the _Options Hash_. The contents of the Options Hash varies slightly between provisioning targets (VMware, OpenStack, RHEV etc) and target VM Operating System (Linux, Windows etc.), but a typical hash for a Linux VM provision to a RHEV provider is...
+The inputs and options selected from the Provisioning Dialog are added to the _miq\_provision\_request_ object as key/value pairs in a hash known as the _Options Hash_. The contents of the Options Hash varies slightly between provisioning targets (VMware, OpenStack, RHEV etc) and target VM Operating System (Linux, Windows etc.), but a typical hash for a Linux VM provision to a RHEV provider is:
 
 
 ```ruby
@@ -89,7 +89,7 @@ We can also set most options using the ```miq_provision_request.set_option``` me
 miq_provision_request.set_option(:subnet_mask,'255.255.254.0')
 ```
 
-Several Options Hash keys have their own 'set' method which we should use in place of request.set\_option...
+Several Options Hash keys have their own 'set' method which we should use in place of request.set\_option. The are listed as follows:
 
 |   Options Hash key   |   'set' method   | 
 |:--------------------:|:------------------:|
@@ -124,7 +124,7 @@ Tip - use one of the techniques discussed in [Investigative Debugging](../chapte
 
 ### miq\_provision
 
-The Options Hash from the _Request_ object is propagated to each _Task_ object, where it is subsequently extended by _Task_-specific Methods such as those handling VM Naming and Placement, e.g....
+The Options Hash from the _Request_ object is propagated to each _Task_ object, where it is subsequently extended by _Task_-specific Methods such as those handling VM Naming and Placement, e.g.
 
 ```ruby
 miq_provision.options[:dest_cluster] = [1000000000001, "Default"]   (type: Array)
@@ -138,7 +138,7 @@ Some Options Hash keys such as ```.options[:number_of_vms]``` have no effect if 
 
 ### Correlation with the Provisioning Dialog
 
-The key/value pairs that make up the Options Hash initially come from the Provisioning Dialog. If we look at an extract from one of the Provisioning Dialog YAML files, we see the dialog definitions for the _number\_of\_sockets_ and _cores\_per\_socket_ options...
+The key/value pairs that make up the Options Hash initially come from the Provisioning Dialog. If we look at an extract from one of the Provisioning Dialog YAML files, we see the dialog definitions for the _number\_of\_sockets_ and _cores\_per\_socket_ options:
 
 ```
       :number_of_sockets:
@@ -164,7 +164,7 @@ The key/value pairs that make up the Options Hash initially come from the Provis
         :default: 1
         :data_type: :integer
 ```
-...which correspond to...
+These correspond to:
 
 ```ruby
 miq_provision_request.options[:cores_per_socket]

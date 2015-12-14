@@ -14,7 +14,7 @@ For this example:
 * The new service name is "My New Service"
 * The resulting service contains a VM called "test05".
 
-We can use object\_walker with the following @walk\_association\_whitelist to dump the objects...
+We can use object\_walker with the following @walk\_association\_whitelist to dump the objects:
 
 ```ruby
 { "MiqAeServiceServiceTemplateProvisionTask" => ["source", "destination", "miq_request",

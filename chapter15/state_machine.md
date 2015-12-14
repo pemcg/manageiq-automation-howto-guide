@@ -1,6 +1,6 @@
 ## The VM Provisioning State Machine
 
-The VM Provisioning State Machine (VMProvision\_VM) schema contains a number of States, as shown (illustrated is the _template_ Instance of this State Machine)...
+The VM Provisioning State Machine (VMProvision\_VM) schema contains a number of States, as shown (illustrated is the _template_ Instance of this State Machine):
 <br>
 
 ![screenshot](images/screenshot11.png)
@@ -8,15 +8,14 @@ The VM Provisioning State Machine (VMProvision\_VM) schema contains a number of 
 <br>
 Several of these States (such as _RegisterCMDB_, _RegisterAD_, etc.) contain no out-of-the-box values, but are there as placeholders should we wish to add the functionality to our own customised Instance.
 
-Some States (such as _Placement_) have values ending in a variable substitution, such as...
+Some States (such as _Placement_) have values ending in a variable substitution, such as:
 
 ```
 	...StateMachines/Methods/PreProvision#${/#miq_provision.source.vendor}
 ```
 
-This variable defines the message to be sent to the Instance handling that State, and allows us to dynamically select Provider-specific processing options (in this case allowing for alternative pre-provisioning options for VMware and RHEV)...
+This variable defines the message to be sent to the Instance handling that State, and allows us to dynamically select Provider-specific processing options (in this case allowing for alternative pre-provisioning options for VMware and RHEV):
 <br> <br>
-
 ![screenshot](images/screenshot20.png)
 
 <br>

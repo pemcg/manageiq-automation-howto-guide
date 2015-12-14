@@ -33,12 +33,12 @@ This shows that we probably need to name our elements _cores\_per\_socket_ and _
 
 ##### Examining the Options Hash During Provisioning
 
-As an alternative (or confirmation) to finding the key names from the provisioning dialog, we can use one of the techniques that we learnt in [Investigative Debugging](../chapter9/investigative_debugging.md) to dump the contents of the provisioning task's options hash during a normal interactive provision. Here is an example of calling object\_walker after the _PostProvision_ stage in the VMProvision_VM/template State Machine...
+As an alternative (or confirmation) to finding the key names from the provisioning dialog, we can use one of the techniques that we learnt in [Investigative Debugging](../chapter9/investigative_debugging.md) to dump the contents of the provisioning task's options hash during a normal interactive provision. Here is an example of calling object\_walker after the _PostProvision_ stage in the VMProvision_VM/template State Machine:
 <br><br>
 
 ![screenshot](images/screenshot17.png)
 <br><br>
-Using the reader after we've provisioned a VM, we see that the same values are in the miq\_provision task's options hash...
+Using the reader after we've provisioned a VM, we see that the same values are in the miq\_provision task's options hash:
 <br><br>
 
 ```
@@ -51,7 +51,7 @@ Using the reader after we've provisioned a VM, we see that the same values are i
 
 ##### Some Commonly Used Element Names
 
-The following table lists some commonly used element names for typical VM characteristics that can be modified from a service dialog...
+The following table lists some commonly used element names for typical VM characteristics that can be modified from a service dialog:
 <br><br>
 
 |   VM Characteristic to be Modified   |   Element Name   |
@@ -68,27 +68,27 @@ The following table lists some commonly used element names for typical VM charac
 
 We know from the investigation above that we must name our service dialog elements: _vm\_name_, _service\_name_, _option\_0\_cores\_per\_socket_ and _option\_0\_vm\_memory_.
 
-We'll create our service dialog in the same way that we did in [A More Advanced Example](../chapter5/a_more_advanced_example.md), but this time we'll create two boxes: _Service and VM Names_, and _VM Characteristics_, each containing two elements...
+We'll create our service dialog in the same way that we did in [A More Advanced Example](../chapter5/a_more_advanced_example.md), but this time we'll create two boxes: _Service and VM Names_, and _VM Characteristics_, each containing two elements:
 <br><br>
 
 ![screenshot](images/screenshot22.png)
 
 The _Service Name_ and _VM Name_ elements in the first box are both of type _Text Box_, and have the names _service\_name_ and _vm\_name_ respectively.
 
-The _Number of CPUs_ element in the second box is of type _Drop Down List_...
+The _Number of CPUs_ element in the second box is of type _Drop Down List_:
 <br><br>
 
 ![screenshot](images/screenshot18.png?)
 
-with a list populated as follows...
+with a list populated as follows:
 
 ![screenshot](images/screenshot19.png)
 
-The _VM Memory_ element in the second box is of type _Drop Down List_...
+The _VM Memory_ element in the second box is of type _Drop Down List_:
 
 ![screenshot](images/screenshot20.png?)
 
-with a list populated as follows...
+with a list populated as follows:
 
 ![screenshot](images/screenshot21.png)
 
@@ -104,7 +104,7 @@ Navigate to the Catalogs section in the accordion, and select Configuration -> A
 ![screenshot](images/screenshot23.png)
 
 <br>
-Give the Catalog a name, leave everything else as default, and click _Add_...
+Give the Catalog a name, leave everything else as default, and click _Add_ :
 <br><br>
 
 ![screenshot](images/screenshot24.png)
@@ -116,11 +116,11 @@ Navigate to the Catalog Items section in the accordion, highlight the newly crea
 
 ![screenshot](images/screenshot25.png)
 
-Select RHEV from the drop-down list...
+Select RHEV from the drop-down list:
 
 ![screenshot](images/screenshot26.png)
 
-Enter a Name and description...
+Enter a Name and description:
 
 ![screenshot](images/screenshot27.png)
 
@@ -129,7 +129,7 @@ Tick the _Display in Catalog_ check-box to expose the remaining fields to be fil
 
 ![screenshot](images/screenshot28.png?)
 
-Click on the _Details_ tab, and enter some HTML-formatted text to describe the Catalog Item to anyone viewing in the Catalog
+Click on the _Details_ tab, and enter some HTML-formatted text to describe the Catalog Item to anyone viewing in the Catalog:
 
 ![screenshot](images/screenshot30.png)
 
@@ -141,7 +141,7 @@ Click on the _Request Info_ tab, and fill in the details. Select an appropriate 
 
 Finally click the _Add_ button.
 
-Select a suitable 100x100px ShadowMan icon for a Custom Image...
+Select a suitable 100x100px ShadowMan icon for a Custom Image:
 
 ![screenshot](images/screenshot31.png?)
 
@@ -153,19 +153,19 @@ Navigate to the _Service Catalogs_ section in the accordion, expand the _Generic
 ![screenshot](images/screenshot32.png)
 
 <br>
-Click _Order_, and fill out the Service Dialog values...
+Click _Order_, and fill out the Service Dialog values:
 
 ![screenshot](images/screenshot33.png)
 
 Click _Submit_
 
-After a new minutes, the new Service should be visible in _My Services_, containing the new VM...
+After a new minutes, the new Service should be visible in _My Services_, containing the new VM:
 <br><br>
 
 ![screenshot](images/screenshot34.png)
 
 <br>
-If we examine the details of the VM, we see that it has been created with our requested CPU count and memory size...
+If we examine the details of the VM, we see that it has been created with our requested CPU count and memory size:
 <br><br>
 
 ![screenshot](images/screenshot35.png)

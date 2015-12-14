@@ -9,7 +9,7 @@ The first Profile query is performed as soon as the requesting user selects a Te
 
 
 <br>
-The Profile is queried using the messages _get\_pre\_dialog\_name_ and _get\_dialog\_name_ by an internal (non-Automate) method _miq\_request\_workflow.rb_ when we select a template and click the Continue button. It queries the _pre\_dialog\_name_ and _dialog\_name_ Attributes, and runs the _vm\_dialog\_name\_prefix_ Method...
+The Profile is queried using the messages _get\_pre\_dialog\_name_ and _get\_dialog\_name_ by an internal (non-Automate) method _miq\_request\_workflow.rb_ when we select a template and click the Continue button. It queries the _pre\_dialog\_name_ and _dialog\_name_ Attributes, and runs the _vm\_dialog\_name\_prefix_ Method:
 
 ```
 ...Querying Automate Profile for dialog name
@@ -50,7 +50,7 @@ The Profile is again queried using the message _get\_vmname_ to retrieve the met
 
 ### VM Provisioning State Machine
 
-Finally the Profile is used by the provisioning _Task_ to determine the State Machine to be used to provision the VM. A call is made to ```/infrastructure/VM/Lifecycle/Provisioning#create``` ...
+Finally the Profile is used by the provisioning _Task_ to determine the State Machine to be used to provision the VM. A call is made to ```/infrastructure/VM/Lifecycle/Provisioning#create``` 
 
 <br>
 ![screenshot](images/screenshot10.png)

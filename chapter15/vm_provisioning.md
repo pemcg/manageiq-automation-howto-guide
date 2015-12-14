@@ -4,13 +4,13 @@ Possibly the most complex operation that is performed by the out-of-the-box Auto
 
 ### The Provisioning Process
 
-The VM Provisioning Process starts with a user (the _requester_) selecting _Provision VMs_ from under the Infrastructure -> Virtual Machines -> Lifecycle button group...
+The VM Provisioning Process starts with a user (the _requester_) selecting _Provision VMs_ from under the Infrastructure -> Virtual Machines -> Lifecycle button group:
 <br> <br>
 
 ![screenshot](images/screenshot6.png)
 <br>
 
-This takes us into a selection dialog where we pick a Template to provision from, and click the _Continue_ button...
+This takes us into a selection dialog where we pick a Template to provision from, and click the _Continue_ button:
 <br> <br>
 
 ![screenshot](images/screenshot7.png)

@@ -1,6 +1,6 @@
 ## Calling Automation from the RESTful API
 
-We can call any Automation Instance from the RESTful API, by issuing a _POST_ call to /api/automation_requests, and enclosing a JSON-encoded parameter hash such as the following...
+We can call any Automation Instance from the RESTful API, by issuing a _POST_ call to /api/automation_requests, and enclosing a JSON-encoded parameter hash such as the following:
 
 ```ruby
 post_params = {
@@ -16,7 +16,7 @@ post_params = {
 }.to_json
 ```
 
-We can call the RESTful API from an external Ruby script by using the rest-client gem...
+We can call the RESTful API from an external Ruby script by using the rest-client gem:
 
 ```ruby
 url = 'https://cloudforms_server'
@@ -32,13 +32,13 @@ rest_return = RestClient::Request.execute(
 result = JSON.parse(rest_return)
 ```
 
-The request ID is returned to us in the result from the initial call...
+The request ID is returned to us in the result from the initial call:
 
 ```ruby
 request_id = result['results'][0]['id']
 ```
 
-...and we call poll this to check on status...
+...and we call poll this to check on status:
 
 ```ruby
 query = "/api/automation_requests/#{request_id}"
@@ -70,14 +70,14 @@ end
 
 The _request_ task's options hash is included in the return from the RestClient::Request call, and we can use this to our advantage, by using set_option to add return data in the form of key/value pairs to the options hash from our called Automation method. 
 
-For example from the _called_ (Automate) method...
+For example from the _called_ (Automate) method:
 
 ```ruby
 automation_request = $evm.root['automation_task'].automation_request
 automation_request.set_option(:return, JSON.generate({:status => 'success', :return => some_data}))
 ```
 
-...and from the _calling_ (external) method...
+...and from the _calling_ (external) method:
 
 ```ruby
 puts "Results: #{result['options']['return'].inspect}"
@@ -95,7 +95,7 @@ If we try making a RESTful call as a non-admin user, the Automation request will
 
 When we submit an Automation Request via the API, by default the Automate Task is queued on the same appliance that the Web Service is running on. This will be de-queued to run by any appliance with the _Automation Engine_ role set **in the same zone**. If we have separated out our UI/Web Service appliances into a separate zone, this may not necessarily be our desired behaviour.
 
-We can add a parameter _miq\_zone_ to the automation request to override this...
+We can add a parameter _miq\_zone_ to the automation request to override this:
 
 ```ruby
   :requester => {
@@ -117,7 +117,7 @@ The behaviour of this parameter is as follows (from [BZ #1162832](https://bugzil
 
 ### Generic run\_via\_api Script Example
 
-The following is a generic _run\_via\_api_ script that can be used to call any Automation method, using arguments to pass server name, credentials, and URI parameters to the Instance to be called...
+The following is a generic _run\_via\_api_ script that can be used to call any Automation method, using arguments to pass server name, credentials, and URI parameters to the Instance to be called:
 
 ```
 Usage: run_via_api.rb [options]
@@ -307,7 +307,7 @@ rescue => err
 end
 ```
 
-Edit the default values for server, username and password if required. Run the script as...
+Edit the default values for server, username and password if required. Run the script as:
 
 ```
 ./run_via_api.rb -s 192.168.1.1 -u cfadmin -p password -d ACME -n General \

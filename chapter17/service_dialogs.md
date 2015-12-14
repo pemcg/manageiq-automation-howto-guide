@@ -1,6 +1,6 @@
 ## Service Dialogs
 
-Service dialogs are used in several situations when working with CloudForms Automation, and we saw an example of creating a simple service dialog to use with a button in [A More Advanced Example](../chapter5/a_more_advanced_example.md). This example used two text boxes to prompt for simple text string values to pass to the Automation Method, but we can use several different element types when we create dialogs...
+Service dialogs are used in several situations when working with CloudForms Automation, and we saw an example of creating a simple service dialog to use with a button in [A More Advanced Example](../chapter5/a_more_advanced_example.md). This example used two text boxes to prompt for simple text string values to pass to the Automation Method, but we can use several different element types when we create dialogs:
 
 ![screenshot](images/screenshot3.png)
 
@@ -37,7 +37,7 @@ dialog_field["default_value"] = 2
 
 For a dynamic drop-down list, the _values_ key of this hash is also a hash of key/value pairs, with each pair representing a value to be displayed in the element, and the corresponding _data\_type_ value to be returned to Automate as the _dialog__* option if that choice is selected.
 
-Another more real-world example is...
+Another more real-world example is:
 
 ```ruby
   values_hash = {}
@@ -76,7 +76,7 @@ CloudForms Management Engine 5.3.x added the ability to be able to mark a text b
 
 #### Programmatically Populating a Read-Only Text Box
 
-We can use dynamically-populated read-only text or text area boxes as status boxes to display messages. Here is an example of populating a text box with a message, depending on whether the user is provisioning into Amazon or not...
+We can use dynamically-populated read-only text or text area boxes as status boxes to display messages. Here is an example of populating a text box with a message, depending on whether the user is provisioning into Amazon or not:
 
 ```ruby
  if $evm.root['vm'].vendor.downcase == 'amazon' 
@@ -97,7 +97,7 @@ We can use dynamically-populated read-only text or text area boxes as status box
 
 ### Element Validation
 
-CloudForms Management Engine 5.4 introduced the ability to add input field validation to dialog elements. Currently the only Validator Types are _None_ or  _Regular Expression_, but regular expressions are useful for validating input for values such as IP Addresses...
+CloudForms Management Engine 5.4 introduced the ability to add input field validation to dialog elements. Currently the only Validator Types are _None_ or  _Regular Expression_, but regular expressions are useful for validating input for values such as IP Addresses:
 
 <br>
 ![screenshot](images/screenshot6.png)

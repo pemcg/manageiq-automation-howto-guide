@@ -10,7 +10,7 @@ We typically use SOAP or RESTful APIs to access theses external services, and th
 
 ### Calling a RESTful API Using the _RestClient_ Gem
 
-We have already seen an example of using the _rest\_client_ gem in [Example - Customising VM Provisioning](../chapter15/customising_vm_provisioning.md). Here is another example, contributed to the _CloudFormsPOC_ Integration code by Carsten Clasohm, that creates a NetAPP volume using a REST call to NetApp's WFA (some lines have been omitted for brevity/clarity)...
+We have already seen an example of using the _rest\_client_ gem in [Example - Customising VM Provisioning](../chapter15/customising_vm_provisioning.md). Here is another example, contributed to the _CloudFormsPOC_ Integration code by Carsten Clasohm, that creates a NetAPP volume using a REST call to NetApp's WFA (some lines have been omitted for brevity/clarity):
 
 
 ```ruby
@@ -71,7 +71,7 @@ job_id = workflow_execute.xpath('/job/@jobId')[0].content
 
 ### Calling a SOAP API Using the _Savon_ Gem
 
-The following snippet is from the CloudFormsPOC Integration library, and shows an example of making a SOAP call to an f5 BIG-IP load balancer to add an IP address to a pool (some lines have been omitted for brevity/clarity)...
+The following snippet is from the CloudFormsPOC Integration library, and shows an example of making a SOAP call to an f5 BIG-IP load balancer to add an IP address to a pool (some lines have been omitted for brevity/clarity):
 
 
 ```ruby
@@ -132,7 +132,7 @@ The following snippet is from the CloudFormsPOC Integration library, and shows a
 
 The _fog_ gem is a multi-purpose cloud services library that supports connectivity to a number of cloud providers.
 
-The follow code is an example of using the fog gem to retrieve OpenStack networks from Neutron, and present them as a dynamic drop-down dialog list. The code filters networks that match a tenant's name, and assumes that the CloudForms user has a _Tenant_ tag containing the same name...
+The follow code is an example of using the fog gem to retrieve OpenStack networks from Neutron, and present them as a dynamic drop-down dialog list. The code filters networks that match a tenant's name, and assumes that the CloudForms user has a _Tenant_ tag containing the same name:
 
 ```ruby
 require 'fog'
@@ -190,7 +190,7 @@ end
 
 ### Reading from a MySQL Database Using the _Mysql_ Gem
 
-The following code snippet shows an example of using the _mysql_ gem to connect to a MySQL-based CMDB, to extract project codes and create tags from them...
+The following code snippet shows an example of using the _mysql_ gem to connect to a MySQL-based CMDB, to extract project codes and create tags from them:
 
 ```ruby
 require 'rubygems'

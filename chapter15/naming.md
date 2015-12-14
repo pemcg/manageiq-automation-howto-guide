@@ -11,92 +11,59 @@ The naming process has several inputs, and usually two outputs.
 The _inputs_ to the naming process are a number of variables and symbols that are set (and we can customise) during the Provisioning Dialog, or defined in the Naming class schema. The _outputs_ from the naming process are the VM Name, and optionally the _hostname_ (i.e. fqdn first part) to be applied to the VM's operating system.
 
 
-#### Inputs to the Naming Process...
+#### Inputs to the Naming Process
 
-The following variables and symbols are used as inputs to the VM naming logic...
+The following variables and symbols are used as inputs to the VM naming logic:
 
 **:vm\_name** - This is given the value from the _VM Name_ box in Provision Virtual Machines -> Catalog, i.e.
 <br> <br>
 ![screenshot](images/screenshot21.png)
 
 
-This is added to the _Request_ Options Hash as...
+It is added to the _Request_ Options Hash as ```miq_provision_request.options[:vm_name]```
 
-```
-miq_provision_request.options[:vm_name]
-```
-<br>
-**vm\_prefix** - Can be used to build a custom VM name, and is read from the _vm\_prefix_ variable in the Naming Instance schema (the default is "cfme", but we are free to define our own)...
+**vm\_prefix** - This can be used to build a custom VM name, and is read from the _vm\_prefix_ variable in the Naming Instance schema (the default is "cfme", but we can define our own if required)
 <br> <br>
 ![screenshot](images/screenshot22.png)
 
 
-...or we can set a value in...
+Alternatively we can set a value in ```miq_provision_request.options[:vm_prefix]```
 
-```
-miq_provision_request.options[:vm_prefix]
-```
-<br>
 **:hostname** - This is given the value of the _Host Name_ box in Provision Virtual Machines -> Customize, i.e.
 <br> <br>
 ![screenshot](images/screenshot23.png)
 
-This is added to the _Request_ Options Hash as...
+This is added to the _Request_ Options Hash as ```miq_provision_request.options[:hostname]```
 
-```
-miq_provision_request.options[:hostname]
-```
-<br>
 **:linux\_host\_name** - If a VMware Customization Specification for Linux is used, this is the _specific name_ extracted from the template. CloudForms Naming uses this to set the operating system _hostname_.
 
-This is added to the _Request_ Options Hash as...
-
-```
-miq_provision_request.options[:linux_host_name]
-```
+This is added to the _Request_ Options Hash as ```miq_provision_request.options[:linux_host_name]```
 
 **:sysprep\_computer\_name** - If a VMware Customization Specification for Windows is used, this is the _specific name_ extracted from the template. CloudForms Naming uses this as input to a  the sysprep process to set the NetBIOS name.
 
-This is added to the _Request_ Options Hash as...
+This is added to the _Request_ Options Hash as ```miq_provision_request.options[:sysprep_computer_name]```
 
-```
-miq_provision_request.options[:sysprep_computer_name]
-```
-
-**:miq\_force\_unique\_name** - This symbol is used internally when provisioning VMs from a Service Catalog. The _Task_ Options Hash key...
-
-```
-miq_provision.options[:miq_force_unique_name]
-```
-
-...is set to ```[true, 1]``` when the _Task_ is created that provisions the Catalog Item VM.
+**:miq\_force\_unique\_name** - This symbol is used internally when provisioning VMs from a Service Catalog. The _Task_ Options Hash key ```miq_provision.options[:miq_force_unique_name]``` is set to ```[true, 1]``` when the _Task_ is created that provisions the Catalog Item VM.
 <br>
 
-#### Outputs from the Naming Process...
+#### Outputs from the Naming Process
 
-The following symbols are derived by the VM Naming Method and added to the _Task_ Options Hash...
+The following symbols are derived by the VM Naming Method and added to the _Task_ Options Hash:
 
 **:vm\_target\_name** - The VM Name
 
-This is added to the _Task_ Options Hash as...
-
-```
-miq_provision.options[:vm_target_name]
-```
+This is added to the _Task_ Options Hash as ```miq_provision.options[:vm_target_name]```
 
 **:vm\_target\_hostname** - VM $(hostname) assigned from the output of the VM naming logic (15 characters for Windows, 63 characters for Linux)
 
-This is added to the _Task_ Options Hash as...
+This is added to the _Task_ Options Hash as ```miq_provision.options[:vm_target_hostname]```
 
-```
-miq_provision.options[:vm_target_hostname]
-```
 ### Name Processing
 
 Much of the VM naming logic happens in the Rails code that is not exposed to the Automation Engine, but the code does call an Automation Engine Naming Method that we can use apply our own customisations. The Automation Engine Naming Method writes its suggested name into ```$evm.object['vmname']```, which is propagated back to the internal Rails method via a Collect. If the Automation Engine Naming Method suggests a name that should be numerically suffixed (e.g. "#{vm_name}$n{3}"), then the back-end Rails code will allocate the next free number in the sequence and form the VM name accordingly.
 
 
-The default Automation Engine Naming Method (_/Infrastructure/VM/Provisioning/Naming/vmname_) is as follows...
+The default Automation Engine Naming Method (_/Infrastructure/VM/Provisioning/Naming/vmname_) is as follows:
 
 ```ruby
 #
@@ -160,7 +127,7 @@ $evm.log("info", "VM Name: <#{derived_name}>")
 
 ```
 
-We can start to assemble the rules that the VM Naming methods use to determine names...
+We can start to assemble the rules that the VM Naming methods use to determine names.
 
 #### Provisioning a Single Server
 
@@ -177,7 +144,7 @@ Provisioning multiple servers from Infrastructure -> Virtual Machines -> Lifecyc
 
 We often wish to customise the naming process to our own requirements.
 
-For example we might wish to have all servers named using a fixed prefix (**:vm_prefix**), followed by the value of the _server\_role_ tag, followed by a zero-padded digit extension. This can be done using a slight modification of the Automation Naming Method, in conjunction with tagging the servers that we wish to special-case...
+For example we might wish to have all servers named using a fixed prefix (**:vm_prefix**), followed by the value of the _server\_role_ tag, followed by a zero-padded digit extension. This can be done using a slight modification of the Automation Naming Method, in conjunction with tagging the servers that we wish to special-case:
 
 ```ruby
 ...

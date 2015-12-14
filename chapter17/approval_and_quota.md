@@ -8,13 +8,13 @@ The approval process for a Service Provision Request is entered as a result of t
 ![screenshot](images/screenshot11.png)
 
 <br>
-The Schema for the _ServiceProvisionRequestApproval_ State Machine is...
+The Schema for the _ServiceProvisionRequestApproval_ State Machine is:
 <br> <br>
 
 ![screenshot](images/screenshot12.png?)
 
 <br>
-...and the _Default_ Instance has the following Field values...
+The _Default_ Instance has the following Field values:
 <br> <br>
 
 ![screenshot](images/screenshot13.png)
@@ -28,7 +28,7 @@ Quota checking for Service Provision Requests is a new feature with CloudForms M
 
 The quota checking process for a Service Provision Request is entered as a result of the _/RedHat/System/Policy/ServiceTemplateProvisionRequest\_starting_ policy being run from a _request\_starting_ event. This results in a Provisioning Profile lookup to read the value of the _get\_quota\_state\_machine_ attribute, which by default is _ServiceProvisionRequestQuotaVerification_ for a Service Provision Request. The second relationship from the event runs the _Default_ Instance of this State Machine.
 
-The Schema for the _ServiceProvisionRequestQuotaVerification_ State Machine is...
+The Schema for the _ServiceProvisionRequestQuotaVerification_ State Machine is:
 <br> <br>
 ![screenshot](images/screenshot16.png)
 
@@ -36,7 +36,7 @@ The Schema for the _ServiceProvisionRequestQuotaVerification_ State Machine is..
 We can see two immediate differences between this and the VM Provisioning quota checking mechanism. The first difference is that we can only set quota limits on groups rather than individual users, and the second is that we can now set soft and hard quotas (_warn\_group\*_ and _max\_group\*_ values).
 
 
-The _Default_ Instance of the State Machine has the following schema field values...
+The _Default_ Instance of the State Machine has the following schema field values:
 <br> <br>
 ![screenshot](images/screenshot15.png)
 <br>

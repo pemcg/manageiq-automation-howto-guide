@@ -10,7 +10,7 @@ The _CatalogItemInitialization_ State Machine can be specified when we create a 
 
 The State Machine greatly simplifies the process of customising the provisioned VMs, using values read from the service dialog. It does this by setting _options\_hash_ values or tags in the child and grandchild _miq\_request\_task_ objects, from specially constructed service dialog element names. It also allows us to very simply specify a new unique name and description for the resulting Service.
 
-The schema for the _CatalogItemInitialization_ Instance is as follows...
+The schema for the _CatalogItemInitialization_ Instance is as follows:
 
 
 ![screenshot](images/screenshot7.png?)
@@ -26,7 +26,7 @@ To perform the service dialog -> options_hash or tag substitution correctly, we 
 
 ##### Single Option
 
-The simplest service dialog element to process is one that prompts for the value of a single _options\_hash_ key. We name the service dialog element as...
+The simplest service dialog element to process is one that prompts for the value of a single _options\_hash_ key. We name the service dialog element as:
 
 option\_0\__key\_name_ (for backwards compatibility with CFME 5.3)
 
@@ -34,11 +34,11 @@ or just
 
 _key\_name_ (valid for CFME 5.4 and later)
 
-For example if we create a service dialog element as follows...
+For example if we create a service dialog element as follows:
 
 ![screenshot](images/screenshot9.png)
 
-... the resulting value input at run-time will be will be propagated to the child task's options hash as...
+The resulting value input at run-time will be will be propagated to the child task's options hash as:
 
 ```
 miq_request_task.options[:vm_memory]
@@ -47,7 +47,7 @@ miq_request_task.options[:vm_memory]
 
 The '0' in the  dialog name refers to the item sequence number when provisioning. For a service dialog fronting a single catalog _Item_ this will always be zero. For a service dialog fronting a catalog _Bundle_ comprising several Items, the sequence number indicates which of the component Items the dialog option should be passed to (an element with a name sequence of '0' will be propagated to all Items).
 
-Several _key\_name_ values are recognised and special-cased by the _CatalogItemInitialization_ Method. We can name a text box element as either _vm\_name_ or _vm\_target\_name_, and the resulting text string input value will be propagated to all of...
+Several _key\_name_ values are recognised and special-cased by the _CatalogItemInitialization_ Method. We can name a text box element as either _vm\_name_ or _vm\_target\_name_, and the resulting text string input value will be propagated to all of:
 
 ```
 miq_request_task.options[:vm_target_name]
@@ -62,11 +62,11 @@ If we name a text box element as _service\_description_, then the resulting serv
 
 ##### Single Tag
 
-We can also create a text box service dialog element to apply a single tag. We name the service dialog element as...
+We can also create a text box service dialog element to apply a single tag. We name the service dialog element as:
 
 tag\_0\__tag\_category_
 
-...for example...
+For example:
 
 ![screenshot](images/screenshot10.png)
 

@@ -1,6 +1,6 @@
 ## The VM Provisioning Dialog
 
-The VM Provisioning Dialog is presented to the user in the WebUI as part of the VM provisioning process. The dialog contains a number of tabs (Request, Purpose, Catalog, Environment, etc.), and a number of dialogs and input fields per tab...
+The VM Provisioning Dialog is presented to the user in the WebUI as part of the VM provisioning process. The dialog contains a number of tabs (Request, Purpose, Catalog, Environment, etc.), and a number of dialogs and input fields per tab:
 <br> <br>
 
 ![screenshot](images/screenshot28.png)
@@ -8,7 +8,7 @@ The VM Provisioning Dialog is presented to the user in the WebUI as part of the 
 <br>
 The Provisioning Dialog is context-sensitive, so a different set of dialog options will be displayed when provisioning into VMware or OpenStack, for example.
 
-Each Provisioning Dialog is formatted from a large (900 line+) YAML file, specifying the main tabs, dialogs and fields to be displayed., e.g....
+Each Provisioning Dialog is formatted from a large (900 line+) YAML file, specifying the main tabs, dialogs and fields to be displayed., e.g.
 <br> <br>
 
 ```
@@ -77,14 +77,14 @@ There are a number of VM Provisoning Dialogs supplied out-of-the-box with CloudF
 <br>
 The various dialogs contain values that are relevant to their target Provider type (Amazon, OpenStack, Microsoft, VMware or RedHat), and also to the operation type (clone from template, clone to template, or clone to vm).
 
-The selection of VM Provisioning Dialog to display to a user depends on the _dialog\_name_ Attribute in the Provisoning Group Profile. The default _dialog\_name_ value for the _.missing_ and _EvmGroup-super\_administrator_ Profiles is...
+The selection of VM Provisioning Dialog to display to a user depends on the _dialog\_name_ Attribute in the Provisoning Group Profile. The default _dialog\_name_ value for the _.missing_ and _EvmGroup-super\_administrator_ Profiles is:
 <br> <br>
 
 ```
 ${#dialog_name_prefix}_${/#dialog_input_request_type}
 ```
 <br>
-The two variables are substituted at run-time, and provide the context-sensitity. The _dialog\_name\_prefix_ value is determined by the _vm\_dialog\_name\_prefix_ Method, which contains the lines...
+The two variables are substituted at run-time, and provide the context-sensitity. The _dialog\_name\_prefix_ value is determined by the _vm\_dialog\_name\_prefix_ Method, which contains the lines:
 <br> <br>
 
 ```ruby
@@ -94,7 +94,7 @@ dialog_name_prefix = "miq_provision_dialogs" if platform == "vmware"
 
 The _dialog\_input\_request\_type_ value is translated by a Rails back-end method (_miq\_request\_workflow.rb_) to be the Instance name of the VM Provisioning State Machine that we are using, i.e _template_, _clone\_to\_vm_ or _clone\_to\_template_.
 
-So for a VM Provision Request from Template into a RHEV Provider, the _dialog\_name_ value will be substituted as...
+So for a VM Provision Request from Template into a RHEV Provider, the _dialog\_name_ value will be substituted as:
 
 ```
 miq_provision_redhat_dialogs_template
@@ -102,14 +102,14 @@ miq_provision_redhat_dialogs_template
 
 ### User Group-Specific Dialogs
 
-We can set separate Provisioning Dialogs for individual User Groups if we wish. As an example the default _dialog\_name_ value in the _EvmGroup-user\_self\_service_ Profile is...
+We can set separate Provisioning Dialogs for individual User Groups if we wish. As an example the default _dialog\_name_ value in the _EvmGroup-user\_self\_service_ Profile is:
 <br> <br>
 
 ```
 ${#dialog_name_prefix}-user
 ```
 <br>
-This presents a reduced set of tabs, dialogs and input fields to anyone from the _EvmGroup-user\_self\_service_ group provisoning into VMware (the only group-specific out-of-the-box Dialog is the VMware-specific _miq\_provision\_dialogs\-user_ Dialog). The hidden tabs have been given default values, for example Automatic placemeent is set to _true_ by default...
+This presents a reduced set of tabs, dialogs and input fields to anyone from the _EvmGroup-user\_self\_service_ group provisoning into VMware (the only group-specific out-of-the-box Dialog is the VMware-specific _miq\_provision\_dialogs\-user_ Dialog). The hidden tabs have been given default values, for example Automatic placemeent is set to _true_ by default:
 
 ```
       :placement_auto:
@@ -127,13 +127,13 @@ We are free to create per-group Dialogs as we wish, customising the values that 
 
 ### Expanding the Dialog
 
-In some cases it's useful to be able to expand the range of options presented by the Dialog. For example the standard Dialogs only allows us to specify VM memory as 1GB, 2GB or 4GB...
+In some cases it's useful to be able to expand the range of options presented by the Dialog. For example the standard Dialogs only allows us to specify VM memory as 1GB, 2GB or 4GB 
 <br> <br>
 
 ![screenshot](images/screenshot29.png)
 
 <br>
-These options come from the **:vm\_memory** Dialog section...
+These options come from the **:vm\_memory** Dialog section:
 
 
 ```
@@ -151,7 +151,7 @@ These options come from the **:vm\_memory** Dialog section...
 <br>
 We sometimes need to be able to provision larger VMs, but fortunately we can customise the Dialog to our own needs. If we identify the Dialog that is being used (in this example case it is _miq\_provision\_redhat\_dialogs\_template_ as I'm provisioning into RHEV using Native Clone), we can copy the Dialog to make it editable (I'll call the new version _bit63\_miq\_provision\_redhat\_dialogs\_template_).
 
-We then expand the **:vm\_memory** section as to match our requirements...
+We then expand the **:vm\_memory** section as to match our requirements:
 
 ```
       :vm_memory:
@@ -170,19 +170,19 @@ We then expand the **:vm\_memory** section as to match our requirements...
 <br>
 ...and save the newly edited Profile.
 
-Now we copy the _/Infrastructure/VM/Provisioning/Profile_ Class into our own namespace (if it's not already there), and create a Profile Instance for the User Group that we wish to assign the new Dialog to...
+Now we copy the _/Infrastructure/VM/Provisioning/Profile_ Class into our own namespace (if it's not already there), and create a Profile Instance for the User Group that we wish to assign the new Dialog to:
 <br> <br>
 
 ![screenshot](images/screenshot30.png)
 
 <br>
-The _dialog\_name_ field in the new Profile should contain the name of our new Dialog...
+The _dialog\_name_ field in the new Profile should contain the name of our new Dialog:
 <br> <br>
 
 ![screenshot](images/screenshot31.png)
 
 <br>
-Now if we login as a user who is a member of the _Bit63\_Group\_user\_self\_service_ Group and provision a VM, we see the expanded range of memory options...
+Now if we login as a user who is a member of the _Bit63\_Group\_user\_self\_service_ Group and provision a VM, we see the expanded range of memory options:
 <br> <br>
 ![screenshot](images/screenshot32.png)
 

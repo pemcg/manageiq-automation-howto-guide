@@ -14,24 +14,24 @@ Edit the VMProvision_VM State Machine to add two new States to perform the task.
 
 #### Step 1
 
-The first thing we weed to do is clone the _/ManageIQ/Infrastructure/VM/Provisioning/StateMachines/VMProvision\_VM/Provision VM from Template (template)_ State Machine Instance into our own ACME Domain so that we can edit the schema...
+The first thing we weed to do is clone the _/ManageIQ/Infrastructure/VM/Provisioning/StateMachines/VMProvision\_VM/Provision VM from Template (template)_ State Machine Instance into our own ACME Domain so that we can edit the schema:
 <br> <br>
 
 ![screenshot](images/screenshot12.png)
 
 <br>
-Now we edit the schema of the copied Class...
+Now we edit the schema of the copied Class:
 <br> <br>
 
 ![screenshot](images/screenshot13.png)
 
 <br>
-...and add two more steps, _AddDisk_ and _StartVM_...
+...and add two more steps, _AddDisk_ and _StartVM_
 <br> <br>
 
 ![screenshot](images/screenshot14.png)
 
-Adjust the Class Schema Sequence so that the steps come after PostProvision...
+Adjust the Class Schema Sequence so that the steps come after PostProvision:
 <br> <br>
 
 ![screenshot](images/screenshot15.png)
@@ -40,13 +40,13 @@ Adjust the Class Schema Sequence so that the steps come after PostProvision...
 
 We're going to override the default behaviour of the VM Provisioning workflow which is to auto-start a VM after provisioning. We do this because we want to add our new disk with the VM powered off, and then power on the VM ourselves afterwards.
 
-We clone the _/ManageIQ/Infrastructure/VM/Provisioning/StateMachines/Methods/CustomizeRequest_ Instance, and _/ManageIQ/Infrastructure/VM/Provisioning/StateMachines/Methods/redhat\_CustomizeRequest_ Methods into our domain...
+We clone the _/ManageIQ/Infrastructure/VM/Provisioning/StateMachines/Methods/CustomizeRequest_ Instance, and _/ManageIQ/Infrastructure/VM/Provisioning/StateMachines/Methods/redhat\_CustomizeRequest_ Methods into our domain:
 <br> <br>
 
 ![screenshot](images/screenshot16.png)
 
 <br>
-We edit _redhat\_CustomizeRequest_ to set the Options Hash key ```:vm_auto_start``` to be ```false```...
+We edit _redhat\_CustomizeRequest_ to set the Options Hash key ```:vm_auto_start``` to be ```false```:
 <br> <br>
 
 ```ruby
@@ -66,7 +66,7 @@ ID:<#{prov.miq_provision_request.id}> Provision Type: <#{prov.provision_type}>")
 
 ```
 #### Step 3
-We need to add two new Instances _AddDisk_ and _StartVM_, and two new Methods _add\_disk_ and _start\_vm_. Add the corresponding Method names to the _execute_ schema field of each Instance...
+We need to add two new Instances _AddDisk_ and _StartVM_, and two new Methods _add\_disk_ and _start\_vm_. Add the corresponding Method names to the _execute_ schema field of each Instance:
 <br> <br>
 
 ![screenshot](images/screenshot17.png)
@@ -248,7 +248,7 @@ rescue => err
 end
 ```
 <br>
-The code for start_vm is as follows...
+The code for start_vm is as follows:
 <br> <br>
 
 ```ruby
@@ -279,7 +279,7 @@ end
 
 #### Step 4
 
-Now we edit our copied _Provision VM from Template_ State Machine Instance to add the AddDisk and StartVM Instance URIs to the appropriate steps...
+Now we edit our copied _Provision VM from Template_ State Machine Instance to add the AddDisk and StartVM Instance URIs to the appropriate steps:
 <br> <br>
 
 ![screenshot](images/screenshot18.png?)
@@ -287,7 +287,7 @@ Now we edit our copied _Provision VM from Template_ State Machine Instance to ad
 #### Step 5
 
 Provision a VM. We should see the the VM is not immediately started after provisioning, and
-suitable messages in automation.log showing that our additonal Methods are working...
+suitable messages in automation.log showing that our additonal Methods are working:
 <br> <br>
 
 ```
@@ -301,7 +301,7 @@ suitable messages in automation.log showing that our additonal Methods are worki
 ...<AEMethod start_vm> Current VM power state = on
 ```
 <br>
-If we look at the number of disks in the VM Details page in CloudForms, we see...
+If we look at the number of disks in the VM Details page in CloudForms, we see:
 <br> <br>
 
 ![screenshot](images/screenshot19.png)

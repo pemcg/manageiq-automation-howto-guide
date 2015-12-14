@@ -4,7 +4,7 @@ The Service Provisioning State Machine (Class _ServiceProvision\_Template_) cont
 
 ![screenshot](images/screenshot8.png)
 
-The _ServiceProvision\_Template_ Class schema contains a number of States, as shown (illustrated is the _default_ Instance of this State Machine)...
+The _ServiceProvision\_Template_ Class schema contains a number of States, as shown (illustrated is the _default_ Instance of this State Machine):
 <br>
 
 ![screenshot](images/screenshot4.png)
@@ -52,11 +52,11 @@ $evm.root['dialog_option_0_vm_name'] = rhel7srv023
 $evm.root['dialog_tag_0_department'] = engineering
 ```
 
-Accessing the dialog options from options[:dialog] is easier when we don't necessarily know the option name.
+Accessing the dialog options from ```options[:dialog]``` is easier when we don't necessarily know the option name.
 
 When we have several generations of child _Task_ object (as we do when provisioning VMs from a service), we also need to pass the dialog options from the parent object (the Service Template Provision Task), to the various child objects, otherwise they won't be visible to the children.
 
-The key/value pairs from the service dialog can be inserted into the options[:dialog] hash of a child Task object, using the ```.set_dialog_option``` method...
+The key/value pairs from the service dialog can be inserted into the options[:dialog] hash of a child Task object, using the ```.set_dialog_option``` method:
 
 ```ruby
 stp_task = $evm.root["service_template_provision_task"]
@@ -72,7 +72,7 @@ stp_task.miq_request_tasks.each do |child_task|
 end
 ```
 
-This enables the child and grandchild VM Provision workflows (which run through the standard VM Provision State Machine that we have already studied) to access their own Task object options[:dialog] hash, and set the custom provisioning options accordingly.
+This enables the child and grandchild VM Provision workflows (which run through the standard VM Provision State Machine that we have already studied) to access their own Task object ```options[:dialog]``` hash, and set the custom provisioning options accordingly.
 
 
 

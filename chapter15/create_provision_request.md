@@ -1,12 +1,12 @@
 ## Creating Provisoning Requests Programmatically
 
-Although the most common way to provision a VM is via the CloudForms WebUI, i.e....
+Although the most common way to provision a VM is via the CloudForms WebUI, i.e.
 <br> <br>
 
 ![screenshot](images/screenshot6.png)
 <br>
 
-...we can also initiate the provisioning process programmatically by calling $evm.execute to run the method **create\_provision\_request**. This method takes a number of arguments, which correspond to the argument list for the EVMProvisionRequestEx SOAP API call. A typical call to provision a VM into RHEV might be...
+...we can also initiate the provisioning process programmatically by calling $evm.execute to run the method **create\_provision\_request**. This method takes a number of arguments, which correspond to the argument list for the EVMProvisionRequestEx SOAP API call. A typical call to provision a VM into RHEV might be:
 <br> <br>
 
 ```
@@ -47,7 +47,7 @@ Interface version. Should be set to 1.1
 
 #### templateFields
 
-Fields used to specify the VM or Template to use as the source for the provisioning operation. Supply a _guid_ or _ems\_guid_ to protect against matching same-named templates on different Providers within CloudForms Management Engine. The _request\_type_ field should be set to one of: _template_, _clone\_to\_template_, or _clone\_to\_vm_ as appropriate. A normal VM provision from template is specified as...
+Fields used to specify the VM or Template to use as the source for the provisioning operation. Supply a _guid_ or _ems\_guid_ to protect against matching same-named templates on different Providers within CloudForms Management Engine. The _request\_type_ field should be set to one of: _template_, _clone\_to\_template_, or _clone\_to\_vm_ as appropriate. A normal VM provision from template is specified as:
 
 ```
 "request_type=template"
@@ -55,7 +55,7 @@ Fields used to specify the VM or Template to use as the source for the provision
 
 #### vmFields
 
-Allows for the setting of properties from the _Catalog, Hardware, Network, Customize,_ and _Schedule_ tabs in the Provisioning Dialog. Some of these are Provider-specific, so when provisoning an OpenStack Instance for example, we need to specify the **instance\_type**...
+Allows for the setting of properties from the _Catalog, Hardware, Network, Customize,_ and _Schedule_ tabs in the Provisioning Dialog. Some of these are Provider-specific, so when provisoning an OpenStack Instance for example, we need to specify the **instance\_type**
 
 ```
 # arg2 = vmFields
@@ -81,7 +81,7 @@ Tags to apply to newly created VM, e.g.
 
 #### additionalValues (aka ws_values)
 
-Additional values, also known as ws\_values, are name-value pairs stored with a provision request, but not used by the core provisioning code. These values are usually referenced from automate methods for custom processing. They are added into the _Request_ Options Hash, and can be retrieved as a hash from...
+Additional values, also known as ws\_values, are name-value pairs stored with a provision request, but not used by the core provisioning code. These values are usually referenced from automate methods for custom processing. They are added into the _Request_ Options Hash, and can be retrieved as a hash from:
 
 ```
 $evm.root['miq_provision'].options[:ws_values]

@@ -10,13 +10,13 @@ The Provisioning Profiles are stored under _/Infrastructure/VM/Provisioning/Prof
 
 ###Schema
 
-The Provisioning Profile schema contains a number of Attributes, Relationships and Methods, as shown...
+The Provisioning Profile schema contains a number of Attributes, Relationships and Methods, as shown:
 <br>
 
 ![screenshot](images/screenshot1.png?)
 
 <br>
-Each of these is selected using a _Message_, and the Attributes are propagated up to $evm.root in the Provisioning operation using _Collect_...
+Each of these is selected using a _Message_, and the Attributes are propagated up to $evm.root in the Provisioning operation using _Collect_, as follows:
 <br> <br>
 
 ![screenshot](images/screenshot5.png)
