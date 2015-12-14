@@ -65,7 +65,7 @@ The _Default_ Instance has the following Field values:
 
 This Instance will validate any VM Provisioning Request, and so will not enforce any quotas.
 
-We are free to copy the _Default_ Instance (including path) to our own Domain and change or set any of the quota limit schema Attributes, i.e. _max\_owner\_cpu, max\_owner\_memory, max\_owner\_storage_, or _max\_group\_cpu, max\_group\_memory, max\_group\_storage_. These quota settings will then apply to all Users and Groups.
+If we wish we can copy the _Default_ Instance (including path) to our own Domain and change or set any of the quota limit schema Attributes, i.e. _max\_owner\_cpu, max\_owner\_memory, max\_owner\_storage_, or _max\_group\_cpu, max\_group\_memory, max\_group\_storage_. These quota settings will then apply to all Users and Groups.
 
 ### Overriding the Schema Default - User and Group Tagging
 

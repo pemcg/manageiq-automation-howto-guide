@@ -22,7 +22,7 @@ The _Default_ Instance has the following Field values:
 
 This Instance will auto-approve any VM Provisioning Request containing a single VM, but requests for more than this number will require explicit approval from an Administrator, or anyone in a Group with the role _EvmRole-approver_ (or equivalent).
 
-We are free to copy the _ProvisionRequestApproval_ State Machine to our own Domain and change or set any of the auto-approval schema Attributes, i.e. _max\_cpus, max\_vms, max\_memory_ or _max\_retirement\_days_.
+If we wish we can copy the _ProvisionRequestApproval_ State Machine to our own Domain and change or set any of the auto-approval schema Attributes, i.e. _max\_cpus, max\_vms, max\_memory_ or _max\_retirement\_days_.
 
 ### Overriding the Schema Default - Template Tagging
 
