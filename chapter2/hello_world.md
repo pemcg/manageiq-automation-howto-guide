@@ -1,27 +1,27 @@
 ## Hello, World!
 
-Our first Automation method is very simple, we'll write an entry to the _automation.log_ file.
+Our first Automation method is very simple, we'll write an entry to the `automation.log` file.
 
-First we need to create an instance from our class. In the _Instances_ tab of the new _Methods_ class, select _Configuration -> Add a New Instance_:
+First we need to create an instance from our class. In the **Instances** tab of the new **Methods** Class, select **Configuration -> Add a New Instance**:
 <br> <br>
 
 ![Screenshot](images/screenshot11.png)
 
 <br>
-We'll call the instance _HelloWorld_, and it'll run (execute) a method _hello\_world_:
+We'll call the Instance _HelloWorld_, and it'll run (execute) a Method _hello\_world_:
 <br> <br>
 
 ![Screenshot](images/screenshot12.png)
 
-<br>Click the _Add_ button.
+<br>Click the **Add** button.
 
-In the _Methods_ tab of the new _Methods_ class, select _Configuration -> Add a New Method_:
+In the **Methods** tab of the new `Methods` Class, select **Configuration -> Add a New Method**:
 <br> <br>
 
 ![Screenshot](images/screenshot13.png)
 
 <br>
-Name the method _hello\_world_, and paste the following code into the Data window:
+Name the Method _hello\_world_, and paste the following code into the **Data** window:
 
 ```ruby
 $evm.log(:info, "Hello, World!")
@@ -31,19 +31,19 @@ exit MIQ_OK
 
 ![Screenshot](images/screenshot14.png)
 
-Click the _Validate_ button, and then the _Add_ button.
+Click the **Validate** button, and then the **Add** button.
 
 ### Running the Instance
 
-We'll run our new instance using the _Simulation_ functionality of Automation, but before that, ssh into the CloudForms appliance as _root_, and tail the automation.log file:
+We'll run our new instance using the _Simulation_ functionality of Automation, but before that, ssh into the CloudForms appliance as _root_, and tail the `automation.log` file:
 
 ```
 [root@cloudforms ~]# tail -f /var/www/miq/vmdb/log/automation.log
 ```
 
-In the simulation we actually run an instance called _Call\_Instance_ in the _/System/Request/_ namespace of the _ManageIQ_ domain, and this in turn calls our instance using the _namespace_, _class_ and _instance_ attribute/value pairs that we pass to it (see [Ways of Entering Automation](../chapter10/ways_of_entering_automation.md)).
+In the simulation we actually run an Instance called `Call_Instance` in the `/System/Request/` namespace of the `ManageIQ` domain, and this in turn calls our Instance using the _namespace_, _class_ and _instance_ attribute/value pairs that we pass to it (see [Ways of Entering Automation](../chapter10/ways_of_entering_automation.md)).
 
-From the _Automation -> Simulation_ menu, complete the details in the _Options_ sidebar as shown:
+From the **Automation -> Simulation** menu, complete the details in the **Options** sidebar as shown:
 <br> <br>
 
 ![Screenshot](images/screenshot15.png)
@@ -55,7 +55,7 @@ From the _Automation -> Simulation_ menu, complete the details in the _Options_ 
 ![Screenshot](images/screenshot16.png)
 
 <br>
-... then click _Submit_
+... then click **Submit**
 
 If all went well, we should see our "Hello, World!" message appear in the automation.log file.
 

@@ -1,10 +1,10 @@
 ## Working with Automation Objects
 
-When we write our own Automation scripts, we work with the MiqAeService\* Automation objects that the CloudForms/ManageIQ Automation Engine makes available to us. These Automation objects have four types of property that we frequently work with, **Attributes**, **Virtual Columns**, **Associations** and **Methods**.
+When we write our own Automation scripts, we work with the `MiqAeService*` Automation objects that the CloudForms/ManageIQ Automation Engine makes available to us. These Automation objects have four types of property that we frequently work with, attributes, virtual columns, associations and methods.
 
 ### Attributes
 
-Just like any other Ruby object, the MiqAeService\* Automation objects that we work with have **Attributes** that we often use. For example, the Attributes for a RHEV Host object (_MiqAeServiceHostRedhat_), with some typical values, are:
+Just like any other Ruby object, the `MiqAeService*` Automation objects that we work with have _attributes_ that we often use. For example, the attributes for a RHEV Host object (`MiqAeServiceHostRedhat`), with some typical values, are:
 
 ```
 host.admin_disabled = nil
@@ -41,7 +41,7 @@ host.vmm_vendor = RedHat   (type: String)
 host.vmm_version = nil
 ```
 
-We can enumerate an object's Attributes using:
+We can enumerate an object's attributes using:
 
 ```ruby
 this_object.attributes.each do |key, value|
@@ -49,9 +49,9 @@ this_object.attributes.each do |key, value|
 
 ### Virtual Columns
 
-In addition to the standard object Attributes, Rails makes available a number of **Virtual Columns** and attaches them to the object. We access theses Virtual Columns just as we would access Attributes, using "object.virtual\_column\_name" syntax.
+In addition to the standard object attributes, Rails makes available a number of _virtual columns_ and attaches them to the object. We access theses virtual columns just as we would access attributes, using "object.virtual\_column\_name" syntax.
 
-For example, the Virtual Columns for our same RHEV Host object, with some typical values, are:
+For example, the virtual columns for our same RHEV Host object, with some typical values, are:
 
 
 ```
@@ -105,7 +105,7 @@ host.v_total_storages = 3   (type: Fixnum)
 host.v_total_vms = 3   (type: Fixnum)
 ```
 
-We can enumerate an object's Virtual Columns using:
+We can enumerate an object's virtual columns using:
 
 ```ruby
 this_object.virtual_column_names.each do |virtual_column_name|
@@ -114,13 +114,13 @@ this_object.virtual_column_names.each do |virtual_column_name|
 
 ### Associations
 
-We saw from [A Little Rails Knowledge](../chapter4/a_little_rails_knowledge.md) that there are **Associations** between many of the Active Records (and hence Service Models), and we use these extensively when scripting. For example to find the name of the cluster that our VM is running on, we follow the assocation between the VM object ( _MiqAeServiceVmRedhat_ ) and its Cluster object ( _MiqAeServiceEmsCluster_ ), and referencing to the Cluster object's _name_ attribute:
+We saw from [A Little Rails Knowledge](../chapter4/a_little_rails_knowledge.md) that there are _associations_ between many of the Active Records (and hence Service Models), and we use these extensively when scripting. For example to find the name of the cluster that our VM is running on, we follow the assocation between the VM object (`MiqAeServiceVmRedhat`) and its Cluster object (`MiqAeServiceEmsCluster`), and referencing to the Cluster object's `name` attribute:
 
 ```ruby
 cluster = $evm.root['vm'].ems_cluster.name
 ```
 
-We find more about the hardware that our VM has by following associations between the VM object (_MiqAeServiceVmRedhat_), and its Hardware and GuestDevice objects ( _MiqAeServiceHardware_ and _MiqAeServiceGuestDevice_ ):
+We find more about the hardware that our VM has by following associations between the VM object (`MiqAeServiceVmRedhat`), and its Hardware and GuestDevice objects (`MiqAeServiceHardware` and `MiqAeServiceGuestDevice`):
 
 ```ruby
 hardware = $evm.root['vm'].hardware
@@ -131,7 +131,7 @@ hardware.guest_devices.each do |guest_device|
 end
 ```
 
-We can find out a user's role by following the association between the User object ( _MiqAeServiceUser_ ) and its Group object ( _MiqAeServiceMiqGroup_ ), and referencing the Group object's _miq\_user\_role\_name_ attribute:
+We can find out a user's role by following the association between the User object (`MiqAeServiceUser`) and its Group object (`MiqAeServiceMiqGroup`), and referencing the Group object's `miq_user_role_name` attribute:
 
 ```ruby
 role = $evm.root['user'].current_group.miq_user_role_name
@@ -139,7 +139,7 @@ role = $evm.root['user'].current_group.miq_user_role_name
 
 As Automation scripters, we don't need to know anything about the Active Records or Service Models behind the scenes, we just follow the links. See [Investigative Debugging](../chapter9/investigative_debugging.md) to find out what associations there are to follow.
 
-Continuing our exploration of our RHEV Host object ( _MiqAeServiceHostRedhat_ ), the Associations available to this object are:
+Continuing our exploration of our RHEV Host object (`MiqAeServiceHostRedhat`), the associations available to this object are:
 <br> <br>
 
 ```
@@ -159,7 +159,7 @@ host.switches
 host.vms
 ```
 
-We can enumerate an object's Associations using:
+We can enumerate an object's associations using:
 
 ```ruby
 this_object.associations.each do |association|
@@ -167,9 +167,9 @@ this_object.associations.each do |association|
 
 ### Methods
 
-Most of the objects that we work with have **Methods** defined, either in their own class or superclasses. The description of (most of) these Methods is in the _Management Engine 5.x Methods Available for Automation_ manual.
+Most of the objects that we work with have _methods_ defined, either in their own class or superclasses. The description of (most of) these methods is in the _Management Engine 5.x Methods Available for Automation_ manual.
 
-For example the Methods available to call for our RHEV Host object ( _MiqAeServiceHostRedhat_ ) are:
+For example the methods available to call for our RHEV Host object (`MiqAeServiceHostRedhat`) are:
 
 ```
 host.authentication_password
@@ -191,7 +191,7 @@ host.scan
 host.ssh_exec
 ```
 
-Enumerating an MiqAeService* object's methods is more challenging, because the actual object that we want to enumerate is on the remote side of a druby call, and all we have is the local DRb::DRbObject. We can use _method\_missing_, but we get returned the entire Method list, which includes Attribute names, Virtual Column names, Association names, superclass methods, etc.
+Enumerating an MiqAeService* object's methods is more challenging, because the actual object that we want to enumerate is on the remote side of a druby call, and all we have is the local DRb::DRbObject. We can use `method_missing`, but we get returned the entire method list, which includes attribute names, virtual column names, association names, superclass methods, etc.
 
 ```ruby
 this_object.method_missing(:class).instance_methods

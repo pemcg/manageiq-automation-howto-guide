@@ -1,46 +1,45 @@
 ## State Machines
 
-One of the types of schema field is a _State_, and we can construct a Class Schema definition comprising a sequences of _States_. This then becomes a _State Machine_.
+One of the types of Schema field is a **State**, and we can construct a Class Schema definition comprising a sequences of **States**. This then becomes a _State Machine_.
 
 State Machines are a really useful way of performing a sequence of operations; they can ensure the successful completion of a prior step before the next step is run, permit steps to be retried, and allow us to set a timeout value on the successful completion of the State.
 
-If we look at all of the attributes that we can add for a schema field, in addition to the familar _Name_, _Description_, and _Value_ headings, we see a number of column headings that we haven't used so far:
+If we look at all of the attributes that we can add for a schema field, in addition to the familar **Name**, **Description**, and **Value** headings, we see a number of column headings that we haven't used so far:
 
 
 ![screenshot](images/screenshot2.png)
 
 ### Schema Columns
-The schema columns for a State Machine are the same as in any other class schema, but we use more of them.
+The Schema columns for a State Machine are the same as in any other Class Schema, but we use more of them.
 
 #### Value (Instance)/Default Value (Schema)
-As in any other class schema, this is a _relationship_ to an _instance_ to be run to perform the main processing of the State/Stage. Surprising as it may seem, we don't necessarily need a value specified here for a State Machine (see _On Entry_ below).
+As in any other Class Cchema, this is a Relationship to an _Instance_ to be run to perform the main processing of the State/Stage. Surprising as it may seem, we don't necessarily need a value specified here for a State Machine (see **On Entry** below).
 
 #### On Entry
-We can optionally define an **On Entry** _method_ to be run before the "main" method (the _Value_ entry) is run. We can use this to setup or test for pre-conditions to the State, for example if the "main" method adds a tag to an object, the _On Entry_ method might check that the category and tag exist.
+We can optionally define an **On Entry** _Method_ to be run before the "main" method (the **Value** entry) is run. We can use this to setup or test for pre-conditions to the State, for example if the "main" Method adds a tag to an object, the **On Entry** method might check that the category and tag exist.
 
-The method name can be specified as a relative path to the local class (i.e. just the method name), or in namespace/class/method syntax.
+The Method name can be specified as a relative path to the local class (i.e. just the Method name), or in Namespace/Class/Method syntax.
 
-Note - some State Machines use an **On Entry** _method_ instead of a **Value** _relationship_ to perform the main work of the State. This is useful when we wish to create self-contained State Machines with the State Machine instance and its associated methods all in one class.
+Note - some State Machines use an **On Entry** _Method_ instead of a **Value** _Relationship_ to perform the main work of the State. This is useful when we wish to create self-contained State Machines with the State Machine Instance and its associated Methods all in one class.
 
 #### On Exit
-We can optionally define an **On Exit** _method_ to be run if the "main" method (the _Value_ relationship/instance or _On Entry_ method) returns ```$evm.root['ae_result'] = 'ok'```
+We can optionally define an **On Exit** _Method_ to be run if the "main" Method (the **Value** Relationship/Instance or **On Entry** Method) returns `$evm.root['ae_result'] = 'ok'`
 
 #### On Error
-We can optionally define an **On Error** _method_ to be run if the "main" method (the _Value_ relationship/instance or _On Entry_ method) returns ```$evm.root['ae_result'] = 'error'```
-
+We can optionally define an **On Error** _Method_ to be run if the "main" Method (the **Value** Relationship/Instance or **On Entry** Method) returns `$evm.root['ae_result'] = 'error'`
 
 #### Max Retries
-We can optionally define a maximum number of retries that the Stage/State is allowed to attempt. Defining this in the State rather than the method itself simplifies the method coding, and makes it easier to write generic methods that can be re-used in a number of State Machines.
+We can optionally define a maximum number of retries that the Stage/State is allowed to attempt. Defining this in the State rather than the Method itself simplifies the Method coding, and makes it easier to write generic Methods that can be re-used in a number of State Machines.
 
 #### Max Time
 We can optionally define a maximum time (in seconds) that the State will be permitted to run for, before being terminated.
 
 #### State Machine Example
-We can look at the out-of-the-box _/Infrastructure/VM/Provisoning/StateMachines/ProvisionRequestApproval/Default_ State Machine Instance as an example, and see that it defines an attribute _max\_vms_, and has just two Stages/States; _ValidateRequest_ and _ApproveRequest_. 
+We can look at the out-of-the-box `/Infrastructure/VM/Provisoning/StateMachines/ProvisionRequestApproval/Default` State Machine Instance as an example, and see that it defines an attribute **max_vms**, and has just two Stages/States; **ValidateRequest** and **ApproveRequest**. 
 
-There is no _Value_ relationship specified for either State/Stage; each of these States runs a locally defined method (in the same _/Infrastructure/VM/Provisoning/StateMachines/ProvisionRequestApproval/_ class) to perform the state-related processing.
+There is no **Value** Relationship specified for either State/Stage; each of these States runs a locally defined Method (in the same `/Infrastructure/VM/Provisoning/StateMachines/ProvisionRequestApproval/` Class) to perform the state-related processing.
 
-The greyed-out values for _on\_entry_ and _on\_error_ are defaults defined in the Class schema rather than the Instance.
+The greyed-out values for **on_entry** and **on_error** are defaults defined in the Class Schema rather than the Instance.
 <br> <br>
 
 ![screenshot](images/screenshot1.png)
@@ -49,9 +48,9 @@ The greyed-out values for _on\_entry_ and _on\_error_ are defaults defined in th
 
 #### $evm.root['ae\_result']
 
-A method run within the context of a State Machine can return a completion status back to the Automate Engine, which can then decide which next action to perform (such as whether to advance to the next State/Stage).
+A Method run within the context of a State Machine can return a completion status back to the Automation Engine, which can then decide which next action to perform (such as whether to advance to the next State/Stage).
 
-We do this by setting one of three values in the ```ae_result``` hash key:
+We do this by setting one of three values in the `ae_result` hash key:
 
 ```ruby
 # Signal an error
@@ -97,13 +96,13 @@ if $evm.root['ae_status_state'] == "on_entry"
   ...
 ```
 ### State Machine Workflow
-We can look at the workflow through a State Machine using the diagram in the official CloudForms _Lifecycle and Automation Guide_ (section 4.3. STATE MACHINES):
+We can look at the workflow through a ManageIQ _Botvinnik_ (CloudForms Management Engine 5.4) State Machine using the diagram in the official CloudForms Management Engine 5.4 _Lifecycle and Automation Guide_ (section 4.3. STATE MACHINES):
 
 ![state machine logic](images/state_machine_logic.png)
 
-Here we see that any error condition caught by the _on\_error_ method results in an abort of the State Machine. The next ManageIQ release _Capablanca_ will allow us to set ```$evm.root['ae_result'] = 'continue'``` in an _on\_error_ method so that the method can take remedial action to correct an error, and continue with the State Machine.
+Here we see that any error condition caught by the **on_error** method results in an abort of the State Machine. ManageIQ _Capablanca_ (CloudForms Management Engine 5.5) allows us to set `$evm.root['ae_result'] = 'continue'` in an **on_error** Method so that the Method can take remedial action to correct an error, and continue with the State Machine.
 
-The same update will also let us set ```$evm.root['ae_next_state'] = state_name``` to allow a Stage/State to advance forward to a named future Stage/State, or for an _on\_entry_ method to call ```$evm.root['ae_result'] = 'skip'``` to advance straight to the next Stage/State. This will allow for intelligent _on\_entry_ pre-processing, and to advance if pre-conditions are already met.
+The same enhancement also lets us set `$evm.root['ae_next_state'] = state_name` to allow a Stage/State to advance forward to a named future Stage/State, or for an **on_entry** Method to call `$evm.root['ae_result'] = 'skip'` to advance directly to the next Stage/State. This allows for intelligent **on_entry** pre-processing, and to advance if pre-conditions are already met.
 
 ### Saving Variables Between State Retries
 

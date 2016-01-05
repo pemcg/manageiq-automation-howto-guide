@@ -4,9 +4,9 @@ As seen in [Working with Automation Objects](../chapter4/working_with_automation
 
 ### InspectMe
 
-**InspectMe** is an Instance/Method combination supplied out-of-the-box that we can call to dump some attributes of $evm.root and its associated objects. As an example we can call InspectMe from a button on a _VM and Instance_ object as we did when running our AddCustomAttribute instance in [A More Advanced Example](../chapter5/a_more_advanced_example.md). As both the Instance and Method are in the _ManageIQ/System/Request_ namespace, we can call InspectMe directly rather than calling _Call\_Instance_ as an intermediary.
+_InspectMe_ is an Instance/Method combination supplied out-of-the-box that we can call to dump some attributes of `$evm.root` and its associated objects. As an example we can call InspectMe from a button on a _VM and Instance_ object as we did when running our AddCustomAttribute Instance in [A More Advanced Example](../chapter5/a_more_advanced_example.md). As both the Instance and Method are in the `ManageIQ/System/Request` namespace, we can call InspectMe directly rather than calling `Call_Instance` as an intermediary.
 
-We can view the results of the InspectMe dump in automation.log:
+We can view the results of the InspectMe dump in `automation.log`:
 
 ```
 [root@cloudforms ~]# vmdb
@@ -34,15 +34,15 @@ Kevin Morey has written a greatly enhanced version of InspectMe, available from 
 
 ### object_walker
 
-**object\_walker** is a slightly more dynamic tool that walks and dumps the objects, attributes and virtual columns of $evm.root and its immediate objects, but also recursively traverses associations to walk and dump any objects that it finds. It prints the output in a Ruby-like syntax that can be copied and pasted directly into an Automation script to access or walk the same path.
+_object\_walker_ is a slightly more dynamic tool that walks and dumps the objects, attributes and virtual columns of `$evm.root` and its immediate objects, but also recursively traverses associations to walk and dump any objects that it finds. It prints the output in a Ruby-like syntax that can be copied and pasted directly into an Automation script to access or walk the same path.
 
 The script is available [here](https://github.com/pemcg/object_walker), along with instructions for use.
 
 #### Black or Whitelisting Associations
 
-One of the features of object\_walker is the ability to be able to selectively choose which associations to "walk" to limit the output. This is selected by setting a _@walk\_association\_policy_ to _:whitelist_ or _:blacklist_, and then defining a _@walk\_association\_whitelist_ or _@walk\_association\_blacklist_ to list the associations to be walked (whitelist), or not walked (blacklist).
+One of the features of object\_walker is the ability to be able to selectively choose which associations to "walk" to limit the output. This is selected by setting a `@walk_association_policy` to `:whitelist` or `:blacklist`, and then defining a `@walk_association_whitelist` or `@walk_association_blacklist` to list the associations to be walked (whitelist), or not walked (blacklist).
 
-In practice a _@walk\_association\_policy_ of _:blacklist_ produces so much output that it's rarely used, and so a _:whitelist_ is more often defined, e.g.
+In practice a `@walk_association_policy` of `:blacklist` produces so much output that it's rarely used, and so a `:whitelist` is more often defined, e.g.
 
 ```ruby
 @walk_association_whitelist = { "MiqAeServiceVmRedhat"    => ["hardware", "host", "storage"],
@@ -52,7 +52,7 @@ In practice a _@walk\_association\_policy_ of _:blacklist_ produces so much outp
 ```
 
 #### object\_walker\_reader
-There is a companion _object\_walker\_reader_ script that can be copied to the CloudForms appliance to extract the object\_walker dumps from automation.log, list the dumps, and even _diff_ two dumps - useful when running object\_walker before and after a built-in method (for example in a State Machine) to see what the method has changed.
+There is a companion _object\_walker\_reader_ script that can be copied to the CloudForms appliance to extract the object\_walker dumps from `automation.log`, list the dumps, and even _diff_ two dumps - useful when running object\_walker before and after a built-in method (for example in a State Machine) to see what the method has changed.
 
 ```
 Object Walker 1.6 Starting
@@ -194,7 +194,7 @@ end
 $evm = get_evm
 ```
 
-More details are available from https://github.com/georgegoh/cloudforms-util
+More details are available [here](https://github.com/georgegoh/cloudforms-util)
 
 ### Rails db
 

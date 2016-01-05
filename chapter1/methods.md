@@ -2,7 +2,7 @@
 
 ### Methods
 
-A **Method** is a self-contained block of Ruby code. This is the code that gets executed when we run any Automation operation.
+A _Method_ is a self-contained block of Ruby code. This is the code that gets executed when we run any Automation operation.
 <br> <br>
 
 ![Screenshot](images/screenshot8.png)

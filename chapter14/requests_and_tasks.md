@@ -1,15 +1,15 @@
 ## Requests and Tasks
 
-Some, relatively simple Automation operations launch directly into a running Instance/Method known as the **Task**. Examples of these are:
+Some relatively simple Automation operations result in the Instance/Method being run directly. Examples of these are:
 
-- Running an Automation Instance from a button
 - Running an Automation Instance from simulation
 - Automation Instances running to populate dynamic dialog elements
-- Automation Instances entered as a result of a Control Policy Action Type of _Invoke a Custom Automation_
-- Alerts that send a _Management Event_
-<br> <br>
+- Running an Automation Instance from a button
+- Automation Instances entered as a result of a Control Policy Action Type of **Invoke a Custom Automation**
+- Alerts that send a **Management Event**
 
-Other more complex Automation operations - such as provisioning VMs or Cloud Instances - may alter or consume resources in our virtual or cloud infrastructure, and for these CloudForms/ManageIQ allows us to insert an approval stage into the Automation workflow. It does this by separating the operation into two distinct stages - the **Request** and the **Task**, with an approval being required to progress from one to the other.
+
+Other more complex Automation operations - such as provisioning VMs or Cloud Instances - may alter or consume resources in our virtual or cloud infrastructure. For these CloudForms/ManageIQ allows us to insert an approval stage into the Automation workflow. It does this by separating the operation into two distinct stages - the _Request_ and the _Task_, with an approval being required to progress from one to the other.
 
 Examples of these are:
 
@@ -25,7 +25,7 @@ We will look at these in more detail in this section.
 
 ### Object Types
 
-There are corresponding request and task objects representing each of these more complex operations. Each object holds information relevant to the operation.
+There are corresponding Request and Task objects representing each of these more complex operations. Each object holds information relevant to the operation.
 
 |   Operation          |   Request Object   |   Task Object   |
 |:--------------------:|:------------------:|:---------------:|
@@ -40,9 +40,9 @@ There are corresponding request and task objects representing each of these more
 
 In addition to those listed above, a kind of pseudo-request object is created when we add a Service Catalog Item to provision a VM. 
 
-When we create the Catalog Item, we fill out the _Request Info_ fields, as if we were provisioning a VM interactively via the Infrastructure -> Virtual Machines -> Lifecycle -> Provision VMs menu (See [Example - Creating a Service Catalog Item](../chapter17/creating_a_service_item.md)). 
+When we create the Catalog Item, we fill out the **Request Info** fields, as if we were provisioning a VM interactively via the **Infrastructure -> Virtual Machines -> Lifecycle -> Provision VMs** menu (See [Example - Creating a Service Catalog Item](../chapter17/creating_a_service_item.md)). 
 
-The values that we select or enter are added to the options hash in a newly created _miq\_provision\_request\_template_ object. This then serves as the "request" template for all subsequent VM provision operations from this Service Catalog Item.
+The values that we select or enter are added to the options hash in a newly created `miq_provision_request_template` object. This then serves as the "request" template for all subsequent VM provision operations from this Service Catalog Item.
 
 
 |   Operation          |   "Request" Object   |   Task Object   |
@@ -51,15 +51,15 @@ The values that we select or enter are added to the options hash in a newly crea
 
 ### Approval
 
-_Requests_ need to be approved before the Task is created. Admin-level users can auto-approve their own requests, while non-admin users sometimes need the request explicitly approved, depending on the Automation Request type.
+Requests need to be approved before the Task is created. Admin-level users can auto-approve their own requests, while non-admin users sometimes need the request explicitly approved, depending on the Automation Request type.
 
-The most common Automation operation that non-admin users frequently perform is to provision a VM, and for this there are approval thresholds in place (_max\_vms, max\_cpus, max\_memory, max\_retirement\_days_). VM Provision Requests specifying numbers or sizes below these thresholds are auto-approved, whereas requests exceeding these thresholds are blocked, pending approval by an admin-level user.
+The most common Automation operation that non-admin users frequently perform is to provision a VM, and for this there are approval thresholds in place (**max_vms**, **max_cpus**, **max_memory**, **max\_retirement\_days**). VM Provision Requests specifying numbers or sizes below these thresholds are auto-approved, whereas requests exceeding these thresholds are blocked, pending approval by an admin-level user.
 
 ### Object Class Ancestry
 
-If the _Request_ is approved, one or more _Task_ objects will be created from information contained in the _Request_ object (a single request for three VMs will result in three task objects for example).
+If the Request is approved, one or more Task objects will be created from information contained in the Request object (a single request for three VMs will result in three task objects for example).
 
-If we look at the class ancestry for the _Request_ objects:
+We can examine the class ancestry for the ManageIQ _Botvinnik_ (CloudForms Management Engine 5.4) Request objects:
 
 ```
 MiqAeServiceAutomationRequest < MiqAeServiceMiqRequest
@@ -72,7 +72,7 @@ MiqAeServiceVmMigrateRequest < MiqAeServiceMiqRequest
 MiqAeServiceVmReconfigureRequest < MiqAeServiceMiqRequest
 ```
 
-and for the _Task_ objects:
+and for the Task objects:
 
 ```
 MiqAeServiceAutomationTask < MiqAeServiceMiqRequestTask
@@ -92,7 +92,7 @@ MiqAeServiceServiceTemplateProvisionTask < MiqAeServiceMiqRequestTask
 MiqAeServiceVmReconfigureTask < MiqAeServiceMiqRequestTask
 ```
 
-... we see that there are twice as many types of _Task_ object. This is because a request to perform an action (e.g. provision a VM) can be converted into one of several ways of performing the task (e.g. provision a VMware VM via PXE).
+We see that there are twice as many types of Task object. This is because a request to perform an action (e.g. provision a VM) can be converted into one of several ways of performing the task (e.g. provision a VMware VM via PXE, or clone from Template).
 
 ### Context
 
@@ -107,15 +107,15 @@ If we have a Request object, there may not necessarily be a Task object (yet), b
 
 Tip - when we're developing automation methods, having an understanding of whether we're running in a Request or Task context can be really useful. Think about what stage in the Automation flow the method will be running - before or after approval.
 
-Example - we wish to set the number of VMs to be provisioned as part of a VM provisioning operation. We know that an options hash key _:number\_of\_vms_ can be set, but this appears in the options hash for both the _Task_ and _Request_ objects. (See [The Options Hash](../chapter15/options_hash.md) for more details). Where should we set it?
+Example - we wish to set the number of VMs to be provisioned as part of a VM provisioning operation. We know that an options hash key `:number_of_vms` can be set, but this appears in the options hash for both the Task and Request objects. (See [The Options Hash](../chapter15/options_hash.md) for more details). Where should we set it?
 
-Answer - the _Task_ objects are created after the _Request_ is approved, and the number of VMs to be provisioned is one of the criteria that auto-approval uses to decide whether or not to approve the request. The _:number\_of\_vms_ key also determines how many _Task_ objects are created (it is the _Task_ object that contains the VM-specific options hash keys such as _:vm\_target\_name_, _:ip\_addr_, etc.) 
+Answer - the _Task_ objects are created after the _Request_ is approved, and the number of VMs to be provisioned is one of the criteria that auto-approval uses to decide whether or not to approve the request. The `:number_of_vms` key also determines how many _Task_ objects are created (it is the _Task_ object that contains the VM-specific options hash keys such as `:vm_target_name`, `:ip_addr`, etc.) 
 
-We must therefore set _:number\_of\_vms_ in the _Request_ options hash, **before** the _Task_ objects are created.
+We must therefore set `:number_of_vms` in the _Request_ options hash, **before** the _Task_ objects are created.
 
 ### Object Contents
 
-The _Request_ object contains details about the requester (person), approval status, approver (person) and reason, and the parameters to be used for the resulting Task in the form of an _options hash_. The options hash contains  whatever optional information is required for the task to complete, and the size of the options hash depends on the Automation Request type. In the case of an _miq\_provision\_request_ the options hash has over 70 key/value pairs, specifying the characteristics of the VM to be provisioned, e.g.
+The Request object contains details about the requester (person), approval status, approver (person) and reason, and the parameters to be used for the resulting Task in the form of an _options hash_. The options hash contains  whatever optional information is required for the task to complete, and the size of the options hash depends on the Automation Request type. In the case of an _miq\_provision\_request_ the options hash has over 70 key/value pairs, specifying the characteristics of the VM to be provisioned, e.g.
 
 ```
 ...
@@ -130,7 +130,7 @@ miq_provision_request.options[:vm_name] = rhel7srv003   (type: String)
 Much of the information in the Request object is propagated to the Task object, including the options hash.
 
 #### Dumping the Object Contents
-We can use object_walker to show the difference between an Automation Request and Task object.
+We can use `object_walker` to show the difference between an Automation Request and Task object.
 
 Using the following walk\_association\_whitelist:
 
@@ -274,7 +274,7 @@ $evm.root['automation_task_id'] = 2000000000003   (type: String)
 
 We can see some interesting things...
 
-* From the Task object, the Request object is available from either of two associations, its specific object type ```$evm.root['automation_task'].automation_request``` and the more generic ```$evm.root['automation_task'].miq_request```. These both link to the same Request object, and this is the case with all Task objects - we can always follow a ```.miq_request``` association to get back to the request, regardless of Request object type.
+* From the Task object, the Request object is available from either of two associations, its specific object type `$evm.root['automation_task'].automation_request` and the more generic `$evm.root['automation_task'].miq_request`. These both link to the same Request object, and this is the case with all of the more complex Task objects - we can always follow a `.miq_request` association to get back to the Request, regardless of Request object type.
 
 * We see that the Request object has several approval-specific methods that the Task object doesn't have (or need), i.e.
 

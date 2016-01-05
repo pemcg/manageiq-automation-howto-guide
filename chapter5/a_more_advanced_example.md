@@ -5,46 +5,46 @@ In this example we'll create an automate method that adds a custom attribute to 
 ### Creating the Service Dialog
 The first thing we must do is create a _Service Dialog_ to be displayed when our custom button is clicked.
 
-Navigate to _Automate -> Customization_, select _Service Dialogs_ in the accordion, highlight _All Dialogs_, then select _Configuration -> Add a new Dialog_ (don't click the _Add_ button yet...)
+Navigate to **Automate -> Customization**, select **Service Dialogs** in the accordion, highlight _All Dialogs_, then select **Configuration -> Add a new Dialog** (don't click the **Add** button yet...)
 <br> <br>
 
 ![Screenshot](images/screenshot1.png)
 
 <br> <br>
-Give the Dialog a Label and Description of _Button_, check the Submit and Cancel options, and click _+ -> Add a new Tab to this Dialog_ (don't click the _Add_ button yet...)
+Give the Dialog a Label and Description of _Button_, check the **Submit** and **Cancel** options, and click **+ -> Add a new Tab to this Dialog** (don't click the **Add** button yet...)
 <br> <br>
 
 ![Screenshot](images/screenshot2.png)
 
 <br>
-Give the tab a Label and Description of _Main_, and click _+ -> Add a new Box to this Tab_ (don't click the _Add_ button yet...)
+Give the tab a Label and Description of _Main_, and click **+ -> Add a new Box to this Tab** (don't click the **Add** button yet...)
 <br> <br>
 
 ![Screenshot](images/screenshot3.png?)
 
 <br> <br>
-Give the box a Label and Description of _Custom Attribute_, and click _+ -> Add a new Element to this Box_ (don't click the _Add_ button yet...)
+Give the box a Label and Description of _Custom Attribute_, and click **+ -> Add a new Element to this Box** (don't click the **Add** button yet...)
 <br> <br>
 
 ![Screenshot](images/screenshot4.png)
 
 <br>
-Give the new Element the Label of _Key_, the Name of _key_, and a Type of _Text Box_. Leave the other values as default (don't click the _Add_ button yet...)
+Give the new Element the **Label** of _Key_, the **Name** of _key_, and a **Type** of _Text Box_. Leave the other values as default (don't click the **Add** button yet...)
 <br> <br>
 
 ![Screenshot](images/screenshot5.png)
 
 <br>
-Click _+ -> Add a new Element to this Box_ to create a second element with the Label of _Value_, the Name of _value_, and a Type of _Text Box_. Leave the other values as default, and now, finally click the _Add_ button.
+Click **+ -> Add a new Element to this Box** to create a second element with the **Label** of _Value_, the **Name** of _value_, and a **Type** of _Text Box_. Leave the other values as default, and now, finally click the **Add** button.
 <br> <br>
 
 ![Screenshot](images/screenshot6.png)
 
 ### Creating the Instance and Method
 
-Create a new Instance in our _Methods_ class just as we did before, called _AddCustomAttribute_. Leave the _password_, _servername_ and _username_ schema fields blank, but add the value _add\_custom\_attribute_ in the _execute_ field.
+Create a new Instance in our `Methods` Class just as we did before, called _AddCustomAttribute_. Leave the **password**, **servername** and **username** schema fields blank, but add the value _add\_custom\_attribute_ in the **execute** field.
 
-Create a new Method in our _Methods_ class as we did before, called _add\_custom\_attribute_. Paste the following into the _Data_ box:
+Create a new Method in our `Methods` Class as we did before, called _add\_custom\_attribute_. Paste the following into the **Data** box:
 
 ```ruby
 $evm.log(:info, "add_custom_attribute started")
@@ -65,33 +65,33 @@ exit MIQ_OK
 ```
 
 <br>
-Values entered into a dialog box are available to our method through $evm.root. The Automation Engine prefixes the dialog element names with "dialog\_", and so the values that we want to read are $evm.root['dialog\_key'] and $evm.root['dialog\_value'].
+Values entered into a dialog box are available to our method through $evm.root. The Automation Engine prefixes the dialog element names with "dialog\_", so the values that we want to read are `$evm.root['dialog_key']` and `$evm.root['dialog_value']`.
 
 #### Create the /System Entry Point
-To illustrate an alternative way of calling an Instance, we're going to be creating our own entry point directly in the /System/ Namespace, rather than redirecting through Call_Instance as before. First we must copy/clone the /ManageIQ/System/Request Class into our own domain:
+To illustrate an alternative way of calling an Instance, we're going to be creating our own entry point directly in the `/System/` Namespace, rather than redirecting through `Call_Instance` as before. First we must copy the `ManageIQ/System/Request` Class into our own Domain:
 <br> <br>
 
 ![Screenshot](images/screenshot11.png)
 
 <br>
-Copy the class into the ACME Domain, to the same path:
+Copy the class into the `ACME` Domain, to the same path:
 <br> <br>
 ![Screenshot](images/screenshot12.png)
 
 <br>
-Next we have to create a new Instance of the Class:
+Now we have to create a new Instance of the Class:
 <br> <br>
 
 ![Screenshot](images/screenshot13.png)
 
 <br>
-...and we enter _/General/Methods/AddCustomAttribute_ into the _rel1_ field:
+Enter `/General/Methods/AddCustomAttribute` into the **rel1** field:
 <br> <br>
 
 ![Screenshot](images/screenshot14.png)
 
 ### Creating the Button
-Navigate to _Automate -> Customization_, select _Buttons_ in the accordion, highlight _Object Types -> VM and Instance_, then select _Configuration -> Add a new Button Group_:
+Navigate to **Automate -> Customization**, select **Buttons** in the accordion, highlight **Object Types -> VM and Instance**, then select **Configuration -> Add a new Button Group**:
 <br> <br>
 
 ![Screenshot](images/screenshot7.png)
@@ -103,7 +103,7 @@ Create a Button Group called _VM Actions_, select a Button Group Image:
 ![Screenshot](images/screenshot8.png)
 
 <br>
-Click the _Add_ button. Now highlight this new _VM Actions_ button group in the accordion, and select _Configuration -> Add a new Button_:
+Click the **Add** button. Now highlight this new _VM Actions_ button group in the accordion, and select **Configuration -> Add a new Button**:
 <br> <br>
 
 ![Screenshot](images/screenshot9.png)
@@ -116,19 +116,19 @@ Specify a Button and Hover Text of _Add Custom Attribute_, select a suitable but
 
 
 ### Running the Instance
-If we navigate to a VM and drill down into the details, we should see our new button group and button:
+If we navigate to a VM and examine its details, we should see our new button group and button:
 <br> <br>
 
 ![Screenshot](images/screenshot15.png)
 
 <br>
-If we click on the _Add Custom Attribute_ button we should be presented with our dialog:
+If we click on the **Add Custom Attribute** button we should be presented with our dialog:
 <br> <br>
 
 ![Screenshot](images/screenshot16.png)
 
 <br>
-Enter some text and click _Submit_, wait a few seconds, and we should see the new custom attribute displayed at the botton of the VM details pane:
+Enter some text and click **Submit**, wait a few seconds, and we should see the new custom attribute displayed at the botton of the VM details pane:
 <br> <br>
 
 ![Screenshot](images/screenshot17.png)

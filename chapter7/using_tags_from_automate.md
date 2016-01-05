@@ -122,7 +122,7 @@ In this case however we also wish to find the class name of the object. If we ca
 
 ### Getting the List of Tag Categories
 
-On versions prior to ManageIQ _Capablanca_ (CFME 5.5) this is slightly challenging. Both tags and categories are listed in the same _classifications_ table, but tags also have a non-zero _parent\_id_ value that ties them to their category. To find the categories from the _classifications_ table we must search for records with a parent_id of zero:
+On versions prior to ManageIQ _Capablanca_ (CFME 5.5) this was slightly challenging. Both tags and categories are listed in the same _classifications_ table, but tags also have a non-zero _parent\_id_ value that ties them to their category. To find the categories from the _classifications_ table we had to search for records with a parent_id of zero:
 
 ```ruby
 categories = $evm.vmdb('classification').find(:all, :conditions => ["parent_id = 0"])
@@ -163,6 +163,8 @@ tag = $evm.vmdb('classification').find(:first,
 tag_name = tag.name
 ```
 
+
+
 The tag names aren't in the _classifications_ table (just the tag description). When we call _tag.name_, Rails runs an implicit search of the _tags_ table for us, based on the tag.id:
 
 ```
@@ -179,7 +181,7 @@ We can just search for the tag object that matches a given category/tag:
 ```ruby
 tag = $evm.vmdb(:classification).find_by_name('department/hr')
 ```
-Note: Anything returned from $evm.vmdb(:classification) is an MiqAeServiceClassification object, not a text string.
+Note: Anything returned from $evm.vmdb(:classification) is an `MiqAeServiceClassification` object, not a text string.
 
 ### Deleting a Tag Category
 

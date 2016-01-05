@@ -1,38 +1,38 @@
 ## Using Schema/Object Variables
 
-Our next Automation example will reference variables that we can define and set in the schema of our class and instance.
+Our next Automation example will reference variables that we can define and set in the Schema of our Class and Instance.
 
-We'll edit the schema of the _Methods_ class:
+We'll edit the Schema of the `Methods` Class:
 <br> <br>
 
 ![Screenshot](images/screenshot17.png)
 
 <br>
-and add three attributes, _servername_, _username_ and _password_, as shown:
+We'll add three attributes, _servername_, _username_ and _password_, as shown:
 <br> <br>
 
 ![Screenshot](images/screenshot18.png)
 
 <br>
-Click _Save_:
+Click **Save**:
 <br> <br>
 
 ![Screenshot](images/screenshot19.png)
 
 <br>
-We need to ensure that the schema method (our _execute_ field) is listed _after_ the three new schema attributes in the field list, otherwise they won't be visible to the method when it runs. If necessary, run _Configuration -> Edit sequence_ to shuffle the schema fields up or down:
+We need to ensure that the Schema method (our _execute_ field) is listed _after_ the three new schema attributes in the field list, otherwise they won't be visible to the method when it runs. If necessary, run **Configuration -> Edit sequence** to shuffle the schema fields up or down:
 <br> <br>
 
 ![Screenshot](images/screenshot20.png)
 
 <br>
-Now we'll create a new instance as before, this time called _GetCredentials_, and we'll fill in some values for the _servername_, _username_ and _password_ schema attributes:
+Now we'll create a new Instance as before, this time called _GetCredentials_, and we'll fill in some values for the _servername_, _username_ and _password_ Schema attributes:
 <br> <br>
 
 ![Screenshot](images/screenshot21.png)
 
 <br>
-We'll create a method _get\_credentials_ containing the following code:
+We'll create a Method _get\_credentials_ containing the following code:
 
 ```ruby
 $evm.log(:info, "get_credentials started")
@@ -49,13 +49,13 @@ exit MIQ_OK
 ![Screenshot](images/screenshot22.png)
 
 <br>
-Finally we'll run the new instance through Automate -> Simulation again, invoking Call_Instance once more with the following attributes:
+Finally we'll run the new Instance through **Automate -> Simulation** again, invoking `Call_Instance` once more with the following attributes:
 <br> <br>
 
 ![Screenshot](images/screenshot23.png)
 
 <br>
-We check automation.log, and see that the attributes have been retrieved from the instance schema, and the password has been decrypted.
+We check `automation.log`, and see that the attributes have been retrieved from the instance schema, and the password has been decrypted.
 
 ```
 ...Invoking [inline] method [/ACME/General/Methods/get_credentials] with inputs [{}]
