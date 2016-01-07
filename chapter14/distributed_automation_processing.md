@@ -146,20 +146,8 @@ At any time, the **miq_queue** table in the PostgreSQL database contains several
  1000000126295 |      100 | refresh              | ready   | ems_1000000000004     | EmsRefresh                                      | default | ems_inventory         |        7200
  1000000160711 |       20 | deliver              | ready   | generic               | MiqAeEngine                                     | default | automate              |        3600
  1000000153572 |      100 | perf_rollup          | ready   | ems_metrics_processor | Storage                                         | default | ems_metrics_processor |        1800
- 1000000153573 |      100 | perf_rollup          | ready   | ems_metrics_processor | Storage                                         | default | ems_metrics_processor |        1800
  1000000154220 |      100 | perf_rollup          | ready   | ems_metrics_processor | MiqRegion                                       | default | ems_metrics_processor |        1800
- 1000000154221 |      100 | perf_rollup          | ready   | ems_metrics_processor | ManageIQ::Providers::Redhat::InfraManager::Host | default | ems_metrics_processor |        1800
- 1000000154223 |      100 | perf_rollup          | ready   | ems_metrics_processor | EmsCluster                                      | default | ems_metrics_processor |        1800
- 1000000154225 |      100 | perf_rollup          | ready   | ems_metrics_processor | ManageIQ::Providers::Redhat::InfraManager::Host | default | ems_metrics_processor |        1800
- 1000000154227 |      100 | perf_rollup          | ready   | ems_metrics_processor | ManageIQ::Providers::Redhat::InfraManager::Vm   | default | ems_metrics_processor |        1800
- 1000000154228 |      100 | perf_rollup          | ready   | ems_metrics_processor | ManageIQ::Providers::Redhat::InfraManager::Vm   | default | ems_metrics_processor |        1800
- 1000000154229 |      100 | perf_rollup          | ready   | ems_metrics_processor | ManageIQ::Providers::Redhat::InfraManager::Vm   | default | ems_metrics_processor |        1800
- 1000000154230 |      100 | perf_rollup          | ready   | ems_metrics_processor | ManageIQ::Providers::Redhat::InfraManager::Vm   | default | ems_metrics_processor |        1800
- 1000000154235 |      100 | perf_rollup          | ready   | ems_metrics_processor | MiqEnterprise                                   | default | ems_metrics_processor |        1800
- 1000000154239 |      100 | perf_rollup          | ready   | ems_metrics_processor | ManageIQ::Providers::Redhat::InfraManager       | default | ems_metrics_processor |        1800
- 1000000160362 |      100 | perf_rollup          | ready   | ems_metrics_processor | MiqRegion                                       | default | ems_metrics_processor |        1800
- 1000000160427 |      100 | perf_rollup          | ready   | ems_metrics_processor | ManageIQ::Providers::Redhat::InfraManager::Vm   | default | ems_metrics_processor |        1800
- 1000000125758 |      100 | refresh              | ready   | ems_1000000000003     | EmsRefresh                                      | default | ems_inventory         |        7200
+...
 ```
 Each worker type queries the **miq_queue** table to see if there is any work to be done for its respective role. The workers search for messages with a specific **queue\_name** field; for Automation-related messages this is `generic`.
 
