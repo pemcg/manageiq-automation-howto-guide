@@ -19,4 +19,4 @@ I've tried to structure the book around the periodic revelations that I've had w
 ## Assumptions
 This book does not seek to teach Ruby, I am assuming a reasonable level of competence with the language. There are many on-line Ruby tutorials available, including Codecademy's [Learn to program in Ruby]( http://www.codecademy.com/tracks/ruby) which looks quite good (disclaimer: I haven't personally worked through this tutorial, but have seen it recommended).
 
-The book also assumes a comfortable level of working experience with the WebUI features of CloudForms, particularly Insight, Control, and Provisioning VMs via the Lifecycle -> Provision VMs entry point.
+The book also assumes a comfortable level of working experience with the WebUI features of CloudForms, particularly Insight, Control, and Provisioning VMs via the **Lifecycle -> Provision VMs** entry point.

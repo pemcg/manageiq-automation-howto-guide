@@ -223,7 +223,7 @@ We see several messages created and dispatched over a short time period:
 (0 rows)
 ```
 
-We can search for any of these message IDs in `evm.log` and expand them to examine the messages content. For example searching for Message id: 1000000161070 reveals:
+We can search for any of these message IDs in `evm.log` and expand them to examine the message content. For example searching for Message id: 1000000161070 reveals:
 
 ```
 MIQ(MiqQueue.put) Message id: [1000000161070], \
