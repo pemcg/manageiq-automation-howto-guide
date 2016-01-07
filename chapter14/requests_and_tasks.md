@@ -1,6 +1,6 @@
 ## Requests and Tasks
 
-Some relatively simple Automation operations result in the Instance/Method being run directly. Examples of these are:
+Some relatively simple Automation operations result in the Instance/Method being run directly with no need for approval. Examples of these are:
 
 - Running an Automation Instance from simulation
 - Automation Instances running to populate dynamic dialog elements

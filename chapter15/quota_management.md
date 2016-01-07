@@ -23,7 +23,7 @@ A new concept with the re-implemented quota management mechanism is that of _quo
 
 ![screenshot](images/screenshot40.png)
 
-The tenant object keeps track of allocated values:
+The tenant object keeps track of allocated values in virtual columns:
 
 ```
 --- virtual columns follow ---
