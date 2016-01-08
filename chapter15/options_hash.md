@@ -2,7 +2,7 @@
 
 ### miq\_provision\_request
 
-The inputs and options selected from the Provisioning Dialog are added to the _miq\_provision\_request_ object as key/value pairs in a hash known as the _Options Hash_. The contents of the Options Hash varies slightly between provisioning targets (VMware, OpenStack, RHEV etc) and target VM Operating System (Linux, Windows etc.), but a typical hash for a Linux VM provision to a RHEV provider is:
+The inputs and options selected from the Provisioning Dialog are added to the `miq_provision_request` object as key/value pairs in a hash known as the _Options Hash_. The contents of the Options Hash varies slightly between provisioning targets (VMware, OpenStack, RHEV etc) and target VM Operating System (Linux, Windows etc.), but a typical hash for a Linux VM provision to a RHEV provider is:
 
 
 ```ruby
@@ -96,30 +96,30 @@ Several Options Hash keys have their own 'set' method which we should use in pla
 | :vm_notes | request.set_vm_notes |
 | :vlan | request.set_vlan |
 | :dvs | request.set_dvs |
-| :addr_mode | request.set_network_address_mode |
-| :placement_host_name | request.set_host |
-| :placement_ds_name | request.set_storage |
-| :placement_cluster_name | request.set_cluster |
-| :placement_rp_name | request.set_resource_pool |
-| :placement_folder_name | request.set_folder |
-| :pxe_server_id | request.set_pxe_server |
-| :pxe_image_id (Linux server provision) | request.set_pxe_image|
-| :pxe_image_id (Windows server provision) | request.set_windows_image|
-| :customization_template_id | request.set_customization_template |
-| :iso_image_id | request.set_iso_image |
-| :placement_availability_zone | request.set_availability_zone |
-| :cloud_tenant | request.set_cloud_tenant |
-| :cloud_network | request.set_cloud_network |
-| :cloud_subnet | request.set_cloud_subnet |
-| :security_groups | request.set_security_group |
-| :floating_ip_address | request.set_floating_ip_address |
-| :instance_type | request.set_instance_type |
-| :guest_access_key_pair | request.set_guest_access_key_pair |
+| :addr_mode | request.set\_network\_address\_mode |
+| :placement\_host\_name | request.set\_host |
+| :placement\_ds\_name | request.set\_storage |
+| :placement\_cluster\_name | request.set\_cluster |
+| :placement\_rp\_name | request.set\_resource\_pool |
+| :placement\_folder\_name | request.set\_folder |
+| :pxe\_server\_id | request.set\_pxe\_server |
+| :pxe\_image\_id (Linux server provision) | request.set\_pxe\_image|
+| :pxe\_image\_id (Windows server provision) | request.set\_windows\_image|
+| :customization\_template\_id | request.set\_customization\_template |
+| :iso\_image\_id | request.set\_iso\_image |
+| :placement\_availability\_zone | request.set\_availability\_zone |
+| :cloud\_tenant | request.set\_cloud\_tenant |
+| :cloud\_network | request.set\_cloud\_network |
+| :cloud\_subnet | request.set\_cloud\_subnet |
+| :security\_groups | request.set\_security\_group |
+| :floating\_ip\_address | request.set\_floating\_ip\_address |
+| :instance\_type | request.set\_instance\_type |
+| :guest\_access\_key\_pair | request.set\_guest\_access\_key\_pair |
 
 All but the first four of the 'set' methods listed above perform a validity check that the value that we're setting is an eligible resource for the provisioning instance.
 
 
-Tip - use one of the techniques discussed in [Investigative Debugging](../chapter9/investigative_debugging.md) to find out what key/value pairs are in the options hash to manipluate.
+Tip - use one of the techniques discussed in [Investigative Debugging](../chapter9/investigative_debugging.md) to find out what key/value pairs are in the options hash to manipulate.
 
 
 ### miq\_provision
@@ -135,6 +135,27 @@ miq_provision.options[:vm_target_name] = rhel7srv002   (type: String)
 ```
 
 Some Options Hash keys such as ```.options[:number_of_vms]``` have no effect if changed in the _Task_ object - they are only relevant for the _Request_.
+
+#### Adding Network Adapters
+
+There are two additional methods that we call on an miq\_provision object, to add additional network adapters. These are `.set_nic_settings` and `.set_network_adapter`.
+
+```ruby
+idx = 1
+miq_provision.set_nic_settings(idx, \
+                      {
+                       :ip_addr => '10.2.1.23',
+                       :subnet_mask => '255.255.255.0',
+                       :addr_mode => ['static', 'Static']
+                      })
+
+miq_provision.set_network_adapter(idx, \
+                         {
+                          :network => 'VM Network',
+                          :devicetype => 'VirtualVmxnet3',
+                          :is_dvs => false
+                         })
+```
 
 ### Correlation with the Provisioning Dialog
 
@@ -174,15 +195,15 @@ miq_provision_request.options[:number_of_sockets]
 
 Sometimes we wish to add our own custom key/value pairs to the request or task object, so that they can be used in a subsequent stage in the VM Provision State Machine for custom processing. An example might be the size and mountpoint for a secondary disk to be added as part of the provisioning workflow. Although we could add our own key/value pairs directly to the option hash, we risk overwriting a key defined in the core provisioning code (or one added in a later release of ManageIQ/CloudForms).
 
-There is an existing options hash key that is intended to be used for this, called _ws\_values_. The value of this key is itself a hash, containing our key/value pairs that we wish to save.
+There is an existing options hash key that is intended to be used for this, called `ws_values`. The value of this key is itself a hash, containing our key/value pairs that we wish to save.
 
 ```ruby
 miq_provision.options[:ws_values] = {:disk_dize_gb=>100, :mountpoint=>"/opt"}
 ```
 
-The _ws\_values_ hash is also used to store custom values that we might supply if we provision a VM programmatically from either the RESTful API, or from _create\_provision\_request_ (see [Creating Provisoning Requests Programmatically](create_provision_request.md)). One of the arguments for a programmatic call to create a VM is a set of key/value pairs called _additional\_values_ (it was originally called _additionalValues_ in the SOAP call). Any key/value pairs supplied with this argument for the automation call will automatically be added to the _ws\_options_ hash.
+The `ws_values` hash is also used to store custom values that we might supply if we provision a VM programmatically from either the RESTful API, or from _create\_provision\_request_ (see [Creating Provisoning Requests Programmatically](create_provision_request.md)). One of the arguments for a programmatic call to create a VM is a set of key/value pairs called `additional_values` (it was originally called `additionalValues` in the SOAP call). Any key/value pairs supplied with this argument for the automation call will automatically be added to the `ws_options` hash.
 
-By using the _ws\_options_ hash to store our own custom key/value pairs, we make our code compatible with the VM provision request being called programmatically.
+By using the `ws_options` hash to store our own custom key/value pairs, we make our code compatible with the VM provision request being called programmatically.
 
 
 

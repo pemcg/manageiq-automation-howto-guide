@@ -45,7 +45,7 @@ We need to do some preparation of our environment. To keep the example simple we
 
 #### Creating the Host Groups in Satellite 6
 
-We'll create two Host Groups in Satellite 6, _Generic\_RHEL6\_Servers_ and _Generic\_RHEL7\_Servers_:
+We'll create two Host Groups in Satellite 6, **Generic\_RHEL6\_Servers** and **Generic\_RHEL7\_Servers**:
 
 ![screenshot](images/screenshot1.png)
 
@@ -65,7 +65,7 @@ The Host Group will also install the _motd_ and _ntp_ Puppet modules.
 
 When a newly provisioned system registers with Satellite as a _Content Host_, it can include an Activation Key name as an argument to subscription-manager.
 
-We'll create two Activation Keys in Satellite 6, _RHEL6-Generic_ and _RHEL7-Generic_:
+We'll create two Activation Keys in Satellite 6, **RHEL6-Generic** and **RHEL7-Generic**:
 
 ![screenshot](images/screenshot6.png)
 
@@ -77,11 +77,11 @@ These Activation Keys will define defaults for:
 
 #### Adding an SSH Key to the VMware Template
 
-We're going to be using Ansible from the CloudForms server to set the new VM's hostname, register the new VM with Satellite, and install and run Puppet. We need to copy root's public key from the CloudForms server to the VMware Template and add to /root/.ssh/autorized_keys.
+We're going to be using Ansible from the CloudForms server to set the new VM's hostname, register the new VM with Satellite, and install and run Puppet. We need to copy root's public key from the CloudForms server to the VMware Template and add to `/root/.ssh/autorized_keys`.
 
 ### Installing and Configuring Ansible on the CloudForms Appliance
 
-For convenience we'll install Ansible from the EPEL repository. We need to add the _rhel-6-server-optional-rpms_ repository, and then the EPEL installation RPM on the CloudForms appliances with the Automation Engine role set:
+For convenience we'll install Ansible from the EPEL repository. We need to add the **rhel-6-server-optional-rpms** repository, and then the EPEL installation RPM on the CloudForms appliances with the Automation Engine role set:
 
 ```
 subscription-manager repos --enable=rhel-6-server-optional-rpms
@@ -136,7 +136,7 @@ We probably want to disable the EPEL repo after installing this to ensure that w
 sed -i -e 's/enabled=1/enabled=0/' /etc/yum.repos.d/epel.repo
 ```
 
-Uncomment _host\_key\_checking_ in /etc/ansible/ansible.conf:
+Uncomment `host_key_checking` in `/etc/ansible/ansible.conf`:
 
 ```
 # uncomment this to disable SSH key host checking
@@ -145,7 +145,7 @@ host_key_checking = False
 
 ### Modifying the CloudForms Provisioning Workflow
 
-We need to make two additions to the VMProvision\_VM State Machine. We need to add a _RegisterSatellite_ state/stage to register the new VM with Satellite 6 as a _Host_. We also need to add an _ActivateSatellite_ state/state to create the Ansible playbook, and initiate the subscription-manager activation of the new system as a _Content Host_. 
+We need to make two additions to the `VMProvision_VM` State Machine. We need to add a **RegisterSatellite** state/stage to register the new VM with Satellite 6 as a _Host_. We also need to add an **ActivateSatellite** state/state to create the Ansible playbook, and initiate the subscription-manager activation of the new system as a _Content Host_. 
 
 Both of these stages must be added at some point **after** the VM has been provisioned.
 The registration must include the MAC address of the new VM, and the activation uses Ansible to connect via ssh to the running VM.
@@ -157,11 +157,11 @@ We add the new state/stages as follows:
 
 #### RegisterSatellite
 
-Our new _RegisterSatellite_ Instance schema can store some more defaults. In this case we'll create per-Organization/Location Instances, so that we can store the Organization name and Location in the schema:
+Our new **RegisterSatellite** Instance Schema can store some more defaults. In this case we'll create per-Organization/Location Instances, so that we can store the Organization name and Location in the schema:
 
 ![screenshot](images/screenshot3.png?)
 
-The register_satellite Method can access these in the usual way, from $evm.object:
+The register_satellite Method can access these in the usual way, from `$evm.object`:
 
 ```ruby
   servername    = $evm.object['servername']
@@ -172,7 +172,7 @@ The register_satellite Method can access these in the usual way, from $evm.objec
 
 ```
 
-We need to ensure that we only register Linux VMs with Satellite, and we can select a Host Group by testing the VM operating\_system object's _product\_name_ attribute (we're only provisioning RHEL 6 or 7, both x86_64):
+We need to ensure that we only register Linux VMs with Satellite, and we can select a Host Group by testing the VM operating\_system object's `.product_name` attribute (we're only provisioning RHEL 6 or 7, both x86_64):
 
 ```ruby
 ...
@@ -196,7 +196,7 @@ if template.platform == "linux"
 
 (In a more advanced example we could present a selection of Host Groups to register with in a Service Dialog drop-down list - see [Service Reconfiguration](../chapter17/service_reconfiguration.md))
 
-We'll be creating the new Host entry using the Satellite API, and this requires us to use the internal Satellite ID for each parameter, rather than a name. We define a generic _query\_id_ method, and call it three times to retrieve the IDs for the Location, Organization and Host Group:
+We'll be creating the new Host entry using the Satellite API, and this requires us to use the internal Satellite ID for each parameter, rather than a name. We define a generic `query_id` method, and call it three times to retrieve the IDs for the Location, Organization and Host Group:
 
 
 ```ruby
@@ -237,7 +237,7 @@ raise "Cannot determine hostgroup id for '#{hostgroup}'" if hostgroup_id == -1
 $evm.log(:info, "hostgroup_id: #{hostgroup_id}")
 ```
 
-Finally we create the Host record. We specify the _:build_ parameter as _false_ because we don't want Satellite to provision the VM:
+Finally we create the Host record. We specify the `:build` parameter as `false` because we don't want Satellite to provision the VM:
 
 ```ruby
 #
@@ -267,7 +267,7 @@ The full script is available [here](https://github.com/pemcg/cloudforms-automati
 
 #### ActivateSatellite
 
-Our new _ActivateSatellite_ Instance schema can also store some defaults. In this case we'll create per-Organization Instances, and we'll store the Organization name in the schema:
+Our new **ActivateSatellite** Instance Schema can also store some defaults. In this case we'll create per-Organization Instances, and we'll store the Organization name in the schema:
 
 ![screenshot](images/screenshot7.png)
 
@@ -299,7 +299,7 @@ end
 ip_address = vm.ipaddresses[0]
 ```
 
-For this example we'll be connecting to the newly provisioned VM by IP address rather than hostname, so we have to add the new IP address to /etc/ansible/hosts if it doesn't already exist:
+For this example we'll be connecting to the newly provisioned VM by IP address rather than hostname, so we have to add the new IP address to `/etc/ansible/hosts` if it doesn't already exist:
 
 ```ruby
 unless File.foreach('/etc/ansible/hosts').grep(/#{Regexp.escape(ip_address)}/).any?
@@ -402,7 +402,7 @@ We'll provision a RHEL 6 VM named _testserver01_ from CloudForms:
 
 ![screenshot](images/screenshot8.png)
 
-Once the VM has finished cloning, we see the output from register_satellite in automation.log:
+Once the VM has finished cloning, we see the output from register_satellite in `automation.log`:
 
 ```
 <AEMethod register_satellite> Getting hostgroup id for 'Generic_RHEL6_Servers' from Satellite
@@ -481,7 +481,7 @@ In Satellite we now see the new _Content Host_ entry, showing that all packages 
 
 ![screenshot](images/screenshot12.png?)
 
-and we see that the new _Host_ record is shown as _Active_, showing that the Puppet agent is connecting to the Puppet Master:
+We also see that the new _Host_ record is shown as _Active_, showing that the Puppet agent is connecting to the Puppet Master:
  
 ![screenshot](images/screenshot11.png)
 
@@ -532,4 +532,6 @@ If we are quick we can see the contents of the Ansible playbook file before it i
   - name: Enable Puppet
     service: name=puppet enabled=yes
  ```
+  
+ Success!
  

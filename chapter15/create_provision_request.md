@@ -1,12 +1,12 @@
 ## Creating Provisoning Requests Programmatically
 
-Although the most common way to provision a VM is via the CloudForms WebUI, i.e.
+The most common way to provision a VM is via the CloudForms WebUI, i.e.
 <br> <br>
 
 ![screenshot](images/screenshot6.png)
 <br>
 
-...we can also initiate the provisioning process programmatically by calling `$evm.execute` to run the method `create_provision_request`. This method takes a number of arguments, which correspond to the argument list for the EVMProvisionRequestEx SOAP API call. A typical call to provision a VM into RHEV might be:
+We can also. however, initiate the provisioning process programmatically by calling `$evm.execute` to run the method `create_provision_request`. This method takes a number of arguments, which correspond to the argument list for the EVMProvisionRequestEx SOAP API call. A typical call to provision a VM into RHEV might be:
 <br> <br>
 
 ```

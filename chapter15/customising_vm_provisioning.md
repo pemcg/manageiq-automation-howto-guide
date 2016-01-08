@@ -2,7 +2,7 @@
 
 ### Scenario
 
-We are using a RHEV Provider with our CloudForms installation, and we can successfully provision VMs using _Native Clone_ provision type from fully configured RHEV Templates. The Templates all have a single 30GB thin-provisioned hard drive.
+We are using a RHEV Provider with our CloudForms installation, and we can successfully provision VMs using **Native Clone** provision type from fully configured RHEV Templates. The Templates all have a single 30GB thin-provisioned hard drive.
 
 ### Task
 
@@ -10,11 +10,11 @@ We would like all VMs provisioned from these Templates to have a second 30GB har
 
 ### Methodology
 
-Edit the VMProvision_VM State Machine to add two new States to perform the task. We'll add the second disk using the RHEV RESTful API, using credentials stored for the Provider.
+Edit the `VMProvision_VM` State Machine to add two new States to perform the task. We'll add the second disk using the RHEV RESTful API, using credentials stored for the Provider.
 
 #### Step 1
 
-The first thing we weed to do is clone the _/ManageIQ/Infrastructure/VM/Provisioning/StateMachines/VMProvision\_VM/Provision VM from Template (template)_ State Machine Instance into our own ACME Domain so that we can edit the schema:
+The first thing we weed to do is clone the `ManageIQ/Infrastructure/VM/Provisioning/StateMachines/VMProvision_VM/Provision VM from Template (template)` State Machine Instance into our own `ACME` Domain so that we can edit the schema:
 <br> <br>
 
 ![screenshot](images/screenshot12.png)
@@ -26,12 +26,12 @@ Now we edit the schema of the copied Class:
 ![screenshot](images/screenshot13.png)
 
 <br>
-...and add two more steps, _AddDisk_ and _StartVM_
+...and add two more steps, **AddDisk** and **StartVM**
 <br> <br>
 
 ![screenshot](images/screenshot14.png)
 
-Adjust the Class Schema Sequence so that the steps come after PostProvision:
+Adjust the Class Schema Sequence so that the steps come after **PostProvision**:
 <br> <br>
 
 ![screenshot](images/screenshot15.png)
@@ -40,13 +40,13 @@ Adjust the Class Schema Sequence so that the steps come after PostProvision:
 
 We're going to override the default behaviour of the VM Provisioning workflow which is to auto-start a VM after provisioning. We do this because we want to add our new disk with the VM powered off, and then power on the VM ourselves afterwards.
 
-We clone the _/ManageIQ/Infrastructure/VM/Provisioning/StateMachines/Methods/CustomizeRequest_ Instance, and _/ManageIQ/Infrastructure/VM/Provisioning/StateMachines/Methods/redhat\_CustomizeRequest_ Methods into our domain:
+We clone the `ManageIQ/Infrastructure/VM/Provisioning/StateMachines/Methods/CustomizeRequest` Instance, and `ManageIQ/Infrastructure/VM/Provisioning/StateMachines/Methods/redhat_CustomizeRequest` Methods into our Domain:
 <br> <br>
 
 ![screenshot](images/screenshot16.png)
 
 <br>
-We edit _redhat\_CustomizeRequest_ to set the Options Hash key ```:vm_auto_start``` to be ```false```:
+We edit `redhat_CustomizeRequest` to set the Options Hash key `:vm_auto_start` to be ```false```:
 <br> <br>
 
 ```ruby
@@ -66,13 +66,13 @@ ID:<#{prov.miq_provision_request.id}> Provision Type: <#{prov.provision_type}>")
 
 ```
 #### Step 3
-We need to add two new Instances _AddDisk_ and _StartVM_, and two new Methods _add\_disk_ and _start\_vm_. Add the corresponding Method names to the _execute_ schema field of each Instance:
+We need to add two new Instances `AddDisk` and `StartVM`, and two new Methods `add_disk` and `start_vm`. Add the corresponding Method names to the **execute** schema field of each Instance:
 <br> <br>
 
 ![screenshot](images/screenshot17.png)
 
 <br>
-The code for add_disk is as follows...
+The code for **add_disk** is as follows...
 <br> <br>
 
 
@@ -248,7 +248,7 @@ rescue => err
 end
 ```
 <br>
-The code for start_vm is as follows:
+The code for **start_vm** is as follows:
 <br> <br>
 
 ```ruby
@@ -277,9 +277,11 @@ rescue => err
 end
 ```
 
+The scripts are also available [here](https://github.com/pemcg/cloudforms-automation-howto-guide/tree/master/chapter15/scripts)
+
 #### Step 4
 
-Now we edit our copied _Provision VM from Template_ State Machine Instance to add the AddDisk and StartVM Instance URIs to the appropriate steps:
+Now we edit our copied `Provision VM from Template` State Machine Instance to add the `AddDisk` and `StartVM` Instance URIs to the appropriate steps:
 <br> <br>
 
 ![screenshot](images/screenshot18.png?)

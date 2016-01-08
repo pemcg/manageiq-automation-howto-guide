@@ -66,7 +66,7 @@ miq_provision_request.target_type
 
 #### Task Context
 
-When working at the _Task_ stage we have a different workspace ($evm), and here $evm.root does not link directly to _miq\_provision\_request_. We can however still get to the Request Object via an association from the Task Object:
+When working at the _Task_ stage we have a different workspace (`$evm`), and here `$evm.root` does not link directly to `miq_provision_request`. We can however still get to the Request Object via an association from the Task Object:
 
 ```
 $evm.root['miq_provision'].miq_provision_request
@@ -124,7 +124,7 @@ miq_provision.target_type
 miq_provision.user_message=
 ```
 
-...the most important of these probably being ```.execute``` which launches the VM provisioning job.
+The most important of these is probably `.execute` which launches the VM provisioning job.
 
 ### The Source Object
 
@@ -151,7 +151,7 @@ The Source Object contains a very useful Attribute:
 ```
 source.vendor
 ```
-...that has the value "RedHat", "VMware" or "Microsoft" if we're provisioning to an Infrastructure Provider. We can use this to determine the Provider type for this provisioning operation, and make workflow decisions accordingly. This Atttribute is used in several places in the out-of-the-box VMProvision\_VM State Machine to select the appropriate Instance to handle vendor-specific tasks such as VM Placement, i.e.
+This has the value of either "RedHat", "VMware" or "Microsoft" if we're provisioning to an Infrastructure Provider. We can use this to determine the Provider type for this provisioning operation, and make workflow decisions accordingly. This Atttribute is used in several places in the out-of-the-box `VMProvision_VM` State Machine to select the appropriate Instance to handle vendor-specific tasks such as VM Placement, i.e.
 
 ```
 /Infrastructure/VM/Provisioning/Placement/default#${/#miq_provision.source.vendor}
@@ -163,13 +163,13 @@ There is also an equally useful Virtual Column:
 source.platform
 ```
 
-...that has the value "linux" or "windows", and we can similarly use this to make provisioning workflow decisions. We might typically use this to decide whether or not to register a new VM in Foreman/Satellite 6 as part of the provisioning process, for example.
+This has the value of either "linux" or "windows", and we can similarly use this to make provisioning workflow decisions. We might typically use this to decide whether or not to register a new VM in Foreman/Satellite 6 as part of the provisioning process, for example.
 
-All of the Source Object classes extend from MiqAeServiceVmOrTemplate, and so have the same methods as a generic VM. In practice we rarely need to run a source method.
+All of the Source Object classes extend from `MiqAeServiceVmOrTemplate`, and so have the same methods as a generic VM. In practice we rarely need to run a source method.
 
 ### The Destination Object
 
-Once the VM has been created (i.e. after the _Provision_ State of the VMProvision\_VM State Machine), we have an object that represents the newly created VM. This is the **Destination Object**.
+Once the VM has been created (i.e. after the _Provision_ State of the `VMProvision_VM` State Machine), we have an object that represents the newly created VM. This is the **Destination Object**.
 
 
 The Destination Object is accessible as an association from the Task Object:
@@ -180,7 +180,7 @@ $evm.root['miq_provision'].destination
 
 If we wish to make any customisations to the VM as part of the provisioning workflow, such as add a disk or NIC, change VLAN, etc., we make the changes to the Destination Object.
 
-The Destination Object is a subclass of MiqAeServiceVmOrTemplate so has the standard set of VM-related methods:
+The Destination Object is a subclass of `MiqAeServiceVmOrTemplate` so has the standard set of VM-related methods:
 
 ```
 destination.add_to_service
@@ -230,7 +230,7 @@ destination.sync_or_async_ems_operation
 destination.unlink_storage
 destination.unregister
 ```
-In the case of provisioning a VM, the same Destination Object is also availble via the _vm_ association, i.e.
+In the case of provisioning a VM, the same Destination Object is also availble via the `vm` association, i.e.
 
 ```
 $evm.root['miq_provision'].vm
