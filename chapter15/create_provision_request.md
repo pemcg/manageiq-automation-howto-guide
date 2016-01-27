@@ -95,10 +95,65 @@ Custom Attributes applied to the virtual machine through the Provider as part of
 
 Custom Attributes applied to the virtual machine and stored in the CloudForms Management Engine database as part of provisioning. These VMDB-specific Custom Attributes are displayed on the VM details page (see also [A More Advanced Example](../chapter5/a_more_advanced_example.md)).
 
+### Setting Placement Options
+
+The Rails code that implements the `create_provision_request` call makes the assumption that any non-interactive provision request will be using Automatic placement, and it sets `options[:placement_auto] = [true, 1]` as a request option. This also means however that it disregards any **vmFields** options that we may set that are normally found under the **Environment** tab of an interactive provision request, such as `cloud_tenant` or `cloud_network` (these are hidden in the WebUI if we tick **Choose Automatically**).
+
+![screenshot](images/screenshot44.png)
+
+If we try adding one of these (such as `cloud_network`), we see in evm.log:
+
+```
+Unprocessed key <cloud_network> with value <"1000000000007">
+```
+The only way that we can set any of these placement options is to add them to the **additionalValues/ws\_values (arg6)** argument list, and then handle them ourselves in the **CustomizeRequest** stage of the State Machine.
+
+For example, in our call to `create_provision_request` we can set:
+
+```
+# arg6 = additionalValues (ws_values)
+args << "cloud_network=10000000000031|cloud_tenant=10000000000012"
+```
+
+We can then copy `ManageIQ/Cloud/VM/Provisioning/StateMachines/Methods/openstack_CustomizeRequest` into our own domain, and edit as follows:
+
+```ruby
+#
+# Description: This method is used to Customize the Openstack Provisioning Request
+#
+def find_object_for(rsc_class, id_or_name)
+  if /\d{13}/.match(id_or_name.to_s)
+    # Looks like an ID
+    obj = $evm.vmdb(rsc_class, id_or_name.to_s)
+  else
+    obj = $evm.vmdb(rsc_class).find_by_name(id_or_name.to_s)
+  end
+  $evm.log(:warn, "Couldn\'t find an object of class #{rsc_class} \
+  			with an ID or name matching \'#{id_or_name}\'") if obj.nil?
+  obj
+end
+
+# Get provisioning object
+prov = $evm.root["miq_provision"]
+ws_values = prov.options.fetch(:ws_values, {})
+
+if ws_values.has_key?(:cloud_network)
+  cloud_network = find_object_for('CloudNetwork', ws_values[:cloud_network])
+  prov.set_cloud_network(cloud_network)
+end
+if ws_values.has_key?(:cloud_tenant)
+  cloud_tenant = find_object_for('CloudTenant', ws_values[:cloud_tenant])
+  prov.set_cloud_tenant(cloud_tenant)
+end
+
+$evm.log("info", "Provisioning ID:<#{prov.id}> Provision Request \
+         ID:<#{prov.miq_provision_request.id}> Provision Type: <#{prov.provision_type}>")
+```
+
 ### Calling create\_provision\_request From a Service Item Definition
 
 One of the most common uses for calling `$evm.execute('create_provision_request')` is from a Service Catalog Item definition.
 
 When we create a new a Service Catalog Item, we select from a drop-down list of available Catalog Item Types. This lists the defined Provider Types, but also an additional type of **Generic**. If we define a Catalog Item using a Provider Type, we pre-configure the Provisioning Dialog options, just as we would if we were provisioning the request interactively. This also includes the **Number of VMs** (`:number_of_vms`) option, and this cannot be changed once the Service Catalog Item is ordered.
 
-If we wish to be able to dynamically select the number of VMs when we order a service, we must use the **Generic** Catalog Item Type, and call our own Automate Method that creates the provision request on-the-fly using `$evm.execute('create_provision_request')`. This can include an updated `:number_of_vms` as an **arg2** value.
+If we wish to be able to dynamically select the number of VMs when we order a service, we must use the **Generic** Catalog Item Type, and call our own Automate Method that creates the provision request on-the-fly using `$evm.execute('create_provision_request')`. This can include an updated `:number_of_vms` as an **arg3** value.

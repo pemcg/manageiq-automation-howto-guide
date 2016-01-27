@@ -2,7 +2,7 @@
 
 ### Approval
 
-The approval process for a Service Provision Request is entered as a result of the `/ManageIQ/System/Policy/ServiceTemplateProvisionRequest_created` policy being run from a _request\_created_ event. This results in a Service Provisioning Profile lookup to read the value of the **auto\_approval\_state\_machine** attribute, which by default is _ServiceProvisionRequestApproval_ for a Service Provision Request. The second relationship from the event runs the **Default** Instance of this State Machine.
+The approval process for a Service Provision Request is entered as a result of the `/ManageIQ/System/Policy/ServiceTemplateProvisionRequest_created` policy being run from a _request\_created_ event. This results in a Service Provisioning Profile lookup to read the value of the **auto\_approval\_state\_machine** attribute, which by default is `ServiceProvisionRequestApproval` for a Service Provision Request. The second relationship from the event runs the `Default` Instance of this State Machine.
 <br> <br>
 
 ![screenshot](images/screenshot11.png)

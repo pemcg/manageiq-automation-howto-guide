@@ -2,7 +2,7 @@
 
 If we grep for the "Following.. Followed" message pairs in automation.log during a service provisioning request from a non-admin user, we see some interestings things (here _service\_template\_provision_ is abbreviated to _stp_ for brevity).
 
-We see the initial automation request being created though the /System/Request/UI\_PROVISION\_INFO entry point:
+We see the initial automation request being created though the `/System/Request/UI_PROVISION_INFO` entry point:
 
 ```
 Following Rel'ship [miqaedb:/System/Request/UI_PROVISION_INFO#create]
@@ -15,7 +15,7 @@ Following Rel'ship [miqaedb:/System/Process/parse_provider_category#create]
 Followed  Rel'ship [miqaedb:/System/Process/parse_provider_category#create]
 Following Rel'ship [miqaedb:/System/Policy/ServiceTemplateProvisionRequest_created#create]
 ```
-We see a _service_ provisioning profile lookup to get the auto-approval state machine, and some events raised and processed:
+We see a _service_ provisioning profile lookup to get the auto-approval State Machine, and some events raised and processed:
 
 ```
 Following Rel'ship [miqaedb:/service/Provisioning/Profile/Bit63Group_vm_user#get_auto_approval_state_machine]
@@ -60,12 +60,12 @@ Q-task_id([stp_request_10...11]) Followed  Rel'ship [miqaedb:/infrastructure/VM/
 Q-task_id([stp_request_10...11]) Followed  Rel'ship [miqaedb:/System/Request/UI_PROVISION_INFO#create]
 ```
 
-Notice that this _request_ processing runs the naming method, which is therefore processed **before** CatalogItemInitialization (which is processed in _task_ context).
+Notice that this _request_ processing runs the naming method, which is therefore processed **before** `CatalogItemInitialization` (which is processed in _task_ context).
 
 Next we see two service template provisioning _tasks_ created, our top-level and child task objects (service\_template\_provision\_task\_1000000000031 and service\_template\_provision\_task\_1000000000032). 
 
-The two tasks are actually running through two separate state machines. Task 
-_service\_template\_provision\_task\_1000000000031_ is running through _/Service/Provisioning/StateMachines/ServiceProvision\_Template/CatalogItemInitialization_, while task _service\_template\_provision\_task\_1000000000032_ is running through _/Service/Provisioning/StateMachines/ServiceProvision\_Template/clone\_to\_service_.
+The two tasks are actually running through two separate State Machines. Task 
+_service\_template\_provision\_task\_1000000000031_ is running through `/Service/Provisioning/StateMachines/ServiceProvision_Template/CatalogItemInitialization`, while task _service\_template\_provision\_task\_1000000000032_ is running through `/Service/Provisioning/StateMachines/ServiceProvision_Template/clone_to_service`.
 
 ```
 Q-task_id([stp_task_10...31]) Following Rel'ship [miqaedb:/Service/Provisioning/StateMachines/Methods/DialogParser#create]
@@ -84,7 +84,7 @@ Q-task_id([stp_task_10...32]) Following Rel'ship [miqaedb:/Service/Provisioning/
 Q-task_id([stp_task_10...32]) Followed  Rel'ship [miqaedb:/Service/Provisioning/StateMachines/Methods/CheckProvisioned#create]
 ```
 
-We see our grandchild miq_provision task object created (miq\_provision\_1000000000033), and it processing the /Infrastructure/VM/Provisioning/StateMachines methods in the state machine defined in our user profile:
+We see our grandchild miq_provision task object created (miq\_provision\_1000000000033), and it processing the `/Infrastructure/VM/Provisioning/StateMachines` methods in the State Machine defined in our user profile:
 
 ```
 Q-task_id([miq_provision_10...33]) Following Rel'ship [miqaedb:/infrastructure/VM/Lifecycle/Provisioning#create]
@@ -109,7 +109,7 @@ Q-task_id([miq_provision_10...33]) Followed  Rel'ship [miqaedb:/infrastructure/V
 Q-task_id([miq_provision_10...33]) Followed  Rel'ship [miqaedb:/System/Request/UI_PROVISION_INFO#create]
 ```
 
-We see both top-level and child service template provisioning tasks running their _CheckProvisioned_ methods:
+We see both top-level and child service template provisioning tasks running their `CheckProvisioned` Methods:
 
 ```
 Q-task_id([stp_task_10...31]) Following Rel'ship [miqaedb:/Service/Provisioning/StateMachines/Methods/CheckProvisioned#create]
@@ -118,11 +118,11 @@ Q-task_id([stp_task_10...32]) Following Rel'ship [miqaedb:/Service/Provisioning/
 Q-task_id([stp_task_10...32]) Followed  Rel'ship [miqaedb:/Service/Provisioning/StateMachines/Methods/CheckProvisioned#create]
 ```
 
-We see the entire /Infrastructure/VM/Provisioning/StateMachines state machine being re-instantiated for each call of its _CheckProvisioned_ method, including the profile lookup:
+We see the entire `/Infrastructure/VM/Provisioning/StateMachines` State Machine being re-instantiated for each call of its `CheckProvisioned` Method, including the Profile lookup:
 
- _/Infrastructure/VM/Provisioning/Profile/Bit63Group\_vm\_user#get\_state\_machine_. 
+ `/Infrastructure/VM/Provisioning/Profile/Bit63Group_vm_user#get_state_machine`. 
 
-(recall that if a state/stage exits with ```$evm.root['ae_result'] = 'retry'```, the entire state machine is re-launched after the retry interval, starting at the state/stage to be retried)
+(recall that if a state/stage exits with ```$evm.root['ae_result'] = 'retry'```, the entire State Machine is re-launched after the retry interval, starting at the state/stage to be retried)
 
 ```
 Q-task_id([miq_provision_10...33]) Following Rel'ship [miqaedb:/infrastructure/VM/Lifecycle/Provisioning#create]
@@ -199,7 +199,7 @@ Q-task_id([stp_task_10...32]) Following Rel'ship [miqaedb:/Service/Provisioning/
 Q-task_id([stp_task_10...32]) Followed  Rel'ship [miqaedb:/Service/Provisioning/StateMachines/Methods/CheckProvisioned#create]
 ```
 
-We see the _Infrastructure/VM_ provisioning state machine _CheckProvisioned_ method return success, and continue with the remainder of the state machine:
+We see the `Infrastructure/VM` provisioning State Machine `CheckProvisioned` Method return success, and continue with the remainder of the State Machine:
 
 ```
 Q-task_id([miq_provision_10...33]) Following Rel'ship [miqaedb:/infrastructure/VM/Lifecycle/Provisioning#create]
@@ -222,7 +222,7 @@ Q-task_id([miq_provision_10...33]) Followed  Rel'ship [miqaedb:/Infrastructure/V
 Q-task_id([miq_provision_10...33]) Followed  Rel'ship [miqaedb:/infrastructure/VM/Lifecycle/Provisioning#create]
 ```
 
-...and finally we see both of the _Service_ provisioning state machine _CheckProvisioned_ methods return success, and continue with the remainder of their state machines:
+Finally we see both of the _Service_ provisioning State Machine `CheckProvisioned` Methods return success, and continue with the remainder of their State Machines:
 
 ```
 Q-task_id([stp_task_10...32]) Following Rel'ship [miqaedb:/Service/Provisioning/StateMachines/Methods/CheckProvisioned#create]

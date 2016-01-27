@@ -1,6 +1,6 @@
 ## Example - Creating a Service Catalog Bundle
 
-We learnt in [Example - Creating a Service Catalog Item](creating_a_service_item.md) how to create Service Catalog Items that enable our users to provision fully-configured VMs from a single _Order_ button.
+We learnt in [Example - Creating a Service Catalog Item](creating_a_service_item.md) how to create Service Catalog Items that enable our users to provision fully-configured VMs from a single **Order** button.
 
 We can populate our Service Catalog with useful items, for example:
 <br> <br>
@@ -39,24 +39,24 @@ Our four dialog elements are therefore constructed as:
 
 ![screenshot](images/screenshot42.png)
 
-The number in the element name reflects the sequence number, and the _CatalogItemInitialization_ and _CatalogBundleInitialization_ methods use this sequence number to pass the dialog value to the correct grandchild miq\_request\_task (see [The Service Provisioning State Machine](state_machine.md)).
+The number in the element name reflects the sequence number, and the `CatalogItemInitialization` and `CatalogBundleInitialization` methods use this sequence number to pass the dialog value to the correct grandchild miq\_request\_task (see [The Service Provisioning State Machine](state_machine.md)).
 
-Note that here we are explicitly setting just the _:vm\_target\_name_ key in the miq\_request\_task's options hash. We could alternatively have named our elements as "option\_{1,2,3}\_vm_name". The value _vm\_name_ is recognised and special-cased by CatalogItemInitialization, which sets both the _:vm\_target\_name_ and _:vm\_target\_hostname_ keys in the miq\_request\_task's options hash to the value input. The _:vm\_target\_name_ key sets the name of the resulting VM. The _:vm\_target\_hostname_ key can be used to input a Linux _hostname_ (i.e. FQDN) into a VMware Customization Specification, which can then set this in the VM using VMware Tools on firstboot.
+Note that here we are explicitly setting just the `:vm_target_name` key in the miq\_request\_task's options hash. We could alternatively have named our elements as **option\__{1,2,3}_\_vm_name**. The value **vm\_name** is recognised and special-cased by `CatalogItemInitialization`, which sets both the `:vm_target_name` and `:vm_target_hostname` keys in the miq\_request\_task's options hash to the value input. The `:vm_target_name` key sets the name of the resulting VM. The `:vm_target_hostname` key can be used to input a Linux _hostname_ (i.e. FQDN) into a VMware Customization Specification, which can then set this in the VM using VMware Tools on firstboot.
 
 ### Preparing the Service Catalog Items
 
-As we will be handling dialog input when the bundle is ordered, we need to edit each catalog item to remove the Dialog selection. We must also **untick** the _Display in Catalog_ option (this will remove the display of the Catalog and Dialog drop-downs, and the Entry Point selections):
+As we will be handling dialog input when the bundle is ordered, we need to edit each catalog item to remove the Dialog selection. We must also _untick_ the **Display in Catalog** option (this will remove the display of the Catalog and Dialog drop-downs, and the Entry Point selections):
 <br> <br>
 
 ![screenshot](images/screenshot43.png)
 
-Once we've done this, the Items will appear as _Unassigned_:
+Once we've done this, the Items will appear as **Unassigned**:
 <br> <br>
 
 ![screenshot](images/screenshot44.png)
 
 ### Creating the Service Catalog Bundle
-Now we can go ahead and create our Catalog Bundle. Highlight the Catalog name, and select Configuration -> Add a New Catalog Bundle:
+Now we can go ahead and create our Catalog Bundle. Highlight the Catalog name, and select **Configuration -> Add a New Catalog Bundle**:
 <br> <br>
 
 ![screenshot](images/screenshot45.png)
@@ -65,19 +65,19 @@ Enter a Name and Description:
 
 ![screenshot](images/screenshot46.png)
 
-Tick the _Display in Catalog_ check-box to expose the remaining fields to be filled in:
+Tick the **Display in Catalog** check-box to expose the remaining fields to be filled in:
 <br><br>
 
 ![screenshot](images/screenshot47.png)
 
 Select an appropriate Catalog, and the newly create bundle Dialog, from the appropriate drop-downs. 
 
-For the Provisioning Entry Point, navigate to: _/ManageIQ/Service/Provisioning/StateMachines/ServiceProvision\_Template/CatalogBundleInitialization_. 
+For the Provisioning Entry Point, navigate to: `ManageIQ/Service/Provisioning/StateMachines/ServiceProvision_Template/CatalogBundleInitialization`. 
 
-For this service we'll configure a Retirement Entry Point, so navigate to _/ManageIQ/Service/Retirement/StateMachines/ServiceRetirement/Default_.
+For this service we'll configure a Retirement Entry Point, so navigate to `ManageIQ/Service/Retirement/StateMachines/ServiceRetirement/Default`.
 
 
-Click on the _Details_ tab, and enter some HTML-formatted text to describe the Catalog Item to anyone viewing in the Catalog. 
+Click on the **Details** tab, and enter some HTML-formatted text to describe the Catalog Item to anyone viewing in the Catalog. 
 
 ```html
 <h1>Three Tier Web Server Bundle</h1>  
@@ -89,37 +89,37 @@ Click on the _Details_ tab, and enter some HTML-formatted text to describe the C
 as a single service using Red Hat CloudForms</p>
 ```
 
-Click on the _Resources_ tab, and select each of the unassigned catalog items to add them to the bundle:
+Click on the **Resources** tab, and select each of the unassigned catalog items to add them to the bundle:
 <br><br>
 
 ![screenshot](images/screenshot48.png)
 
-Change the _Action Order_ and _Provisioning Order_ according to our desired sequence ('3' won't be visible until '2' is set for an option):
+Change the **Action Order** and **Provisioning Order** according to our desired sequence ('3' won't be visible until '2' is set for an option):
 <br><br>
 
 ![screenshot](images/screenshot49.png)
 
-Finally click the _Add_ button.
+Finally click the **Add** button.
 
-Select a suitable 100x100px icon for a Custom Image:
+Select a suitable sized icon for a Custom Image:
 
 ![screenshot](images/screenshot50.png)
 
 ### Ordering the Catalog Bundle
 
-Navigate to the _Service Catalogs_ section in the accordion, expand the _VMware Services_ Catalog, and highlight the _Three Tier Web Server Bundle_ Catalog Item:
+Navigate to the **Service Catalogs** section in the accordion, expand the **VMware Services** Catalog, and highlight the **Three Tier Web Server Bundle** Catalog Item:
 <br><br>
 
 ![screenshot](images/screenshot51.png)
 
 <br>
-Click _Order_, and fill out the Service Dialog values:
+Click **Order**, and fill out the Service Dialog values:
 
 ![screenshot](images/screenshot52.png)
 
-Click _Submit_
+Click **Submit**
 
-After a new minutes, the new Service should be visible in _My Services_, containing the new VMs:
+After a new minutes, the new Service should be visible in **My Services**, containing the new VMs:
 <br><br>
 
 ![screenshot](images/screenshot53.png)

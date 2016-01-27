@@ -4,17 +4,17 @@ Service dialogs are used in several situations when working with CloudForms Auto
 
 ![screenshot](images/screenshot3.png)
 
-The available element types are described in the CloudForms [Lifecycle and Automation Guide](https://access.redhat.com/documentation/en-US/Red_Hat_CloudForms/3.2/html-single/Lifecycle_and_Automation_Guide/index.html#sect-Service_Dialogs), although with CloudForms 3.2 they gain several useful new features.
+The available element types are described in the CloudForms [Lifecycle and Automation Guide](https://access.redhat.com/documentation/en-US/Red_Hat_CloudForms/3.2/html-single/Lifecycle_and_Automation_Guide/index.html#sect-Service_Dialogs), although with ManageIQ _Botvinnik_ (CloudForms Management Engine 5.4) they gain several useful new features.
 
 ### Dynamic Elements
 
-Prior to CloudForms 3.2 only one element type was capable of dynamic (run-time) population - the _Dynamic Drop Down List_. Now with CloudForms 3.2 most dialog element types are capable of dynamic population, and so the _Dynamic Drop Down List_ has been removed as a separate element type.
+Prior to ManageIQ _Botvinnik_ only one element type was capable of dynamic (run-time) population - the **Dynamic Drop Down List**. Now with ManageIQ _Botvinnik_ most dialog element types are capable of dynamic population, and so the **Dynamic Drop Down List** has been removed as a separate element type.
 
-Dynamic elements are populated from a Method, called either when the service dialog is initially displayed, or from an optional _Refresh_ button. The URI to the Method is specified when we add the element and select the checkbox to make it dynamic.
+Dynamic elements are populated from a Method, called either when the service dialog is initially displayed, or from an optional **Refresh** button. The URI to the Method is specified when we add the element and select the checkbox to make it dynamic.
 
 #### Populating the Dynamic Fields
 
-The dynamic element has/is its own $evm.object, and we need to populate some pre-defined hash key/value pairs to define the dialog field settings, and to load the data to be displayed. 
+The dynamic element has/is its own `$evm.object`, and we need to populate some pre-defined hash key/value pairs to define the dialog field settings, and to load the data to be displayed. 
 
 ```ruby
 dialog_field = $evm.object
@@ -35,7 +35,7 @@ dialog_field["values"] = {1 => "one", 2 => "two", 10 => "ten", 50 => "fifty"}
 dialog_field["default_value"] = 2
 ```
 
-For a dynamic drop-down list, the _values_ key of this hash is also a hash of key/value pairs, with each pair representing a value to be displayed in the element, and the corresponding _data\_type_ value to be returned to Automate as the _dialog__* option if that choice is selected.
+For a dynamic drop-down list, the `values` key of this hash is also a hash of key/value pairs, with each pair representing a value to be displayed in the element, and the corresponding 'data\_type' value to be returned to Automate as the **dialog\_*** option if that choice is selected.
 
 Another more real-world example is:
 
@@ -67,9 +67,9 @@ Another more real-world example is:
 
 ### Read-Only and Protected Elements
 
-CloudForms Management Engine 5.4 also introduced the concept of read-only elements for service dialogs, which cannot be changed once displayed. Having a text box dynamically populated, but read-only, makes it ideal for displaying messages.
+ManageIQ _Anand_ added the ability to be able to mark a text box as protected, which results in any input being obfuscated; useful for inputting passwords.
 
-CloudForms Management Engine 5.3.x added the ability to be able to mark a text box as protected, which results in any input being obfuscated - useful for inputting passwords.
+ManageIQ _Botvinnik_ introduced the concept of read-only elements for service dialogs, which cannot be changed once displayed. Having a text box dynamically populated, but read-only, makes it ideal for displaying messages.
 
 <br>
 ![screenshot](images/screenshot5.png)
@@ -97,14 +97,14 @@ We can use dynamically-populated read-only text or text area boxes as status box
 
 ### Element Validation
 
-CloudForms Management Engine 5.4 introduced the ability to add input field validation to dialog elements. Currently the only Validator Types are _None_ or  _Regular Expression_, but regular expressions are useful for validating input for values such as IP Addresses:
+ManageIQ _Botvinnik_ introduced the ability to add input field validation to dialog elements. Currently the only Validator Types are **None** or  **Regular Expression**, but regular expressions are useful for validating input for values such as IP Addresses:
 
 <br>
 ![screenshot](images/screenshot6.png)
 
 ### Using the Input from One Element in Another Element's Dynamic Method
 
-We can link elements in such a way that a user's input in the one element can be used by subsequent dynamic elements that have the _Show Refresh Button_ selected. The subsequent dynamic method, when refreshed, can access the first element's input value using $evm.root['dialog\_elementname'].
+We can link elements in such a way that a user's input in the one element can be used by subsequent dynamic elements that have the **Show Refresh Button** selected. The subsequent dynamic method, when refreshed, can access the first element's input value using `$evm.root['dialog_elementname']`.
 
 We can use this in several useful ways, such as to populate a dynamic list based on a value input previously, or to create a validation method.
 
@@ -112,7 +112,7 @@ In the following example a read-only text area box element is used to display a 
 
 The service dialog has a text box element that prompts for the name of a new OpenStack tenant to be created in each of several OpenStack providers. The validation method checks that the tenant name doesn't already exist.
 
-Until the 'Refresh' button is clicked, the Validation text area box displays "Validation...". Once the 'Refresh' button is clicked, the validation message changes according to whether the tenant exists or not.
+Until the **Refresh** button is clicked, the Validation text area box displays "Validation...". Once the **Refresh** button is clicked, the validation message changes according to whether the tenant exists or not.
 
 
 ```ruby

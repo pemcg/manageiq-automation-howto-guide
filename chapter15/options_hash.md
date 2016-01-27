@@ -116,7 +116,12 @@ Several Options Hash keys have their own 'set' method which we should use in pla
 | :instance\_type | request.set\_instance\_type |
 | :guest\_access\_key\_pair | request.set\_guest\_access\_key\_pair |
 
-All but the first four of the 'set' methods listed above perform a validity check that the value that we're setting is an eligible resource for the provisioning instance.
+All but the first four of the 'set' methods listed above perform a validity check that the value that we're setting is an eligible resource for the provisioning instance. They also take an object as an argument, rather than a text string, e.g.
+
+```ruby
+cloud_network = $evm.vmdb('CloudNetwork', '1000000000012')
+prov.set_cloud_network(cloud_network)
+```
 
 
 Tip - use one of the techniques discussed in [Investigative Debugging](../chapter9/investigative_debugging.md) to find out what key/value pairs are in the options hash to manipulate.
