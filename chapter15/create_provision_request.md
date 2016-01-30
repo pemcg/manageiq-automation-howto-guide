@@ -15,7 +15,7 @@ args = ['1.1']
 
 # arg2 = templateFields
 args << {'name'         => 'rhel7-generic', 
-		 'request_type' => 'template}
+		 'request_type' => 'template'}
 
 # arg3 = vmFields
 args << {'vm_name'   => 'rhel7srv010', 
