@@ -14,19 +14,25 @@ We can also. however, initiate the provisioning process programmatically by call
 args = ['1.1']
 
 # arg2 = templateFields
-args << "name=rhel7-generic|request_type=template"
+args << {'name'         => 'rhel7-generic', 
+		 'request_type' => 'template}
 
 # arg3 = vmFields
-args << "vm_name=rhel7srv010|vlan=public|vm_memory=1024"
+args << {'vm_name'   => 'rhel7srv010', 
+		 'vlan'      => 'public', 
+		 'vm_memory' => '1024'}
 
 # arg4 = requester
-args << "owner_email=pemcg@bit63.com|owner_first_name=Peter|owner_last_name=McGowan"
+args << {'owner_email'      => 'pemcg@bit63.com', 
+		 'owner_first_name' => 'Peter',
+		 'owner_last_name'  => 'McGowan'}
 
 # arg5 = tags
 args << nil
 
 # arg6 = additionalValues (ws_values)
-args << "disk_size_gb=50|mountpoint=/opt"
+args << {'disk_size_gb' => '50',
+			'mountpoint' => '/opt'}
 
 # arg7 = emsCustomAttributes
 args << nil
@@ -39,7 +45,15 @@ request_id = $evm.execute('create_provision_request', *args)
 ### Argument List
 The arguments to the `create_provision_request` call are described below. The arguments match the fields in the Provisioning Dialog (and the values from the corresponding YAML template), and any arguments that are set to **required: true** in the Dialog YAML, but don't have a **:default:** value, should be specified. The exception for this is for sub-dependencies of other options, for example if **:provision\_type:** is _pxe_ then the sub-option **:pxe\_image\_id:** is mandatory. If the **:provision\_type:** value is anything else then **:pxe\_image\_id:** is not relevant.
 
-Multiple options within an argument type should be separated with the '|' symbol.
+In ManageIQ versions prior to _Capablanca_ the arguments were specifies as a string, with each value separated by a pipe ('|') symbol, i.e.
+
+```
+"vm_name=rhel7srv010|vlan=public|vm_memory=1024"
+```
+
+With _Capablanca_ (CloudForms Management Engine 5.5) however this syntax has been deprecated, and the options within each argument type should be defined as a hash as shown in the example above. This is more compatible with the equivalent RESTful API call to create a provisioning request.
+
+The _value_ for each hashed argument pair should always be a string, for example `{'number_of_vms' => '4'}` rather than `{'number_of_vms' => 4}`.
 
 #### version
 
@@ -50,7 +64,7 @@ Interface version. Should be set to 1.1
 Fields used to specify the VM or Template to use as the source for the provisioning operation. Supply a _guid_ or _ems\_guid_ to protect against matching same-named templates on different Providers within CloudForms Management Engine. The **request\_type** field should be set to one of: **template**, **clone\_to\_template**, or **clone\_to\_vm** as appropriate. A normal VM provision from template is specified as:
 
 ```
-"request_type=template"
+'request_type' => 'template'
 ```
 
 #### vmFields
@@ -59,9 +73,9 @@ Allows for the setting of properties from the **Catalog**, **Hardware**, **Netwo
 
 ```
 # arg2 = vmFields
-arg2 = "number_of_vms=3"
+arg2 = {'number_of_vms' => 3',
 # 1000000000007 is the ID of the m1.small flavor on my system
-arg2 += "|instance_type=1000000000007"
+arg2 += 'instance_type' => 1000000000007,
 arg2 += "|vm_name=#{$instance_name}"
 arg2 += "|retirement_warn=2.weeks"
 args << arg2
