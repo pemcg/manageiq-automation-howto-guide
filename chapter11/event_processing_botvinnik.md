@@ -1,26 +1,22 @@
 ## Event Processing
 
-One of the powerful features of CloudForms/ManageIQ is its event handling capability. CloudForms has the ability to monitor and respond to external (Provider) events, and also to raise its own events.
+One of the powerful features of CloudForms / ManageIQ is its event handling capability. CloudForms has the ability to monitor and respond to external (Provider) events, and also to raise its own events.
 
 ### Catching Events
 
 External events are monitored by _EventCatcher_ workers, which monitor the real-time message or event busses on the various Providers - AWS:config for Amazon, AMQP/RabbitMQ for OpenStack, the native VMware Message Bus, or the RHEV-M events exposed through the RESTful API for example.
 
-From `evm.log` we can see:
+From evm.log we can see:
 
 ```
-MIQ(ManageIQ::Providers::Redhat::InfraManager::EventCatcher::Runner#process_event) \
-	EMS [rhevm01] as [admin@internal] Caught event [USER_INITIATED_SHUTDOWN_VM]
-MIQ(ManageIQ::Providers::Redhat::InfraManager::EventCatcher::Runner#process_event) \
- 	EMS [rhevm01] as [admin@internal] Caught event [USER_STOP_VM]
-MIQ(ManageIQ::Providers::Redhat::InfraManager::EventCatcher::Runner#process_event) \
- 	EMS [rhevm01] as [admin@internal] Caught event [USER_RUN_VM]
-MIQ(ManageIQ::Providers::Redhat::InfraManager::EventCatcher::Runner#process_event) \
- 	EMS [rhevm01] as [admin@internal] Caught event [VM_DOWN]
-MIQ(ManageIQ::Providers::Openstack::CloudManager::EventCatcher::Runner#process_event) \
- 	EMS [rhosp-cont] as [admin] Caught event [compute.instance.power_on.start]
-MIQ(ManageIQ::Providers::Openstack::CloudManager::EventCatcher::Runner#process_event) \
- 	EMS [rhosp-cont] as [admin] Caught event [start_instance]
+MIQ(EventCatcherOpenstack) EMS [rhosp-cont] as [admin] Caught event [compute.instance.power_on.start]
+MIQ(EventCatcherOpenstack) EMS [rhosp-cont] as [admin] Caught event [compute.instance.power_on.end]
+MIQ(EventCatcherRedhat) EMS [rhevm01] as [admin@internal] Caught event [USER_STARTED_VM]
+MIQ(EventCatcherRedhat) EMS [rhevm01] as [admin@internal] Caught event [USER_RUN_VM]
+MIQ(EventCatcherRedhat) EMS [rhevm01] as [admin@internal] Caught event [USER_INITIATED_SHUTDOWN_VM]
+MIQ(EventCatcherRedhat) EMS [rhevm01] as [admin@internal] Caught event [VM_DOWN]
+MIQ(EventCatcherOpenstack) EMS [rhosp-cont] as [admin] Caught event [compute.instance.power_off.start]
+MIQ(EventCatcherOpenstack) EMS [rhosp-cont] as [admin] Caught event [compute.instance.power_off.end]
 ```
 
 The events are passed to one or more _EventHandler_ workers:
@@ -38,7 +34,7 @@ MIQ(EmsEventHandler-handle_event) Processing EMS event [compute.instance.power_o
 
 ### Raising Events
 
-In addition to catching external events, CloudForms/ManageIQ can raise its own events that can be processed by Control Policies or Alerts. An example of this can be seen with the following evm.log extract. In this case an OpenStack Instance and a RHEV VM have each been powered off, and the respective Provider events _compute.instance.power\_off.end_ (OpenStack) and _USER\_STOP\_VM_ (RHEV) have been caught. For each Provider-specific event caught, the Event Handler raises the same generic _vm\_poweroff_ event that can be optionally handled by Control:
+In addition to catching external events, CloudForms / ManageIQ can raise its own events that can be processed by Control Policies or Alerts. An example of this can be seen with the following evm.log extract. In this case an OpenStack Instance and a RHEV VM have each been powered off, and the respective Provider events _compute.instance.power\_off.end_ (OpenStack) and _USER\_STOP\_VM_ (RHEV) have been caught. For each Provider-specific event caught, the Event Handler raises the same generic _vm\_poweroff_ event that can be optionally handled by Control:
 
 ```
 MIQ(EventCatcherOpenstack) EMS [rhosp-cont] as [admin] Caught event [compute.instance.power_off.end]

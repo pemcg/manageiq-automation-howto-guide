@@ -1,42 +1,50 @@
 ## Extending Automate Event Handling
 
-As seen in [Event Processing](./event_processing.md), we can create our own Instances under /System/Event to handle events raised to Automate, that are not handled by default.
+The Provider-specific Event Stream Source Classes and associated Instances under `/System/Event/EmsEvent` do not necessarily handle every possible event that can be raised by the Provider. Sometimes we need to extend event handling to process a non-default event.
 
-As an example the _compute.instance.power\_on.end_ OpenStack event is not handled by default (this is probably a bug that will be fixed soon). As a result, the Cloud Instance's tile quadrant in the WebUI that shows power status doesn't change to reflect the Instance being powered on.
+We can extend the out-of-the-box event handling by creating our own Instances under `/System/Event` (ManageIQ _Botvinnik_) or `/System/Event/EmsEvent/{Provider}` (ManageIQ _Capablanca_) to handle these non-default events caught by the EventCatcher workers.
 
-We can override this behaviour in either of two ways.
-
-### Adding a New Automation Instance to /System/Event
-
-We can add a new Automate Instance called _/System/Event/compute.instance.power\_on.end_, that runs a method containing the following code:
-
-```ruby
-if $evm.root['ems_event'].source == 'OPENSTACK' 
-  $evm.vmdb('ems', $evm.root['ems_event'].ems_id).refresh
-end
-```
-
-This will trigger an EMS refresh of the OpenStack Provider for any OpenStack Instance power on event. Unfortunately we can't trigger a targeted VM refresh yet on OpenStack, so we have to trigger an entire EMS refresh, which generally transfers far more information than we need. The Cloud Instance power states in the icon tile will however be set correctly after this operation.
-
-### Edit /var/www/miq/vmdb/config/event_handling.tmpl.yml
-
-There is a YAML file on each appliance _/var/www/miq/vmdb/config/event\_handling.tmpl.yml_ that controls the default actions to be taken when each event type is raised. This file has the following section to hande OpenStack _compute.instance.power\_off.end_ events:
+As an example the _compute.instance.power\_on.end_ OpenStack event is not handled by default with ManageIQ _Capablanca_. If we look in `evm.log` we see:
 
 ```
-  compute.instance.power_off.end:
-  - refresh:
-    - ems
-  - policy:
-    - src_vm
-    - vm_poweroff
+Instance [/ManageIQ/System/Event/EmsEvent/OPENSTACK/compute.instance.power_on.end] \
+    not found in MiqAeDatastore - trying [.missing]
 ```
 
-If we add:
+As a result, the Cloud Instance's tile quadrant in the WebUI that shows power status doesn't change to reflect the Instance being powered on.
+
+### Adding a New Automation Instance to /System/Event/EmsEvent/
+
+There is already a `ManageIQ/System/Event/EmsEvent/OpenStack/compute.instance.power_off.end` Instance to handle the _compute.instance.power\_off.end_ event. This Instance calls two event\_handlers:
+
+![screenshot](images/screenshot19.png)
+
+
+We can copy this Instance to our Domain and rename it as `/System/Event/EmsEvent/OpenStack/compute.instance.power_on.end`.
+<br> <br>
+
+![screenshot](images/screenshot18.png)
+
+We change the second event\_handler line to trigger a **vm_start** policy event:
+
+![screenshot](images/screenshot20.png)
+
+Now when we power on an OpenStack Intance, we see the Instance's tile quadrant change correctly, and we see the raising and processing of the **vm_start** event:
 
 ```
-  compute.instance.power_on.end:
-  - refresh:
-    - ems
+Instantiating [/System/Process/Event? \
+    EventStream%3A%3Aevent_stream=1000000009501&MiqEvent%3A%3Amiq_event=1000000009501& \
+    MiqServer%3A%3Amiq_server=1000000000001& \
+    User%3A%3Auser=1000000000001& \
+    VmOrTemplate%3A%3Avm=1000000000035& \
+    ems_event=1000000009500& \
+    event_stream_id=1000000009501& \
+    event_type=vm_start& \
+    ext_management_systems=1000000000002& \
+    manageiq%3A%3Aproviders%3A%3Aopenstack%3A%3Acloudmanager%3A%3Avm=1000000000035& \
+    miq_event_id=1000000009501& \
+    object_name=Event& \
+    vmdb_object_type=vm]
 ```
 
-and restart the evmserverd service, our _compute.instance.power\_off.end_ events are now handled as expected without having to create new Instances under /System/Event
+This will ensure that any Control Policies that are triggered by a **VM Power On** Event will run correctly.
