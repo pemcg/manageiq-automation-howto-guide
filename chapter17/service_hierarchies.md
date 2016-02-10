@@ -40,15 +40,15 @@ For this example though, we'll create our new empty Service from a Service Catal
 
 ##### State Machine
 
-First we create a new Instance of the _/Service/Provisioning/StateMachines/ServiceProvision\_Template_ Class, but we comment out most entries:
+First we create a new Instance of the `/Service/Provisioning/StateMachines/ServiceProvision_Template` Class, but we comment out most entries:
 
 ![screenshot](images/screenshot74.png)
 <br> <br>
-We'll call this Instance _EmptyService_.
+We'll call this Instance `EmptyService`.
 
 ##### Method
 
-The _pre5_ stage of this State Machine is a Relationship to an Instance/Method containing the following code:
+The **pre5** stage of this State Machine is a Relationship to an Instance/Method containing the following code:
 
 ```ruby
 begin
@@ -75,13 +75,13 @@ The full script is available [here](https://github.com/pemcg/cloudforms-automati
 
 ##### Service Dialog
 
-We create a simple Service Dialog with element names _service\_name_ and _service\_description_:
+We create a simple Service Dialog with element names **service\_name** and **service\_description**:
 
 ![screenshot](images/screenshot75.png)
 
 ##### Putting It All Together
 
-Finally we assemble all of these parts by creating a new Service Catalog called _General Services_, and a new Catalog Item of type _Generic_:
+Finally we assemble all of these parts by creating a new Service Catalog called **General Services**, and a new Catalog Item of type **Generic**:
 
 ![screenshot](images/screenshot76.png)
 <br> <br>
@@ -100,13 +100,13 @@ The button will present a drop-down list of existing Services that we can add as
 #### Button
 ##### Service Dialog
 
-We create a simple Service Dialog with dynamic drop-down element name _service_:
+We create a simple Service Dialog with dynamic drop-down element name **service**:
 
 ![screenshot](images/screenshot79.png)
 
 ##### Dialog Element Method
 
-The dynamic drop-down element in the Service Dialog calls a method _list\_services_. We only wish to display a Service in the drop-down list if the user has permissions to see it via their RBAC filter. We define methods to retrieve a user's RBAC filter array, and to check that a service has a tag that matches the filter:
+The dynamic drop-down element in the Service Dialog calls a Method `list_services`. We only wish to display a Service in the drop-down list if the user has permissions to see it via their RBAC filter. We define methods to retrieve a user's RBAC filter array, and to check that a service has a tag that matches the filter:
 
 ```ruby
 def get_current_group_rbac_array(user, rbac_array=[])
@@ -197,7 +197,7 @@ The full script is available [here](https://github.com/pemcg/cloudforms-automati
 
 ##### Putting It All Together
 
-Finally we create two _Add to Service_ buttons, one on a _Service_ object type, and one on a _VM and Instance_ object type. We can go ahead and organise our Service hierarchies.
+Finally we create two **Add to Service** buttons, one on a _Service_ object type, and one on a _VM and Instance_ object type. We can go ahead and organise our Service hierarchies.
 
 <hr>
 _Exercise_: filter the list of services presented in the drop-down to remove the _current_ service - we would never wish to add a Service as its own parent.

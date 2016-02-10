@@ -2,7 +2,7 @@
 
 ### Updating the Appliance
 
-When a minor update to CloudForms Management Engine is released and installed (e.g. 5.4.1 -> 5.4.2), any changes to the Automate code are not automatically visible to the Automate Explorer. Go to Import / Export, and _Reset all Datastore custom classes and instances to default_ to get the updates added and visible.
+When a minor update to CloudForms Management Engine is released and installed (e.g. 5.4.1 -> 5.4.2), any changes to the Automate code are not automatically visible to the Automate Explorer. Go to **Import / Export**, and **Reset all Datastore custom classes and instances to default** to get the updates added and visible.
 
 ![Screenshot](images/screenshot2.png)
 
@@ -16,7 +16,7 @@ The guides recommend naming Instances in _CamelCase_ and Methods in snake_case, 
 
 ### Defensive Programming
 
-The dynamic nature of the object structure means that we have to be more careful about testing for _nil_ conditions, testing whether hash keys exist before we access them, test whether variables are enumerable before we call .each on them, etc.
+The dynamic nature of the object structure means that we have to be more careful about testing for **nil** conditions, testing whether hash keys exist before we access them, test whether variables are enumerable before we call .each on them, etc.
 
 Some examples are:
 
@@ -48,4 +48,4 @@ The in-built WebUI code editor is fairly basic. It is often easier to develop in
 
 ### Version Control
 
-There isn't any (yet). Git integration for the Automation Datastore is planned for a future release of ManageIQ / CloudForms. In the meantime, use a separate Git repository, but this is a manual process unfortunately.
+There isn't any (yet). Git integration for the Automation Datastore is planned for a future release of ManageIQ/CloudForms. In the meantime, use a separate Git repository, but this is a manual process unfortunately.

@@ -1,6 +1,6 @@
 ## Calling Automation from the RESTful API
 
-We can call any Automation Instance from the RESTful API, by issuing a _POST_ call to /api/automation_requests, and enclosing a JSON-encoded parameter hash such as the following:
+We can call any Automation Instance from the RESTful API, by issuing a **POST** call to **/api/automation_requests**, and enclosing a JSON-encoded parameter hash such as the following:
 
 ```ruby
 post_params = {
@@ -38,7 +38,7 @@ The request ID is returned to us in the result from the initial call:
 request_id = result['results'][0]['id']
 ```
 
-...and we call poll this to check on status:
+We call poll this to check on status:
 
 ```ruby
 query = "/api/automation_requests/#{request_id}"
@@ -68,7 +68,7 @@ end
 
 #### Returning Results to the Caller
 
-The _request_ task's options hash is included in the return from the RestClient::Request call, and we can use this to our advantage, by using set_option to add return data in the form of key/value pairs to the options hash from our called Automation method. 
+The _request_ task's options hash is included in the return from the `RestClient::Request` call, and we can use this to our advantage, by using set_option to add return data in the form of key/value pairs to the options hash from our called Automation method. 
 
 For example from the _called_ (Automate) method:
 
@@ -77,7 +77,7 @@ automation_request = $evm.root['automation_task'].automation_request
 automation_request.set_option(:return, JSON.generate({:status => 'success', :return => some_data}))
 ```
 
-...and from the _calling_ (external) method:
+From the _calling_ (external) method:
 
 ```ruby
 puts "Results: #{result['options']['return'].inspect}"
@@ -87,7 +87,7 @@ Using this technique we can write our own pseudo-API calls for CloudForms to han
 
 #### Authentication and _auto\_approve_
 
-When we make a RESTful call, we must authenticate using a valid username and password. This user must be an admin or equivalent however if we wish to specify _:auto\_approve => true_ in our calling arguments (only admins can auto-approve Automation requests).
+When we make a RESTful call, we must authenticate using a valid username and password. This user must be an admin or equivalent however if we wish to specify `:auto\_approve => true` in our calling arguments (only admins can auto-approve Automation requests).
 
 If we try making a RESTful call as a non-admin user, the Automation request will be blocked pending approval (as expected). If we want to submit an auto-approved automation request as a non-admin user, we would need to write our own approval workflow (see [Automation Request Approval](../chapter21/automation_request_approval.md)).
 
@@ -95,7 +95,7 @@ If we try making a RESTful call as a non-admin user, the Automation request will
 
 When we submit an Automation Request via the API, by default the Automate Task is queued on the same appliance that the Web Service is running on. This will be de-queued to run by any appliance with the _Automation Engine_ role set **in the same zone**. If we have separated out our UI/Web Service appliances into a separate zone, this may not necessarily be our desired behaviour.
 
-We can add a parameter _miq\_zone_ to the automation request to override this:
+We can add a parameter `:miq_zone` to the automation request to override this:
 
 ```ruby
   :requester => {
@@ -110,9 +110,9 @@ We can add a parameter _miq\_zone_ to the automation request to override this:
 The behaviour of this parameter is as follows (from [BZ #1162832](https://bugzilla.redhat.com/show_bug.cgi?id=1162832)):
 
 1. If the parameter is not passed the request should use the zone of the server that receives the request.
-2. If passed but empty (example 'parameters' => "miq_zone=",) the zone should be set to nil and any appliance can process the request.
-3. Passed a valid zone name parameter (example 'parameters' => "miq_zone=Test",) should process the work in the "Test" zone.
-4. Passing an invalid zone name should raise an error of "unknown zone <Zone_name>" back to the caller.
+2. If passed but empty (example `'parameters' => "miq_zone="`,) the zone should be set to **nil** and any appliance can process the request.
+3. Passed a valid zone name parameter (example `'parameters' => "miq_zone=Test"`,) should process the work in the "Test" zone.
+4. Passing an invalid zone name should raise an error of **unknown zone \<Zone_name>** back to the caller.
 
 
 ### Generic run\_via\_api Script Example

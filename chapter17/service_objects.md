@@ -14,7 +14,7 @@ For this example:
 * The new service name is "My New Service"
 * The resulting service contains a VM called "test05".
 
-We can use object\_walker with the following @walk\_association\_whitelist to dump the objects:
+We can use `object_walker` with the following `@walk_association_whitelist` to dump the objects:
 
 ```ruby
 { "MiqAeServiceServiceTemplateProvisionTask" => ["source", "destination", "miq_request",
@@ -28,7 +28,7 @@ We can use object\_walker with the following @walk\_association\_whitelist to du
 "MiqAeServiceVmVmware" => ['service'] }
 ```
 
-We'll call the ObjectWalker instance from the _post5_ state/stage of the CatalogItemInitialization state machine.
+We'll call the ObjectWalker instance from the **post5** state/stage of the CatalogItemInitialization state machine.
 
 ### Object Structure
 

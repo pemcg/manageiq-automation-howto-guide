@@ -8,7 +8,7 @@ We can implement our own approval workflow for automation requests. This example
 
 #### Namespace
 
-We'll create a new namespace called _Automation_ under our domain.
+We'll create a new namespace called `Automation` under our Domain.
 
 #### Group Profile
 
@@ -30,22 +30,22 @@ The _.missing_ Profile for all other groups is:
 
 #### State Machine
 
-We'll create a _StateMachines_ namespace, and a simple variant of the VM _ProvisionRequestApproval_ class:
+We'll create a `StateMachines` Namespace, and a simple variant of the VM `ProvisionRequestApproval` class:
 <br> <br>
 
 ![screenshot](images/screenshot4.png)
 
 ##### Instances
 
-The _RequireApproval_ Instance has an approval\_type value of _require\_approval_:
+The `RequireApproval` Instance has an **approval\_type** value of _require\_approval_:
 
 ![screenshot](images/screenshot5.png)
 
-The _Auto_ Instance is similar, but has an approval\_type value of _auto_.
+The `Auto` Instance is similar, but has an **approval\_type** value of _auto_.
 
 ##### Methods
 
-The **validate\_request** Method is as follows:
+The `validate_request` Method is as follows:
 
 ```ruby
 request = $evm.root['miq_request']
@@ -64,7 +64,7 @@ else
   $evm.object['reason'] = msg
 end
 ```
-The **pending\_request** Method is as follows:
+The `pending_request` Method is as follows:
 
 ```ruby
 #
@@ -78,10 +78,10 @@ $evm.log('info', "#{msg}")
 $evm.root["miq_request"].pending
 ```
 
-The Method definition is also given an input parameter with Input Name _reason_ and Data Type _string_
+The Method definition is also given an input parameter with Input Name **reason** and Data Type **string**
 
 
-The **approve\_request** Method is as follows:
+The `approve_request` Method is as follows:
 
 ```ruby
 #
@@ -93,49 +93,49 @@ $evm.root["miq_request"].approve("admin", "Auto-Approved")
 ```
 ### Email Classes
 
-We create an _Email_ Class, with _AutomationRequest\_Pending_ Instance and Method:
+We create an `Email` Class, with `AutomationRequest_Pending` Instance and Method:
 
 ![screenshot](images/screenshot9.png)
 
-The code is copied and adapted as appropriate from the VM _ProvisionRequest\_Pending_ Method. We specify as the _to\_email\_address_ a user that will act as approver for the automation requests.
+The code is copied and adapted as appropriate from the VM _ProvisionRequest\_Pending_ Method. We specify as the **to\_email\_address** a user that will act as approver for the automation requests.
 
 The full code for the Methods is [here](https://github.com/pemcg/cloudforms-automation-howto-guide/tree/master/chapter21/scripts)
 
 ### Policies
 
-We need to generate Policy Instances for two AutomationRequest events, _AutomationRequest\_created_ and _AutomationRequest\_approved_. We copy the standard /System/Policy Class to our Domain, and add two Instances:
+We need to generate Policy Instances for two AutomationRequest events, `AutomationRequest_created` and `AutomationRequest_approved`. We copy the standard `/System/Policy` Class to our Domain, and add two Instances:
 <br> <br>
 
 ![screenshot](images/screenshot1.png)
 
 #### AutomationRequest_created
 
-Our Policy Instance for _AutomationRequest\_created_ has three entries; an assertion and two relationships. We need to recognise whether an automation request was made with the ```:auto_approve => true``` parameter. If it was, we need to skip our own approval workflow.
+Our Policy Instance for `AutomationRequest_created` has three entries; an assertion and two relationships. We need to recognise whether an automation request was made with the `:auto_approve => true` parameter. If it was, we need to skip our own approval workflow.
 
-We know (from some investigative debugging using _object\_walker_) that when a request is made that specifies ```:auto_approve => true```, we have an _$evm.root['automation\_request'].approval\_state_ attribute with a value of _approved_. When a request is made that specifies ```:auto_approve => false``` this value is _pending\_approval_. We can therefore create our assertion to look for ```$evm.root['automation_request'].approval_state == 'pending_approval'```, and only continue with the Instance if the boolean test returns _true_.
+We know (from some investigative debugging using `object_walker`) that when a request is made that specifies `:auto_approve => true`, we have an `$evm.root['automation_request'].approval_state` attribute with a value of **approved**. When a request is made that specifies `:auto_approve => false` this value is **pending\_approval**. We can therefore create our assertion to look for `$evm.root['automation_request'].approval_state == 'pending_approval'`, and only continue with the Instance if the boolean test returns **true**.
 
-The _rel5_ relationship of this Instance performs a Profile lookup based on our user group, to find the Auto-Approval State Machine Instance that should be run.
+The **rel5** Relationship of this Instance performs a Profile lookup based on our user group, to find the Auto-Approval State Machine Instance that should be run.
 
-The _rel6_ relationship calls this State Machine Instance:
+The **rel6** Relationship calls this State Machine Instance:
 
 ![screenshot](images/screenshot3.png)
 
 #### AutomationRequest_pending
 
-The _AutomationRequest\_pending_ Instance contains a single relationship to our _AutomationRequest\_pending_ Email Instance:
+The `AutomationRequest_pending` Instance contains a single relationship to our `AutomationRequest_pending` Email Instance:
 
 ![screenshot](images/screenshot2.png)
 
 ### Testing
 
-We'll submit three automation requests via the RESTful API, calling a simple _Test_ Instance. The calls will be made as follows:
+We'll submit three automation requests via the RESTful API, calling a simple `Test` Instance. The calls will be made as follows:
 
 - As user _admin_, specifying ```:auto_approve => true```
 - As user _admin_, specifying ```:auto_approve => false```
 - As a user who is a member of the group _Bit63Group\_vm\_user_
 <br> <br>
 
-For the first call, our assertion correctly prevents our custom approval workflow from running (the request has already been auto-approved). From automation.log we see:
+For the first call, our assertion correctly prevents our custom approval workflow from running (the request has already been auto-approved). From `automation.log` we see:
 
 ```
 Evaluating substituted assertion ["approved" == "pending_approval"]
@@ -145,7 +145,7 @@ Followed  Relationship [miqaedb:/System/Policy/request_created#create]
 Followed  Relationship [miqaedb:/System/Event/request_created#create]
 ```
 
-For the second call we see that the assertion evaulates to _true_, but the user _admin_'s group (_EVMGroup-super\_administrator_) doesn't have a group profile. The _.missing_ profile is used, and the automation requuest is not auto-approved.
+For the second call we see that the assertion evaulates to **true**, but the user _admin_'s group (_EVMGroup-super\_administrator_) doesn't have a group profile. The `.missing` profile is used, and the automation requuest is not auto-approved.
 
 The _admin_ user receives an email:
 
@@ -175,14 +175,14 @@ Virtualization Infrastructure Team
 
 Clicking the link takes us to an approval page, and we can approve the request, which then continues.
 
-For the third call we see that the assertion evaluates to _true_, but this time we see the valid group profile being used:
+For the third call we see that the assertion evaluates to **true**, but this time we see the valid group profile being used:
 
 ```
 Evaluating substituted assertion ["pending_approval" == "pending_approval"]
 Following Relationship [miqaedb:/Automation/Profile/Bit63Group_vm_user#get_auto...
 ```
 
-This group's profile auto-approves the automation request, and the _Test_ instance is succesfully run:
+This group's profile auto-approves the automation request, and the `Test` instance is succesfully run:
 
 ```
 Q-task_id([automation_task_1000000000186]) <AEMethod test> Calling the test method was successful!

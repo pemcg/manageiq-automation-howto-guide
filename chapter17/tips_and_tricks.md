@@ -4,7 +4,7 @@ There are a number of useful tips and tricks to be aware of when developing serv
 
 #### Test VM Provisioning First
 
-Before developing a service catalog item to provision a VM, test that an interactive provision (Infrastructure -> Virtual Machines -> Lifecycle -> Provision VMs) from the same VM Template, using the same VM settings, works successfully.
+Before developing a service catalog item to provision a VM, test that an interactive provision (**Infrastructure -> Virtual Machines -> Lifecycle -> Provision VMs**) from the same VM Template, using the same VM settings, works successfully.
 
 This should include the same placement type (auto or manually selected), and the same CPU count and memory size ranges that will be offered from the service dialog.
 
