@@ -28,11 +28,11 @@ To perform the service dialog -> options_hash or tag substitution correctly, we 
 
 The simplest service dialog element to process is one that prompts for the value of a single options\_hash key. We name the service dialog element as:
 
-**option\_0\__key\_name_** (for backwards compatibility with CFME 5.3)
+**option\_0\__key\_name_** (for backwards compatibility with CloudForms Management Engine 5.3)
 
 or just
 
-**_key\_name_** (valid for CFME 5.4 and later)
+**_key\_name_** (valid for CloudForms Management Engine 5.4 and later)
 
 For example if we create a service dialog element as follows:
 

@@ -9,7 +9,8 @@
 #------------------------------------------------------------------------------
 
 require 'rest_client'
-require 'nokogiri'
+$LOAD_PATH.unshift "/opt/rh/ruby193/root/usr/share/gems/gems/xml-simple-1.0.12/lib"
+require 'xmlsimple'
 
 NEW_DISK_SIZE = 30
 @debug = false
@@ -40,26 +41,23 @@ begin
       $evm.log(:info, "Action: #{action}")
       $evm.log(:info, "Payload: #{params[:payload]}")
     end
-    rest_response = RestClient::Request.new(params).execute
+    response = RestClient::Request.new(params).execute
     #
     # RestClient raises an exception for us on any non-200 error
+    # use XmlSimple to convert xml to ruby hash
     #
-    return rest_response
+    response_hash = XmlSimple.xml_in(response)
+    #
+    $evm.log(:info, "Inspecting response_hash: #{response_hash.inspect}") if @debug
+    #
+    return response_hash
   end
   #------------------------------------------------------------------------------
 
   #------------------------------------------------------------------------------
   # Start of main code
   #
-  case $evm.root['vmdb_object_type']
-  when 'miq_provision'                  # called from a VM provision workflow
-    vm = $evm.root['miq_provision'].destination
-    disk_size_bytes = NEW_DISK_SIZE * 1024**3
-  when 'vm'
-    vm = $evm.root['vm']                # called from a button
-    disk_size_bytes = $evm.root['dialog_disk_size_gb'].to_i * 1024**3
-  end
-  
+  vm = $evm.root['miq_provision'].destination
   storage_id = vm.storage_id rescue nil
   $evm.log(:info, "VM Storage ID: #{storage_id}") if @debug
   #
@@ -80,45 +78,49 @@ begin
     #
     # Extract the IP address and credentials for the RHEV Provider
     #
-    servername = vm.ext_management_system.ipaddress || vm.ext_management_system.hostname
+    servername = vm.ext_management_system.ipaddress
     username = vm.ext_management_system.authentication_userid
     password = vm.ext_management_system.authentication_password
 
-    builder = Nokogiri::XML::Builder.new do |xml|
-      xml.disk {
-        xml.storage_domains {
-          xml.storage_domain :id => storage_domain_id
-        }
-        xml.size disk_size_bytes
-        xml.type 'system'
-        xml.interface 'virtio'
-        xml.format 'cow'
-        xml.bootable 'false'
-      }
-    end
+    disk_size_bytes = NEW_DISK_SIZE * 1024**3
+    #
+    # build xml body for the RHEV REST API call
+    #
+    body = "<disk>"
+    body += "<storage_domains>"
+    body += "<storage_domain id='#{storage_domain_id}'/>"
+    body += "</storage_domains>"
+    body += "<size>#{disk_size_bytes}</size>"
+    body += "<type>system</type>"
+    body += "<interface>virtio</interface>"
+    body += "<format>cow</format>"
+    body += "<bootable>false</bootable>"
+    body += "</disk>"
 
-    body = builder.to_xml
-    $evm.log(:info, "Adding #{disk_size_bytes / 1024**3} GByte disk to VM: #{vm.name}")
+    $evm.log(:info, "Adding #{NEW_DISK_SIZE}GB disk to VM: #{vm.name}")
     response = call_rhev(servername, username, password, :post, "#{vm.ems_ref}/disks", :xml, body)
-    #
-    # Parse the response body XML
-    #
-    doc = Nokogiri::XML.parse(response.body)
     #
     # Pull out some re-usable href's from the initial response
     #
-    disk_href = doc.at_xpath("/disk")['href']
-    creation_status_href = doc.at_xpath("/disk/link[@rel='creation_status']")['href']
-    activate_href = doc.at_xpath("/disk/actions/link[@rel='activate']")['href']
-    if @debug
-      $evm.log(:info, "disk_href: #{disk_href}")
-      $evm.log(:info, "creation_status_href: #{creation_status_href}")
-      $evm.log(:info, "activate_href: #{activate_href}")
+    activate_href = nil
+    creation_status_href = nil
+    disk_href = response['href']
+    links = response['link']
+    links.each do |link|
+      if link['rel'] == "creation_status"
+        creation_status_href = link['href']
+      end
+    end
+    actions = response['actions'][0]['link']
+    actions.each do |action|
+      if action['rel'] == "activate"
+        activate_href = action['href']
+      end
     end
     #
     # Validate the creation_status (wait for up to a minute)
     #
-    creation_status = doc.at_xpath("/disk/creation_status/state").text
+    creation_status = response['creation_status'][0]['state'][0]
     counter = 13
     $evm.log(:info, "Creation Status: #{creation_status}")
     while creation_status != "complete"
@@ -129,18 +131,15 @@ begin
       else
         sleep 5
         response = call_rhev(servername, username, password, :get, creation_status_href, :xml, nil)
-        doc = Nokogiri::XML.parse(response.body)
-        creation_status = doc.at_xpath("/creation/status/state").text
+        creation_status = response['status'][0]['state'][0]
         $evm.log(:info, "Creation Status: #{creation_status}")
       end
     end
     #
-    # Disk has been created successfully,
-    # now check its activation status and if necessary activate it
+    # Disk has been created successfully, now check its activation status and if necessary activate it
     #
     response = call_rhev(servername, username, password, :get, disk_href, :xml, nil)
-    doc = Nokogiri::XML.parse(response.body)
-    if doc.at_xpath("/disk/active").text != "true"
+    if response['active'][0] != "true"
       $evm.log(:info, "Activating disk")
       body = "<action/>"
       response = call_rhev(servername, username, password, :post, activate_href, :xml, body)

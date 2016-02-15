@@ -79,7 +79,7 @@ We can search for objects tagged with a particular tag using ```.find_tagged_wit
 tag = "/managed/department/legal"
 hosts = $evm.vmdb(:host).find_tagged_with(:all => tag, :ns => "*")
 ```
-This example shows that categories themselves are organised into namespaces behind the scenes. In practice the only namespace that seems to be in use is _/managed_ and we rarely need to specify this. The ```.find_tagged_with``` method has a slightly ambiguous past. It was present with ManageIQ _Anand_ (CFME 5.3), but returned Active Records rather than MiqAeService objects. It was unavailable from Automate with ManageIQ _Botvinnik_ (CFME 5.4), but is thankfully back with ManageIQ _Capablanca_ (CFME 5.5), and now returns service objects as expected.
+This example shows that categories themselves are organised into namespaces behind the scenes. In practice the only namespace that seems to be in use is _/managed_ and we rarely need to specify this. The ```.find_tagged_with``` method has a slightly ambiguous past. It was present with ManageIQ _Anand_ (CloudForms Management Engine 5.3), but returned Active Records rather than MiqAeService objects. It was unavailable from Automate with ManageIQ _Botvinnik_ (CloudForms Management Engine 5.4), but is thankfully back with ManageIQ _Capablanca_ (CloudForms Management Engine 5.5), and now returns service objects as expected.
 
 <hr>
 #### Practical example
@@ -97,7 +97,7 @@ tag = '/department/engineering'
   end
 end
 ```
-On a small CFME 5.5 system this prints:
+On a small CloudForms Management Engine 5.5 system this prints:
 
 ```
 MiqAeServiceManageIQ_Providers_Redhat_InfraManager_Template: rhel7-generic is tagged
@@ -122,7 +122,7 @@ In this case however we also wish to find the class name of the object. If we ca
 
 ### Getting the List of Tag Categories
 
-On versions prior to ManageIQ _Capablanca_ (CFME 5.5) this was slightly challenging. Both tags and categories are listed in the same _classifications_ table, but tags also have a non-zero _parent\_id_ value that ties them to their category. To find the categories from the _classifications_ table we had to search for records with a parent_id of zero:
+On versions prior to ManageIQ _Capablanca_ (CloudForms Management Engine 5.5) this was slightly challenging. Both tags and categories are listed in the same _classifications_ table, but tags also have a non-zero _parent\_id_ value that ties them to their category. To find the categories from the _classifications_ table we had to search for records with a parent_id of zero:
 
 ```ruby
 categories = $evm.vmdb('classification').find(:all, :conditions => ["parent_id = 0"])
@@ -131,7 +131,7 @@ categories.each do |category|
 end
 ```
 
-With ManageIQ _Capablanca_ (CFME 5.5) we now have a ```.categories``` association directly from an MiqAeServiceClassification object, so we can say:
+With ManageIQ _Capablanca_ we now have a ```.categories``` association directly from an MiqAeServiceClassification object, so we can say:
 
 ```ruby
 $evm.vmdb(:classification).categories.each do |category|
@@ -185,7 +185,7 @@ Note: Anything returned from $evm.vmdb(:classification) is an `MiqAeServiceClass
 
 ### Deleting a Tag Category
 
-With ManageIQ _Capablanca_ (CFME 5.5) we can now delete a tag category using the RESTful API:
+With ManageIQ _Capablanca_ (CloudForms Management Engine 5.5) we can now delete a tag category using the RESTful API:
 
 ```ruby
 require 'rest-client'
