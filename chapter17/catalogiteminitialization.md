@@ -78,4 +78,4 @@ The `CatalogBundleInitialization` State Machine should be specified when we crea
 
 The schema for the `CatalogBundleInitialization` Instance is the same as for `CatalogItemInitialization`, except that the **pre2** stage calls the `CatalogBundleInitialization` Method.
 
-The `CatalogBundleInitialization` Method passes the service dialog element values on to each catalog item's `CatalogItemInitialization` Mmethod, which is still required in order to set the miq\_request\_task's options hash keys for the provision of that catalog item.
+The `CatalogBundleInitialization` Method passes the service dialog element values on to each catalog item's `CatalogItemInitialization` Method, which is still required in order to set the miq\_request\_task's options hash keys for the provision of that catalog item.

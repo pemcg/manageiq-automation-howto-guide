@@ -13,7 +13,7 @@ If we look at all of the attributes that we can add for a schema field, in addit
 The Schema columns for a State Machine are the same as in any other Class Schema, but we use more of them.
 
 #### Value (Instance)/Default Value (Schema)
-As in any other Class Cchema, this is a Relationship to an _Instance_ to be run to perform the main processing of the State/Stage. Surprising as it may seem, we don't necessarily need a value specified here for a State Machine (see **On Entry** below).
+As in any other Class Schema, this is a Relationship to an _Instance_ to be run to perform the main processing of the State/Stage. 
 
 #### On Entry
 We can optionally define an **On Entry** _Method_ to be run before the "main" method (the **Value** entry) is run. We can use this to setup or test for pre-conditions to the State, for example if the "main" Method adds a tag to an object, the **On Entry** method might check that the category and tag exist.

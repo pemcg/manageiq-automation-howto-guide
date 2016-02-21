@@ -159,7 +159,7 @@ Click **Order**, and fill out the Service Dialog values:
 
 Click **Submit**
 
-After a new minutes, the new Service should be visible in **My Services**, containing the new VM:
+After a few minutes, the new Service should be visible in **My Services**, containing the new VM:
 <br><br>
 
 ![screenshot](images/screenshot34.png)

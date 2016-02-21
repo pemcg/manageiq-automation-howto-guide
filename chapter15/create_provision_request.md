@@ -45,7 +45,7 @@ request_id = $evm.execute('create_provision_request', *args)
 ### Argument List
 The arguments to the `create_provision_request` call are described below. The arguments match the fields in the Provisioning Dialog (and the values from the corresponding YAML template), and any arguments that are set to **required: true** in the Dialog YAML, but don't have a **:default:** value, should be specified. The exception for this is for sub-dependencies of other options, for example if **:provision\_type:** is _pxe_ then the sub-option **:pxe\_image\_id:** is mandatory. If the **:provision\_type:** value is anything else then **:pxe\_image\_id:** is not relevant.
 
-In ManageIQ versions prior to _Capablanca_ the arguments were specifies as a string, with each value separated by a pipe ('|') symbol, i.e.
+In ManageIQ versions prior to _Capablanca_ the arguments were specified as a string, with each value separated by a pipe ('|') symbol, i.e.
 
 ```
 "vm_name=rhel7srv010|vlan=public|vm_memory=1024"
@@ -73,11 +73,10 @@ Allows for the setting of properties from the **Catalog**, **Hardware**, **Netwo
 
 ```
 # arg2 = vmFields
-arg2 = {'number_of_vms' => 3',
-# 1000000000007 is the ID of the m1.small flavor on my system
-arg2 += 'instance_type' => 1000000000007,
-arg2 += "|vm_name=#{$instance_name}"
-arg2 += "|retirement_warn=2.weeks"
+arg2 = {'number_of_vms'    => '3',
+		 'instance_type'   => '1000000000007', # m1.small
+		 'vm_name' 		   => "#{$instance_name}",
+		 'retirement_warn' => "#{2.weeks}"}
 args << arg2
 ```
 
@@ -90,7 +89,8 @@ Allows for the setting of properties from the **Request** tab in the Provisionin
 Tags to apply to newly created VM, e.g.
 
 ```
-"server_role=web_server|cost_centre=0011"
+{'server_role' => 'web_server',
+ 'cost_centre' => '0011'}
 ```
 
 #### additionalValues (aka ws_values)
@@ -126,7 +126,8 @@ For example, in our call to `create_provision_request` we can set:
 
 ```
 # arg6 = additionalValues (ws_values)
-args << "cloud_network=10000000000031|cloud_tenant=10000000000012"
+args << {'cloud_network' => '10000000000031'
+		 'cloud_tenant   => '10000000000012'}
 ```
 
 We can then copy `ManageIQ/Cloud/VM/Provisioning/StateMachines/Methods/openstack_CustomizeRequest` into our own domain, and edit as follows:

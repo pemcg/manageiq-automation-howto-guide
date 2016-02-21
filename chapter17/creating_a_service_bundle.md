@@ -70,7 +70,7 @@ Tick the **Display in Catalog** check-box to expose the remaining fields to be f
 
 ![screenshot](images/screenshot47.png)
 
-Select an appropriate Catalog, and the newly create bundle Dialog, from the appropriate drop-downs. 
+Select an appropriate Catalog, and the newly created bundle Dialog, from the appropriate drop-downs. 
 
 For the Provisioning Entry Point, navigate to: `ManageIQ/Service/Provisioning/StateMachines/ServiceProvision_Template/CatalogBundleInitialization`. 
 
@@ -119,7 +119,7 @@ Click **Order**, and fill out the Service Dialog values:
 
 Click **Submit**
 
-After a new minutes, the new Service should be visible in **My Services**, containing the new VMs:
+After a few minutes, the new Service should be visible in **My Services**, containing the new VMs:
 <br><br>
 
 ![screenshot](images/screenshot53.png)

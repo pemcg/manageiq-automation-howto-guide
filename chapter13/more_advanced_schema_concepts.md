@@ -49,7 +49,7 @@ This means that it can be called as part of the VM Provisioning State Machine, b
 In this way we are able to create a generic Class and Instance definition that contains several Methods, and the choice of which Method to run can be selected dynamically at run-time by using a Message.
 
 ### Assertions
-An _Assertion_ is a boolean check that we can put (usually at the top) in our Class schema. If the Assertion evaluates to _true_ the remaining Instance schema fields are processed. If the Assertion evaluates to _false_ the remainder of the Instance fields are not processed.
+An _Assertion_ is a boolean check that we can put in our Class schema. Assertions are always processed first, regardless of their position on the schema. If an Assertion evaluates to _true_ the remaining Instance schema fields are processed, (i.e. the Instance continues to run). If an Assertion evaluates to _false_ the remainder of the Instance fields are not processed, and the Instance stops.
 
 An example of an Assertion is found at the start of the Schema for the `Placement` Class. Placement methods are only relevant if the **Automatic** check box has been selected at provisioning time, and this check box sets a boolean value `miq_provision.placement_auto`. The Assertion checks that this value is true, and prevents the remainder of the Instance from running if automatic placement has not been selected.
 

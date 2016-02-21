@@ -106,7 +106,7 @@ It also raises a _vm\_retired_ event that can be caught by an Automate action or
 
 ##### DeleteFromVMDB
 
-The `DeleteFromVMDB` Instance calls the `delete_fro\_vmdb` State Machine Method, that checks for the state variable `vm_removed_from_provider`, and if found (and true) it removes the VM record from the VMDB.
+The `DeleteFromVMDB` Instance calls the `delete_from_vmdb` State Machine Method, that checks for the state variable `vm_removed_from_provider`, and if found (and true) it removes the VM record from the VMDB.
 
 
 ### Service Retirement
@@ -137,7 +137,7 @@ which redirects to `/Service/Retirement/StateMachines/Methods/GetRetirementEntry
 ![screenshot](images/screenshot9.png)
 <br> <br>
 
-This Instance runs a Method `get_retirement\entry_point` that returns the Retirement Entry Point defined when the Service Catalog Item was created. If this is empty then `/Service/Retirement/StateMachines/ServiceRetirement/Default` is returned.
+This Instance runs a Method `get_retirement_entry_point` that returns the Retirement Entry Point defined when the Service Catalog Item was created. If this is empty then `/Service/Retirement/StateMachines/ServiceRetirement/Default` is returned.
 
 #### Retirement-Related Attributes and Methods
 

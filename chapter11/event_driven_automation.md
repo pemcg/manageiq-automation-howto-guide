@@ -99,7 +99,7 @@ Invoking [inline] method [/ManageIQ/System/Process/parse_provider_category] with
 <AEMethod [/ManageIQ/System/Process/parse_provider_category]> Ending
 ```
 
-`parse_provider_category` returns _nil_ as this Automation Request does not involve any _Provider_ operations (as it would if we were provisioning a VM, for example).
+`parse_provider_category` returns a Value of 'unknown' as this Automation Request does not involve any _Provider_ operations (as it would if we were provisioning a VM, for example).
 
 Finally we follow the **rel5** relationship to `/System/Policy/AutomationRequest_created` ("AutomationRequest" having been substituted for ${#request\_type}). This doesn't exist (we can create one if we choose), so we see the warning message:
 

@@ -55,7 +55,7 @@ We can access our parent object (the one that called us) using `$evm.object(".."
 
 Fact: `$evm.root` is actually an alias for `$evm.object("/")` 
 
-When we ran our first example script, _HelloWorld_ (from Simulation), we specified an entry point of `/System/Process/Request`, and our Request was to an Instance called `Call_Instance`. We passsed to this the Namespace, Class and Instance that we wanted it to run (via a Relationship).
+When we ran our first example script, _HelloWorld_ (from Simulation), we specified an entry point of `/System/Process/Request`, and our Request was to an Instance called `Call_Instance`. We passed to this the Namespace, Class and Instance that we wanted it to run (via a Relationship).
 
 This would have resulted in an object hierarchy (when viewed from the _hello\_world_ Method) as follows:
 
