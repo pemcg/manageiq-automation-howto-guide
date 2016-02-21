@@ -75,7 +75,7 @@ Allows for the setting of properties from the **Catalog**, **Hardware**, **Netwo
 # arg2 = vmFields
 arg2 = {'number_of_vms'    => '3',
 		 'instance_type'   => '1000000000007', # m1.small
-		 'vm_name' 		  => "#{$instance_name}",
+		 'vm_name' 		 => "#{$instance_name}",
 		 'retirement_warn' => "#{2.weeks}"}
 args << arg2
 ```
