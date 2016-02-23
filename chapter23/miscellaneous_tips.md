@@ -49,3 +49,11 @@ The in-built WebUI code editor is fairly basic. It is often easier to develop in
 ### Version Control
 
 There isn't any (yet). Git integration for the Automation Datastore is planned for a future release of ManageIQ/CloudForms. In the meantime, use a separate Git repository, but this is a manual process unfortunately.
+
+Several of Red Hat's US consultants including Cameron Wyatt and Alex Smith have created a really cool open source project for doing version control/Continuous Integration of CloudForms automate, dialogs, etc. across regions.
+
+This project provides a Continuous Integration (CI) pipeline for ManageIQ region data using Jenkins. It provides a pipeline view that allows you to visualize which version of region data (automate domains, dialogs, service catalogs, etc.) is in a region at a given time.
+
+![Screenshot](images/miq_ci_workflow.png)
+
+See https://github.com/rhtconsulting/miq-ci for more information.

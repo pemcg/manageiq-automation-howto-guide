@@ -14,7 +14,7 @@ Rails Models are called _Active Records_. They always have a singular _CamelCase
 
 ### Active Record Associations
 
-Active Record Associations link the Models together in one-to-many and many-to-one relationships that allow us to traverse objects.
+Active Record Associations link the Models together in one-to-many and one-to-one relationships that allow us to traverse objects.
 
 We can illustrate this by looking at some of the Rails code that defines the _Host_ Active Record:
 
@@ -41,7 +41,7 @@ owner = $evm.vmdb('user').find_by_id( ownerid.to_i )
 vm = $evm.vmdb('vm').find_by_name(vm_name)
 vm = $evm.vmdb('vm').find_by_guid(guid)
 ```
-We can ```.find_by_``` any table heading on a database table, so if we look at the _services_ column...
+We can ```.find_by_``` any table heading on a database table, so if we look at the _services_ column:
 
 ```
 vmdb_production=# \d services
@@ -59,14 +59,12 @@ vmdb_production=# \d services
  ...
 ```
 
-...we see that we could call:
+We see that if we wanted we could call:
 
 ```ruby
-$evm.vmdb('service').find_by_service_template_id(template_id)
+$evm.vmdb('service').find_by_description('My New Service')
 ```
 
-if we wanted.
-
-Tip - don't try searching the CloudForms sources for ```def find_by_id``` though, these are not statically defined methods and so don't exist in the CloudForms code.
+Tip - don't try searching the CloudForms sources for ```def find_by_id``` though, these are not statically defined methods and so don't exist in the CloudForms code. The find_by helpers are also being deprecated in Rails in favour of a syntax using `where`, for example: `$evm.vmdb('service').where(:description => 'My New Service')`
 
 

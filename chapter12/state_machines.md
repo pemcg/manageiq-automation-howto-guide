@@ -2,7 +2,7 @@
 
 One of the types of Schema field is a **State**, and we can construct a Class Schema definition comprising a sequences of **States**. This then becomes a _State Machine_.
 
-State Machines are a really useful way of performing a sequence of operations; they can ensure the successful completion of a prior step before the next step is run, permit steps to be retried, and allow us to set a timeout value on the successful completion of the State.
+State Machines are a really useful way of performing a sequence of operations; they can ensure the successful completion of a prior step before the next step is run, permit steps to be retried, and allow us to set a timeout value for the successful completion of the State.
 
 If we look at all of the attributes that we can add for a schema field, in addition to the familar **Name**, **Description**, and **Value** headings, we see a number of column headings that we haven't used so far:
 
@@ -13,7 +13,7 @@ If we look at all of the attributes that we can add for a schema field, in addit
 The Schema columns for a State Machine are the same as in any other Class Schema, but we use more of them.
 
 #### Value (Instance)/Default Value (Schema)
-As in any other Class Schema, this is a Relationship to an _Instance_ to be run to perform the main processing of the State/Stage. 
+As in any other Class Schema, this is a Relationship to an _Instance_ to be run to perform the main processing of the State. 
 
 #### On Entry
 We can optionally define an **On Entry** _Method_ to be run before the "main" method (the **Value** entry) is run. We can use this to setup or test for pre-conditions to the State, for example if the "main" Method adds a tag to an object, the **On Entry** method might check that the category and tag exist.
@@ -48,7 +48,7 @@ The greyed-out values for **on_entry** and **on_error** are defaults defined in 
 
 #### $evm.root['ae\_result']
 
-A Method run within the context of a State Machine can return a completion status back to the Automation Engine, which can then decide which next action to perform (such as whether to advance to the next State/Stage).
+A Method run within the context of a State Machine can return a completion status back to the Automation Engine, which can then decide which next action to perform (such as whether to advance to the next State).
 
 We do this by setting one of three values in the `ae_result` hash key:
 
@@ -100,9 +100,31 @@ We can look at the workflow through a ManageIQ _Botvinnik_ (CloudForms Managemen
 
 ![state machine logic](images/state_machine_logic.png)
 
-Here we see that any error condition caught by the **on_error** method results in an abort of the State Machine. ManageIQ _Capablanca_ (CloudForms Management Engine 5.5) allows us to set `$evm.root['ae_result'] = 'continue'` in an **on_error** Method so that the Method can take remedial action to correct an error, and continue with the State Machine.
+Here we see that any error condition caught by the **on_error** method results in an abort of the State Machine. 
 
-The same enhancement also lets us set `$evm.root['ae_next_state'] = state_name` to allow a Stage/State to advance forward to a named future Stage/State, or for an **on_entry** Method to call `$evm.root['ae_result'] = 'skip'` to advance directly to the next Stage/State. This allows for intelligent **on_entry** pre-processing, and to advance if pre-conditions are already met.
+#### State Machine Enhancements in ManageIQ Capablanca
+
+Several useful additions to State Machine functionality were added with ManageIQ _Capablanca_ (CloudForms Management Engine 5.5)
+
+##### Error Recovery
+
+Rather than automatically aborting the State Machine, an **on_error** Method now has the capability to take recovery action from an error condition, and set `$evm.root['ae_result'] = 'continue'` to ensure that the State Machine continues.
+
+##### Skipping States
+
+To allow for intelligent **on_entry** pre-processing, and to advance if pre-conditions are already met, an **on_entry** Method can set `$evm.root['ae_result'] = 'skip'` to advance directly to the next State, without calling the current State's 'Value' method.
+
+##### Jumping to a Specific State
+
+Any of our State Machine Methods can set `$evm.root['ae_next_state'] = <state_name>` to allow the State Machine to advance forward several steps.
+
+Note: setting `ae_next_state` only allows us to go forward in a state machine. If we want to go back to a previous state, we can restart the state machine, but set `ae_next_state` to the name of the state that we want to restart at. When issuing a restart, if `ae_next_state` is not specified the state machine will restart at the first state. 
+
+```ruby
+# Currently in state4
+$evm.root['ae_result'] = 'restart' 
+$evm.root['ae_next_state'] = 'state2'
+```
 
 ### Saving Variables Between State Retries
 
