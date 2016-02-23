@@ -14,6 +14,7 @@
    * [A Little Rails Knowledge](chapter4/a_little_rails_knowledge.md)
    * [The MiqAeService* Model](chapter4/the_miqaeservice_model.md)
    * [Working with Automation Objects](chapter4/working_with_automation_objects.md)
+   * [Distributed Ruby](chapter4/distributed_ruby.md)
 * [A More Advanced Example](chapter5/a_more_advanced_example.md)
 * [$evm and the Workspace](chapter6/evm_and_the_workspace.md)
 * [Using Tags from Automate](chapter7/using_tags_from_automate.md)
