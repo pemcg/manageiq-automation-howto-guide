@@ -57,8 +57,8 @@ See also...
 [Cloudforms 3.1 Automate Model Conversion](https://access.redhat.com/solutions/1225413)
 
 ###Namespaces
-A _Namespace_ is a folder-like container for Classes, Instances and Methods, and is purely used for organisational purposes.
+A _Namespace_ is a folder-like container for Classes, Instances and Methods, and is purely used for organisational purposes. Namespaces can contain other namespaces, as show in the following diagram:
 
 ![Screenshot](images/screenshot2.png)
 
-We create Namespaces (nested if required) to arrange our code logically.
+We create Namespaces to arrange our code logically.
