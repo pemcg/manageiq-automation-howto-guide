@@ -137,3 +137,11 @@ if $evm.state_var_exist?(:server_name)
 end
 
 ```
+
+We can save most types of variables, but because of the dRuby mechanics behind the scenes, we can't save hashes that have default initializers, e.g.
+
+```ruby
+my_hash=Hash.new { |h, k| h[k] = {} }
+```
+
+Here the `|h, k| h[k] = {}` is the initializer function. 
