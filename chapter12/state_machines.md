@@ -13,14 +13,14 @@ If we look at all of the attributes that we can add for a schema field, in addit
 The Schema columns for a State Machine are the same as in any other Class Schema, but we use more of them.
 
 #### Value (Instance)/Default Value (Schema)
-As in any other Class Schema, this is a Relationship to an _Instance_ to be run to perform the main processing of the State. 
+As in any other Class Schema, this is a Relationship to an Instance to be run to perform the main processing of the State/Stage. Surprising as it may seem, we don’t necessarily need a value specified here for a State Machine (see On Entry below), although it is good practice to do so.
 
 #### On Entry
 We can optionally define an **On Entry** _Method_ to be run before the "main" method (the **Value** entry) is run. We can use this to setup or test for pre-conditions to the State, for example if the "main" Method adds a tag to an object, the **On Entry** method might check that the category and tag exist.
 
 The Method name can be specified as a relative path to the local class (i.e. just the Method name), or in Namespace/Class/Method syntax.
 
-Note - some State Machines use an **On Entry** _Method_ instead of a **Value** _Relationship_ to perform the main work of the State. This is useful when we wish to create self-contained State Machines with the State Machine Instance and its associated Methods all in one class.
+Note - some older State Machines such as `/Infrastructure/VM/Provisoning/StateMachines/ProvisionRequestApproval/` use an On Entry Method instead of a Value Relationship to perform the main work of the State. This usage is deprecated, and we should always use a Value Relationship in our State Machines.
 
 #### On Exit
 We can optionally define an **On Exit** _Method_ to be run if the "main" Method (the **Value** Relationship/Instance or **On Entry** Method) returns `$evm.root['ae_result'] = 'ok'`
@@ -102,19 +102,19 @@ We can look at the workflow through a ManageIQ _Botvinnik_ (CloudForms Managemen
 
 Here we see that any error condition caught by the **on_error** method results in an abort of the State Machine. 
 
-#### State Machine Enhancements in ManageIQ Capablanca
+### State Machine Enhancements in ManageIQ Capablanca
 
 Several useful additions to State Machine functionality were added with ManageIQ _Capablanca_ (CloudForms Management Engine 5.5)
 
-##### Error Recovery
+#### Error Recovery
 
 Rather than automatically aborting the State Machine, an **on_error** Method now has the capability to take recovery action from an error condition, and set `$evm.root['ae_result'] = 'continue'` to ensure that the State Machine continues.
 
-##### Skipping States
+#### Skipping States
 
 To allow for intelligent **on_entry** pre-processing, and to advance if pre-conditions are already met, an **on_entry** Method can set `$evm.root['ae_result'] = 'skip'` to advance directly to the next State, without calling the current State's 'Value' method.
 
-##### Jumping to a Specific State
+#### Jumping to a Specific State
 
 Any of our State Machine Methods can set `$evm.root['ae_next_state'] = <state_name>` to allow the State Machine to advance forward several steps.
 
@@ -125,6 +125,11 @@ Note: setting `ae_next_state` only allows us to go forward in a state machine. I
 $evm.root['ae_result'] = 'restart' 
 $evm.root['ae_next_state'] = 'state2'
 ```
+#### Nested State Machines
+
+As has been mentioned, the *Value* field of a State Machine should be a Relationship to an Instance. Prior to CloudForms 4.0 this could not be another State Machine, but with 4.0 this requirement has been lifted, and so we can call an entire State Machine from a State in a 'parent' State Machine.
+
+![screenshot](images/screenshot3.png)
 
 ### Saving Variables Between State Retries
 
