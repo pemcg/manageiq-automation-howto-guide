@@ -136,6 +136,21 @@ body = 'What an awesome cloud management product!'
 $evm.execute(:send_email, to, from, subject, body)
 ```
 
+The `create_automation_request` method is new with CloudForms 4.0, and it enables us to chain Automation requests together. This is also very useful when we wish to explicitly launch an automation task in a different zone to the one that our currently running script resides in.
+
+```ruby
+options = {}
+options[:namespace]     = 'Stuff'
+options[:class_name]    = 'Methods'
+options[:instance_name] = 'MyInstance'
+options[:user_id]       = $evm.vmdb(:user).find_by_userid('pemcg').id
+# options[:attrs]       = attrs
+# options[:miq_zone]    = zone
+approve                 = true
+
+$evm.execute('create_automation_request', options, 'admin', approve)
+```
+
 ### $evm.instantiate
 
 We can use `$evm.instantiate` to launch another Automation Instance programmatically from a running method, by specifying its URI within the Automate namespace e.g.
